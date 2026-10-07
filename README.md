@@ -1,5 +1,7 @@
 # Open cases of Brouwer's SRG table
 
+https://tonykoval.github.io/srg-open-cases/
+
 A small static website that explains results on parameter sets of strongly regular graphs that were marked open
 ("?") in A. E. Brouwer's table, settled in September–October 2026:
 
