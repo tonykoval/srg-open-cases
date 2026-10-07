@@ -19,6 +19,7 @@
     <span class="chip">Preprint, 7 October 2026</span>
     <a class="chip" href="https://doi.org/10.5281/zenodo.23210954">doi:10.5281/zenodo.23210954</a>
     <span class="chip hand">Two independent derivations</span>
+    <a class="chip ok" href="#lean-h">Core checked in Lean 4</a>
     <span class="chip">Not yet peer-reviewed</span>
   </div>
 </header>
@@ -92,6 +93,26 @@ det 204:  V ⊕ ⟨4/3⟩ ⊕ ⟨10/17⟩   (V the anisotropic 2-plane)</span></
       <tr><td class="num">srg(77,16,0,4)</td><td>O₂₃ (M₂₂ graph)</td><td class="yes">passes every filter</td></tr>
     </tbody>
   </table></div>
+</section>
+
+<section aria-labelledby="lean-h">
+  <div class="eyebrow">Formal verification</div>
+  <h2 id="lean-h">The arithmetic core is checked by Lean</h2>
+  <p>The core of the proof is formalized in the Lean 4 proof assistant with the Mathlib library. Lean's kernel checks every step, so these parts do not have to be trusted on the strength of programs or of any reader. Project: <a href="https://github.com/tonykoval/srg154-lean">github.com/tonykoval/srg154-lean</a> (builds in about a minute after downloading the Mathlib cache).</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>part of the proof</th><th>in Lean</th></tr></thead>
+    <tbody>
+      <tr><td>spectrum 72¹, 2¹³², (−16)²¹ of any srg(154,72,26,40)</td><td class="yes">proved from the definition</td></tr>
+      <tr><td>graph side of the dual-vector identities (𝒢² = 18𝒢 + 340J)</td><td class="yes">proved</td></tr>
+      <tr><td>all 521 forbidden dual norms, and every row of the printed certificate tables</td><td class="yes">proved by kernel computation</td></tr>
+      <tr><td>pins for roots and characteristic vectors</td><td class="yes">derived from the certificates</td></tr>
+      <tr><td>Theorem A (48 lattices with roots)</td><td class="yes">proved, frame identity as a hypothesis</td></tr>
+      <tr><td>Theorem B (O₂₃)</td><td class="yes">proved, 7-design moments as a hypothesis</td></tr>
+      <tr><td>genus I (dodecad witness, norm 20/17)</td><td class="yes">proved, A₁²⁴ coordinates as a hypothesis</td></tr>
+      <tr><td>overlattice, Milgram genera, gluing, frame identity, 7-design property</td><td class="muted">not formalized (taken as hypotheses)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">No <span class="mono">sorry</span>, no <span class="mono">native_decide</span>, no added axioms; only Lean's standard axioms propext, Classical.choice and Quot.sound. The formal statements are under an independent fidelity review.</p>
 </section>
 
 <section aria-labelledby="ver-h">
