@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New Strongly Regular Graphs</title>
+<meta name="description" content="Graphs for nine parameter sets that were open in Brouwer's table: counts, automorphism groups, sources and graph6 data files.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: graphs */
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.set{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0;scroll-margin-top:16px}
+.set:target{outline:2px solid var(--hand)}
+.set .p{font:600 18px/1.2 var(--mono);overflow-wrap:anywhere}
+.set .n{font:600 26px/1 var(--mono);color:var(--ok)}
+.set .n small{font:500 13px/1 var(--body);color:var(--muted);margin-left:6px}
+.set p{font-size:14px}
+.auts{display:grid;gap:4px}
+.auts .r{display:grid;grid-template-columns:4.6em 1fr 2.6em;gap:8px;align-items:center;font-size:12.5px}
+.auts .k{font-family:var(--mono);color:var(--muted)}
+.auts .t{height:10px;background:var(--bg);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.auts .f{display:block;height:100%;background:var(--ok)}
+.auts .v{font-family:var(--mono);text-align:right}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.controls label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.controls select,.controls input{font:14px/1.2 var(--body);padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);min-width:0;max-width:100%}
+.controls input{width:200px}
+th button{all:unset;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
+th button:focus-visible{outline:2px solid var(--hand);outline-offset:2px}
+th[aria-sort="ascending"] button::after{content:" ▲"}
+th[aria-sort="descending"] button::after{content:" ▼"}
+td.cay-yes{color:var(--ok)}
+td.cay-no{color:var(--kill)}
+td .sub{display:block;color:var(--muted);font-size:12.5px}
+.files td{overflow-wrap:anywhere}
+.count{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="graphs.html" aria-current="page">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · constructions</div>
+  <h1>New graphs for nine open parameter sets</h1>
+  <p class="lead">For nine parameter sets marked “?” in Brouwer's table we give explicit strongly regular graphs: 262 graphs in all, pairwise non-isomorphic within each set. All nine sets are now marked as realised in the table, on the basis of this work.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>
+    <span class="chip ok">Every graph checked exactly</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="sets-h">
+  <div class="eyebrow">Per parameter set</div>
+  <h2 id="sets-h">Counts and automorphism groups</h2>
+  <p>A “≥” count is a lower bound on the number of graphs: our searches did not finish. The bars show how many of the listed graphs have each automorphism group order |Aut|.</p>
+  <div class="sets" id="sets"></div>
+</section>
+
+<section aria-labelledby="tbl-h">
+  <div class="eyebrow">All graphs, by source</div>
+  <h2 id="tbl-h">Where each graph comes from</h2>
+  <p>Each row is a batch of graphs with a common source. “Lines” are line numbers in the data file, which are the graph numbers used in the paper. Select a column heading to sort.</p>
+  <div class="controls">
+    <label>Parameter set <select id="fset"><option value="">all nine</option></select></label>
+    <label>Cayley graph <select id="fcay"><option value="">any</option><option value="yes">yes</option><option value="no">no</option><option value="na">not examined or not stated</option></select></label>
+    <label>Search <input id="fq" type="search" placeholder="group, method …"></label>
+  </div>
+  <p class="count" id="fcount" aria-live="polite"></p>
+  <div class="tbl-wrap"><table id="tbl">
+    <thead><tr>
+      <th aria-sort="none"><button type="button" data-s="set">parameters</button></th>
+      <th aria-sort="none"><button type="button" data-s="lines">lines</button></th>
+      <th aria-sort="none"><button type="button" data-s="n">graphs</button></th>
+      <th aria-sort="none"><button type="button" data-s="aut">|Aut|</button></th>
+      <th aria-sort="none"><button type="button" data-s="src">source</button></th>
+      <th aria-sort="none"><button type="button" data-s="cay">Cayley?</button></th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table></div>
+  <p class="muted">For the 320-vertex sets the rows are the families of the paper, which group graphs by their automorphism group; their line numbers are not split by family there, so the column is empty. “Cayley?” for a 320 family follows the paper's family table.</p>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Data</div>
+  <h2 id="files-h">The graph6 files</h2>
+  <p>One file per parameter set, one graph per line, in graph6 format. These are the ancillary files of the paper, copied unchanged into the <span class="mono">data/</span> folder of this site's repository; the links open or download them from there. The files for 320, 324 and 486 vertices are in nauty canonical form.</p>
+  <div class="tbl-wrap"><table class="files">
+    <thead><tr><th>file</th><th>parameters</th><th>graphs</th><th>SHA-256 (prefix)</th></tr></thead>
+    <tbody>
+      <tr><td><a href="data/srg250_81_24_27.g6">srg250_81_24_27.g6</a></td><td class="num">(250,81,24,27)</td><td class="num">1</td><td class="num">b9a1ab109443afc0</td></tr>
+      <tr><td><a href="data/srg300_69_18_15.g6">srg300_69_18_15.g6</a></td><td class="num">(300,69,18,15)</td><td class="num">2</td><td class="num">2f345c3f5632b0d4</td></tr>
+      <tr><td><a href="data/srg320_87_22_24.g6">srg320_87_22_24.g6</a></td><td class="num">(320,87,22,24)</td><td class="num">35</td><td class="num">1afbb0435db3f254</td></tr>
+      <tr><td><a href="data/srg320_88_24_24.g6">srg320_88_24_24.g6</a></td><td class="num">(320,88,24,24)</td><td class="num">95</td><td class="num">6f907d49ff3f4e15</td></tr>
+      <tr><td><a href="data/srg324_114_36_42.g6">srg324_114_36_42.g6</a></td><td class="num">(324,114,36,42)</td><td class="num">22</td><td class="num">a7c88ab25275efee</td></tr>
+      <tr><td><a href="data/srg324_133_52_56.g6">srg324_133_52_56.g6</a></td><td class="num">(324,133,52,56)</td><td class="num">10</td><td class="num">954fde68fe7bde4f</td></tr>
+      <tr><td><a href="data/srg324_136_58_56.g6">srg324_136_58_56.g6</a></td><td class="num">(324,136,58,56)</td><td class="num">93</td><td class="num">da1f703379880c36</td></tr>
+      <tr><td><a href="data/srg486_97_16_20.g6">srg486_97_16_20.g6</a></td><td class="num">(486,97,16,20)</td><td class="num">2</td><td class="num">5b63dd24455c0f22</td></tr>
+      <tr><td><a href="data/srg486_100_22_20.g6">srg486_100_22_20.g6</a></td><td class="num">(486,100,22,20)</td><td class="num">2</td><td class="num">74e21b4648c22741</td></tr>
+      <tr><td><a href="data/sumgraph_D0_87.g6">sumgraph_D0_87.g6</a></td><td class="num">(320,87,22,24)</td><td class="num">1</td><td class="num">1517e007bcc17b3c</td></tr>
+      <tr><td><a href="data/sumgraph_D0_88.g6">sumgraph_D0_88.g6</a></td><td class="num">(320,88,24,24)</td><td class="num">1</td><td class="num">99fb2750c3a5ecbb</td></tr>
+    </tbody>
+  </table></div>
+  <p>Also in <span class="mono">data/</span>: the verifier <a href="data/verify_srg.py">verify_srg.py</a>, the <a href="data/README.txt">README.txt</a> of the ancillary files and <a href="data/SHA256SUMS">SHA256SUMS</a> with the full hashes. SHA256SUMS also lists programs and connection sets that belong to the full archive but are not copied here.</p>
+  <div class="formula">python3 verify_srg.py srg324_136_58_56.g6 324 136 58 56</div>
+  <p class="muted">The verifier is plain Python 3 with no packages. It decodes each line and checks A² = kI + λA + μ(J − I − A) directly: every vertex has degree k, and every pair of distinct vertices has λ (adjacent) or μ (non-adjacent) common neighbours. It passes on all 264 lines of the eleven files. The two sum-graph files contain the graphs obtained from a known abelian (320,88,24) difference set of Davis and Jedwab (1997); they are not vertex-transitive (64 automorphisms) and are not counted among the new graphs.</p>
+</section>
+
+<section aria-labelledby="chk-h">
+  <div class="eyebrow">Status of the claims</div>
+  <h2 id="chk-h">What is proved by hand, and what by computer</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>claim</th><th>established by</th></tr></thead>
+    <tbody>
+      <tr><td>srg(250,81,24,27), both srg(300,69,18,15), one cyclotomic srg(324,136,58,56) are strongly regular</td><td>hand proof; also an exact computer check</td></tr>
+      <tr><td>every other graph is strongly regular</td><td>exact computer check of A² = kI + λA + μ(J − I − A), or the group-ring identity for Cayley graphs</td></tr>
+      <tr><td>graphs within a file are pairwise non-isomorphic</td><td>computer (nauty canonical forms; invariants where stated)</td></tr>
+      <tr><td>automorphism groups, Cayley property, counts, invariants</td><td>computer (nauty, GAP); counts are lower bounds where the search was incomplete</td></tr>
+      <tr><td>none of the 93 srg(324,136,58,56) comes from an orthogonal array OA(18,8)</td><td>computer (clique numbers: no 18-clique)</td></tr>
+      <tr><td>novelty</td><td>literature search, “to the best of our knowledge”</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Independent review was uneven, and the paper says exactly what it covered. The first drafts (graphs reported on 30 September) were refereed by separate Claude agents with their own code. Several later additions (from 1 and 2 October) were not refereed independently at the time. On 6 October a Codex referee re-verified strong regularity and pairwise non-isomorphism of all 256 graphs then listed, with its own program, without recomputing every invariant. The eight srg(324,114,36,42) nos. 15–22, added on 7 October 2026, have not been refereed independently.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper and data: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  // Parameter sets: key, label, total, lower bound?, Brouwer status, summary, anchor
+  var S=[
+    ["250","(250,81,24,27)",1,false,"“?” 29 Sep 2026 (comment “pg(9,8,3)?”) → “+” 30 Sep 2026","Γ₂₅₀, a coset graph of AGL(2,5) on 250 points. Proved strongly regular by hand; it has one 10-clique per vertex, so it is not the point graph of a partial geometry pg(9,8,3).","p250"],
+    ["300","(300,69,18,15)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Γ_A and Γ_B, non-isomorphic, both with automorphism group of order 60,000 (the stabiliser of a totally singular line in SO(5,5)). Proved strongly regular by hand, using the known fact that NO⁺(5,5) (orthogonal version) is an srg(325,60,15,10).","p300"],
+    ["320a","(320,87,22,24)",35,true,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Vertex-transitive graphs from coset actions, in twelve families (shared with k = 88). Existence already followed from a 1997 difference set by a sum-graph remark not recorded before; these are, to our knowledge, the first vertex-transitive examples.","p320a"],
+    ["320b","(320,88,24,24)",95,true,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Vertex-transitive graphs; 25 Cayley graphs give reversible (320,88,24) difference sets in nonabelian groups (none exist in abelian groups). The 130 graphs on 320 vertices give 123 pairwise non-isomorphic symmetric 2-(320,88,24) designs.","p320b"],
+    ["324a","(324,114,36,42)",22,true,"“?” 1 Oct 2026 → “+” (seen 6 Oct 2026)","Negative Latin square type NL₆(18). Abelian Cayley graphs from a slice search, Cayley graphs of three nonabelian groups, and graphs from coset layers over the 3-group SmallGroup(81,3).","p324a"],
+    ["324b","(324,133,52,56)",10,true,"“?” 1 Oct 2026 → “+” (seen 6 Oct 2026)","Negative Latin square type NL₇(18). All ten are Cayley graphs of 𝔽₄ × 𝔽₈₁ ≅ ℤ₂² × ℤ₃⁴ from a two-stage slice search.","p324b"],
+    ["324c","(324,136,58,56)",93,true,"“?” 30 Sep 2026 (comment “OA(18,8)?”) → listed as existing","Latin square type LS₈(18). None contains an 18-clique, so none is the graph of an orthogonal array OA(18,8): all are pseudo-Latin-square graphs. One cyclotomic Cayley graph on 𝔽₄ × 𝔽₈₁ is proved strongly regular by hand.","p324c"],
+    ["486a","(486,97,16,20)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Δ, a Cayley graph of SmallGroup(486,166) and a coset graph of a point stabiliser of the split Cayley hexagon H(3) in G₂(3); and Θ, a Cayley graph of SmallGroup(486,183) and (486,103).","p486a"],
+    ["486b","(486,100,22,20)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Γ⁽¹⁾ and Γ⁽²⁾, Cayley graphs of SmallGroup(486,117) with automorphism group 3⁴:(2 × S₅) of order 19,440.","p486b"]
+  ];
+  // Rows: set key, lines label, line sort key, count, lower bound?, aut {order:count}, source, cayley (yes/no/na), cayley note
+  var R=[
+    ["250","1",1,1,false,{12000:1},"coset action of 5²:GL₂(5) = AGL(2,5), stabiliser of order 48 (TomLib)","na","not stated"],
+    ["300","1–2",1,2,false,{60000:2},"coset actions of 5¹⁺²₊:4A₅, stabiliser of order 100 (TomLib)","na","not stated"],
+    ["320a","",0,3,false,{3840:3},"family 𝒜: V₅:PGL(2,5)","no",""],
+    ["320a","",0,4,false,{5120:4},"family 𝒯: O:F₂₀ ≅ C_T(z)/⟨z⟩, T = ²F₄(2)′","no",""],
+    ["320a","",0,10,true,{2560:10},"family 𝒯′: O:D₁₀","no",""],
+    ["320a","",0,6,true,{3840:6},"family 𝒬: V:SL(2,4) ≅ 2⁶:A₅ (server run; also in G₂(4))","yes","SmallGroup(320,1636) and (320,1637)"],
+    ["320a","",0,2,true,{2560:2},"family ℋ₁: K₁.2, from HS.2 (server run)","no",""],
+    ["320a","",0,6,true,{2560:6},"family ℋ₂: K₂.2, from HS (server run)","no",""],
+    ["320a","",0,3,true,{1280:3},"family 𝒦₁: K₁ ≤ HS.2 (server run)","no",""],
+    ["320a","",0,1,true,{1280:1},"family 𝒫: 2⁶:F₂₀ ≤ S₄(4).2 (server run)","yes","R₃₂₀ = SmallGroup(320,1635)"],
+    ["320b","",0,1,false,{3840:1},"family 𝒜: V₅:PGL(2,5)","no",""],
+    ["320b","",0,4,false,{5120:4},"family 𝒯: O:F₂₀","no",""],
+    ["320b","",0,18,true,{2560:18},"family 𝒯′: O:D₁₀","no",""],
+    ["320b","",0,16,false,{7680:16},"family 𝒞: 2⁶:S₅","yes","R₃₂₀ = SmallGroup(320,1635)"],
+    ["320b","",0,32,false,{3840:32},"family 𝒲: 2⁶:A₅","no",""],
+    ["320b","72–75",72,4,false,{1920:4},"family 𝒮: AΣL(2,4) ≅ 2⁴:S₅ (complete count on its action)","yes","R₃₂₀"],
+    ["320b","",0,2,true,{3840:2},"family 𝒬: V:SL(2,4) ≅ 2⁶:A₅ (server run)","yes","SmallGroup(320,1636) and (320,1637)"],
+    ["320b","",0,1,true,{2560:1},"family ℋ₁: K₁.2, from HS.2 (server run)","no",""],
+    ["320b","",0,13,true,{2560:13},"family ℋ₂: K₂.2, from HS (server run)","no",""],
+    ["320b","",0,1,true,{1280:1},"family 𝒦₂: K₂ ≤ HS (server run)","no",""],
+    ["320b","",0,3,true,{1280:3},"family 𝒫: 2⁶:F₂₀ ≤ S₄(4).2 (server run)","yes","R₃₂₀"],
+    ["324a","1–6",1,6,false,{1296:6},"slice search on 𝔽₄ × 𝔽₈₁ (abelian partial difference sets)","yes","ℤ₂² × ℤ₃⁴ and nonabelian groups"],
+    ["324a","7–14",7,8,false,{1944:6,3888:2},"server run, Cayley mode: SmallGroup(324,157), (324,155), (324,54)","yes","nonabelian groups"],
+    ["324a","15–22",15,8,false,{972:6,1944:2},"server run, coset layers over P = SmallGroup(81,3), |G| = 8748","na","not examined"],
+    ["324b","1–10",1,10,false,{648:10},"two-stage slice search on 𝔽₄ × 𝔽₈₁","yes","ℤ₂² × ℤ₃⁴"],
+    ["324c","1–19, 21, 23–28",1,26,false,{1296:13,2592:7,3888:4,7776:2},"abelian partial difference set searches (CP-SAT); includes the cyclotomic graph no. 16 and no. 28","yes","ℤ₂² × ℤ₃⁴"],
+    ["324c","20, 22",20,2,false,{1296:2},"Γ₂, Γ₁: unions of orbitals of affine coset actions","yes","nonabelian groups only"],
+    ["324c","29",29,1,false,{1944:1},"server run, descent mode in G₂(3)","no",""],
+    ["324c","30, 32–41",30,11,false,{2592:9,1296:2},"server runs, affine mode (no. 39 also in U₄(3).2₁)","yes","nonabelian groups only"],
+    ["324c","31",31,1,false,{1296:1},"server run, affine mode","no",""],
+    ["324c","42–67",42,26,false,{1296:21,2592:5},"slice models (3,40)+σ and (3,20)+σ","yes","ℤ₂² × ℤ₃⁴"],
+    ["324c","68–83, 85–93",68,25,false,{1296:25},"server runs of 6 Oct 2026, affine-rankcap mode","na","not examined"],
+    ["324c","84",84,1,false,{2592:1},"server run of 6 Oct 2026, Cayley mode","yes","SmallGroup(324,170)"],
+    ["486a","1",1,1,false,{3888:1},"Δ: compiled decider on (3¹⁺²₊ × 3²):2S₄; coset graph in G₂(3)","yes","SmallGroup(486,166)"],
+    ["486a","2",2,1,false,{3888:1},"Θ: server run, affine mode (2 Oct 2026)","yes","SmallGroup(486,183), (486,103)"],
+    ["486b","1–2",1,2,false,{19440:2},"coset action of 3⁴:S₅ (TomLib)","yes","SmallGroup(486,117)"]
+  ];
+  var SL={};S.forEach(function(s){SL[s[0]]=s;});
+  var order=S.map(function(s){return s[0];});
+  function fmt(n){return Number(n).toLocaleString('en-US');}
+  // set cards with |Aut| distribution aggregated from rows
+  var sets=document.getElementById('sets');
+  S.forEach(function(s){
+    var agg={};R.forEach(function(r){if(r[0]!==s[0])return;for(var k in r[5])agg[k]=(agg[k]||0)+r[5][k];});
+    var keys=Object.keys(agg).map(Number).sort(function(a,b){return a-b;}),mx=Math.max.apply(null,keys.map(function(k){return agg[k];}));
+    var bars=keys.map(function(k){return '<div class="r"><span class="k">'+fmt(k)+'</span><span class="t"><span class="f" style="width:'+Math.max(4,100*agg[k]/mx)+'%"></span></span><span class="v">'+agg[k]+'</span></div>';}).join('');
+    var el=document.createElement('article');el.className='set';el.id=s[6];
+    el.innerHTML='<span class="p">srg'+s[1]+'</span><span class="n">'+(s[3]?'≥ ':'')+s[2]+'<small>graph'+(s[2]>1?'s':'')+'</small></span><p>'+s[5]+'</p><div class="auts" role="img" aria-label="Automorphism group orders: '+keys.map(function(k){return agg[k]+' with '+k;}).join(', ')+'"><span class="eyebrow">|Aut| of the listed graphs</span>'+bars+'</div><span class="chip ok" style="justify-self:start">Brouwer: '+s[4]+'</span>';
+    sets.appendChild(el);
+  });
+  // filter + sortable table
+  var fset=document.getElementById('fset'),fcay=document.getElementById('fcay'),fq=document.getElementById('fq'),tb=document.getElementById('tbody'),cnt=document.getElementById('fcount');
+  S.forEach(function(s){var o=document.createElement('option');o.value=s[0];o.textContent=s[1];fset.appendChild(o);});
+  var sortKey=null,sortDir=1;
+  function autStr(a){return Object.keys(a).map(Number).sort(function(x,y){return y-x;}).map(function(k){return a[k]>1&&Object.keys(a).length>1?fmt(k)+' ×'+a[k]:fmt(k);}).join(', ');}
+  function autMax(a){return Math.max.apply(null,Object.keys(a).map(Number));}
+  function key(r,k){if(k==='set')return order.indexOf(r[0])*1000+r[2];if(k==='lines')return r[2];if(k==='n')return r[3];if(k==='aut')return autMax(r[5]);if(k==='src')return r[6].toLowerCase();if(k==='cay')return r[7];}
+  function render(){
+    var q=fq.value.trim().toLowerCase(),rows=R.filter(function(r){
+      if(fset.value&&r[0]!==fset.value)return false;
+      if(fcay.value&&r[7]!==fcay.value)return false;
+      if(q&&(SL[r[0]][1]+' '+r[6]+' '+r[8]+' '+r[1]).toLowerCase().indexOf(q)<0)return false;return true;});
+    if(sortKey)rows=rows.slice().sort(function(a,b){var x=key(a,sortKey),y=key(b,sortKey);return (x<y?-1:x>y?1:0)*sortDir;});
+    tb.innerHTML=rows.map(function(r){
+      var cay=r[7]==='yes'?'yes':r[7]==='no'?'no':'—';
+      return '<tr><td class="num">'+SL[r[0]][1]+'</td><td class="num">'+(r[1]||'—')+'</td><td class="num">'+(r[4]?'≥ ':'')+r[3]+'</td><td class="num">'+autStr(r[5])+'</td><td>'+r[6]+'</td><td class="cay-'+r[7]+'">'+cay+(r[8]?'<span class="sub">'+r[8]+'</span>':'')+'</td></tr>';
+    }).join('');
+    var n=rows.reduce(function(t,r){return t+r[3];},0);
+    cnt.textContent=rows.length+' row'+(rows.length===1?'':'s')+', '+n+' graph'+(n===1?'':'s')+(rows.some(function(r){return r[4];})?' (some counts are lower bounds)':'');
+  }
+  document.querySelectorAll('th button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.s;if(sortKey===k)sortDir=-sortDir;else{sortKey=k;sortDir=1;}
+      document.querySelectorAll('th').forEach(function(th){th.setAttribute('aria-sort','none');});
+      b.parentNode.setAttribute('aria-sort',sortDir>0?'ascending':'descending');render();
+    });
+  });
+  [fset,fcay].forEach(function(e){e.addEventListener('change',render);});fq.addEventListener('input',render);
+  render();
+})();
+</script>
+</body>
+</html>

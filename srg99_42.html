@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(99,42,21,15)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: genus cards, host orbit bar, log-scale funnel */
+.genera{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--kill);border-radius:8px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.gcard.live{border-top-color:var(--ok)}
+.gcard .nm{font:600 18px/1.2 var(--mono)}
+.gcard .meta{font:12.5px/1.4 var(--mono);color:var(--muted)}
+.gcard .verdict{font-weight:600;color:var(--kill)}
+.gcard.live .verdict{color:var(--ok)}
+.pbar{display:flex;height:10px;border-radius:3px;overflow:hidden;background:var(--line)}
+.pbar i{display:block;height:100%}
+.pk{background:var(--kill)}
+.ph{background:var(--hand)}
+.ps{background:var(--ok)}
+.orbit{display:flex;height:22px;border-radius:6px;overflow:hidden}
+.orbit span{display:block;padding-inline:8px;white-space:nowrap;overflow:hidden;min-width:0}
+.orbit .oa{background:var(--comp-soft);color:var(--comp)}
+.orbit .ob{background:var(--comp);color:var(--surface)}
+.fun-wrap{display:grid;gap:18px}
+.fun-panel{display:grid;gap:6px}
+.fun{width:100%;display:block}
+.fun .lbl{fill:var(--fg);font:500 13px var(--body)}
+.fun .val{fill:var(--fg);font:600 12.5px var(--mono)}
+.fun .zero{fill:var(--kill);font:600 12.5px var(--mono)}
+.fun .bar{fill:var(--comp)}
+.fun .row{cursor:pointer}
+.fun .row:hover .bar,.fun .row.on .bar{fill:var(--hand)}
+.fun .row:focus{outline:none}
+.fun .row:focus-visible .lbl{text-decoration:underline}
+.fun .xmark{stroke:var(--kill);stroke-width:2.5}
+.fun .grid{stroke:var(--line)}
+.fun .tk{fill:var(--muted);font:11.5px var(--mono)}
+@media (max-width:640px){.genera{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html" aria-current="page">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (99, 42, 21, 15)</h1>
+  <p class="lead">No graph on 99 vertices, each of degree 42, where adjacent vertices share 21 neighbours and non-adjacent vertices share 15. (This is not Conway's 99-graph problem, srg(99, 14, 1, 2).) The proof turns the graph into lattice vectors, narrows the possible lattices to a single one with two embeddings, and then searches every candidate vector exhaustively. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, 27 September 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23210773">doi:10.5281/zenodo.23210773</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Final search by three independent programs</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The adjacency matrix A has three eigenvalues. The matrix G = 3I + A + J sends the eigenvalue −3 to 0, so G is positive semidefinite of rank 22 and is the Gram matrix of 99 vectors in 22 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">42</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 144</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">9</span><span class="muted">multiplicity 21 &nbsp;<span class="arrow">→ G: 12</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 77 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 2, non-adjacent ones 1. They span an even lattice L of rank 22. For a maximal even overlattice N, the vector y = s/36 (s the sum of the vertices) has norm 11 and lies in the dual N<sup>#</sup> but not in N, while 2y ∈ N.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation, independently repeated</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">1</span><span class="t"><strong>The dual-vector lemma</strong><span class="s">Every dual vector gives a small integer problem.</span><span class="d"><span>For x ∈ N<sup>#</sup> with norm a = x² and p = ⟨y, x⟩ ∈ ½ℤ, the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 36p,   Σ zᵢ² = 12(a + p²),   A z = 9z + 12p·𝟏</span><span class="muted">The pair (a, p) is admissible if such a z, with neighbourhoods of size 42, can exist. Admissibility depends only on the multiset of values of z.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>Sixteen forbidden norms, restricted pairings</strong><span class="s">Hand case analysis; two exact deciders agree.</span><span class="d"><span>No vector of N<sup>#</sup> has a norm in</span><span class="formula">ℱ = {1/12, 1/6, 1/4, 1/3, 1/2, 2/3, 3/4, 5/6, 11/12, 1, 13/12, 7/6, 17/12, 3/2, 19/12, 7/4}</span><span>At a few more norms the pairing with y is restricted: roots pair 0, ±1 or ±2 with y; norm 5/3 pairs 0; norms 23/12 and 5/4 pair ±½; and (5/2, ±3), (19/6, ±4), (13/4, ±9/2) are impossible (Propositions 4.7 and 4.8).</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Four possible discriminant forms</strong><span class="s">Maximality, 12·D(N) = 0 and Milgram's formula.</span><span class="d"><span>The discriminant form of N is anisotropic and killed by 12, and y gives a distinguished class of order 2 with q = 1. This leaves four genera of rank 22 (Proposition 5.1; an exhaustive enumeration of quadratic forms finds the same four):</span><span class="formula">𝒢₈:   ⟨5/4⟩ ⊕ ⟨1/2⟩
+𝒢₂₄ₐ:  ⟨2/3⟩ ⊕ ⟨3/4⟩ ⊕ ⟨1/2⟩
+𝒢₂₄ᵦ:  ⟨4/3⟩ ⊕ ⟨7/4⟩ ⊕ ⟨1/2⟩
+𝒢₇₂:   ⟨2/3⟩² ⊕ ⟨1/4⟩ ⊕ ⟨1/2⟩</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Glue into odd unimodular lattices</strong><span class="s">N′ = N + ℤy is the complement of a small lattice K.</span><span class="d"><span>N′ is odd with determinant 2, 6 or 18. Gluing with K = A₁, ⟨6⟩, A₁ ⊕ ⟨3⟩ or A₁ ⊕ ⟨3⟩ ⊕ ⟨3⟩ gives an odd unimodular lattice U of dimension 23, 23, 24 or 25 with N′ = K<sup>⊥</sup> ∩ U. Projections of units, roots and characteristic vectors of U are vectors of N<sup>#</sup>, so their norms must avoid ℱ.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">5</span><span class="t"><strong>Borcherds' classification</strong><span class="s">The lattices U of dimension 23, 24 and 25 are known.</span><span class="d"><span>Borcherds listed the 665 unimodular lattices of dimension 25 (external input E1). The lattices built from his data were cross-checked by exact mass identities for I₂₃, I₂₄, I₂₅ (117, 273 and 665 classes), root systems and separating invariants.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6</span><span class="t"><strong>Three genera die; the fourth leaves one lattice</strong><span class="s">Every kill has an explicit witness, checked by independent code.</span><span class="d"><span>In 𝒢₈, 𝒢₂₄ᵦ and 𝒢₇₂ every candidate U contains a test vector whose projection has a forbidden norm. In 𝒢₂₄ₐ only the 8 A₁ components of one lattice survive: U₂₄, the unit-free odd unimodular lattice of dimension 24 with root system A₁⁸ (Borcherds' row of height 4). See the cards below.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">7</span><span class="t"><strong>Two hosts up to symmetry</strong><span class="s">51,200 embeddings fall into two orbits of Aut(U₂₄).</span><span class="d"><span>K = ℤr ⊕ ℤe embeds via a root r and a norm-3 vector e orthogonal to it. The 51,200 such signed pairs form exactly two orbits, of sizes 43,008 (host A) and 8,192 (host B), found by union–find over verified generators and confirmed by orbit–stabiliser counts (stabilisers 122,880 and 645,120). |Aut U₂₄| = 5,284,823,040.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8</span><span class="t"><strong>No admissible y in either host</strong><span class="s">Exhaustive enumeration of all norm-11 candidates, certified by vector counts.</span><span class="d"><span>In each host, y must be a norm-11 vector of N′ whose pairings with all dual vectors of norm ≤ 4 are admissible. About 4.3·10⁸ candidates per host (up to sign) were enumerated; the number of vectors visited equals the PARI count, so none was missed. None satisfies the restrictions. See the funnel below.</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">9</span><span class="t"><strong>No host admits y, so no graph exists</strong><span class="s">Every case leads to a contradiction.</span><span class="d"><span>A graph would give a maximal even N in one of the four genera. Three are empty, and in the fourth N is one of the two hosts, where Theorem 10.1 shows that no vector can play the role of y.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Steps 4 to 6 · Tables 3 and 4 of the paper</div>
+  <h2 id="gen-h">Four genera, three die</h2>
+  <p>For each genus: the glue lattice K, the dimension of U, and what happens to the A₁ components that could carry the root of K. The bar shows the share of candidates killed by a characteristic-vector witness.</p>
+  <div class="genera">
+    <div class="gcard"><span class="nm">𝒢₈</span><span class="meta">K = A₁ · dim U = 23 · 49 unit-free U</span><div class="pbar" role="img" aria-label="50 of 50 A1 components killed"><i class="pk" style="width:100%"></i></div><span>17 lattices have A₁ components, 50 in all. For each, a characteristic vector χ of norm 7 orthogonal to t projects to norm 7/4 ∈ ℱ.</span><span class="verdict">empty · 50 of 50 killed</span></div>
+    <div class="gcard"><span class="nm">𝒢₂₄ᵦ</span><span class="meta">K = ⟨6⟩ · dim U = 23 · 49 unit-free U</span><div class="pbar" role="img" aria-label="48 lattices killed by witness, 1 by hand"><i class="pk" style="width:97.96%"></i><i class="ph" style="width:2.04%"></i></div><span>48 lattices have a characteristic vector of norm 7, which always gives a forbidden norm. The last, the shorter Leech lattice O₂₃, dies by hand: every norm-6 vector is a sum of two orthogonal norm-3 vectors, giving a projection of norm 3/2.</span><span class="verdict">empty · 48 + O₂₃</span></div>
+    <div class="gcard"><span class="nm">𝒢₇₂</span><span class="meta">K = A₁ ⊕ ⟨3⟩² · dim U = 25 · 368 unit-free U</span><div class="pbar" role="img" aria-label="776 of 776 A1 components killed"><i class="pk" style="width:100%"></i></div><span>249 lattices have A₁ components, 776 in all. Each has a characteristic χ of norm 9 with ⟨χ, r⟩ ≠ 0, which gives a forbidden norm whatever its other pairings.</span><span class="verdict">empty · 776 of 776 killed</span></div>
+    <div class="gcard live"><span class="nm">𝒢₂₄ₐ</span><span class="meta">K = A₁ ⊕ ⟨3⟩ · dim U = 24 · 156 unit-free odd U</span><div class="pbar" role="img" aria-label="287 of 295 A1 components killed, 8 survive"><i class="pk" style="width:97.29%"></i><i class="ps" style="width:2.71%"></i></div><span>77 lattices have A₁ components, 295 in all. 287 are killed by a characteristic χ of norm 8 (norm 17/12 or 3/4). The 8 survivors are the 8 A₁ components of U₂₄, where all 64 characteristic vectors of norm 8 are orthogonal to all roots.</span><span class="verdict">one lattice survives: U₂₄ (A₁⁸)</span></div>
+  </div>
+  <div class="legend"><span><i class="pk"></i>killed by a verified witness</span><span><i class="ph"></i>killed by hand</span><span><i class="ps"></i>survives to step 7</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>genus</th><th>K</th><th>dim U</th><th>all U</th><th>with unit</th><th>unit-free</th><th>A₁ comp. (lattices)</th><th>outcome</th></tr></thead>
+    <tbody>
+      <tr><td>𝒢₈</td><td>A₁</td><td class="num">23</td><td class="num">117</td><td class="num">68</td><td class="num">49</td><td class="num">50 (17)</td><td>all 50 killed by χ² = 7, ⟨χ, t⟩ = 0</td></tr>
+      <tr><td>𝒢₂₄ᵦ</td><td>⟨6⟩</td><td class="num">23</td><td class="num">117</td><td class="num">68</td><td class="num">49</td><td>–</td><td>48 by χ² = 7; O₂₃ by norm-3 sums</td></tr>
+      <tr><td>𝒢₇₂</td><td>A₁⟨3⟩²</td><td class="num">25</td><td class="num">665</td><td class="num">297</td><td class="num">368</td><td class="num">776 (249)</td><td>all 776 killed by χ² = 9</td></tr>
+      <tr><td>𝒢₂₄ₐ</td><td>A₁⟨3⟩</td><td class="num">24</td><td class="num">273</td><td class="num">117</td><td class="num">156</td><td class="num">295 (77)</td><td>287 killed by χ² = 8; 8 survive</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Lattices with a unit, and unit-free lattices without an A₁ component (for 𝒢₈, 𝒢₇₂, 𝒢₂₄ₐ), are killed by the unit and root rules of Table 3 of the paper.</p>
+</section>
+
+<section aria-labelledby="host-h">
+  <div class="eyebrow">Step 7 · the single lattice U₂₄</div>
+  <h2 id="host-h">One lattice, two hosts</h2>
+  <p>U₂₄ has determinant 1, no units, 16 roots forming A₁⁸ and 4,096 vectors of norm 3. The embeddings of K are the signed pairs (ρ, ξ) of a root and an orthogonal norm-3 vector: |𝒫| = 51,200. Aut(U₂₄) has exactly two orbits on them. The bar is drawn to scale.</p>
+  <div class="orbit" role="img" aria-label="51,200 pairs: orbit A 43,008, orbit B 8,192"><span class="oa" style="width:84%"></span><span class="ob" style="width:16%"></span></div>
+  <div class="legend"><span><i class="oa" style="background:var(--comp-soft);border:1px solid var(--comp)"></i>orbit A · 43,008 pairs (84 %)</span><span><i style="background:var(--comp)"></i>orbit B · 8,192 pairs (16 %)</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>host A</th><th>host B</th></tr></thead>
+    <tbody>
+      <tr><td>norm-3 vector e<sub>H</sub></td><td>pairs ±1 with the roots of exactly two other A₁ components</td><td>orthogonal to all roots</td></tr>
+      <tr><td>orbit size · stabiliser order</td><td class="num">43,008 · 122,880</td><td class="num">8,192 · 645,120</td></tr>
+      <tr><td>roots of N<sub>H</sub> (pairs)</td><td class="num">5</td><td class="num">7</td></tr>
+      <tr><td>vectors of norm 3 in N′<sub>H</sub> (pairs)</td><td class="num">990</td><td class="num">960</td></tr>
+      <tr><td>vectors of norm 4 in N<sub>H</sub> (pairs)</td><td class="num">17,447</td><td class="num">17,507</td></tr>
+      <tr><td>dual vectors x² ≤ 4 (pairs)</td><td class="num">118,071</td><td class="num">118,037</td></tr>
+      <tr><td>vectors of norm 11 in N′<sub>H</sub> (pairs)</td><td class="num">429,227,242</td><td class="num">429,230,928</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Both N′<sub>H</sub> have rank 22 and determinant 6; both N<sub>H</sub> have determinant 24 with the discriminant form of 𝒢₂₄ₐ.</p>
+</section>
+
+<section aria-labelledby="fun-h">
+  <div class="eyebrow">Step 8 · Theorem 10.1</div>
+  <h2 id="fun-h">The search for y, constraint by constraint</h2>
+  <p>Each bar is the number of norm-11 vectors (one per ± pair) that still satisfy the constraints added so far. The axis is logarithmic, from 1 to 10⁹; a count of 0 is marked with a cross. Select a step to see the constraint. Counts are those of the third implementation on the full N′<sub>H</sub>, using only proved restrictions; every shell was checked against the PARI count.</p>
+  <div class="fun-wrap">
+    <div class="fun-panel"><h3>Host A</h3><svg class="fun" id="funA" role="img" aria-label="Host A: 429,227,242 then 76,064,640 then 14,880 then 0"></svg></div>
+    <div class="fun-panel"><h3>Host B</h3><svg class="fun" id="funB" role="img" aria-label="Host B: 429,230,928 then 351,327,340 then 197,400 then 67,200 then 0"></svg></div>
+  </div>
+  <div class="detail" id="fundetail" aria-live="polite"></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>host</th><th>constraints added</th><th>survivors (± pairs)</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>all vectors of norm 11 in N′<sub>A</sub></td><td class="num">429,227,242</td></tr>
+      <tr><td>A</td><td>orthogonal to the two dual vectors of norm 5/3</td><td class="num">76,064,640</td></tr>
+      <tr><td>A</td><td>+ the 32 dual vectors of norm 23/12</td><td class="num">14,880</td></tr>
+      <tr><td>A</td><td>+ the 5 roots</td><td class="num">0</td></tr>
+      <tr><td>B</td><td>all vectors of norm 11 in N′<sub>B</sub></td><td class="num">429,230,928</td></tr>
+      <tr><td>B</td><td>+ the 1 dual vector of norm 5/4</td><td class="num">351,327,340</td></tr>
+      <tr><td>B</td><td>+ the 30 dual vectors of norm 23/12</td><td class="num">197,400</td></tr>
+      <tr><td>B</td><td>+ the 7 roots (norms 13/6 and 5/2 remove nothing more)</td><td class="num">67,200</td></tr>
+      <tr><td>B</td><td>+ the 3,360 dual vectors of norm 19/6</td><td class="num">0</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The nonzero intermediate counts 14,880 (host A) and 67,200 (host B) were each reproduced by three independent enumerations. Every one of the 67,200 host-B survivors pairs ±4 with a dual vector of norm 19/6 and ±9/2 with one of norm 13/4, both excluded by Proposition 4.8(g). The paper's certificate for host A runs on the 20-dimensional sublattice Y<sub>A</sub> (76,064,640 vectors) with 109 constraints; the third implementation shows that the forcing, the norm-23/12 rows and the five roots already suffice.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The same machinery on graphs that exist</h2>
+  <p>Two known graphs have the same mechanism: smallest eigenvalue −3, and y₀ of order 2 with q(y₀) = 1. Both have odd rank, so their 2-part is ℤ/4 rather than ℤ/4 × ℤ/2. Among feasible parameter sets with n ≤ 1300, (99, 42, 21, 15) is the only one of the exact target shape, so no control of that shape exists in this range.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>stage</th><th>co-Higman–Sims srg(100,77,60,56)</th><th>GQ(4,2) srg(45,12,3,3)</th></tr></thead>
+    <tbody>
+      <tr><td>rank, y</td><td class="num">23, y = s/60, y² = 5</td><td class="num">21, y = s/10, y² = 27</td></tr>
+      <tr><td>maximal N</td><td>det 4, ⟨7/4⟩</td><td>det 12, ⟨7/4⟩ ⊕ ⟨4/3⟩</td></tr>
+      <tr><td>N′ = N + ℤy</td><td>det 1, the shorter Leech lattice O₂₃</td><td>det 3</td></tr>
+      <tr><td>decider must-find</td><td class="yes">95,979 true dual vectors, 0 rejected</td><td class="yes">63,057, 0 rejected</td></tr>
+      <tr><td>enumeration</td><td class="yes">all 476,928 norm-5 pairs (= PARI count); true y survives</td><td class="yes">pinned branches: true y survives in every case</td></tr>
+      <tr><td>pool, quadric identity</td><td class="yes">pool = the 100 true vertices; identity holds</td><td class="yes">pool of 210 includes the 45 true; identity holds</td></tr>
+      <tr><td>CP-SAT</td><td class="yes">valid graph recovered</td><td class="yes">valid graph (34 s); 3 sampled survivors also valid</td></tr>
+      <tr><td>gluing chain</td><td>–</td><td class="yes">U = Borcherds' row of height 14, D₄²A₃⁴; 0 violations</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <p>The paper's programs form groups that share no code: the first implementation, the genus audit, the second implementation and the third implementation written for the review. On 6 October 2026 a further, separate Claude session re-implemented the weakest steps from the paper text and Borcherds' data alone, without PARI.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>established by</th><th>independent checks in the paper</th><th>independent check, 6 October 2026</th></tr></thead>
+    <tbody>
+      <tr><td>1 · dual-vector lemma</td><td>proof</td><td>re-derived in two audits and the review</td><td>–</td></tr>
+      <tr><td>2 · forbidden norms, restrictions</td><td>proof by case analysis</td><td>two exact deciders agree on all 809 cases decided by both; a closed-form third check; the review re-checked every case</td><td>own decider: ℱ and all restrictions agree</td></tr>
+      <tr><td>3 · four forms</td><td>proof</td><td>exhaustive enumeration of quadratic forms</td><td>same 4 classes, each with Brown invariant 6</td></tr>
+      <tr><td>4 · gluing</td><td>proof</td><td>–</td><td>gluing matches for all four K</td></tr>
+      <tr><td>5 · lattice list</td><td>Borcherds (external); one lattice builder</td><td>exact mass identities for I₂₃, I₂₄, I₂₅; root systems on all rows; separation of rows with equal data; U₂₄ rebuilt by the third implementation</td><td>all 665 rows rebuilt; mass identities exact with its own mass formula, no Hecke. 7 dim-24 pairs left unseparated; the 5 that contain A₁ were then shown non-isometric with PARI qfisom (not independent of the paper's tools); the other 2 are not needed</td></tr>
+      <tr><td>6 · three genera empty, U₂₄</td><td>rules proved; witnesses found by search</td><td>every witness verified exactly by the genus audit</td><td>all 50, 287 and 776 kills and the 8 survivors reproduced; O₂₃ counts agree</td></tr>
+      <tr><td>7 · two hosts</td><td>union–find and orbit–stabiliser, both with PARI's automorphism routine</td><td>generators verified; invariant separates the two orbits; group order equals Borcherds' table</td><td>own automorphism finder and Schreier–Sims, no PARI: |H| = 5,284,823,040, orbits 43,008 and 8,192, all host data agree</td></tr>
+      <tr><td>8 · no admissible y</td><td>enumerator 1 with PARI-count certificate</td><td>enumerators 2 and 3 and a GP leaf check; standalone exact re-check of every constraint row and every survivor</td><td>own enumerator: every count of the funnel reproduced</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted"><strong>What remains weaker.</strong> The lattice builder of the paper has one implementation, mitigated by the mass identities and independent witness checks. Orbits and dual vectors use PARI in all three of the paper's implementations; a missed dual vector would only weaken the constraints. The standalone checker cannot confirm that the survivor lists are complete; that rests on the three enumerators and their count certificates. The controls do not exercise the exact ℤ/4 × ℤ/2 shape. The 6 October check did not compute |Aut| for all 665 lattices or the mass of 𝒢₈ independently. It found no discrepancy.</p>
+  <p class="muted">The derivations, code, audits, review and drafting were carried out with extensive help from AI agents (Claude); ideas from gpt-6-astra and JetBrains' Junie are credited in the paper. No step rests on the judgement of an AI system: every claim is proved in the text or reduced to a named computation that can be rerun. The paper has not yet been reviewed by a human referee.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23210773">doi:10.5281/zenodo.23210773</a> · Code and data: <a href="https://doi.org/10.5281/zenodo.23017034">doi:10.5281/zenodo.23017034</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab51-100.html">A. E. Brouwer, strongly regular graphs v = 51–100</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+  function fmt(n){return n.toLocaleString('en-US');}
+  var F={
+    A:[[429227242,'all norm-11 vectors of N′','Every vector of norm 11 in N′<sub>A</sub>, one per ± pair. The count equals the PARI count, shell by shell.'],
+       [76064640,'⊥ the two norm-5/3 dual vectors','A dual vector of norm 5/3 must pair 0 with y (Proposition 4.8(c)). Host A has two of them, so y lies in their orthogonal complement Y<sub>A</sub>, of rank 20 and determinant 16.'],
+       [14880,'+ 32 dual vectors of norm 23/12','At norm 23/12 the pairing with y must be ±½ (Proposition 4.8(d)). Reproduced by enumerator 1, the GP leaf check and enumerator 3.'],
+       [0,'+ the 5 roots','Roots must pair 0, ±1 or ±2 with y (Proposition 4.8(a)). No vector survives. The norm-13/6 rows of the paper\'s certificate are not even needed.']],
+    B:[[429230928,'all norm-11 vectors of N′','Every vector of norm 11 in N′<sub>B</sub>, one per ± pair. Host B has no forced dual vector, so the search runs on the full lattice.'],
+       [351327340,'+ 1 dual vector of norm 5/4','At norm 5/4 the pairing with y must be ±½ (Proposition 4.8(e)).'],
+       [197400,'+ 30 dual vectors of norm 23/12','At norm 23/12 the pairing must be ±½ (Proposition 4.8(d)).'],
+       [67200,'+ the 7 roots','Roots must pair 0, ±1 or ±2 with y. Adding the 84 vectors of norm 13/6 and the 140 of norm 5/2 leaves 67,200. Reproduced by enumerators 1, 2 and 3.'],
+       [0,'+ 3,360 dual vectors of norm 19/6','A pairing ±4 at norm 19/6 is impossible (Proposition 4.8(g), by the count bound C1). Every survivor has such a pairing. The constraints of norm 13/4 alone also suffice.']]
+  };
+  var det=document.getElementById('fundetail'),cur=null;
+  function pick(h,i,g){
+    document.querySelectorAll('.fun .row').forEach(function(r){r.classList.remove('on');});
+    if(g)g.classList.add('on');
+    var x=F[h][i];
+    det.innerHTML='<h3>Host '+h+': '+x[1]+'</h3><p class="mono">'+(x[0]?fmt(x[0])+' vectors left':'0 vectors left')+'</p><p>'+x[2]+'</p>';
+    cur=[h,i];
+  }
+  function draw(h){
+    var svg=document.getElementById('fun'+h),W=Math.max(280,svg.parentNode.clientWidth),rows=F[h],rowH=46,top=4,s='';
+    var max=9,axisY=top+rows.length*rowH+4;
+    for(var e=0;e<=max;e+=3){var gx=(W-2)*e/max+1;s+='<line class="grid" x1="'+gx+'" y1="'+top+'" x2="'+gx+'" y2="'+axisY+'"/><text class="tk" x="'+gx+'" y="'+(axisY+14)+'" text-anchor="'+(e===0?'start':(e===max?'end':'middle'))+'">'+(e===0?'1':'10'+['','','','³','','','⁶','','','⁹'][e])+'</text>';}
+    rows.forEach(function(x,i){
+      var y=top+i*rowH,v=x[0];
+      s+='<g class="row" tabindex="0" role="button" data-i="'+i+'" aria-label="'+x[1]+': '+fmt(v)+'">';
+      s+='<text class="lbl" x="0" y="'+(y+14)+'">'+x[1]+'</text>';
+      if(v>0){var w=(W-2)*Math.log10(v)/max;s+='<rect class="bar" x="1" y="'+(y+20)+'" width="'+w.toFixed(2)+'" height="16" rx="2"/>';
+        var tx=w+6,anchor='start',cls='val';if(tx>W-110){tx=w-6;anchor='end';}
+        s+='<text class="'+cls+'" x="'+tx.toFixed(1)+'" y="'+(y+33)+'" text-anchor="'+anchor+'"'+(anchor==='end'?' style="fill:var(--surface)"':'')+'>'+fmt(v)+'</text>';}
+      else{s+='<line class="xmark" x1="3" y1="'+(y+21)+'" x2="15" y2="'+(y+35)+'"/><line class="xmark" x1="15" y1="'+(y+21)+'" x2="3" y2="'+(y+35)+'"/><text class="zero" x="22" y="'+(y+33)+'">0 · nothing survives</text>';}
+      s+='</g>';
+    });
+    var H=axisY+20;svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('height',H);svg.innerHTML=s;
+    svg.querySelectorAll('.row').forEach(function(g){
+      var i=+g.getAttribute('data-i');
+      g.addEventListener('click',function(){pick(h,i,g);});
+      g.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick(h,i,g);}});
+      if(cur&&cur[0]===h&&cur[1]===i)g.classList.add('on');
+    });
+  }
+  function all(){draw('A');draw('B');}
+  all();
+  pick('A',2,document.querySelector('#funA .row[data-i="2"]'));
+  var ro=window.ResizeObserver?new ResizeObserver(all):null;
+  if(ro)ro.observe(document.querySelector('.fun-wrap'));else window.addEventListener('resize',all);
+})();
+</script>
+</body>
+</html>

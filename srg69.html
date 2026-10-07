@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(69,20,7,5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: Niemeier grid, coverage bars, consequence cards */
+.cons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cons .card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.hosts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.hosts .card{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--hand);border-radius:8px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.hosts .card.c8{border-top-color:var(--comp)}
+.hosts .big{font:600 20px/1.2 var(--mono)}
+.niem{display:grid;grid-template-columns:repeat(auto-fill,minmax(122px,1fr));gap:6px}
+.nm{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px;display:grid;gap:3px;cursor:pointer;text-align:left;font:inherit;color:inherit;min-width:0}
+.nm .rs{font:600 12.5px/1.3 var(--mono);overflow-wrap:anywhere}
+.nm .ct{font:12px/1.3 var(--mono);color:var(--muted)}
+.nm .sb{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--line)}
+.nm .sb i{display:block;height:100%}
+.nm[aria-pressed="true"]{outline:2px solid var(--hand)}
+.nm.none .sb{background:transparent;border:1px dashed var(--line)}
+.r-seg{background:var(--comp)}
+.q-seg{background:var(--comp-soft);box-shadow:inset 0 0 0 1px var(--comp)}
+.s-seg{background:var(--kill)}
+.l-seg{background:var(--hand)}
+.cov{width:100%;display:block}
+.cov .lbl{fill:var(--fg);font:500 13px var(--body)}
+.cov .sub{fill:var(--muted);font:12px var(--mono)}
+.cov .seg-row{fill:var(--hand)}
+.cov .seg-unit{fill:var(--hand-soft);stroke:var(--hand)}
+.cov .seg-noz{fill:var(--surface);stroke:var(--hand)}
+.cov .seg-scr{fill:var(--comp-soft);stroke:var(--comp)}
+.cov .seg-pool{fill:var(--comp)}
+.cov .seg-rank{fill:var(--comp-soft);stroke:var(--comp)}
+.cov .seg-mod{fill:var(--surface);stroke:var(--comp)}
+.cov .seg-cor{fill:var(--hand)}
+.cov .seg-six{fill:var(--kill)}
+.cov .tick{stroke:var(--line)}
+.keylist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 14px;font-size:13px;color:var(--muted);margin:0;padding:0;list-style:none}
+.keylist i{display:inline-block;width:12px;height:12px;border-radius:2px;margin-right:6px;vertical-align:-1px;border:1px solid var(--line)}
+.k-row{background:var(--hand)}.k-unit{background:var(--hand-soft)}.k-noz{background:var(--surface)}.k-scr{background:var(--comp-soft)}.k-pool{background:var(--comp)}.k-mod{background:var(--surface)}.k-cor{background:var(--hand)}.k-six{background:var(--kill)}
+@media (max-width:640px){.cons,.hosts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html" aria-current="page">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (69, 20, 7, 5)</h1>
+  <p class="lead">No graph on 69 vertices, each of degree 20, where adjacent vertices share 7 neighbours and non-adjacent vertices share 5. In September 2026 this was the smallest parameter set marked open in Brouwer's tables. The proof turns the graph into 69 vectors of a lattice, lists every lattice that could hold them, and excludes each one. No automorphism of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, 27 September 2026, revised 7 October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23209705">doi:10.5281/zenodo.23209705</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Two independent solvers, checked proofs</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="cons-h">
+  <div class="eyebrow">Consequences</div>
+  <h2 id="cons-h">Two designs that cannot exist</h2>
+  <div class="cons">
+    <div class="card"><span class="eyebrow">Corollary</span><strong>No quasi-symmetric 2-(46, 16, 8) design with block intersection numbers 4 and 6.</strong><span class="muted">Its block graph, with blocks adjacent when they meet in 4 points, would be an srg(69, 20, 7, 5).</span></div>
+    <div class="card"><span class="eyebrow">Remark</span><strong>An independent proof that there is no Steiner system S(2, 6, 46).</strong><span class="muted">Its 69 blocks meet in 0 or 1 point, so its block graph is an srg(69, 48, 32, 36), whose complement is an srg(69, 20, 7, 5). Nonexistence was first shown by computer search by Houghten, Thiel, Janssen and Lam (2001). This argument uses neither the design structure nor that search. The observation is due to A. E. Brouwer.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The adjacency matrix A has three eigenvalues. The matrix G = 3I + A + J sends the eigenvalue −3 to 0, so G is positive semidefinite of rank 24 and is the Gram matrix of 69 vectors in 24 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">20</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 92</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">5</span><span class="muted">multiplicity 23 &nbsp;<span class="arrow">→ G: 8</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 45 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 2, non-adjacent ones 1. Their integer span L<sub>X</sub> is an even lattice of rank 24. It contains u = s/23, where s is the sum of the vertices, with |u|² = 12 and ⟨vᵢ, u⟩ = 4 for every vertex.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation (see the verification table)</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The vector u = s/23 and the moment identities</strong><span class="s">u lies in the vertex lattice, and every dual vector gives integer identities.</span><span class="d"><span>The operator M = Σ vᵢvᵢᵀ has only two eigenvalues, M = 8I + 7uuᵀ. Applied to a vertex this gives u ∈ L<sub>X</sub>; applied to a dual vector it gives 8L<sub>X</sub><sup>#</sup> ⊆ L<sub>X</sub>. For every vector x of the dual of any host lattice, the integers cᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ cᵢ = 23h,   Σ cᵢ² = 8|x|² + 7h²,   (Ac)ᵢ = 5cᵢ + 5h      (h = ⟨x, u⟩)</span><span class="muted">These identities turn every short vector of a host lattice into an arithmetic constraint on the vertex set.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Only two kinds of host lattice</strong><span class="s">A maximal even overlattice N has determinant 1 or 8.</span><span class="d"><span>Maximality makes the discriminant form of N anisotropic, and 8N<sup>#</sup> ⊆ N bounds its exponent by 4. An exhaustive enumeration of the quadratic functions on small 2-groups (Computation 4.2, confirmed by an independent brute-force enumeration) and Milgram's formula leave two cases:</span><span class="formula">det 1:  N is a Niemeier lattice (24 lattices)
+det 8:  q_N ≅ ⟨7/4⟩ ⊕ ⟨1/2⟩, one genus 𝒢₈</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>The host-root lemma</strong><span class="s">Every root pairs 0 or ±1 with u.</span><span class="d"><span>For a root r of a host, h = ⟨r, u⟩ ∈ {0, ±1}. If h = 0, every ⟨r, vᵢ⟩ ∈ {0, ±1}; if h = ±1, every ⟨r, vᵢ⟩ ∈ {0, h}. The proof is a few lines of the moment identities and Cauchy–Schwarz. The lemma fixes the position of u relative to the root system in both cases.</span></span></span></button>
+    <div class="fork">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Unimodular hosts · det 1</span>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5a</span><span class="t"><strong>The Leech lattice</strong><span class="s">Two classes of norm-12 vectors; both fail.</span><span class="d"><span>The 34,417,656,000 vectors of norm 12 split into the Co₀-orbit 𝒜 of u<sub>A</sub> (33,965,568,000 vectors) and the set ℬ of sums of two minimal vectors at inner product 2 (452,088,000). The count of 𝒜 uses one nauty run (Computation 5.3).</span><span><strong>u ∈ 𝒜:</strong> the vertices become 69 octads forming a regular intersecting family, which Brouwer and Calderbank (1986) showed cannot exist (external input E3).</span><span><strong>u ∈ ℬ:</strong> every candidate vertex lies in a hyperplane, but the vertices span ℝ²⁴. (The pool has 891 vectors, of exact rank 23.)</span></span></span></button>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">5b</span><span class="t"><strong>The 23 Niemeier lattices with roots</strong><span class="s">4,211 candidates for u; 4,209 exact certificates, 2 handled by hand.</span><span class="d"><span>The Weyl group makes u dominant. Under the relaxed pairing condition {0, 1, 3}, six root systems admit no candidate; the other 17 give 4,211 candidates (in A₁²⁴ counted up to symmetry). For each, the possible vertices form a finite pool P<sub>u</sub>. A rank deficiency (R, 707 candidates) or a violated quadric relation (Q, 3,502) excludes all but two, both in A₁²⁴: one pairs 3 with a root, contradicting step 4; the other has the octad pool of step 5a.</span><span class="muted">Under the exact condition {0, 1} a short hand argument shows that only the all-ones vector of A₁²⁴ reaches norm 12 (see the grid below).</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Determinant-8 hosts · genus 𝒢₈</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6a</span><span class="t"><strong>A complete catalogue of 4,212 hosts</strong><span class="s">From Borcherds' 665 odd unimodular lattices of dimension 25.</span><span class="d"><span>Lattices of 𝒢₈ correspond bijectively to pairs (U, t), U odd unimodular of rank 25 and t a root (proved). One root per component of each of Borcherds' 665 rows gives 4,212 hosts. Completeness does not rely on Borcherds' classification: it follows from an exact mass identity, Σ #Roots(U)/|Aut U| = mass(𝒢₈) ≈ 9.639·10⁻⁵ (Hecke), together with a computed check of every row.</span></span></span></button>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6b</span><span class="t"><strong>Reduction u = 2z and the row rules</strong><span class="s">Hand lemmas remove 561 hosts outright and 1,162 more by a unit.</span><span class="d"><span>A neighbour argument lets us assume u = 2z with z of norm 3. Roots and units are orthogonal to z; a unit in K kills the host; a projection argument (row rules) kills hosts whose root system is too large. Every vertex has the form w + z with w of norm 3, so the pool is read off the norm-3 shell.</span></span></span></button>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6c</span><span class="t"><strong>Screens of 18,850 candidates z</strong><span class="s">Leave 10,183 pools; the moment bound kills 8,362 of them.</span><span class="d"><span>Exact rank (4,846 kills) and modular moment certificates (3,821 kills, ℓ ∈ {2, 3, 5, 65521}, re-checked in integers) leave 10,183 pools. Corollary 3.3 (8|x|² + 7h² ≥ 23|h|) excludes 8,362 in their own host. The remaining 1,821 fall into six Gram-isomorphism classes.</span></span></span></button>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6d</span><span class="t"><strong>Two independent solvers on the six classes</strong><span class="s">CP-SAT and kissat with DRAT and LRAT proofs.</span><span class="d"><span>Engine 1 is a CP-SAT model. Engine 2 was written independently and shares only the pool data: a pure CNF solved by kissat, every UNSAT with a DRAT proof checked by drat-trim and, converted to LRAT, by the formally verified checker cake_lpr (all 7 proofs accepted). Both engines also decided all 785 Gram classes of the 10,183 pools as infeasible.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">7</span><span class="t"><strong>No host lattice exists, so no graph exists</strong><span class="s">Every maximal even overlattice is excluded.</span><span class="d"><span>A graph would give a configuration in a maximal even overlattice N, which is a Niemeier lattice or lies in 𝒢₈. Steps 5a, 5b and 6a–6d exclude every case.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="hosts-h">
+  <div class="eyebrow">Step 3 · the two host types</div>
+  <h2 id="hosts-h">Where the 69 vectors would have to live</h2>
+  <div class="hosts">
+    <div class="card"><span class="eyebrow">determinant 1</span><span class="big">24 Niemeier lattices</span><span>The Leech lattice Λ, which has no roots, and the 23 lattices with root systems. Niemeier's classification (external input E4) is used; each lattice was rebuilt from its glue code and checked.</span></div>
+    <div class="card c8"><span class="eyebrow">determinant 8</span><span class="big">one genus 𝒢₈ · 4,212 hosts</span><span>Discriminant form ⟨7/4⟩ ⊕ ⟨1/2⟩. Listed from Borcherds' 665 odd unimodular lattices of dimension 25, one host per root component; the list is proved complete by an exact mass identity.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="nm-h">
+  <div class="eyebrow">Steps 5a and 5b · Table 4 of the paper</div>
+  <h2 id="nm-h">The 24 Niemeier lattices</h2>
+  <p>Each tile is one Niemeier lattice, labelled by its root system. The bar splits its candidates for u by the certificate that excludes them. Select a tile for details.</p>
+  <div class="legend"><span><i class="l-seg"></i>by hand (Leech)</span><span><i class="r-seg"></i>rank certificate (R)</span><span><i class="q-seg"></i>quadric certificate (Q)</span><span><i class="s-seg"></i>survivor, excluded by hand</span><span><i style="border:1px dashed var(--line)"></i>no candidate</span></div>
+  <div class="niem" id="niem"></div>
+  <div class="detail" id="nmdetail" aria-live="polite"></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>root system</th><th>candidates u</th><th>rank (R)</th><th>quadric (Q)</th><th>survive</th></tr></thead>
+    <tbody id="nmtable"></tbody>
+  </table></div>
+  <p class="muted">Counts are of distinct W(R)-dominant candidates, except for A₁²⁴, which is counted up to Aut(N): its 33,397 dominant candidates fall into 3 classes. The six root systems E₈³, D₁₆E₈, D₂₄, A₂₄, A₁₇E₇ and A₁₂² have no candidate.</p>
+</section>
+
+<section aria-labelledby="cov-h">
+  <div class="eyebrow">Steps 6b and 6c · Table 3 of the paper</div>
+  <h2 id="cov-h">Every determinant-8 host has one verdict</h2>
+  <p>Bar lengths are to scale within each row. Every host and every candidate z appears exactly once.</p>
+  <div id="covwrap"><svg class="cov" id="cov" role="img" aria-label="Coverage of the 4,212 determinant-8 hosts and the 18,850 candidates z"></svg></div>
+  <ul class="keylist">
+    <li><i class="k-row"></i>row rules (Lemma 7.7): 561 hosts</li>
+    <li><i class="k-unit"></i>a unit in K (Lemma 7.6): 1,162</li>
+    <li><i class="k-noz"></i>no norm-3 z ⊥ Roots(N): 1,030</li>
+    <li><i class="k-scr"></i>every z killed by a screen: 552</li>
+    <li><i class="k-pool"></i>hosts with surviving pools: 907</li>
+    <li><i class="k-scr"></i>z: rank &lt; 24: 4,846</li>
+    <li><i class="k-mod"></i>z: modular moment certificate: 3,821</li>
+    <li><i class="k-cor"></i>z: Corollary 3.3 in own host: 8,362</li>
+    <li><i class="k-six"></i>z: six Gram classes, to the solvers: 1,821</li>
+  </ul>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>representative</th><th>pool</th><th>pools in class</th><th>engine 1 (CP-SAT)</th><th>engine 2 (kissat)</th></tr></thead>
+    <tbody>
+      <tr><td class="num">row004_comp0_z0</td><td class="num">567</td><td class="num">1,680</td><td>orbits 243/162/162: 3/3 INF</td><td>UNSAT 288 s</td></tr>
+      <tr><td class="num">row010_comp0_z0</td><td class="num">603</td><td class="num">112</td><td>INF 89 s</td><td>UNSAT 257 s</td></tr>
+      <tr><td class="num">row063_comp9_z0</td><td class="num">675</td><td class="num">1</td><td>INF 87 s</td><td>UNSAT 590 s</td></tr>
+      <tr><td class="num">row072_comp0_z0</td><td class="num">675</td><td class="num">26</td><td>INF 91 s</td><td>UNSAT 226 s</td></tr>
+      <tr><td class="num">row187_comp1_z0</td><td class="num">747</td><td class="num">1</td><td>INF 119 s</td><td>UNSAT 44 s</td></tr>
+      <tr><td class="num">row434_comp5_z0</td><td class="num">891</td><td class="num">1</td><td>INF 152 s</td><td>orbits 810/81: 2/2 UNSAT</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The six Gram classes not excluded by Corollary 3.3 (Table 5 of the paper). Host names are Borcherds row and root component; INF means CP-SAT INFEASIBLE. Every engine-2 UNSAT has a DRAT proof accepted by drat-trim and, as LRAT, by cake_lpr.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The same machinery finds graphs that exist</h2>
+  <p>A search that returns "nothing" is only as good as its ability to find what exists. The quadric screen, both engines and engine 2's certificate test were run on known strongly regular graphs of the same Gram shape, placed in their own lattices, mostly with decoy vectors added. They had to recover the graph.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>srg(36,15,6,6) (Latin square), own lattice, pool 36</td><td class="yes">found by both engines; all 117 quadric relations hold</td></tr>
+      <tr><td>srg(26,10,3,4) (Paulus), pools 252 and 572 (226 and 546 decoys)</td><td class="yes">found by engine 1 through orbit cases (20 s, 56 s) and by engine 2</td></tr>
+      <tr><td>srg(64,45,32,30), host with 12 and 36 roots orthogonal to u, pools 128 and 256</td><td class="yes">found by engine 1 with the root identities (1 s, 62 s)</td></tr>
+      <tr><td>engine-2 certificates on all controls</td><td class="yes">no certificate fires (852,492, 49,436 and 30,829 dual vectors of norm ≤ 4)</td></tr>
+      <tr><td>engine-2 totalizer counters</td><td class="yes">8,960 kissat calls confirm the counter semantics</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The rank and modular screens were not run on a must-find control; their certificates are integer-checked and re-verified by the standalone checker.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>established by</th><th>independent check</th><th>rests on one implementation</th></tr></thead>
+    <tbody>
+      <tr><td>vertex lattice, u, moment identities, host-root lemma</td><td>hand proof</td><td>written out in full</td><td>–</td></tr>
+      <tr><td>discriminant forms (det 1 or 8)</td><td>exhaustive enumeration, exact rationals</td><td>independent brute-force enumeration, same list</td><td>–</td></tr>
+      <tr><td>Leech lattice</td><td>hand, from |Co₀| and the theta series</td><td>proof review re-checked the counting</td><td>|Aut| of the octad Gram matrix: one nauty run; octad case: Brouwer–Calderbank (external)</td></tr>
+      <tr><td>23 Niemeier lattices with roots</td><td>707 rank + 3,502 quadric certificates</td><td>standalone checker re-verified every certificate (norm-4 shells complete by the theta series); independent re-implementation of 6 October 2026 agrees in every row</td><td>–</td></tr>
+      <tr><td>det-8 catalogue</td><td>4,212 hosts from Borcherds' rows; mass identity</td><td>all 4,212 hosts rebuilt with Hecke, root, unit and z counts match; mass identity re-checked by the standalone checker</td><td>Hecke mass (rerun of the same program); row checks rest on PARI qfauto and qfisom</td></tr>
+      <tr><td>row rules</td><td>hand proof</td><td>independent code reproduced all 561 kills</td><td>–</td></tr>
+      <tr><td>det-8 screens</td><td>one implementation</td><td>from-scratch re-implementation on 40 hosts, all verdicts agree; every rank and modular certificate on all 1,459 hosts with candidates re-verified by the standalone checker</td><td>the screen programs themselves</td></tr>
+      <tr><td>8,362 own-host moment kills</td><td>one reviewer program</td><td>re-verified by the standalone checker; engine 2 decides all 785 classes by its own means</td><td>the kills as used in Proposition 8.2</td></tr>
+      <tr><td>1,815 class memberships</td><td>one program, explicit Gram isomorphisms</td><td>re-verified as explicit isometries by the standalone checker</td><td>–</td></tr>
+      <tr><td>six classes, solver stage</td><td>engine 1 (CP-SAT)</td><td>engine 2 (kissat), DRAT checked by drat-trim, LRAT by the verified checker cake_lpr</td><td>a DRAT proof certifies the CNF as generated; the encoding rests on unit tests and the controls</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted"><strong>Standalone checker.</strong> All certificates that are not SAT proofs were re-verified by one plain-Python program (565 lines, exact integer and rational arithmetic, no numerical library, no code shared with the pipeline). It does not establish completeness of the PARI shells other than the norm-4 shells, of the candidate enumeration or of the lattice constructions, and it does not re-check the DRAT and CP-SAT verdicts.</p>
+  <p class="muted"><strong>Independent Niemeier re-implementation (6 October 2026).</strong> A separate Claude session rebuilt the 23 lattices from their glue codes using only the text of the paper, listed all 37,605 dominant candidates with a completeness certificate (orbit sizes summed against an independent count), and applied screens R and Q with exact certificates. Every row of the table above was reproduced. Its brief contained the totals, so it was not blind to the expected outcome; its completeness certificate does not depend on them.</p>
+  <p class="muted">The code was written and the computations, audits and re-implementations were run with substantial help from AI systems (Claude); ideas from gpt-6-astra and JetBrains' Junie are credited in the paper. Every suggestion was re-derived and checked, and the author is responsible for all content. The paper has not yet been reviewed by a human referee.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23209705">doi:10.5281/zenodo.23209705</a> · Code and data: <a href="https://doi.org/10.5281/zenodo.23017034">doi:10.5281/zenodo.23017034</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab51-100.html">A. E. Brouwer, strongly regular graphs v = 51–100</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+
+  // Niemeier lattices: [label, candidates, R, Q, survive]; candidates < 0 marks Leech
+  var NM=[["Λ (Leech, no roots)",-1,0,0,0],
+    ["A₁²⁴",3,1,0,2],["A₂¹²",2904,264,2640,0],["A₃⁸",744,168,576,0],["A₄⁶",180,0,180,0],["A₅⁴D₄",94,38,56,0],["A₆⁴",32,0,32,0],
+    ["A₇²D₅²",20,12,8,0],["A₈³",6,0,6,0],["A₉²D₆",8,4,4,0],["A₁₁D₇E₆",5,5,0,0],["A₁₅D₉",2,2,0,0],["D₄⁶",180,180,0,0],
+    ["D₆⁴",16,16,0,0],["D₈³",6,6,0,0],["D₁₀E₇²",1,1,0,0],["D₁₂²",2,2,0,0],["E₆⁴",8,8,0,0],
+    ["E₈³",0,0,0,0],["D₁₆E₈",0,0,0,0],["D₂₄",0,0,0,0],["A₂₄",0,0,0,0],["A₁₇E₇",0,0,0,0],["A₁₂²",0,0,0,0]];
+  function fmt(n){return n.toLocaleString('en-US');}
+  var g=document.getElementById('niem'),d=document.getElementById('nmdetail'),tb=document.getElementById('nmtable');
+  function show(x,btn){
+    g.querySelectorAll('.nm').forEach(function(b){b.setAttribute('aria-pressed','false');});
+    if(btn)btn.setAttribute('aria-pressed','true');
+    var h;
+    if(x[1]<0){h='<h3>The Leech lattice Λ</h3><p>No roots, so the host-root lemma gives nothing; u is a vector of norm 12. Its norm-12 vectors split into the Co₀-orbit 𝒜 of u<sub>A</sub> (33,965,568,000) and the set ℬ (452,088,000), together the 34,417,656,000 given by the theta series.</p><p>In 𝒜 the vertices become 69 octads forming a regular intersecting family, excluded by Brouwer and Calderbank. In ℬ all candidate vertices lie in a hyperplane (pool 891, rank 23), but the vertices span ℝ²⁴. <strong>Excluded by hand</strong>, with one external theorem.</p>';}
+    else if(x[1]===0){h='<h3>'+x[0]+'</h3><p>No candidate u: this root system admits no dominant vector of norm 12 whose pairings with the positive roots lie in {0, 1, 3} and whose class lies in the glue code. <strong>Nothing to search.</strong></p>';}
+    else if(x[0]==='A₁²⁴'){h='<h3>A₁²⁴</h3><p class="mono">3 candidates up to Aut(N) (33,397 dominant) · R: 1 · survivors: 2</p><p>Here u = (1/√2) Σ<sub>i∈S</sub> mᵢeᵢ with mᵢ ∈ {1, 3} and S a Golay codeword: S is the whole set, the complement of an octad, or an octad. One candidate fails the rank test. Of the two survivors, one has a coordinate mᵢ = 3, so it pairs 3 with a root, which the host-root lemma forbids; the other is the all-ones vector, whose pool is the 759 octad vectors of the Leech case, excluded by Brouwer–Calderbank.</p><p class="muted">Under the exact condition {0, 1} of the host-root lemma, the all-ones vector of A₁²⁴ is the only vector in any Niemeier lattice that reaches norm 12. This hand argument, observed in the independent re-implementation, shows that the octad case is the only one.</p>';}
+    else{h='<h3>'+x[0]+'</h3><p class="mono">'+fmt(x[1])+' candidates · R: '+fmt(x[2])+' · Q: '+fmt(x[3])+' · survivors: 0</p><p>'+(x[2]?fmt(x[2])+' candidate'+(x[2]>1?'s have':' has')+' a pool of rank below 24, certified by an integer kernel vector. ':'')+(x[3]?fmt(x[3])+' violate'+(x[3]>1?'':'s')+' a quadric relation that the 69 vertices would have to satisfy. ':'')+'<strong>All excluded by exact certificates.</strong></p><p class="muted">These candidates come from the relaxed condition {0, 1, 3}. Under the exact condition {0, 1} of the host-root lemma, |u|² stays below 12 in this lattice, so there is not even a candidate.</p>';}
+    d.innerHTML=h;
+  }
+  NM.forEach(function(x){
+    var b=document.createElement('button');b.className='nm'+(x[1]===0?' none':'');b.setAttribute('aria-pressed','false');
+    var bar='';
+    if(x[1]<0)bar='<i class="l-seg" style="width:100%"></i>';
+    else if(x[1]>0){bar='<i class="r-seg" style="width:'+(100*x[2]/x[1])+'%"></i><i class="q-seg" style="width:'+(100*x[3]/x[1])+'%"></i><i class="s-seg" style="width:'+(100*x[4]/x[1])+'%"></i>';}
+    var ct=x[1]<0?'by hand':(x[1]===0?'no candidate':fmt(x[1])+' candidate'+(x[1]>1?'s':''));
+    b.innerHTML='<span class="rs">'+x[0]+'</span><span class="ct">'+ct+'</span><span class="sb">'+bar+'</span>';
+    b.addEventListener('click',function(){show(x,b);});g.appendChild(b);
+    if(x[1]>0){var tr=document.createElement('tr');tr.innerHTML='<td class="num">'+x[0]+'</td><td class="num">'+fmt(x[1])+'</td><td class="num">'+fmt(x[2])+'</td><td class="num">'+fmt(x[3])+'</td><td class="num">'+x[4]+'</td>';tb.appendChild(tr);}
+  });
+  var tot=document.createElement('tr');tot.innerHTML='<td><strong>total</strong></td><td class="num"><strong>4,211</strong></td><td class="num"><strong>707</strong></td><td class="num"><strong>3,502</strong></td><td class="num"><strong>2</strong></td>';tb.appendChild(tot);
+  show(NM[1],g.children[1]);
+
+  // coverage bars, drawn at the real container width so text stays legible
+  var rows=[
+    {t:'4,212 catalogue hosts',segs:[[561,'seg-row'],[1162,'seg-unit'],[1030,'seg-noz'],[552,'seg-scr'],[907,'seg-pool']]},
+    {t:'18,850 candidates z in unit-free hosts',segs:[[4846,'seg-rank'],[3821,'seg-mod'],[8362,'seg-cor'],[1821,'seg-six']]}
+  ];
+  var svg=document.getElementById('cov'),wrap=document.getElementById('covwrap');
+  function draw(){
+    var W=Math.max(280,wrap.clientWidth),pad=1,y=0,s='';
+    rows.forEach(function(r){
+      var tot=r.segs.reduce(function(a,b){return a+b[0];},0),x=pad,bw=W-2*pad;
+      s+='<text class="lbl" x="0" y="'+(y+15)+'">'+r.t+'</text>';y+=22;
+      r.segs.forEach(function(sg){var w=bw*sg[0]/tot;s+='<rect class="'+sg[1]+'" x="'+x.toFixed(2)+'" y="'+y+'" width="'+Math.max(1,w-1).toFixed(2)+'" height="22" rx="2"><title>'+fmt(sg[0])+'</title></rect>';
+        if(w>44)s+='<text class="sub" x="'+(x+5).toFixed(2)+'" y="'+(y+38)+'">'+fmt(sg[0])+'</text>';x+=w;});
+      y+=52;
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+y);svg.setAttribute('height',y);svg.innerHTML=s;
+  }
+  draw();
+  if(window.ResizeObserver)new ResizeObserver(draw).observe(wrap);else window.addEventListener('resize',draw);
+})();
+</script>
+</body>
+</html>

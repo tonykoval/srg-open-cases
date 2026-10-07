@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(105,52,21,30)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg105 */
+.strip.s65{grid-template-columns:repeat(65,minmax(8px,1fr));min-width:640px}
+.strip.s65 span.u{opacity:.45}
+.axis.s65{min-width:640px}
+.hist{display:grid;gap:8px}
+.hist .row{display:grid;grid-template-columns:5.5em 1fr 3em;gap:10px;align-items:center;font-size:14px}
+.hist .lab{font-family:var(--mono)}
+.hist .track{background:var(--bg);border:1px solid var(--line);border-radius:4px;height:18px;overflow:hidden}
+.hist .fill{display:block;height:100%;background:var(--comp)}
+.hist .val{font-family:var(--mono);text-align:right}
+.stack{display:grid;gap:8px;min-width:0;align-content:start}
+.lat.frame{border-left:4px solid var(--hand)}
+.lat.enum{border-left:4px solid var(--comp)}
+.lat.leech{border-left:4px solid var(--ok)}
+.lat.enum .bar{background:var(--comp)}
+.lat.leech .bar{background:var(--ok)}
+.lat .a1{font:500 11px/1.3 var(--body);color:var(--kill)}
+.meter{position:relative;height:10px;background:var(--bg);border:1px solid var(--line);border-radius:4px}
+.meter .m-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--hand)}
+.meter .m-fill.over{background:var(--comp)}
+.meter .m-line{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--kill)}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.kv div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;display:grid;gap:2px;min-width:0}
+.kv b{font:600 16px/1.2 var(--mono)}
+.filter{display:flex;flex-wrap:wrap;gap:8px}
+.filter button{font:500 13px/1 var(--body);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filter button[aria-pressed="true"]{border-color:var(--hand);color:var(--hand)}
+.grid49 .lat[hidden]{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html" aria-current="page">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (105, 52, 21, 30)</h1>
+  <p class="lead">No graph on 105 vertices, each of degree 52, where adjacent vertices share 21 neighbours and non-adjacent vertices share 30. The vertices become vectors of an even lattice of rank 21. Gluing that lattice into a unimodular lattice of dimension 23 leaves finitely many hosts, and every one of them is excluded. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23210908">doi:10.5281/zenodo.23210908</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Every step derived twice</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The adjacency matrix A has eigenvalues 52, 2 and −11. The matrix G = −A + 2I + 2J sends the eigenvalue 2 to 0, so G is positive semidefinite of rank 21 and is the Gram matrix of 105 vectors in 21 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">52</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 160</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">2</span><span class="muted">multiplicity 84 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−11</span><span class="muted">multiplicity 20 &nbsp;<span class="arrow">→ G: 13</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 1, non-adjacent ones 2. They span an even lattice L of rank 21. For the complement, which has smallest eigenvalue −3, the same matrix reads Ā + 3I + J, the representation used for srg(69,20,7,5), srg(99,42,21,15) and srg(162,69,36,24).</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exhaustive computation, two implementations</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The vector y = s/40 and the dual-vector lemma</strong><span class="s">The sum s of the vertex vectors gives a special dual vector.</span><span class="d"><span>The moment operator M = Σ vᵢvᵢᵀ equals 13I + 14yyᵀ with y = s/40. For a maximal even overlattice N ⊇ L, y lies in N<sup>#</sup> but not in N, y² = 21/2, ⟨vᵢ, y⟩ = 4, and 26N<sup>#</sup> ⊆ N, so every dual norm is m/26 with m an integer. For x ∈ N<sup>#</sup> the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 40p,   Σ zᵢ² = 13a + 14p²,   A z = −11 z + 24p·𝟏</span><span class="muted">a = x², p = ⟨y, x⟩ ∈ ½ℤ; m ≡ 0 (mod 4) if p is an integer, m ≡ 1 (mod 4) otherwise.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Forbidden dual norms</strong><span class="s">Every norm m/26 with 1 ≤ m ≤ 43, m ≠ 33, is impossible.</span><span class="d"><span>The identities of step 2, with the condition that each vertex's neighbourhood is some 52 of the other 104 entries, have no integer solution for these norms. The proof is an elementary case analysis on p (Appendix A of the paper). For m = 33 only p = ±½ survives. Three exact deciders, written separately, agree.</span><span class="muted">See the strip of norms below. Only the values m ≤ 43 are used in the proof.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Two possible genera</strong><span class="s">Milgram's formula leaves two discriminant forms.</span><span class="d"><span>The discriminant group of N has a 2-part generated by y and a 13-part of rank at most 2 (Chevalley–Warning). Milgram's formula, Br(q) ≡ 21 (mod 8), leaves exactly</span><span class="formula">det 26:   ⟨1/2⟩ ⊕ ⟨4/13⟩
+det 338:  ⟨1/2⟩ ⊕ P₁₃   (P₁₃ the anisotropic plane over 𝔽₁₃)</span><span class="muted">Hecke confirms one genus for each. The second genus has mass about 3.6·10⁶, so it is not enumerated directly; it is treated by gluing instead.</span></span></span></button>
+    <div class="fork">
+      <div class="stack"><span class="fork-label">Genus I · det 26</span>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5a</span><span class="t"><strong>Glue into dimension 23</strong><span class="s">Hosts become triples (U, r, χ).</span><span class="d"><span>N glues with K = A₁ ⊕ ⟨13⟩ to an odd unimodular lattice U of dimension 23. The forbidden norms show that U has no vectors of norm 1, so U is one of the 49 lattices N23[1] … N23[49], and that r spans an A₁ component of its root system. A host is a triple with</span><span class="formula">r² = 2,   χ characteristic,   χ² = 15,   ⟨χ, r⟩ = 2</span><span class="muted">Only 17 of the 49 lattices have an A₁ component (50 components in all).</span></span></span></button>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">5b</span><span class="t"><strong>All 291 hosts are killed</strong><span class="s">Each contains a dual vector of forbidden norm.</span><span class="d"><span>All 1,509,100 signed pairs (r, χ) were listed and split into 291 orbits under the automorphism group of U. For each orbit representative, N was rebuilt (determinant 26, even, correct discriminant form) and a dual vector of forbidden norm was found and verified in exact integer arithmetic.</span><span>Two implementations with independently written drivers give the same 291 orbits. Completeness of the vector lists is certified by exact counts against the theta series.</span></span></span></button>
+      </div>
+      <div class="stack"><span class="fork-label">Genus II · det 338</span>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6</span><span class="t"><strong>Glue into dimension 23 again</strong><span class="s">Hosts become triples (U, w₁, w₂).</span><span class="d"><span>N glues with K = ⟨13⟩ ⊕ ⟨26⟩ to an odd unimodular U of dimension 23 without norm-1 vectors. A host is a triple with</span><span class="formula">w₁² = 13,   w₂² = 26,   ⟨w₁, w₂⟩ = 0,   w₁ + w₂ characteristic</span><span>The forbidden norms pin the pairings of w₁, w₂ with every root, every characteristic vector of norm 7 and every vector of norm 3.</span></span></span></button>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">7a</span><span class="t"><strong>N23[1]–N23[46]: a frame identity</strong><span class="s">Roots and characteristic vectors balance exactly.</span><span class="d"><span>In every such lattice, the roots R₊ and the c pairs of characteristic vectors of norm 7 satisfy, for every x,</span><span class="formula">C(x) + 4R(x) = c·x²,   c = |R₊|/2</span><span>proved with modular forms (theta series with harmonic coefficients and the shadow); it is a consequence of a result of Nebe and Venkov (J. Number Theory 99, 2003). The pins give C(w₂) ≤ 4c, so R(w₂) ≥ 11c/2. A linear-programming bound over the Weyl alcoves gives R(w₂) ≤ B(U), and B(U) &lt; 11c/2 for these 46 lattices.</span></span></span></button>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">7b</span><span class="t"><strong>N23[47] and N23[48]: enumeration</strong><span class="s">The bound leaves room, so every triple is listed.</span><span class="d"><span>Here B(U) = 68 ≥ 66 and 52 ≥ 44. Two implementations enumerate all host triples: one normalises w₂ first and recovers vectors exactly from their pairings; the other normalises w₁ up to the full automorphism group and carries exact completeness certificates. Both find 0 triples (220,358 and 302,640 characteristic orthogonal pairs, none passing the pins).</span></span></span></button>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">7c</span><span class="t"><strong>N23[49] = O₂₃: the Leech lattice</strong><span class="s">Four positions, all forbidden.</span><span class="d"><span>The shorter Leech lattice sits inside the Leech lattice Λ. The vector χ = w₁ + w₂ (norm 39) lifts to a vector z of Λ with z² = 10. Because the 196,560 minimal vectors form a spherical 11-design, z = u + v with u, v minimal. A fixed minimal vector e can sit in four positions relative to u and v; each gives a test vector whose projection has norm m/26 with</span><span class="formula">case A:  m ∈ {12, 21, 24}
+case B:  m ∈ {4, 16, 21, 29, 32, 36, 37}</span><span>all forbidden by step 3.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">8</span><span class="t"><strong>No host lattice exists, so no graph exists</strong><span class="s">Both genera are empty.</span><span class="d"><span>Every srg(105,52,21,30) would give a maximal even overlattice of determinant 26 or 338. Genus I is excluded by step 5b and genus II by steps 7a–7c.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="strip-h">
+  <div class="eyebrow">Step 3 · dual norms m/26, m = 1 … 130</div>
+  <h2 id="strip-h">Which short dual vectors can exist</h2>
+  <p>Each square is a possible norm m/26 of a dual vector. Below m = 44 everything is forbidden except m = 33; this part is proved by hand and is all the proof needs. The rest of the table (shown faded) was computed by the deciders and is not used.</p>
+  <div class="strip-wrap"><div class="strip s65" id="strip" role="img" aria-label="Admissibility of dual norms m/26 for m from 1 to 65"></div>
+  <div class="axis s65"><span>m = 1</span><span>m = 65</span></div>
+  <div class="strip s65" id="strip2" role="img" aria-label="Admissibility of dual norms m/26 for m from 66 to 130" style="margin-top:6px"></div>
+  <div class="axis s65"><span>m = 66</span><span>m = 130</span></div></div>
+  <div class="legend"><span><i style="background:var(--kill-soft)"></i>forbidden</span><span><i style="background:var(--ok)"></i>admissible</span><span><i style="background:var(--ok);opacity:.45"></i>m ≥ 44, not used</span></div>
+  <p class="muted">In all, 85 of the 130 values are forbidden. The admissible entries begin with m = 33 (p = ±½), 44, 45 and 48.</p>
+</section>
+
+<section aria-labelledby="d26-h">
+  <div class="eyebrow">Step 5b · genus I</div>
+  <h2 id="d26-h">291 hosts, 291 forbidden witnesses</h2>
+  <p>For each host the smallest forbidden dual norm present was recorded. Every host has one, and each witness is an explicit integer vector checked exactly.</p>
+  <div class="hist" role="img" aria-label="Number of hosts by smallest forbidden norm: 10/13 on 54, 14/13 on 147, 16/13 on 88, 41/26 on 2">
+    <div class="row"><span class="lab">10/13</span><span class="track"><span class="fill" style="width:36.7%"></span></span><span class="val">54</span></div>
+    <div class="row"><span class="lab">14/13</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">147</span></div>
+    <div class="row"><span class="lab">16/13</span><span class="track"><span class="fill" style="width:59.9%"></span></span><span class="val">88</span></div>
+    <div class="row"><span class="lab">41/26</span><span class="track"><span class="fill" style="width:1.4%"></span></span><span class="val">2</span></div>
+  </div>
+  <p class="muted">The two hosts with witness 41/26 lie on N23[48] (root system 16A₁). In units of 1/26 the four witnesses are m = 20, 28, 32 and 41.</p>
+</section>
+
+<section aria-labelledby="lat-h">
+  <div class="eyebrow">Steps 5–7 · the 49 candidate hosts</div>
+  <h2 id="lat-h">Every 23-dimensional host is excluded</h2>
+  <p>The unit-free odd unimodular lattices of dimension 23, labelled by root system and numbered as in Chenevier's data. The edge colour shows which argument excludes the lattice in genus II; the bar shows the alcove bound B(U) as a share of the threshold 11c/2. A red note marks the 17 lattices that also carry genus-I hosts. Select a lattice for details.</p>
+  <div class="legend"><span><i style="background:var(--hand)"></i>frame identity + LP bound (46)</span><span><i style="background:var(--comp)"></i>two enumerations (2)</span><span><i style="background:var(--ok)"></i>Leech argument, by hand (1)</span></div>
+  <div class="filter" role="group" aria-label="Filter lattices">
+    <button type="button" data-f="all" aria-pressed="true">All 49</button>
+    <button type="button" data-f="frame" aria-pressed="false">Frame identity</button>
+    <button type="button" data-f="enum" aria-pressed="false">Enumeration</button>
+    <button type="button" data-f="leech" aria-pressed="false">Leech</button>
+    <button type="button" data-f="a1" aria-pressed="false">With genus-I hosts</button>
+  </div>
+  <div class="grid49" id="grid49"></div>
+  <div class="detail" id="latdetail" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The machinery lets real graphs through</h2>
+  <p>No known graph has a host with a 13-part, so the controls test the mechanism, not the exact shape of the target.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td class="num">srg(25,12,5,6), three graphs</td><td>same representation −A + 2I + 2J; all 43,473 pairs ±x of true dual vectors of norm ≤ 5 per graph tested against that representation's table</td><td class="yes">0 rejections</td></tr>
+      <tr><td class="num">srg(25,12,5,6)</td><td>glue enumeration over the five unimodular lattices of dimension 15</td><td class="yes">survivor on A₁₅⁺ is isometric to the true host</td></tr>
+      <tr><td class="num">srg(25,12,5,6)</td><td>characteristic-vector witness test on the 120 root pairs of A₁₅⁺</td><td class="yes">fires on none</td></tr>
+      <tr><td class="num">srg(25,12,5,6)</td><td>glue-side mass against the Hecke mass of the genus</td><td class="yes">equal</td></tr>
+      <tr><td class="num">N23[47], N23[48]</td><td>enumeration engines against brute force at relaxed norms</td><td class="yes">sets equal; 6/6 must-find controls pass</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The srg(25,12,5,6) control was rebuilt by a second, independently written program, with the same result.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>derivation 1</th><th>derivation 2</th><th>status</th></tr></thead>
+    <tbody>
+      <tr><td>vertex lattice, dual-vector lemma</td><td>hand (Claude)</td><td>hand (Codex); referee</td><td>two derivations</td></tr>
+      <tr><td>forbidden norms, m ≤ 43</td><td>hand proof (Claude)</td><td>three exact deciders</td><td>proof + three programs</td></tr>
+      <tr><td>two genera</td><td>hand; Hecke</td><td>hand (Codex)</td><td>two derivations</td></tr>
+      <tr><td>genus I: 291 hosts killed</td><td>GP orbit computation, exact witnesses</td><td>independent drivers, integer certificates (Codex)</td><td>two implementations</td></tr>
+      <tr><td>frame identity</td><td>proof by modular forms</td><td>checked on all 49 lattices by two programs</td><td>proof + two programs</td></tr>
+      <tr><td>LP bound, N23[1]–[46]</td><td>from root-system labels</td><td>from the actual roots</td><td>two programs, hand-checkable</td></tr>
+      <tr><td>N23[47], N23[48]</td><td>w₂ first, exact row completion</td><td>w₁ first, separate session, certificates</td><td>two implementations</td></tr>
+      <tr><td>N23[49] = O₂₃</td><td>proof + certificate (Codex)</td><td>re-derivation, own Leech code (Claude)</td><td>two derivations</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Two referee reports (one Claude session, one Codex session) checked the paper; their points are addressed in the current version. All derivations, audits and referee reports were done by separate AI sessions and coordinated and checked by the author. External inputs are named in the paper: the classification of the 49 lattices (Conway–Sloane, Borcherds, Chenevier's data), standard lattice and modular-form theory, and two properties of the Leech lattice. The paper has not yet been read by a human referee.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper and code: <a href="https://doi.org/10.5281/zenodo.23210908">doi:10.5281/zenodo.23210908</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab101-150.html">A. E. Brouwer, strongly regular graphs v = 101–150</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+  // Proposition 4.3: forbidden iff m = 2,3 mod 4, or m <= 32, or m in {36,37,40,41}
+  function forb(m){var r=m%4;return r===2||r===3||m<=32||m===36||m===37||m===40||m===41;}
+  function fill(id,from,to){var el=document.getElementById(id);for(var m=from;m<=to;m++){var s=document.createElement('span');var a=!forb(m);var cls=[];if(a)cls.push('a');if(m>43)cls.push('u');s.className=cls.join(' ');s.title='m = '+m+' (norm '+m+'/26): '+(a?'admissible':'forbidden')+(m>43?' (not used in the proof)':'');el.appendChild(s);}}
+  fill('strip',1,65);fill('strip2',66,130);
+
+  // [index, root system, rank, c, B(U) label, B(U) value]; 11c/2 threshold; Table 3 of the paper
+  var L=[[1,"A4 A19",23,100,"424",424],[2,"A11 D11",22,88,"364",364],[3,"A1 A8 A13",22,64,"280",280],[4,"A2 A14 E6",22,72,"296",296],[5,"A3 A11 D8",22,64,"272",272],[6,"A6 A10 D5",21,48,"208",208],[7,"2A7 D8",22,56,"240",240],[8,"A4 A7 A11",22,52,"232",232],[9,"A1 A2 A9 A10",22,52,"232",232],[10,"A1 A5 A7 A8",21,40,"184",184],[11,"A15 E8",23,120,"376",376],[12,"A5 A11 E7",23,72,"288",288],[13,"A1 A9 D5 D6",21,48,"204",204],[14,"2A4 A5 A9",22,40,"184",184],[15,"A2 A6 A8 D5",21,40,"176",176],[16,"A1 A3 A5 A7 D6",22,40,"180",180],[17,"A3 A4 2A7",21,36,"168",168],[18,"A4 2A6 D4",20,32,"144",144],[19,"2A5 D5 D6",21,40,"172",172],[20,"2A2 2A5 A8",22,36,"502/3",502/3],[21,"2A1 2A6 A7",21,36,"168",168],[22,"A1 2A4 A5 A7",21,32,"152",152],[23,"A1 A4 3A5",20,28,"136",136],[24,"A9 E6 E7",22,72,"272",272],[25,"A2 A6 A8 E6",22,48,"200",200],[26,"A3 A7 D5 D7",22,48,"204",204],[27,"2A3 A7 2D4",21,32,"144",144],[28,"A1 A2 A3 A4 A5 A6",21,28,"14212/105",14212/105],[29,"A7 2D7",21,56,"232",232],[30,"2A5 D6 E6",22,48,"196",196],[31,"2A1 2A5 D4 D5",21,32,"144",144],[32,"A2 2A4 A6 D5",21,32,"144",144],[33,"2A7 D9",23,64,"272",272],[34,"A1 2A3 2A4 A5",20,24,"120",120],[35,"D9 2E6",21,72,"272",272],[36,"3D5 E6",21,48,"184",184],[37,"3A1 3A3 A5 D4",21,24,"116",116],[38,"4A2 A3 2A5",21,24,"118",118],[39,"2A2 3A4 D4",20,24,"112",112],[40,"2A1 2A2 2A3 2A4",20,20,"1532/15",1532/15],[41,"4A3 2D4",20,24,"112",112],[42,"5A3 A4",19,20,"104",104],[43,"4A3 2D5",22,32,"144",144],[44,"4D5",20,40,"160",160],[45,"2A1 4A2 3A3",19,16,"260/3",260/3],[46,"8A1 4A3",20,16,"84",84],[47,"6A1 6A2",18,12,"68",68],[48,"16A1",16,8,"52",52],[49,"none (O₂₃)",0,0,"0",0]];
+  // genus I (Table 2): index -> [±A1 roots, pairs (r,chi), hosts, n(10/13), n(14/13), n(16/13), n(41/26)]
+  var D={3:[2,29064,5,2,3,0,0],9:[2,29364,9,3,5,1,0],10:[2,29664,16,3,9,4,0],13:[2,29464,14,3,9,2,0],16:[2,29664,13,4,7,2,0],21:[4,59528,21,4,11,6,0],22:[2,29864,14,3,8,3,0],23:[2,29964,13,2,6,5,0],28:[2,29964,30,5,15,10,0],31:[4,59728,26,5,14,7,0],34:[2,30064,29,4,15,10,0],37:[6,90192,24,5,12,7,0],40:[4,60328,39,5,18,16,0],45:[4,60528,14,2,6,6,0],46:[16,242112,12,2,6,4,0],47:[12,182184,10,2,3,5,0],48:[32,487424,2,0,0,0,2]};
+  function kind(i){return i<=46?'frame':(i<=48?'enum':'leech');}
+  function fmt(n){return n.toLocaleString('en-US');}
+  var g=document.getElementById('grid49'),d=document.getElementById('latdetail');
+  function g1(i){var x=D[i];if(!x)return '<p class="muted">No A₁ component, so no genus-I host lives here.</p>';
+    var w=[];if(x[3])w.push('10/13 ('+x[3]+')');if(x[4])w.push('14/13 ('+x[4]+')');if(x[5])w.push('16/13 ('+x[5]+')');if(x[6])w.push('41/26 ('+x[6]+')');
+    return '<p><strong>Genus I.</strong> '+x[0]+' A₁ roots (±), '+fmt(x[1])+' pairs (r, χ), '+x[2]+' host'+(x[2]>1?'s':'')+' up to isometry, each killed by a forbidden dual vector. Smallest forbidden norm: '+w.join(', ')+'.</p>';}
+  function show(x,btn){
+    g.querySelectorAll('.lat').forEach(function(b){b.setAttribute('aria-pressed','false');});
+    if(btn)btn.setAttribute('aria-pressed','true');
+    var i=x[0],k=kind(i),c=x[3],th=11*c/2,h='<h3>N23['+i+'] · '+x[1]+'</h3>';
+    if(k==='leech'){
+      h+='<p>No roots and no characteristic vectors of norm 7, so the frame bound says nothing. The lattice is the shorter Leech lattice, built inside the Leech lattice. A host vector χ = w₁ + w₂ lifts to a Leech vector z of norm 10, which splits as a sum of two minimal vectors; each of the four positions of the fixed minimal vector e relative to them produces a dual vector of forbidden norm (m ∈ {12, 21, 24} or {4, 16, 21, 29, 32, 36, 37}). Excluded by <strong>a hand argument in the Leech lattice</strong>, checked by two independent programs.</p>';
+    } else {
+      var pct=Math.min(100,100*x[5]/th*0.8),line=80;
+      h+='<div class="kv"><div><span class="eyebrow">rank of roots</span><b>'+x[2]+'</b></div><div><span class="eyebrow">c = |R₊|/2</span><b>'+c+'</b></div><div><span class="eyebrow">needed: 11c/2</span><b>'+(th%1?th.toFixed(1):th)+'</b></div><div><span class="eyebrow">bound B(U)</span><b>'+x[4]+'</b></div></div>';
+      h+='<div class="meter" role="img" aria-label="B(U) relative to the threshold 11c/2"><span class="m-fill'+(k==='enum'?' over':'')+'" style="width:'+pct+'%"></span><span class="m-line" style="left:'+line+'%"></span></div>';
+      if(k==='frame')h+='<p>The pins force R(w₂) ≥ 11c/2 = '+(th%1?th.toFixed(1):th)+', but the alcove bound gives R(w₂) ≤ B(U) = '+x[4]+'. The red line marks the threshold; the bar stays left of it. Excluded by <strong>the frame identity and the LP bound</strong>.</p>';
+      else h+='<p>Here B(U) = '+x[4]+' ≥ 11c/2 = '+th+', so the bound leaves room. Two independent exhaustive enumerations of all host triples find none. Excluded by <strong>enumeration</strong>, with exact completeness certificates.</p>';
+    }
+    h+=g1(i);d.innerHTML=h;
+  }
+  L.forEach(function(x){
+    var k=kind(x[0]),b=document.createElement('button');b.type='button';b.className='lat '+k;b.setAttribute('aria-pressed','false');b.dataset.k=k;if(D[x[0]])b.dataset.a1='1';
+    var c=x[3],th=11*c/2,w=k==='leech'?100:Math.max(6,Math.min(100,Math.round(100*x[5]/th)));
+    b.innerHTML='<span class="id">N23['+x[0]+']</span><span class="rs">'+x[1]+'</span>'+(D[x[0]]?'<span class="a1">'+D[x[0]][2]+' genus-I host'+(D[x[0]][2]>1?'s':'')+'</span>':'')+'<span class="bar" style="width:'+w+'%"></span>';
+    b.setAttribute('aria-label','N23['+x[0]+'], '+x[1]+', excluded by '+(k==='frame'?'frame identity':k==='enum'?'enumeration':'Leech argument'));
+    b.addEventListener('click',function(){show(x,b);});g.appendChild(b);
+  });
+  document.querySelectorAll('.filter button').forEach(function(f){
+    f.addEventListener('click',function(){
+      document.querySelectorAll('.filter button').forEach(function(o){o.setAttribute('aria-pressed','false');});
+      f.setAttribute('aria-pressed','true');var v=f.dataset.f;
+      g.querySelectorAll('.lat').forEach(function(b){b.hidden=!(v==='all'||(v==='a1'?b.dataset.a1==='1':b.dataset.k===v));});
+    });
+  });
+  show(L[46],g.children[46]);
+})();
+</script>
+</body>
+</html>
