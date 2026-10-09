@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(288,105,52,30)</title>
+<meta name="description" content="There is no strongly regular graph with parameters (288,105,52,30), hence no partial geometry pg(7,25,5): the proof idea step by step, the certificates and how they were checked.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg288 */
+.strip.s56{grid-template-columns:repeat(56,minmax(9px,1fr));min-width:620px}
+.strip.s56 span{cursor:pointer}
+.strip.s56 span.n{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.strip.s56 span.on{outline:2px solid var(--hand);outline-offset:1px}
+.genera{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--kill);border-radius:8px;padding:12px 14px;display:grid;gap:8px;align-content:start;min-width:0}
+.gcard.d{border-top-color:var(--comp)}
+.gcard .nm{font:600 18px/1.2 var(--mono)}
+.gcard .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.gcard .verdict{font-weight:600;color:var(--kill)}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+.kv div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;display:grid;gap:2px;min-width:0}
+.kv b{font:600 15px/1.2 var(--mono)}
+.meter{position:relative;height:12px;background:var(--bg);border:1px solid var(--line);border-radius:4px}
+.meter .m-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:var(--comp)}
+.meter .m-line{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ok)}
+.mcap{font:12px/1.4 var(--mono);color:var(--muted)}
+@media (max-width:640px){.genera{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html" aria-current="page">288</a><a href="srg405.html">405</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (288, 105, 52, 30)</h1>
+  <p class="lead">No graph on 288 vertices, each of degree 105, where adjacent vertices share 52 neighbours and non-adjacent vertices share 30. Its complement would be the point graph of a partial geometry pg(7,25,5), so that geometry does not exist either. The vertices become vectors of an even lattice of rank 28. Gluing into an even unimodular lattice of rank 32 turns its theta series into 1,297 exact linear equations, and an exact certificate shows that they have no solution. No symmetry of the graph is assumed, and no classification of lattices is needed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23263506">doi:10.5281/zenodo.23263506</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Three routes, an audit and a referee re-implementation</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The adjacency matrix A has eigenvalues 105, 25 and −3. The matrix G = A + 3I + J sends the eigenvalue −3 to 0, so G is positive semidefinite of rank 28 and is the Gram matrix of 288 vectors in 28 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">105</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 396</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">25</span><span class="muted">multiplicity 27 &nbsp;<span class="arrow">→ G: 28</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 260 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 2, non-adjacent ones 1. They span an even lattice L of rank 28. We fix a maximal even overlattice N of L, the <em>host</em>; its discriminant form is anisotropic.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation, checked without any solver</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The vector y = s/396 and the dual-vector lemma</strong><span class="s">The sum s of the vertex vectors gives a special dual vector.</span><span class="d"><span>The frame operator M = Σ vᵢvᵢᵀ equals 28I + 506 yyᵀ with y = s/396. Integrality of xᵀMx forces y ∈ N<sup>#</sup>, with y² = 8/11, ⟨y, vᵢ⟩ = 1 and 11y ∈ N. For a dual vector x with a = x² and ℓ = 11⟨x, y⟩, the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 36ℓ,   Σ zᵢ² = 28a + 46ℓ²/11,   A z = 25z + 10ℓ·𝟏</span><span class="muted">Moreover 308x ∈ N and 154a is an integer, so every dual norm is m/154.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">3</span><span class="t"><strong>The admissibility table</strong><span class="s">Of 733 arithmetically possible pairs (norm, pairing) with norm ≤ 4, only 240 survive.</span><span class="d"><span>A pair (a, ℓ) is admissible if some multiset of 288 integers has the sums of step 2 and, for every value that occurs, a sub-multiset of 105 others with the right neighbourhood sum. Deciding this is a finite exhaustion. Five separately written programs agree on all 733 pairs; the paper prints the 240 admissible ones.</span><span>Two consequences are used later: the only dual vectors of norm below 25/22 are ±y, and every root of N is orthogonal to y.</span><span class="muted">Two entries are proved by hand, for example: N<sup>#</sup> has no vector of norm 1 orthogonal to y. See the map of norms below.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Vectors every host contains</strong><span class="s">15,120 pairs from adjacent vertices.</span><span class="d"><span>For adjacent i, j the difference vᵢ − vⱼ has norm 4 + 4 − 2·2 = 4 and is orthogonal to y. Its inner products with the vertices determine the ordered pair (i, j), so the 288 · 105 = 30,240 ordered adjacent pairs give 15,120 distinct antipodal pairs.</span><span class="formula">D = #{pairs ±x ∈ N : x² = 4, ⟨x, y⟩ = 0} ≥ 15120</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5</span><span class="t"><strong>Exactly four discriminant forms</strong><span class="s">Milgram's formula leaves four genera.</span><span class="d"><span>The exponent of D(N) divides 308 = 2²·7·11. Its 11-part is generated by ȳ, and its 2- and 7-parts are elementary. Listing the anisotropic forms on each part and imposing Milgram's formula Br ≡ 28 (mod 8) leaves exactly</span><span class="formula">det 44:    ⟨1/2⟩² ⊥ ⟨8/11⟩
+det 77:    ⟨2/7⟩ ⊥ ⟨8/11⟩
+det 308:   V ⊥ ⟨6/7⟩ ⊥ ⟨8/11⟩
+det 2156:  ⟨3/2⟩² ⊥ ⟨2/7⟩² ⊥ ⟨8/11⟩</span><span class="muted">V is the anisotropic form on (ℤ/2)². Three separate brute-force enumerations, and the referee's, give the same four forms. Whether each genus is nonempty does not matter.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6</span><span class="t"><strong>Glue into an even unimodular lattice of rank 32</strong><span class="s">One explicit rank-4 lattice K per genus.</span><span class="d"><span>For each form the paper prints an even positive definite lattice K of rank 4 with the opposite discriminant form and an explicit anti-isometry D(N) → D(K). Gluing gives an even unimodular lattice U ⊃ N ⊥ K of rank 32, the smallest rank possible. One glue per genus suffices: no list of lattices, Niemeier or otherwise, is needed.</span><span>Every vector of U is X + p with X ∈ N<sup>#</sup>, p ∈ K<sup>#</sup>. Its norm, p and ℓ = 11⟨X, y⟩ form its <em>type</em>; by step 3 only finitely many types occur in the shells of norm 2 and 4 (74, 87, 211 and 510 variable types in the four genera).</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">7</span><span class="t"><strong>Harmonic theta series: 1,297 equations</strong><span class="s">The relevant spaces of modular forms have dimension at most two.</span><span class="d"><span>The theta series of U lies in M₁₆, so N₄ = 146880 + 216·N₂. For a harmonic polynomial P of degree 2, 4, 6 or 10 the weighted theta series lies in a one-dimensional space of cusp forms (S₁₈, S₂₀, S₂₂, S₂₆), so its sum over the norm-4 shell is a fixed multiple of its sum over the norm-2 shell:</span><span class="formula">Σ_{v²=4} P(v) = κ_d · Σ_{v²=2} P(v),   (κ₂, κ₄, κ₆, κ₁₀) = (−528, 456, −288, −48)</span><span>Taking every monomial of these degrees in the five coordinates ⟨v, k₁⟩, …, ⟨v, k₄⟩, ⟨v, y⟩ and projecting it to a harmonic polynomial gives 1 + 15 + 70 + 210 + 1001 = 1,297 linear equations in the nonnegative numbers of vectors of each type.</span></span></span></button>
+    <div class="fork">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Genera 44 and 308 · a negative root count</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8a</span><span class="t"><strong>The equations force R &lt; 0</strong><span class="s">R = number of root pairs of N orthogonal to y.</span><span class="d"><span>An exact rational combination of the equations is nonnegative on every type count and positive on R alone, so the system determines R exactly:</span><span class="formula">det 44:   R = −249229919718289905/7244209460300441 ≈ −34.4
+det 308:  R = −14</span><span class="muted">These two genera do not even need the graph beyond the admissibility table.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Genera 77 and 2156 · too few differences</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8b</span><span class="t"><strong>The equations force D &lt; 15,120</strong><span class="s">But step 4 supplies 15,120 pairs.</span><span class="d"><span>Here the certificate bounds D, the number of norm-4 pairs of N orthogonal to y:</span><span class="formula">det 77:    D = 16644425793/1581250 ≈ 10526.1
+det 2156:  D ≤ 12681.145…</span><span>Both contradict D ≥ 15120. (For determinant 77 the forced value is not even an integer.) Neither certificate needs any other lower bound.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">9</span><span class="t"><strong>No host lattice exists, so no graph exists</strong><span class="s">All four genera are empty.</span><span class="d"><span>Every srg(288,105,52,30) would give a maximal even lattice N in one of the four genera, glued to an even unimodular lattice whose vector counts satisfy the 1,297 equations. Each certificate shows this is impossible. The complement srg(288,182,106,130) and the partial geometry pg(7,25,5) are excluded with it.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="strip-h">
+  <div class="eyebrow">Step 3 · dual norms m/154, m = 1 … 616</div>
+  <h2 id="strip-h">Which short dual vectors can exist</h2>
+  <p>Each square is a possible norm a = m/154 of a dual vector, up to a = 4. A pair (m, ℓ) passes the arithmetic tests if ℓ² ≤ 88a and 11 divides m + ℓ²; the admissibility test then removes most of them. Select a square to see its pairs.</p>
+  <div class="strip-wrap" id="stripwrap"></div>
+  <div class="legend"><span><i style="background:var(--ok)"></i>some pairing ℓ admissible</span><span><i style="background:var(--kill-soft)"></i>all arithmetically possible ℓ forbidden</span><span><i style="background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)"></i>no ℓ passes the arithmetic tests</span></div>
+  <div class="detail" id="mdetail" aria-live="polite"></div>
+  <p class="muted" id="mcount"></p>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Step 8 · Table 3 of the paper</div>
+  <h2 id="gen-h">Four genera, four certificates</h2>
+  <p>Each certificate is a vector λ of integer multipliers, one per equation. The combination λᵀA is nonnegative on every type count, so λᵀb bounds the counts. The bar shows the forced value against what a host would need.</p>
+  <div class="genera" id="genera"></div>
+  <p class="muted">The largest multipliers have 41, 33, 24 and 118 decimal digits, so the certificates are not printed in the paper; they are in the Zenodo record together with the checker.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The same machinery lets real graphs through</h2>
+  <p>No known graph has a host of the target shape. The controls use Latin-square graphs of order 10, srg(100,27,10,6), whose matrix A + 3I + J also has rank 28 with norms 4 and inner products 2 and 1; their true hosts have determinant 1300. A control cannot prove the theorem; it shows that the mechanism recovers configurations that exist.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>by</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td class="num">L₃(10)</td><td>referee</td><td>own pipeline end to end: host of determinant 1300, own rank-4 complement, glued even unimodular lattice of rank 32, all 1,297 equations on the true counts</td><td class="yes">0 of 474,861 dual pairs rejected; 0/1297 nonzero residuals</td></tr>
+      <tr><td class="num">two Latin squares of order 10, plus a second glue</td><td>Codex</td><td>full srg identity, Gram and glue identities, det U = 1, all vectors of norm ≤ 4 enumerated afresh, 3 × 1,297 equations with the true counts planted</td><td class="yes">all residuals 0; changing a right-hand side by one breaks 768–769 equations</td></tr>
+      <tr><td class="num">L₃(10), LS(D₅)</td><td>first derivation</td><td>dual vectors of norm ≤ 4 through the decider; 9,816 planted equations each</td><td class="yes">0 of 492,203 and 0 of 543,969 rejected; 0 residuals</td></tr>
+      <tr><td class="num">L₃(10), random Latin square</td><td>audit</td><td>decider, planted equations, mutation test</td><td class="yes">0 rejections; 0 residuals on 37,152 and 24,768 equations</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Mutation tests: changing κ₄ from 456 to 457 breaks 68 of the 70 degree-4 equations in the referee's run; in the audit, each of four deliberate perturbations made equations fail. What the controls cannot test is the infeasible branch itself, which no existing graph can reach; that is what the exact certificates are for.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How the result was checked</h2>
+  <p>The result was reached three times, by different routes that share no code. The route of the paper (the second derivation) uses one complement per genus and harmonic degrees up to 10; the earlier routes needed odd unimodular lattices of rank 29 and 31 or many complements coupled together.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>genus</th><th>first derivation</th><th>audit</th><th>this paper</th></tr></thead>
+    <tbody>
+      <tr><td class="num">44</td><td>by hand: frame identity at rank 29</td><td>re-derived from its own theta series</td><td>even rank 32, degrees ≤ 6, R &lt; 0</td></tr>
+      <tr><td class="num">77</td><td>odd rank 31, a root count forced to −40</td><td>reproduced with its own code</td><td>even rank 32, degrees ≤ 6, D &lt; 10527</td></tr>
+      <tr><td class="num">308</td><td>odd rank 31, two complements coupled, exact certificate</td><td>again, and by even rank 32</td><td>even rank 32, degree 10, R = −14</td></tr>
+      <tr><td class="num">2156</td><td>even rank 32, degrees ≤ 4, four complements, six lower bounds</td><td>rebuilt; a second certificate on seven disjoint complements</td><td>degree 10, one complement, D &lt; 12682</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>component</th><th>how it is established</th></tr></thead>
+    <tbody>
+      <tr><td>vertex lattice, y, dual-vector lemma, four forms, gluing, the 1,297 equations</td><td>proved in the paper; re-derived by every route and by the referee</td></tr>
+      <tr><td>admissibility table (733 pairs)</td><td>five separately written programs agree, one of them solver-free and exhaustive; a sixth, written by the referee from the definition, agrees with its pre-filter switched off</td></tr>
+      <tr><td>types and the four certificates</td><td>a short exact checker (written by Codex) rebuilds K<sup>#</sup>, the types and every coefficient from first principles and checks λᵀA ≥ 0 and the bound; no linear-programming or constraint solver, about three seconds</td></tr>
+      <tr><td>same, independently</td><td>the referee (Claude Fable, a different model family) re-implemented everything from the text alone, without running the checker: all four certificates valid, with exactly the printed values</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The first derivation and the audit were done by separate Claude sessions; the second derivation, also by Claude, found the certificates of the paper. Codex (OpenAI's coding agent) reviewed them, rebuilt the certificate functional, wrote the standalone checker and the solver-free admissibility check, and built the true-host controls. The referee's verdict was “accept with minor revisions”, with no fatal or major finding. The exact checker and its thirteen input files are in the Zenodo record. The grade is <strong>computer-assisted</strong>: the four certificates cannot be checked by hand, and the 493 forbidden entries of the admissibility table have no hand certificate. No human expert has read the paper yet.</p>
+</section>
+
+<section aria-labelledby="ctx-h">
+  <div class="eyebrow">Context</div>
+  <h2 id="ctx-h">What else follows</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>statement</th><th>why</th></tr></thead>
+    <tbody>
+      <tr><td>There is no srg(288,182,106,130).</td><td>It is the complement.</td></tr>
+      <tr><td>There is no partial geometry pg(7,25,5).</td><td>Its point graph would be an srg(288,182,106,130).</td></tr>
+      <tr><td>The smallest case of Koolen and Gebremichel's Conjecture 1.2 holds.</td><td>Their Table 1 lists twelve open primitive parameter sets with smallest eigenvalue −3, v &gt; 276 and μ ∉ {6, 9}; the conjecture predicts that none is realised, and (288,105,52,30) is the first entry.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">At the time of writing, Brouwer's table lists (288,105,52,30) as open (“?”) and annotates the complementary row with “pg(7,25,5)?”.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper, checker and data: <a href="https://doi.org/10.5281/zenodo.23263506">doi:10.5281/zenodo.23263506</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab251-300.html">A. E. Brouwer, strongly regular graphs v = 251–300</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+  // Appendix A of the paper: m = 154 a, admissible l >= 0
+  var ADM="112:8 175:1 259:7 286:0 297:0 304:2 308:0 315:2,9 319:0 326:2 330:0 337:2 341:0 348:2 351:1 352:0 359:2 360:6 362:1 363:0 370:2 371:6 373:1 374:0 381:2 382:6 384:1 385:0 387:3 392:2 393:6 395:1 396:0 398:3,8 403:2 404:6 406:1 407:0 409:3,8 414:2 415:5,6 417:1 418:0 420:3,8 424:4 425:2 426:5,6 428:1 429:0 431:3,8 435:4,7 436:2 437:5,6 439:1 440:0 442:3,8 446:4,7 447:2 448:5,6,16 450:1 451:0 453:3,8 457:4,7 458:2 459:5,6 461:1 462:0 464:3,8 468:4,7 469:2 470:5,6 472:1,10 473:0 475:3,8 479:4,7 480:2 481:5,6 483:1,10 484:0 486:3,8 490:4,7 491:2,9 492:5,6 494:1,10 495:0 497:3,8 501:4,7 502:2,9 503:5,6 505:1,10 506:0 508:3,8 512:4,7 513:2,9 514:5,6 516:1,10 517:0 519:3,8 523:4,7 524:2,9 525:5,6 527:1,10 528:0 530:3,8 534:4,7 535:2,9 536:5,6 538:1,10 539:0 541:3,8 545:4,7 546:2,9 547:5,6 549:1,10 550:0 552:3,8 556:4,7 557:2,9 558:5,6 560:1,10 561:0 563:3,8 567:4,7,15 568:2,9 569:5,6 571:1,10 572:0 574:3,8 578:4,7 579:2,9 580:5,6 582:1,10 583:0,11 585:3,8 589:4,7 590:2,9 591:5,6 593:1,10 594:0,11 596:3,8 600:4,7 601:2,9 602:5,6 604:1,10 605:0,11 607:3,8 611:4,7 612:2,9 613:5,6 615:1,10 616:0,11";
+  var adm={};ADM.split(' ').forEach(function(t){var p=t.split(':');adm[+p[0]]=p[1].split(',').map(Number);});
+  var NOTE={"112,8":"realised by y","308,0":"the roots of N","420,3":"realised by vᵢ − y","448,5":"realised by vᵢ − 2y","448,16":"realised by 2y","616,0":"realised by vᵢ − vⱼ, i ~ j","616,11":"realised by the vertex vectors vᵢ"};
+  function arith(m){var r=[];for(var l=0;7*l*l<=4*m;l++)if((m+l*l)%11===0)r.push(l);return r;}
+  function gcd(a,b){while(b){var t=a%b;a=b;b=t;}return a;}
+  function frac(m){var g=gcd(m,154);return (154/g===1)?String(m/g):(m/g)+'/'+(154/g);}
+  var wrap=document.getElementById('stripwrap'),det=document.getElementById('mdetail'),nA=0,nF=0,nN=0,pA=0,pAll=0,cells=[];
+  function show(m,el){
+    cells.forEach(function(c){c.classList.remove('on');});if(el)el.classList.add('on');
+    var ar=arith(m),ad=adm[m]||[],h='<h3>m = '+m+' · norm a = '+frac(m)+'</h3>';
+    if(!ar.length){h+='<p>No pairing ℓ satisfies ℓ² ≤ 88a and 11 | m + ℓ², so no dual vector can have this norm.</p>';}
+    else{
+      h+='<p class="mono">arithmetically possible ℓ ≥ 0: '+ar.join(', ')+'</p>';
+      h+=ad.length?'<p>Admissible: <strong>ℓ = '+ad.join(', ')+'</strong> (and the negatives). '+(ar.length>ad.length?'Forbidden: ℓ = '+ar.filter(function(l){return ad.indexOf(l)<0;}).join(', ')+'.':'')+'</p>':'<p>Every arithmetically possible pairing is <strong>forbidden</strong>: no multiset of 288 integers has the required sums and neighbourhood sums.</p>';
+      var notes=ad.filter(function(l){return NOTE[m+','+l];}).map(function(l){return 'ℓ = '+l+': '+NOTE[m+','+l];});
+      if(notes.length)h+='<p class="muted">'+notes.join('; ')+'.</p>';
+    }
+    det.innerHTML=h;
+  }
+  for(var r=0;r<11;r++){
+    var st=document.createElement('div');st.className='strip s56';st.setAttribute('role','group');st.setAttribute('aria-label','m from '+(r*56+1)+' to '+(r*56+56));if(r)st.style.marginTop='4px';
+    for(var m=r*56+1;m<=r*56+56;m++){
+      var s=document.createElement('span'),ar=arith(m),ad=adm[m];pAll+=ar.length;
+      if(ad){s.className='a';nA++;pA+=ad.length;}else if(ar.length){nF++;}else{s.className='n';nN++;}
+      s.title='m = '+m+(ad?': ℓ = '+ad.join(', '):(ar.length?': forbidden':': no pairing possible'));
+      s.tabIndex=0;s.setAttribute('role','button');s.setAttribute('aria-label',s.title);
+      (function(mm,el){el.addEventListener('click',function(){show(mm,el);});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(mm,el);}});})(m,s);
+      cells.push(s);st.appendChild(s);
+    }
+    wrap.appendChild(st);
+  }
+  var ax=document.createElement('div');ax.className='axis';ax.innerHTML='<span>m = 1 (rows of 56)</span><span>m = 616 (a = 4)</span>';wrap.appendChild(ax);
+  document.getElementById('mcount').textContent='Computed on this page from the printed table: '+pAll+' arithmetically possible pairs with ℓ ≥ 0, of which '+pA+' are admissible, at '+nA+' values of m; '+nF+' values of m have only forbidden pairs and '+nN+' have none.';
+  show(112,cells[111]);
+
+  // Table 3 of the paper
+  var G=[
+    {d:44,f:'⟨1/2⟩² ⊥ ⟨8/11⟩',K:'[[10,−1,−2,3],[−1,8,1,−1],[−2,1,14,3],[3,−1,3,2]]',kd:541,vt:74,ft:9,lam:74,wp:1,deg:'0, 2, 4, 6',what:'R',val:'R = −249229919718289905 / 7244209460300441 ≈ −34.4',need:'needed: R ≥ 0',x:-34.4,lo:-40,hi:20,line:0},
+    {d:77,f:'⟨2/7⟩ ⊥ ⟨8/11⟩',K:'[[8,3,−3,−1],[3,4,0,−1],[−3,0,2,0],[−1,−1,0,8]]',kd:697,vt:87,ft:6,lam:83,wp:1,deg:'0, 2, 4, 6',what:'D',val:'D = 16644425793 / 1581250 ≈ 10526.1',need:'needed: D ≥ 15120',x:10526.1,lo:0,hi:18000,line:15120},
+    {d:308,f:'V ⊥ ⟨6/7⟩ ⊥ ⟨8/11⟩',K:'[[2,−1,0,0],[−1,4,0,0],[0,0,4,−2],[0,0,−2,12]]',kd:1397,vt:211,ft:4,lam:51,wp:1,deg:'0, 2, 4, 6, 10',what:'R',val:'R = −14',need:'needed: R ≥ 0',x:-14,lo:-40,hi:20,line:0},
+    {d:2156,f:'⟨3/2⟩² ⊥ ⟨2/7⟩² ⊥ ⟨8/11⟩',K:'[[2,0,0,0],[0,2,0,0],[0,0,14,−7],[0,0,−7,42]]',kd:3631,vt:510,ft:4,lam:429,wp:82,deg:'0, 2, 4, 6, 10',what:'D',val:'D ≤ 12681.145…',need:'needed: D ≥ 15120',x:12681.15,lo:0,hi:18000,line:15120}
+  ];
+  var ge=document.getElementById('genera');
+  G.forEach(function(g){
+    var c=document.createElement('div');c.className='gcard'+(g.what==='D'?' d':'');
+    var span=g.hi-g.lo,fill=100*(Math.max(g.lo,Math.min(g.hi,g.x))-g.lo)/span,ln=100*(g.line-g.lo)/span;
+    c.innerHTML='<span class="nm">det '+g.d+'</span><span class="meta">D(N) = '+g.f+'<br>K = '+g.K+'</span>'+
+      '<div class="kv"><div><span class="eyebrow">|K<sup>#</sup>| to norm 4</span><b>'+g.kd.toLocaleString('en-US')+'</b></div><div><span class="eyebrow">variable types</span><b>'+g.vt+'</b></div><div><span class="eyebrow">fixed types</span><b>'+g.ft+'</b></div><div><span class="eyebrow">nonzero λ</span><b>'+g.lam+'</b></div><div><span class="eyebrow">positive columns</span><b>'+g.wp+'</b></div><div><span class="eyebrow">degrees</span><b>'+g.deg+'</b></div></div>'+
+      '<div class="meter" role="img" aria-label="'+g.val+'; '+g.need+'"><span class="m-fill" style="width:'+fill+'%"></span><span class="m-line" style="left:'+ln+'%"></span></div>'+
+      '<span class="mcap">'+g.lo.toLocaleString('en-US')+' … '+g.hi.toLocaleString('en-US')+'; green line = '+g.need+'</span>'+
+      '<span class="mono">'+g.val+'</span><span class="verdict">'+(g.what==='R'?'a negative number of roots: empty':'fewer than the 15,120 difference pairs: empty')+'</span>';
+    ge.appendChild(c);
+  });
+})();
+</script>
+</body>
+</html>

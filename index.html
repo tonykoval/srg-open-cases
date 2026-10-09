@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open SRG Cases</title>
-<meta name="description" content="Fourteen parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: five nonexistence proofs and nine sets realised by new graphs.">
+<meta name="description" content="Sixteen parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: seven nonexistence proofs and nine sets realised by new graphs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -43,13 +43,13 @@ a.card:hover{border-color:var(--hand)}
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · September–October 2026</div>
-  <h1>Fourteen open cases of Brouwer's table, settled</h1>
-  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that five of these graphs do not exist and constructed graphs for nine further parameter sets. All results are preprints with open code and data.</p>
+  <h1>Sixteen open cases of Brouwer's table, settled</h1>
+  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that seven of these graphs do not exist and constructed graphs for nine further parameter sets. All results are preprints with open code and data.</p>
   <div class="chips">
-    <span class="chip kill">5 nonexistence proofs</span>
+    <span class="chip kill">7 nonexistence proofs</span>
     <span class="chip ok">9 parameter sets realised</span>
     <span class="chip">Preprints, not yet peer-reviewed</span>
     <span class="chip">AI-assisted; author coordinated and checked</span>
@@ -60,26 +60,28 @@ a.card:hover{border-color:var(--hand)}
   <div class="eyebrow">At a glance</div>
   <h2 id="map-h">Where the results sit</h2>
   <div class="stats">
-    <div class="stat no"><span class="eyebrow">no graph exists</span><b>5</b><span class="muted">v = 69, 99, 105, 154, 162</span></div>
+    <div class="stat no"><span class="eyebrow">no graph exists</span><b>7</b><span class="muted">v = 69, 99, 105, 154, 162, 288, 405</span></div>
     <div class="stat yes"><span class="eyebrow">graphs constructed</span><b>9</b><span class="muted">v = 250, 300, 320, 324, 486</span></div>
     <div class="stat"><span class="eyebrow">new graphs in the data files</span><b>262</b><span class="muted">pairwise non-isomorphic per set</span></div>
   </div>
   <p>Each dot is one parameter set, placed by its number of vertices. Select a dot to jump to its entry.</p>
-  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with five nonexistence results and nine constructions"></div>
+  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with seven nonexistence results and nine constructions"></div>
   <div class="vaxis" id="vaxis"></div>
   <div class="legend"><span><i style="background:var(--kill)"></i>no graph exists</span><span><i style="background:var(--ok)"></i>graphs constructed</span></div>
 </section>
 
 <section aria-labelledby="no-h">
   <div class="eyebrow">Nonexistence</div>
-  <h2 id="no-h">Five parameter sets with no graph</h2>
-  <p>All five proofs assume no symmetry of the graph. They turn the graph into vectors of an integral lattice and show that no lattice can hold them.</p>
+  <h2 id="no-h">Seven parameter sets with no graph</h2>
+  <p>All seven proofs assume no symmetry of the graph. They turn the graph into vectors of an integral lattice and show that no lattice can hold them.</p>
   <div class="cards">
     <a class="card no" id="r69" href="srg69.html"><span class="p">srg(69, 20, 7, 5)</span><span class="m">Vertices span an even lattice of rank 24; its hosts are the 24 Niemeier lattices and one genus of determinant 8, listed through Borcherds' 665 lattices. The remaining finite cases are decided by two independent programs; the SAT solver's UNSAT results carry proofs checked by a formally verified checker.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23209705</span></a>
     <a class="card no" id="r99" href="srg99_42.html"><span class="p">srg(99, 42, 21, 15)</span><span class="m">Gram matrix 3I + A + J of rank 22; four discriminant forms, gluing into unimodular lattices of dimension 23–25 leaves two hosts, and an exhaustive certified enumeration of their norm-11 vectors finds no candidate.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23210773</span></a>
     <a class="card no" id="r105" href="srg105.html"><span class="p">srg(105, 52, 21, 30)</span><span class="m">Gram matrix −A + 2I + 2J of rank 21; two genera. Determinant 26: 291 hosts, each with a forbidden dual vector. Determinant 338: all 49 glue lattices excluded by a frame identity, two enumerations and a Leech-lattice argument.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23210908</span></a>
     <a class="card no" id="r154" href="srg154.html"><span class="p">srg(154, 72, 26, 40)</span><span class="m">Gram matrix −A + 2I + 2J of rank 22; two genera. One glues into the Niemeier lattice A₁²⁴ and dies on a dodecad; the other dies on the frame identity or, for O₂₃, on a spherical 7-design.</span><span class="meta"><span class="chip hand">by hand, plus a printed table</span><span class="chip ok">core checked in Lean 4</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23210954</span></a>
     <a class="card no" id="r162" href="srg162.html"><span class="p">srg(162, 69, 36, 24)</span><span class="m">Gram matrix A + 3I + 5J of rank 24; two forms of determinant 12. All 2,968 hosts of the first kind contain a forbidden dual vector; in all 7,795 of the second kind a certified enumeration finds no candidate.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23211005</span></a>
+    <a class="card no" id="r288" href="srg288.html"><span class="p">srg(288, 105, 52, 30)</span><span class="m">Gram matrix A + 3I + J of rank 28; four discriminant forms. Each glues to an even unimodular lattice of rank 32, whose harmonic theta series give 1,297 linear equations; exact certificates force a negative root count or fewer than the 15,120 norm-4 vectors that adjacent vertices supply. No lattice classification is needed. Hence no partial geometry pg(7,25,5).</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “?” at the time of writing</span></span><span class="doi">doi:10.5281/zenodo.23263506</span></a>
+    <a class="card no" id="r405" href="srg405.html"><span class="p">srg(405, 132, 63, 33)</span><span class="m">Gram matrix A + 3I + J of rank 31; four discriminant forms, found by hand. A new elementary counting lemma gives 36|R₀| ≤ 3(|S₄| − 405), while six printed theta-series equations force |S₄| = 171 + 3|R₀| for the main form; the other three fall to exact certificates. Hence no partial geometry pg(8,33,6).</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip hand">main case by hand</span><span class="chip">Brouwer's table: “?” at the time of writing</span></span><span class="doi">doi:10.5281/zenodo.23263684</span></a>
   </div>
 </section>
 
@@ -98,8 +100,8 @@ a.card:hover{border-color:var(--hand)}
       <ol>
         <li>The eigenvalues of the graph give a positive semidefinite Gram matrix, so the vertices become short vectors spanning an integral lattice.</li>
         <li>The sum of all vertex vectors gives a special dual vector, and every dual vector satisfies exact counting identities. Many small dual norms become impossible.</li>
-        <li>Milgram's formula leaves a few discriminant forms. Gluing turns each into a unimodular lattice from a known classification (Niemeier, Borcherds, Chenevier).</li>
-        <li>Each candidate host is excluded: by an explicit forbidden vector, by an identity proved by hand, or by an exhaustive enumeration with exact certificates.</li>
+        <li>Milgram's formula leaves a few discriminant forms. Gluing turns each into a unimodular lattice: one from a known classification (Niemeier, Borcherds, Chenevier), or, for 288 and 405, an even unimodular lattice of rank 32 or 40 whose harmonic theta series give exact linear equations.</li>
+        <li>Each candidate host is excluded: by an explicit forbidden vector, by an identity proved by hand, by an exhaustive enumeration with exact certificates, or by an exact rational certificate that the theta-series equations have no admissible solution.</li>
       </ol>
     </div>
     <div class="box"><h3>Existence: unions of orbitals</h3>
@@ -119,7 +121,7 @@ a.card:hover{border-color:var(--hand)}
   <div class="checks">
     <div class="box"><h3>Two derivations</h3><p class="muted">Each step of the nonexistence proofs was derived twice, by separate sessions or separate programs, or audited with independent code. Each paper states exactly which parts rest on one implementation.</p></div>
     <div class="box"><h3>Controls</h3><p class="muted">The same machinery was run on known graphs of the same shape. It must let them through; it does. The search engines recovered known graphs as must-find controls.</p></div>
-    <div class="box"><h3>Referees</h3><p class="muted">The papers were reviewed by separate AI sessions (Claude and Codex) acting as auditors or referees. No human referee has read them yet.</p></div>
+    <div class="box"><h3>Referees</h3><p class="muted">The papers were reviewed by separate AI sessions (Claude, including a different model, Claude Fable, and Codex) acting as auditors or referees; for 288 and 405 the referee re-implemented every computation from the text. No human referee has read them yet.</p></div>
     <div class="box"><h3>Open data</h3><p class="muted">Each paper is on Zenodo and says where its code, logs and data are archived. Every new graph is in graph6 format with a short verifier that checks A² = kI + λA + μ(J − I − A) exactly; see <a href="graphs.html">New graphs</a>.</p></div>
   </div>
   <p class="muted">The work was done with substantial assistance from AI systems, coordinated and checked by the author, who is responsible for all content. See <a href="about.html">About</a>.</p>
@@ -152,7 +154,7 @@ a.card:hover{border-color:var(--hand)}
     yc.appendChild(a);
   });
   // number line 0..500
-  var N=[[69,'srg(69,20,7,5)','r69'],[99,'srg(99,42,21,15)','r99'],[105,'srg(105,52,21,30)','r105'],[154,'srg(154,72,26,40)','r154'],[162,'srg(162,69,36,24)','r162']];
+  var N=[[69,'srg(69,20,7,5)','r69'],[99,'srg(99,42,21,15)','r99'],[105,'srg(105,52,21,30)','r105'],[154,'srg(154,72,26,40)','r154'],[162,'srg(162,69,36,24)','r162'],[288,'srg(288,105,52,30)','r288'],[405,'srg(405,132,63,33)','r405']];
   var vl=document.getElementById('vline'),va=document.getElementById('vaxis'),seen={};
   function dot(v,label,id,cls){var k=seen[v]||0;seen[v]=k+1;var a=document.createElement('a');a.className='dot '+cls;a.href='#'+id;a.title=label+(cls==='no'?': no graph exists':': graphs constructed');a.setAttribute('aria-label',a.title);
     a.style.left=(100*v/500)+'%';a.style.bottom=(8+k*18)+'px';vl.appendChild(a);}

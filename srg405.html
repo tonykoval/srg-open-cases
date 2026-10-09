@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(405,132,63,33)</title>
+<meta name="description" content="There is no strongly regular graph with parameters (405,132,63,33), hence no partial geometry pg(8,33,6): an elementary counting lemma against an identity from harmonic theta series.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg405 */
+.key{background:var(--hand-soft);border:1px solid var(--line);border-left:4px solid var(--hand);border-radius:8px;padding:14px;display:grid;gap:10px}
+.key .formula{background:var(--surface)}
+.zt{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
+.zt div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 4px;display:grid;gap:2px;text-align:center;min-width:0}
+.zt b{font:600 15px/1.2 var(--mono)}
+.zt span{font:12px/1.3 var(--mono);color:var(--muted)}
+.zt .ok0{border-color:var(--ok)}
+.zt .cnt3{border-color:var(--hand);background:var(--hand-soft)}
+.plot{width:100%;display:block}
+.plot .ax{stroke:var(--line)}
+.plot .tk{fill:var(--muted);font:12px var(--mono)}
+.plot .need{stroke:var(--kill);stroke-width:2.5;fill:none}
+.plot .have{stroke:var(--comp);stroke-width:2.5;fill:none}
+.plot .gap{fill:var(--kill-soft);opacity:.7}
+.plot .mk{stroke:var(--muted);stroke-dasharray:3 3}
+.plot .dot-n{fill:var(--kill)}
+.plot .dot-h{fill:var(--comp)}
+.ctl{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ctl input[type=range]{flex:1 1 220px;accent-color:var(--hand)}
+.filter{display:flex;flex-wrap:wrap;gap:8px}
+.filter button{font:500 13px/1 var(--body);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filter button[aria-pressed="true"]{border-color:var(--hand);color:var(--hand)}
+.genera{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--hand);border-radius:8px;padding:12px 14px;display:grid;gap:6px;align-content:start;min-width:0}
+.gcard.c{border-top-color:var(--comp)}
+.gcard .nm{font:600 18px/1.2 var(--mono)}
+.gcard .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.gcard .verdict{font-weight:600;color:var(--kill)}
+tr.sharp td{background:var(--hand-soft)}
+.btn{font:500 13.5px/1 var(--body);padding:9px 14px;border-radius:6px;border:1px solid var(--hand);background:var(--surface);color:var(--hand);cursor:pointer;justify-self:start}
+@media (max-width:640px){.genera{grid-template-columns:1fr}.zt{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html" aria-current="page">405</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (405, 132, 63, 33)</h1>
+  <p class="lead">No graph on 405 vertices, each of degree 132, where adjacent vertices share 63 neighbours and non-adjacent vertices share 33. Its complement would be the point graph of a partial geometry pg(8,33,6), so that geometry does not exist either. The vertices become vectors of an even lattice of rank 31. A new, elementary counting lemma bounds its roots from above; theta series of a glued unimodular lattice force an identity that the lemma cannot satisfy. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23263684">doi:10.5281/zenodo.23263684</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Main case checkable by hand</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The adjacency matrix A has eigenvalues 132, 33 and −3. The matrix G = A + 3I + J sends the eigenvalue −3 to 0, so G is positive semidefinite of rank 31 and is the Gram matrix of 405 vectors in 31 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">132</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 540</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">33</span><span class="muted">multiplicity 30 &nbsp;<span class="arrow">→ G: 36</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 374 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 2, non-adjacent ones 1. They span an even lattice L of rank 31, and we fix a maximal even overlattice N. The normalized sum y = s/270 has norm 3 and inner product 2 with every vertex; it lies in N<sup>#</sup> but not in N, and 2y ∈ N.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation, two implementations</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The dual-vector lemma</strong><span class="s">Every dual vector gives a small integer problem.</span><span class="d"><span>M = Σ vᵢvᵢᵀ = 36I + 168 yyᵀ. For x ∈ N<sup>#</sup> with ν = x² and t = ⟨x, y⟩ ∈ ½ℤ, the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 270t,   Σ zᵢ² = 36ν + 168t²,   A z = 33z + 66t·𝟏</span><span>Since (z − a)(z − a − 1) ≥ 0 for all integers z and a, also</span><span class="formula">0 ≤ Σ (zᵢ − a)(zᵢ − a − 1) = 36ν + 168t² − (2a + 1)·270t + 405·a(a + 1)</span><span class="muted">This one inequality, with a = 1, drives the counting lemma.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Exactly four discriminant forms, by hand</strong><span class="s">A parity condition on ȳ, then Milgram.</span><span class="d"><span>The exponent of D(N) divides 36. Every class satisfies 36q(x̄) ≡ 2b(x̄, ȳ) (mod 2); this forces the 2-part to be cyclic of order 4 with ȳ its element of order 2. The 3-part is elementary of rank ≤ 2 (Chevalley–Warning). Milgram's formula, Br ≡ 31 (mod 8), leaves</span><span class="formula">g₃   |D| = 4    ⟨7/4⟩
+g₂   |D| = 12   ⟨5/4⟩ ⊥ ⟨2/3⟩
+g₀   |D| = 12   ⟨1/4⟩ ⊥ ⟨4/3⟩
+g₁   |D| = 36   ⟨3/4⟩ ⊥ P₃</span><span class="muted">P₃ is the anisotropic plane over 𝔽₃. A brute-force enumeration in the audit found eight forms with the right Brown invariant; the parity condition removes exactly four.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>The counting lemma</strong><span class="s">36|R₀| ≤ 3(|S₄| − 405). The new ingredient.</span><span class="d"><span>R₀ is the set of roots of N orthogonal to y, and S₄ the set of norm-4 vectors w of N with ⟨w, y⟩ = 2, as the vertex vectors have. The inequality of step 2 shows that every root is orthogonal to y and has exactly 36 inner products +1, 36 inner products −1 and 333 zeros with the vertices. For each root r and each vertex with ⟨r, vᵢ⟩ = 1, the vector w = vᵢ − r lies in S₄ and has ⟨w, vᵢ⟩ = 3.</span><span>For any w ∈ S₄ the inequality gives Σ (zᵢ − 1)(zᵢ − 2) = 6, and each entry 3 costs 2, so a non-vertex w has at most three entries equal to 3. Counting pairs (r, i) both ways:</span><span class="formula">36·|R₀| = Σ_{w ∈ S₄ non-vertex} #{i : ⟨w, vᵢ⟩ = 3} ≤ 3·(|S₄| − 405)</span><span class="muted">Sharp on the line graph of PG(4,2). See the worked lemma below.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5</span><span class="t"><strong>The main form g₃: an identity from theta series</strong><span class="s">|S₄| = 171 + 3|R₀|, from six printed equations.</span><span class="d"><span>For D(N) = ⟨7/4⟩, glue N to ⟨4⟩ = ℤk: the result U is even unimodular of rank 32. Its vectors of norm 2 and 4 are listed by hand (ten kinds, counted by R, A₀, A₁, S, B₁, B₃, C₀, C₁, C₃; the only norm-3 vectors with t = ±3 are ±y, so C₃ = 1). Harmonic theta series in t = ⟨v, y⟩ and ξ = ⟨v, k⟩ give six equations of rank 6, and a combination with printed rational multipliers yields</span><span class="formula">|S₄| = 171 + 3|R₀|</span><span class="muted">All six rows and the multipliers are in the table below, where your browser can redo the arithmetic.</span></span></span></button>
+    <div class="fork">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Form g₃ · by hand</span>
+        <button class="step" data-kind="end" aria-expanded="false"><span class="n">6a</span><span class="t"><strong>Lemma against identity</strong><span class="s">9|R₀| ≤ −234.</span><span class="d"><span>The lemma says 12|R₀| ≤ |S₄| − 405, and the identity says |S₄| − 405 = 3|R₀| − 234. Together</span><span class="formula">12|R₀| ≤ 3|R₀| − 234   ⇒   9|R₀| ≤ −234</span><span>which is impossible for a count. The theta series alone do not bound R₀ from above; the lemma does.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Forms g₂, g₀, g₁ · exact certificates</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6b</span><span class="t"><strong>The other three forms</strong><span class="s">Same method; types from a decider, exact Farkas certificates.</span><span class="d"><span><strong>g₂</strong>, glue ⟨12⟩, rank 32: the equations give |S₄| = 135 + 3|R₀|, so 9|R₀| ≤ −270 with the lemma; independently an exact certificate with the 53,460 differences of adjacent vertices.</span><span><strong>g₀</strong>, glue D₇ ⊥ A₂, rank 40: infeasible by an exact certificate even without the lemma; the audit's system gives |S₄| = 129 + 3|R₀|.</span><span><strong>g₁</strong>, glue D₅ ⊥ A₂ ⊥ A₂, rank 40: infeasible with the lemma, by an exact certificate. Without the lemma this system is feasible, so g₁ genuinely needs it.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">7</span><span class="t"><strong>No host lattice exists, so no graph exists</strong><span class="s">All four forms are excluded.</span><span class="d"><span>Every srg(405,132,63,33) would give a maximal even lattice N with one of the four forms, and each is impossible. The complement srg(405,272,172,204) and the partial geometry pg(8,33,6) are excluded with it.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="lem-h">
+  <div class="eyebrow">Step 4 · the counting lemma, worked</div>
+  <h2 id="lem-h">Why a norm-4 vector meets at most three vertices in 3</h2>
+  <div class="key">
+    <p>Let w ∈ S₄, so w² = 4 and ⟨w, y⟩ = 2, and let zᵢ = ⟨w, vᵢ⟩. The inequality of step 2 with a = 1 is an exact budget:</p>
+    <div class="formula">Σ (zᵢ − 1)(zᵢ − 2) = 36·4 + 168·4 − 3·270·2 + 405·2 = 144 + 672 − 1620 + 810 = 6</div>
+    <p>Every term is a nonnegative even integer. Each value of zᵢ costs:</p>
+    <div class="zt" role="table" aria-label="Cost (z − 1)(z − 2) of each inner product value z">
+      <div role="cell"><span>z ≤ −2</span><b>≥ 12</b></div>
+      <div role="cell"><span>z = −1</span><b>6</b></div>
+      <div role="cell"><span>z = 0</span><b>2</b></div>
+      <div role="cell" class="ok0"><span>z = 1</span><b>0</b></div>
+      <div role="cell" class="ok0"><span>z = 2</span><b>0</b></div>
+      <div role="cell" class="cnt3"><span>z = 3</span><b>2</b></div>
+      <div role="cell"><span>z = 4</span><b>6</b></div>
+      <div role="cell"><span>z ≥ 5</span><b>≥ 12</b></div>
+    </div>
+    <p>With a budget of 6, at most three entries can equal 3 (and z = 4 happens only when w is a vertex vector). Every pair (root r, vertex i) with ⟨r, vᵢ⟩ = 1 gives such an entry 3, for w = vᵢ − r, and every entry 3 of a non-vertex w comes from exactly one such pair. Each root has 36 of these pairs, so</p>
+    <div class="formula">36·|R₀| ≤ 3·(|S₄| − 405)</div>
+  </div>
+  <p>The plot shows what the two sides demand. The theta series of the g₃ host force the orange line; the lemma needs |S₄| on or above the red line. They never meet for R₀ ≥ 0. Move the slider or pick another form.</p>
+  <div class="filter" role="group" aria-label="Choose the discriminant form">
+    <button type="button" data-c="171" aria-pressed="true">g₃: 171 + 3R</button>
+    <button type="button" data-c="135" aria-pressed="false">g₂: 135 + 3R</button>
+    <button type="button" data-c="129" aria-pressed="false">g₀: 129 + 3R (audit)</button>
+  </div>
+  <div id="plotwrap"><svg class="plot" id="plot" viewBox="0 0 640 300" role="img" aria-label="Number of norm-4 vectors S4 against the number of roots R0: the identity line lies below the line required by the counting lemma for every R0 ≥ 0"></svg></div>
+  <div class="ctl"><label for="rr" class="mono">|R₀| = <span id="rv">0</span></label><input type="range" id="rr" min="0" max="80" step="1" value="0"></div>
+  <div class="detail" id="readout" aria-live="polite"></div>
+  <div class="legend"><span><i style="background:var(--comp)"></i>forced by the theta series</span><span><i style="background:var(--kill)"></i>minimum required by the lemma</span></div>
+</section>
+
+<section aria-labelledby="sharp-h">
+  <div class="eyebrow">Controls for the lemma · Remark 4.3 of the paper</div>
+  <h2 id="sharp-h">The lemma on graphs that exist</h2>
+  <p>For any graph with smallest eigenvalue −3 represented by A + 3I + J, the same counting gives (r + 3)|R₀| ≤ 3(|S₄| − v), where r is the positive restricted eigenvalue, provided every root is orthogonal to y. Six real graphs, with a maximal even overlattice computed exactly and all vectors of norm ≤ 4 listed:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>graph</th><th>rank</th><th>roots</th><th>|R₀|</th><th>|S₄|</th><th>(r + 3)|R₀| ≤ 3(|S₄| − v)</th></tr></thead>
+    <tbody>
+      <tr><td>Clebsch (16,5,0,2)</td><td class="num">11</td><td class="num">180</td><td class="num">180</td><td class="num">512</td><td class="num">720 ≤ 1488</td></tr>
+      <tr><td>GQ(2,2) (15,6,1,3)</td><td class="num">10</td><td class="num">180</td><td class="num">42</td><td class="num">106</td><td class="num">168 ≤ 273</td></tr>
+      <tr><td>PG(3,2) lines (35,18,9,9)</td><td class="num">15</td><td class="num">210</td><td class="num">132</td><td class="num">416</td><td class="num">792 ≤ 1143</td></tr>
+      <tr><td>GQ(4,2) (45,12,3,3)</td><td class="num">21</td><td class="num">72</td><td class="num">20</td><td class="num">243</td><td class="num">120 ≤ 594</td></tr>
+      <tr><td>Hoffman–Singleton (50,7,0,1)</td><td class="num">29</td><td class="num">40</td><td class="num">40</td><td class="num">1000</td><td class="num">200 ≤ 2850</td></tr>
+      <tr class="sharp"><td>PG(4,2) lines (155,42,17,9)</td><td class="num">31</td><td class="num">30</td><td class="num">30</td><td class="num">295</td><td class="num"><strong>420 ≤ 420: sharp</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">On the line graph of PG(4,2) every non-vertex w ∈ S₄ has exactly three entries 3 (140 such w), so the bound is attained. The step “every root is orthogonal to y” is specific to the parameters: for K₃,₃,₃,₃ = srg(12,9,6,9) it fails, and so does the inequality (720 &gt; 684). Maximal even overlattices are not unique; the referee's own choices gave different numbers for GQ(2,2) and PG(3,2), which also satisfy the lemma.</p>
+</section>
+
+<section aria-labelledby="rows-h">
+  <div class="eyebrow">Step 5 · Table 2 of the paper</div>
+  <h2 id="rows-h">Six equations for the form ⟨7/4⟩</h2>
+  <p>Each row reads Σ (coefficient)·(unknown) + const = 0; it is a harmonic theta-series identity of the glued lattice of rank 32 for the polynomial in the first column. With the multipliers in the last column, and −44 times (C₃ − 1) = 0, the rows add up to S − 3R − 171.</p>
+  <div class="tbl-wrap"><table id="rowtab">
+    <thead><tr><th>P</th><th>R</th><th>A₀</th><th>A₁</th><th>S</th><th>B₁</th><th>B₃</th><th>C₀</th><th>C₁</th><th>C₃</th><th>const</th><th>multiplier</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <button type="button" class="btn" id="combine">Combine the rows in exact arithmetic</button>
+  <div class="detail" id="combout" aria-live="polite"><p class="muted">The button multiplies each printed row by its multiplier with exact fractions, subtracts 44(C₃ − 1) and prints the resulting linear form.</p></div>
+  <p class="muted">The unknowns count vectors (not antipodal pairs) of N<sup>#</sup>: R roots; A₀, A₁, S vectors of N of norm 4 with t = 0, 1, 2; B₁, B₃ vectors of norm 15/4 in the class e with t = ±½, ±3/2; C₀, C₁, C₃ vectors of norm 3 in y + N with t = 0, 1, 3. All 27 equations of degrees 0, 2, 4, 6 and 10 have rank 10 and leave the one-parameter family S = C₁ = 171 + 3R, A₀ = 50616 + 6R, …; nothing in them bounds R from above.</p>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Steps 5–6 · Table 3 of the paper</div>
+  <h2 id="gen-h">Four forms, four exclusions</h2>
+  <div class="genera">
+    <div class="gcard"><span class="nm">g₃ · ⟨7/4⟩</span><span class="meta">|D| = 4 · glue ⟨4⟩ · even unimodular rank 32 · 27 × 11, rank 10</span><span>Types by hand; identity |S₄| = 171 + 3|R₀| from six printed rows; with the lemma 9|R₀| ≤ −234. Also a Farkas certificate with the lemma row (28 multipliers).</span><span class="verdict">excluded · checkable by hand</span></div>
+    <div class="gcard c"><span class="nm">g₂ · ⟨5/4⟩ ⊥ ⟨2/3⟩</span><span class="meta">|D| = 12 · glue ⟨12⟩ · rank 32 · 27 × 16, rank 15</span><span>Identity |S₄| = 135 + 3|R₀|, so 9|R₀| ≤ −270 with the lemma. Independently, the 53,460 adjacent differences alone give a Farkas certificate (27 multipliers).</span><span class="verdict">excluded · exact certificate</span></div>
+    <div class="gcard c"><span class="nm">g₀ · ⟨1/4⟩ ⊥ ⟨4/3⟩</span><span class="meta">|D| = 12 · glue D₇ ⊥ A₂ · rank 40 · 33 × 12 with the lemma</span><span>Weights 20, 22, 26. Infeasible by an exact certificate without the lemma; with it, a second certificate (32 multipliers). Audit: |S₄| = 129 + 3|R₀|.</span><span class="verdict">excluded · exact certificate</span></div>
+    <div class="gcard c"><span class="nm">g₁ · ⟨3/4⟩ ⊥ P₃</span><span class="meta">|D| = 36 · glue D₅ ⊥ A₂ ⊥ A₂ · rank 40 · 46 × 24 with the lemma</span><span>Feasible without the lemma at shells 2 and 4; with it, an exact certificate (46 multipliers). The referee finds max(|S₄| − 12|R₀|) = −142155/217 &lt; 405.</span><span class="verdict">excluded · needs the lemma</span></div>
+  </div>
+  <p class="muted">Every certificate was re-checked by solver-free exact checkers: VALID.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The equations hold on real lattices</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>line graph of PG(4,2), srg(155,42,17,9)</td><td>rank 31 and D(N) = ℤ/10, the same shape; N glued to ⟨10⟩ is even unimodular of rank 32; all 27 harmonic equations on the exact census of N<sup>#</sup> to norm 4, both anti-isometries (derivation, audit, paper, referee)</td><td class="yes">0 nonzero residuals; N₂ = 64, N₄ = 160704 = 146880 + 216·64</td></tr>
+      <tr><td>D₇ with ⟨4⟩</td><td>the same glue data as g₃: D(D₇) = ⟨7/4⟩, a vector of norm 3 for y, and D₇ ⊥ ⟨4⟩ glues to E₈; every harmonic row of degree 0–6</td><td class="yes">all hold</td></tr>
+      <tr><td>Hoffman–Singleton</td><td>rank-32 and rank-40 constructions</td><td class="yes">0 residuals, all true types admitted, lower bounds hold</td></tr>
+      <tr><td>counting lemma</td><td>six graphs with smallest eigenvalue −3 (table above)</td><td class="yes">holds; sharp on PG(4,2) lines</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">A control caught a real bug. An early version of the audit's row builder dropped some constant terms and produced a false exclusion of g₃ that needed no lemma. The PG(4,2) control could not see it, because ⟨10⟩ has no short vectors; the D₇ toy, which has the same glue data as g₃, did. The paper states the lesson: every row builder needs a planted control whose glue lattice has short vectors.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>derivation</th><th>blind audit</th><th>referee</th></tr></thead>
+    <tbody>
+      <tr><td>four forms</td><td>classifier; hand proof in the paper</td><td>brute force over 2- and 3-groups, then ȳ-parity</td><td>hand proofs re-derived</td></tr>
+      <tr><td>counting lemma</td><td>hand; PARI control</td><td>re-proved, hypotheses checked; six real lattices</td><td>own lattices; sharp on PG(4,2)</td></tr>
+      <tr><td>g₃ identity</td><td>four constructions (ranks 32, 40, 48 and a second representation)</td><td>two independent row builders</td><td>the six printed rows bit for bit</td></tr>
+      <tr><td>g₂, g₀, g₁</td><td>exact certificates, standalone checker</td><td>own systems: 135, 129; g₁ needs the lemma</td><td>own builders: 135, 129, and −142155/217 for g₁</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The derivation was done by Claude Opus agents. The blind audit was done by Claude Fable, a different model of the same vendor, with its own code and no access to the derivation's code. A paper-side recomputation rebuilt the g₃ rows a third time from the formulas alone. An independent referee (a fresh Claude Fable session, own PARI/GP and Python code, nothing imported) re-implemented every computational part and recommended acceptance with minor revisions, with no fatal or major finding. A Codex (OpenAI) review then re-checked the printed equations with its own script and passed them; its remarks are applied in the published version. The grade is <strong>computer-assisted</strong>: the main form g₃ can be checked with pencil and paper, while the type lists and certificates for g₂, g₀ and g₁ are computer outputs. A human check of the counting lemma, which is new and load-bearing, is still owed; no human expert has read the paper yet.</p>
+</section>
+
+<section aria-labelledby="ctx-h">
+  <div class="eyebrow">Context</div>
+  <h2 id="ctx-h">What else follows</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>statement</th><th>why</th></tr></thead>
+    <tbody>
+      <tr><td>There is no srg(405,272,172,204).</td><td>It is the complement.</td></tr>
+      <tr><td>There is no partial geometry pg(8,33,6).</td><td>Its point graph would be an srg(405,272,172,204).</td></tr>
+      <tr><td>One more case of Koolen and Gebremichel's Conjecture 1.2 holds.</td><td>The conjecture says a primitive srg with smallest eigenvalue −3 has μ ∈ {6, 9} or v ≤ 276. (405,132,63,33) is one of the twelve open sets in their Table 1, and it is settled in the direction of the conjecture.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">At the time of writing, Brouwer's table lists (405,132,63,33) as open (“?”) and annotates the complementary row with “pg(8,33,6)?”. We found no earlier statement of the counting lemma; a specialist check of the literature is owed.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper, checkers and data: <a href="https://doi.org/10.5281/zenodo.23263684">doi:10.5281/zenodo.23263684</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab401-450.html">A. E. Brouwer, strongly regular graphs v = 401–450</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+
+  // plot: theta identity S = c + 3R against lemma S >= 405 + 12R
+  var svg=document.getElementById('plot'),rr=document.getElementById('rr'),rv=document.getElementById('rv'),ro=document.getElementById('readout'),C=171;
+  var W=640,H=300,L=56,Rt=16,T=14,B=36,RM=80,SM=1400;
+  function X(r){return L+(W-L-Rt)*r/RM;} function Y(s){return H-B-(H-B-T)*s/SM;}
+  function draw(){
+    var r=+rr.value,s='';rv.textContent=r;
+    s+='<line class="ax" x1="'+L+'" y1="'+Y(0)+'" x2="'+(W-Rt)+'" y2="'+Y(0)+'"/><line class="ax" x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+Y(0)+'"/>';
+    [0,20,40,60,80].forEach(function(t){s+='<text class="tk" x="'+X(t)+'" y="'+(H-B+18)+'" text-anchor="middle">'+t+'</text>';});
+    [0,400,800,1200].forEach(function(t){s+='<line class="ax" x1="'+L+'" y1="'+Y(t)+'" x2="'+(W-Rt)+'" y2="'+Y(t)+'" opacity=".5"/><text class="tk" x="'+(L-6)+'" y="'+(Y(t)+4)+'" text-anchor="end">'+t+'</text>';});
+    s+='<text class="tk" x="'+(W-Rt)+'" y="'+(H-4)+'" text-anchor="end">|R₀|</text><text class="tk" x="'+(L+4)+'" y="'+(T+10)+'">|S₄|</text>';
+    s+='<polygon class="gap" points="'+X(0)+','+Y(C)+' '+X(RM)+','+Y(C+3*RM)+' '+X(RM)+','+Y(405+12*RM)+' '+X(0)+','+Y(405)+'"/>';
+    s+='<line class="need" x1="'+X(0)+'" y1="'+Y(405)+'" x2="'+X(RM)+'" y2="'+Y(405+12*RM)+'"/>';
+    s+='<line class="have" x1="'+X(0)+'" y1="'+Y(C)+'" x2="'+X(RM)+'" y2="'+Y(C+3*RM)+'"/>';
+    var need=405+12*r,have=C+3*r;
+    s+='<line class="mk" x1="'+X(r)+'" y1="'+T+'" x2="'+X(r)+'" y2="'+Y(0)+'"/>';
+    if(need<=SM)s+='<circle class="dot-n" cx="'+X(r)+'" cy="'+Y(need)+'" r="5"/>';
+    s+='<circle class="dot-h" cx="'+X(r)+'" cy="'+Y(have)+'" r="5"/>';
+    svg.innerHTML=s;
+    ro.innerHTML='<p class="mono">|R₀| = '+r+':   theta series force |S₄| = '+C+' + 3·'+r+' = '+have+';   the lemma needs |S₄| ≥ 405 + 12·'+r+' = '+need+'.</p><p>Short by '+(need-have)+'. The gap 9|R₀| + '+(405-C)+' only grows, so no value of |R₀| ≥ 0 works.</p>';
+  }
+  rr.addEventListener('input',draw);
+  document.querySelectorAll('.filter button').forEach(function(f){
+    f.addEventListener('click',function(){document.querySelectorAll('.filter button').forEach(function(o){o.setAttribute('aria-pressed','false');});f.setAttribute('aria-pressed','true');C=+f.dataset.c;draw();});
+  });
+  draw();
+
+  // Table 2 of the paper
+  var P=['1','ℋ(ξ²)','ℋ(t²)','ℋ(ξ⁴)','ℋ(t⁴)','ℋ(t⁶)'];
+  var ROWS=[[-216,1,2,2,2,2,2,4,4,-146878,[1,680]],[-264,-1,-2,-2,2,2,14,28,28,62,[-1,576]],[-792,-3,10,58,-2,30,-6,20,276,-6,[31,18240]],[-1824,16,32,32,-53,-53,304,608,608,10912,[1,9792]],[-5472,48,-176,2272,-23,249,96,-352,34464,96,[11,48960]],[-10368,-288,352,10432,397,-2763,-576,704,978624,-576,[1,27360]]];
+  var NAMES=['R','A₀','A₁','S','B₁','B₃','C₀','C₁','C₃'];
+  var tb=document.querySelector('#rowtab tbody');
+  function neg(n){return n<0?'−'+(-n):String(n);}
+  ROWS.forEach(function(r,i){var tr=document.createElement('tr');var h='<td class="num">'+P[i]+'</td>';for(var j=0;j<10;j++)h+='<td class="num">'+neg(r[j])+'</td>';h+='<td class="num">'+neg(r[10][0])+'/'+r[10][1]+'</td>';tr.innerHTML=h;tb.appendChild(tr);});
+  if(typeof BigInt==='function'){
+    var Z=BigInt(0);
+    function gcd(a,b){a=a<Z?-a:a;b=b<Z?-b:b;while(b!==Z){var t=a%b;a=b;b=t;}return a;}
+    function fr(n,d){n=BigInt(n);d=BigInt(d===undefined?1:d);if(d<Z){n=-n;d=-d;}var g=gcd(n,d);if(g===Z)g=BigInt(1);return [n/g,d/g];}
+    function add(x,y){return fr(x[0]*y[1]+y[0]*x[1],x[1]*y[1]);} function mul(x,y){return fr(x[0]*y[0],x[1]*y[1]);}
+    function str(x){return x[1]===BigInt(1)?String(x[0]):x[0]+'/'+x[1];}
+    document.getElementById('combine').addEventListener('click',function(){
+      var c=[];for(var j=0;j<10;j++){var a=fr(0);ROWS.forEach(function(r){a=add(a,mul(fr(r[10][0],r[10][1]),fr(r[j])));});c.push(a);}
+      c[8]=add(c[8],fr(-44));c[9]=add(c[9],fr(44));
+      var terms=[];for(var k=0;k<9;k++)if(c[k][0]!==Z)terms.push((terms.length&&c[k][0]>Z?'+ ':'')+(str(c[k])==='1'?'':str(c[k])==='-1'?'−':str(c[k]).replace('-','−')+'·')+NAMES[k]);
+      var zeros=NAMES.filter(function(n,k){return c[k][0]===Z;});
+      document.getElementById('combout').innerHTML='<div class="formula">Σ multiplier·row − 44(C₃ − 1) = '+terms.join(' ').replace(/^\+ /,'')+' '+(c[9][0]<Z?'− '+str(fr(-c[9][0],c[9][1])):'+ '+str(c[9]))+'</div><p>Coefficients of '+zeros.join(', ')+' are exactly 0. Since every row equals 0, this gives <strong>S = 171 + 3R</strong>, that is |S₄| = 171 + 3|R₀|.</p>';
+    });
+  } else { document.getElementById('combine').disabled=true; }
+})();
+</script>
+</body>
+</html>
