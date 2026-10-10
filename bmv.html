@@ -75,6 +75,7 @@ sub,sup{line-height:0}
     <span class="chip kill">70 open pairs excluded</span>
     <span class="chip hand">28 by hand</span>
     <span class="chip comp">42 computer-assisted, two or more programs</span>
+    <a class="chip ok" href="#lean-h">Parity part checked in Lean 4</a>
     <span class="chip">Not yet peer-reviewed</span>
   </div>
 </header>
@@ -163,6 +164,24 @@ always: Az = θz + Bσ𝟏  (so Bσ ∈ ℤ),   Σ zᵢ² ≡ σ (mod 2)</span><
   <div class="controls"><label>q (a power of a prime ≡ 1 mod 4) <select id="nlq"></select></label></div>
   <div class="tbl-wrap"><table class="nlgrid"><thead><tr><th>m</th><th>parameters of NL<sub>m</sub>(q)</th><th>status</th></tr></thead><tbody id="nlbody"></tbody></table></div>
   <p class="muted">In Brouwer's range v ≤ 1300 the family consists of 13 rows of Table 1 (all those with v ∈ {169, 289, 625, 841}) and (289, 54, 1, 12), already marked “–”: 14 of the 21 pairs that fail the parity corollary. Rows with λ &lt; 0 on one side are not feasible parameter sets in the first place.</p>
+</section>
+
+<section aria-labelledby="lean-h">
+  <div class="eyebrow">Formal verification</div>
+  <h2 id="lean-h">The parity corollary is checked by Lean</h2>
+  <p>The parity corollary, the nonexistence of srg(169, 42, 5, 12) and the whole family of Corollary 4.2 are formalized in the Lean 4 proof assistant with the Mathlib library. Unlike a formalization that takes deep facts as hypotheses, this one starts from Mathlib's definition of a strongly regular graph (<span class="mono">SimpleGraph.IsSRGWith</span>) and assumes nothing else: no eigenvalues, multiplicities, Gram identity or lattice determinant are taken as given. Project: <a href="https://github.com/tonykoval/srg-parity-lean">github.com/tonykoval/srg-parity-lean</a> (builds in about two minutes after downloading the Mathlib cache).</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>statement</th><th>in Lean</th></tr></thead>
+    <tbody>
+      <tr><td>(F5): a symmetric integer matrix with even diagonal and odd determinant has even size 2h and determinant ≡ (−1)<sup>h</sup> (mod 4)</td><td class="yes">proved (induction, integral Schur complement)</td></tr>
+      <tr><td>the centred vertex lattice: even, rank n = vν/ℓ, ℓL<sup>#</sup> ⊆ L, positive determinant dividing ℓ<sup>n</sup></td><td class="yes">proved (Mathlib's PID theory; rank by a trace argument)</td></tr>
+      <tr><td>G = b(A − ρI) + cJ satisfies G² = ℓG, from the definition of an srg</td><td class="yes">proved from the definition</td></tr>
+      <tr><td>Corollary 4.1, exactly as stated in the paper</td><td class="yes">proved</td></tr>
+      <tr><td>no srg(169, 42, 5, 12)</td><td class="yes">proved, unconditionally</td></tr>
+      <tr><td>Corollary 4.2: no srg with the parameters of NL<sub>m</sub>(p<sup>e</sup>), p ≡ 1 (mod 4) prime, m odd</td><td class="yes">proved, unconditionally</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">No <span class="mono">sorry</span>, no <span class="mono">native_decide</span>, no added axioms; only Lean's standard axioms propext, Classical.choice and Quot.sound. The formalization found no error in the paper; it made three points explicit: the proof uses det L &gt; 0 (a negative determinant −13<sup>j</sup> would not contradict (F5)); Corollary 4.2 needs no passage to the complement; and the side condition m ≤ q − 2 is not needed. The 42 rows of Table 1 that rest on the full discriminant-form condition are not formalized; they are checked by independent programs.</p>
 </section>
 
 <section aria-labelledby="chk-h">
