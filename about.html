@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
 <header>
   <div class="eyebrow">About this site</div>
   <h1>Method, standards and credits</h1>
@@ -42,6 +42,8 @@
   <div class="prose">
     <h3>Showing that a graph cannot exist</h3>
     <p>The eigenvalues of a strongly regular graph are fixed by its parameters. Shifting the adjacency matrix by suitable multiples of I and J gives a positive semidefinite matrix of small rank, so the vertices can be drawn as short vectors in a space of 21 to 31 dimensions, with inner products that record adjacency. These vectors generate an integral lattice. Unimodular lattices of these dimensions are classified (Niemeier, Borcherds, Chenevier), and the lattice of the graph must glue into one of them. Alternatively (for 288 and 405 vertices) it glues into an even unimodular lattice of rank 32 or 40, where the theta series, weighted by harmonic polynomials, live in spaces of modular forms of dimension one or two; this turns the numbers of short vectors of each kind into the unknowns of exact linear equations. Exact identities about how a dual vector meets the vertices rule out many short dual vectors. In every possible host lattice we then find a vector that the identities forbid, or prove an identity that leaves no room, or enumerate all remaining candidates with certificates that nothing was missed, or give an exact rational (Farkas) certificate that the linear equations have no solution compatible with the vectors the graph supplies. No symmetry of the graph is assumed.</p>
+    <h3>One condition for many parameter sets</h3>
+    <p>The first steps of this method, before any gluing, already give a condition on the parameters alone. It goes back to Bannai, Munemasa and Venkov (2005) and Nebe and Venkov (2013), who used it for tight spherical designs; one paper extends it to every strongly regular graph with integral eigenvalues. The discriminant form of a maximal even overlattice of the vertex lattice must have no isotropic element, must satisfy Milgram's formula, and is tied by an exact identity to the class of the rescaled sum of the vertex vectors. Such forms are few and can be listed. A sweep of Brouwer's table finds 70 open complementary pairs for which none exists: 28 with proofs written out by hand, 42 by exhaustive enumerations repeated by at least two independent programs. See <a href="bmv.html">70 pairs</a>.</p>
     <h3>Constructing graphs</h3>
     <p>A group acting on v points splits the pairs of points into orbitals. Any union of orbitals is a graph on which the group acts, so the search is over subsets of a short list rather than over all graphs. We searched such unions for coset actions of many groups (from the GAP library of tables of marks, affine groups, subgroups found by descent, and layers over p-groups), and searched for partial difference sets directly. Every graph found was then checked by the exact identity A² = kI + λA + μ(J − I − A).</p>
   </div>
@@ -52,7 +54,7 @@
   <h2 id="v-h">What counts as checked</h2>
   <div class="std">
     <div class="box"><h3>Proved in the text</h3><p class="muted">Every lemma the proofs use is written out. External inputs (lattice classifications, standard theory, software) are listed as such.</p></div>
-    <div class="box c"><h3>Exact computation</h3><p class="muted">Computations are exact. They exhibit a verified object (a forbidden vector, an isometry), or their completeness is certified by exact counts, or (for the solver steps of srg(69,20,7,5)) the verdict comes from two programs, one with checked UNSAT proofs. The infeasibility certificates for 288 and 405 are checked by short exact programs that use no linear-programming or constraint solver.</p></div>
+    <div class="box c"><h3>Exact computation</h3><p class="muted">Computations are exact. They exhibit a verified object (a forbidden vector, an isometry), or their completeness is certified by exact counts, or (for the solver steps of srg(69,20,7,5)) the verdict comes from two programs, one with checked UNSAT proofs. The infeasibility certificates for 288 and 405 are checked by short exact programs that use no linear-programming or constraint solver. The computer-assisted rows of the 70-pair result rest on finite enumerations repeated by at least two independent programs.</p></div>
     <div class="box"><h3>Two derivations</h3><p class="muted">Each step was derived twice, by separate sessions or independently written programs, or audited with independent code; the papers say which, and what the two share.</p></div>
     <div class="box c"><h3>Controls</h3><p class="muted">Before a filter or search is trusted, it is run on known graphs of the same shape. A method that rejects a graph that exists is wrong.</p></div>
     <div class="box"><h3>Status markers</h3><p class="muted">A search that stopped at a time limit supports no nonexistence claim, and its counts are lower bounds (“≥”). Only complete, certified runs are quoted as exclusions.</p></div>
@@ -97,6 +99,7 @@
       <tr><td>There is no strongly regular graph with parameters (162,69,36,24)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23211005">10.5281/zenodo.23211005</a></td></tr>
       <tr><td>There is no strongly regular graph with parameters (288,105,52,30)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23263506">10.5281/zenodo.23263506</a></td></tr>
       <tr><td>There is no strongly regular graph with parameters (405,132,63,33)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23263684">10.5281/zenodo.23263684</a></td></tr>
+      <tr><td>The Bannai–Munemasa–Venkov lattice method for strongly regular graphs: a uniform discriminant-form condition and new nonexistence results</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23275433">10.5281/zenodo.23275433</a></td></tr>
       <tr><td>New strongly regular graphs on open parameter sets of Brouwer's table</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23210829">10.5281/zenodo.23210829</a></td></tr>
     </tbody>
   </table></div>

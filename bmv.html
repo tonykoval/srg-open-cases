@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The BMV Lattice Condition</title>
+<meta name="description" content="The Bannai–Munemasa–Venkov lattice method turned into a uniform condition on the parameters of a strongly regular graph: 70 open complementary pairs of Brouwer's table fail it, and no graph exists for the parameters NL_m(q) with q a power of a prime ≡ 1 mod 4 and m odd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: bmv */
+.key{background:var(--hand-soft);border:1px solid var(--line);border-left:4px solid var(--hand);border-radius:8px;padding:14px;display:grid;gap:10px}
+.key .formula{background:var(--surface)}
+.key ol,.key ul{margin:0;padding-left:22px;display:grid;gap:6px}
+.credit{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--comp);border-radius:8px;padding:14px;display:grid;gap:8px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.two .box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0}
+.two ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.btn{font:500 13.5px/1 var(--body);padding:9px 14px;border-radius:6px;border:1px solid var(--hand);background:var(--surface);color:var(--hand);cursor:pointer;justify-self:start}
+.btn[disabled]{opacity:.5;cursor:default}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.controls label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.controls select,.controls input{font:14px/1.2 var(--body);padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--fg);min-width:0;max-width:100%}
+.controls input[type=number]{width:96px;font-family:var(--mono)}
+.controls input[type=search]{width:170px}
+.controls label.cb{display:flex;align-items:center;gap:6px;color:var(--fg);padding-bottom:7px}
+.filter{display:flex;flex-wrap:wrap;gap:8px}
+.filter button{font:500 13px/1 var(--body);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filter button:hover{border-color:var(--hand)}
+.count{font-size:13px;color:var(--muted)}
+th button{all:unset;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
+th button:focus-visible{outline:2px solid var(--hand);outline-offset:2px}
+th[aria-sort="ascending"] button::after{content:" ▲"}
+th[aria-sort="descending"] button::after{content:" ▼"}
+#t1{min-width:900px;font-size:13.5px}
+#t1 th,#t1 td{padding:5px 7px}
+#t1 td.r,#t1 th.r{text-align:right}
+#t1 tbody tr:first-child td{border-bottom:0}
+#t1 tbody tr.c td{color:var(--muted);padding-top:0}
+#t1 tbody:target td{background:var(--hand-soft)}
+#t1 td.v{font:600 13.5px var(--mono)}
+#t1 .gr{font:600 12px/1 var(--body);padding:4px 7px;border-radius:999px;display:inline-block}
+#t1 .gr.H{background:var(--hand-soft);color:var(--hand)}
+#t1 .gr.C2{background:var(--comp-soft);color:var(--comp)}
+#t1 .vc{color:var(--muted);font-size:12.5px}
+.out{display:grid;gap:10px}
+.verdict{font-weight:600}
+.verdict.no{color:var(--kill)}
+.verdict.pass{color:var(--ok)}
+.reps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.rep{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:6px;padding:10px;display:grid;gap:4px;min-width:0;font-size:13.5px}
+.rep.fail{border-left-color:var(--kill)}
+.rep.pass{border-left-color:var(--ok)}
+.rep .mono{overflow-wrap:anywhere}
+.nlgrid td.st-t{color:var(--kill);font-weight:600}
+.nlgrid td.st-k{color:var(--kill)}
+sub,sup{line-height:0}
+.step .d>*,.key>*,.credit>*,.out>*{min-width:0}
+.chain>.step{min-width:0}
+@media (max-width:640px){.two,.reps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html" aria-current="page">70 pairs</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · a uniform condition on the parameters</div>
+  <h1>The Bannai–Munemasa–Venkov lattice method for strongly regular graphs</h1>
+  <p class="lead">A uniform discriminant-form condition and new nonexistence results. The lattice method of Bannai, Munemasa and Venkov, made to work for every strongly regular graph with integral eigenvalues, gives a test on (v, k, λ, μ) alone. Seventy complementary pairs that Brouwer's table lists as open fail it, so no graph exists for any of them. Its simplest case rules out an infinite family of negative-Latin-square parameters. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, 10 October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23275433">doi:10.5281/zenodo.23275433</a>
+    <span class="chip kill">70 open pairs excluded</span>
+    <span class="chip hand">28 by hand</span>
+    <span class="chip comp">42 computer-assisted, two or more programs</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="credit-h">
+  <div class="eyebrow">Credit first</div>
+  <h2 id="credit-h">The method is not new</h2>
+  <div class="credit">
+    <p><strong>Bannai, Munemasa and Venkov (2005)</strong> proved the nonexistence of certain tight spherical designs by studying the lattice the design spans: the design identities bound its discriminant group, an even sublattice or overlattice is formed, and the Milgram–Braun formula for Gauss sums excludes what is left. <strong>Nebe and Venkov (2013)</strong> refined it with Sylow-wise anisotropy and the Gauss sums of the Sylow subgroups and excluded infinitely many dimensions. Tight 4-designs are strongly regular graphs, as Bannai, Munemasa and Venkov note; their dimension-46 case is srg(1127,486,165,243).</p>
+    <p class="muted">E. Bannai, A. Munemasa and B. Venkov, The nonexistence of certain tight spherical designs, <em>Algebra i Analiz</em> 16:4 (2004), 1–23; English transl. <em>St. Petersburg Math. J.</em> 16 (2005), 609–625. · G. Nebe and B. Venkov, On tight spherical designs, <em>St. Petersburg Math. J.</em> 24 (2013), 485–491, <a href="https://arxiv.org/abs/1201.1830">arXiv:1201.1830</a>.</p>
+  </div>
+  <p>What the paper adds, as far as a literature search on 9 October 2026 could tell (it did not include forward citation searches from these two papers or the Russian-language literature):</p>
+  <div class="two">
+    <div class="box"><h3>New, as far as we found</h3><ul>
+      <li>A dual-vector identity and a distinguished class ȳ for <em>any</em> integral representation b(A − ρI) + cJ of <em>any</em> strongly regular graph with integral eigenvalues. This turns the first, genus-level step of the method into one condition on the parameters.</li>
+      <li>Its simplest case, the textbook congruence for even lattices of odd determinant applied to the centred representation, and the resulting exclusion of the NL<sub>m</sub>(q) family below.</li>
+      <li>A complete sweep of Brouwer's table up to 1300 vertices, with the 70 exclusions of Table 1, each graded.</li>
+    </ul></div>
+    <div class="box"><h3>Not new</h3><ul>
+      <li>The method itself (Bannai–Munemasa–Venkov, Nebe–Venkov).</li>
+      <li>The step “maximal integral overlattice ⇒ anisotropic discriminant form”, used by Akiyama for srg(266,45,0,9).</li>
+      <li>The facts about finite quadratic forms (Nikulin, Conway–Sloane, Milnor–Husemoller) and the parity congruence for even lattices of odd determinant (Conway–Sloane, Elkies).</li>
+    </ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="plain-h">
+  <div class="eyebrow">In plain words</div>
+  <h2 id="plain-h">What the condition says</h2>
+  <p>The adjacency matrix A of a strongly regular graph has three eigenvalues, fixed by the parameters. A suitable integer combination G = b(A − ρI) + cJ kills one eigenspace, so G is positive semidefinite and is the Gram matrix of v vectors, one per vertex, with integer inner products. They span an integral lattice L, the <em>vertex lattice</em>. If the diagonal of G is even, L is even, and it has a largest even overlattice M.</p>
+  <p>M leaves a finite remainder, the discriminant form D(M) = M<sup>#</sup>/M, a finite abelian group with a quadratic form. Three things constrain it. Because M is maximal, D(M) has no isotropic element. Milgram's formula fixes the phase of its Gauss sum by the rank. And an exact identity for dual vectors, which holds because the vertices satisfy the strongly-regular equations, ties every element of D(M) to the class of the rescaled sum of all vertex vectors. Finite quadratic modules without isotropic elements are few and small, so one can list them all. If none satisfies everything, the graph cannot exist.</p>
+  <p class="muted">The test needs only (v, k, λ, μ): no theta series, no gluing into unimodular lattices, no search over graphs. It is weaker than the full method of the single-set papers on this site. A parameter set that passes is not thereby shown to exist.</p>
+</section>
+
+<section aria-labelledby="prec-h">
+  <div class="eyebrow">Precise statement · click a step</div>
+  <h2 id="prec-h">From a representation to Theorem 3.1</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>definition or lemma, proved in the paper</span><span><i style="background:var(--kill)"></i>the condition</span></div>
+  <div class="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2.1</span><span class="t"><strong>Representation</strong><span class="s">A triple (ρ, b, c) with G = b(A − ρI) + cJ.</span><span class="d"><span>Let r &gt; s be the restricted eigenvalues, with multiplicities f and g. Take ρ ∈ {r, s} and b ≠ 0; θ is the other restricted eigenvalue and n its multiplicity. Put</span><span class="formula">e = b(θ − ρ),   T = b(k − ρ) + cv,   ν = c − bρ</span><span>The representation is <em>admissible</em> if e &gt; 0, T ≥ 0 and ν is even; <em>centred</em> if T = 0; <em>primitive</em> if b = ±1 and T &gt; 0. G acts as T on 𝟏, as e on the θ-eigenspace and as 0 on the ρ-eigenspace, so it is positive semidefinite of rank d = n + 1 (T &gt; 0) or d = n (T = 0); its diagonal is ν.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>Vertex lattice and maximal even overlattice</strong><span class="s">L spanned by the vertex vectors; M maximal even, L ⊆ M ⊆ M<sup>#</sup> ⊆ L<sup>#</sup>.</span><span class="d"><span>Write G = VᵀV with columns v₁, …, v<sub>v</sub> spanning ℝ<sup>d</sup>. They generate a lattice L, even because ν is even. Every integral overlattice of L lies in L<sup>#</sup>, so maximal even overlattices exist; fix one, M. Put Σ = Σᵢ vᵢ, so ⟨Σ, vᵢ⟩ = T and Σ² = vT.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2.2</span><span class="t"><strong>The dual-vector identity</strong><span class="s">Every dual vector gives integers zᵢ with exact sums.</span><span class="d"><span>For x ∈ L<sup>#</sup> put zᵢ = ⟨x, vᵢ⟩ ∈ ℤ and σ = Σᵢ zᵢ. With κ = (T − e)/(vT) for T &gt; 0 and B = (k − θ)/v:</span><span class="formula">T &gt; 0:  VVᵀ = eI + κΣΣᵀ,   Σ zᵢ² = e·x² + κσ²
+T = 0:  Σ = 0,  VVᵀ = eI,   Σ zᵢ² = e·x²,   e·x ∈ L
+always: Az = θz + Bσ𝟏  (so Bσ ∈ ℤ),   Σ zᵢ² ≡ σ (mod 2)</span><span class="muted">For tight designs these specialise to the moment identities of Bannai–Munemasa–Venkov.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2.4</span><span class="t"><strong>The class ȳ</strong><span class="s">The rescaled sum y = Σ/γ is a dual vector of M.</span><span class="d"><span>Let H be the set of integers h with Bh ∈ ℤ, κh² ∈ ℤ and κh² ≡ h (mod 2); it is a subgroup of ℤ (Lemma 2.3) with a generator γ &gt; 0. Put</span><span class="formula">y = Σ/γ,   Y = y² = vT/γ²,   C = κγ²,   r_y = min{ j ≥ 1 : j²Y ∈ 2ℤ }</span><span>Then y ∈ M<sup>#</sup>, its class ȳ ∈ D(M) has order exactly r_y with q(ȳ) ≡ Y (mod 2), and r_y divides C, so e·D(M) ⊆ ⟨ȳ⟩. The proof that r_y | C repairs a gap found by the Codex review.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">F</span><span class="t"><strong>Standard facts on finite quadratic modules</strong><span class="s">Anisotropy, the short list of anisotropic modules, Gauss sums, Milgram's formula.</span><span class="d"><span>(F1) If M is maximal even, D(M) is anisotropic: q(x̄) = 0 only for x̄ = 0. (F2) An anisotropic module is the sum of its p-parts; for odd p the p-part is elementary abelian of rank ≤ 2, and the 2-part has order ≤ 8. (F3) Gauss sums of cyclic modules are explicit. (F4) <strong>Milgram's formula</strong>: for an even positive definite lattice M of rank d,</span><span class="formula">γ(D(M)) = Σ_{x ∈ D(M)} e^{πi q(x)} = √|D(M)| · e^{2πi d/8},   i.e.  ph(D(M)) ≡ d (mod 8)</span><span>(F5) If L is even and det L is odd, then the rank n of L is even and det L ≡ (−1)<sup>n/2</sup> (mod 4).</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="true"><span class="n">3.1</span><span class="t"><strong>Theorem 3.1: the condition</strong><span class="s">A finite quadratic module with five properties must exist.</span><span class="d"><span>Let (ρ, b, c) be admissible with T &gt; 0, of rank d = n + 1. Then there is a finite quadratic module (D, q), namely D = D(M), and an element ȳ ∈ D such that</span><span class="formula">(i)   D is anisotropic;
+(ii)  ph(D) ≡ d (mod 8);
+(iii) ȳ has order r_y and q(ȳ) ≡ Y (mod 2);
+(iv)  eD ⊆ ⟨ȳ⟩, in particular exp D | e·r_y;
+(v)   (C) for every x̄ ∈ D there is a rational t ≡ b(x̄, ȳ) (mod 1) with
+      γt ∈ ℤ, Bγt ∈ ℤ and, for any rational representative Q of q(x̄),
+      eQ + Ct² ∈ ℤ   and   eQ + Ct² ≡ γt (mod 2).</span><span><strong>If for some representation no pair (D, ȳ) satisfies (i)–(v), no srg(v, k, λ, μ) exists.</strong> One failing representation is enough. A weaker form without ȳ (Proposition 3.4) covers every admissible representation, including centred and rescaled ones, and odd representations reduce to it through an even sublattice of index 2 (Lemma 3.5).</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="par-h">
+  <div class="eyebrow">The simplest case · Corollary 4.1</div>
+  <h2 id="par-h">The parity corollary</h2>
+  <div class="key">
+    <p>Let srg(v, k, λ, μ) have integral restricted eigenvalues, ρ ∈ {r, s}, θ the other one, n the multiplicity of θ. Put</p>
+    <div class="formula">a = v / gcd(v, k − ρ),   b = a·sgn(θ − ρ),   c = −b(k − ρ)/v,   ν = c − bρ,   ℓ = a·|θ − ρ|</div>
+    <p>If ν is even and ℓ is odd, then n is even and (−1)<sup>n/2</sup> ≡ Δ (mod 4) for some positive integer Δ all of whose prime factors divide ℓ. In particular, if every prime factor of ℓ is ≡ 1 (mod 4), then n ≡ 0 (mod 4).</p>
+  </div>
+  <p>Proof: (ρ, b, c) is admissible and centred, with e = ℓ and T = 0, so the vertex lattice L is even of rank n and ℓL<sup>#</sup> ⊆ L; hence det L divides ℓ<sup>n</sup>. Apply (F5) with Δ = det L. No overlattice, no Gauss sum and no computation beyond the parameters is needed. The unimodular special case of (F5), that an even unimodular lattice has rank divisible by 8, is the step by which Bannai–Munemasa–Venkov and Nebe–Venkov exclude tight designs.</p>
+
+  <h3>Example: no srg(169, 42, 5, 12), in three lines</h3>
+  <p>Select each line, or step through them.</p>
+  <div class="chain" id="p169">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">1</span><span class="t"><strong>The representation</strong><span class="s">G = 13(A + 10I) − 4J.</span><span class="d"><span>The eigenvalues are r = 3 and s = −10 (roots of x² + 7x − 30), with f = 126 and g = 42. Take ρ = s = −10: k − ρ = 52, gcd(169, 52) = 13, so a = 13 and</span><span class="formula">G = 13(A + 10I) − 4J</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The lattice</strong><span class="s">Even, rank 126, determinant a power of 13.</span><span class="d"><span>G acts on 𝟏 by 13·52 − 4·169 = 0, on the r-eigenspace by 13·13 = 169 and on the s-eigenspace by 0. Its diagonal is ν = 130 − 4 = 126, even. So the vertex lattice L is even of rank n = f = 126 with 169L<sup>#</sup> ⊆ L, hence det L = 13<sup>j</sup> for some j.</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">3</span><span class="t"><strong>The contradiction</strong><span class="s">13<sup>j</sup> ≡ 1, but (−1)<sup>63</sup> ≡ 3 (mod 4).</span><span class="d"><span class="formula">det L = 13^j ≡ 1  ≢  (−1)^(126/2) = −1  (mod 4)</span><span>This contradicts (F5). <strong>No srg(169, 42, 5, 12) exists.</strong> The other centred representation, G = 13(3I − A) + 3J of rank g = 42 ≡ 2 (mod 4), gives the same contradiction. The original derivation used a different representation, A′ + 4I of the complement, of rank 43, where the phases of the 2-, 5- and 13-parts force ph(D) ∈ {1, 5} ≠ 3; Codex's implementation confirms that one independently.</span></span></span></button>
+  </div>
+  <div class="btnrow"><button type="button" class="btn" id="p169next">Show the next line</button><button type="button" class="btn" id="p169reset">Start again</button></div>
+</section>
+
+<section aria-labelledby="nl-h">
+  <div class="eyebrow">An infinite family · Corollary 4.2</div>
+  <h2 id="nl-h">Negative-Latin-square parameters</h2>
+  <div class="key">
+    <p><strong>Corollary 4.2.</strong> Let q = p<sup>e</sup> with p ≡ 1 (mod 4) prime, and let m be odd with 1 ≤ m ≤ q − 2. There is no strongly regular graph with the parameters of NL<sub>m</sub>(q),</p>
+    <div class="formula">( q²,  m(q + 1),  −q + m² + 3m,  m(m + 1) )</div>
+  </div>
+  <p>Proof sketch: the restricted eigenvalues are r = m and s = m − q, with f = (q + 1)(q − 1 − m). The complement is NL<sub>q−1−m</sub>(q), again with odd index, so one may assume p ∤ m + 1. With ρ = s the corollary above gives a = q, G = q(A − (m − q)I) − (m + 1)J, ν even and ℓ = q², whose only prime is p ≡ 1 (mod 4). But n = f = (q + 1)(q − 1 − m) ≡ 2 (mod 4), since q + 1 ≡ 2 (mod 4) and q − 1 − m is odd.</p>
+  <p>It contains the known nonexistence of srg(289, 54, 1, 12) = NL<sub>3</sub>(17), proved by Bondarenko and Radchenko (2013) by a different route; here it is a three-line second proof. It agrees with the known graphs: Paley(q²) has the parameters of NL<sub>(q−1)/2</sub>(q) with (q − 1)/2 even, and Latin-square parameters LS<sub>m</sub>(q) have n = m(q − 1) ≡ 0 (mod 4). Pick q to list the family; the status column is matched against Table 1 by your browser.</p>
+  <div class="controls"><label>q (a power of a prime ≡ 1 mod 4) <select id="nlq"></select></label></div>
+  <div class="tbl-wrap"><table class="nlgrid"><thead><tr><th>m</th><th>parameters of NL<sub>m</sub>(q)</th><th>status</th></tr></thead><tbody id="nlbody"></tbody></table></div>
+  <p class="muted">In Brouwer's range v ≤ 1300 the family consists of 13 rows of Table 1 (all those with v ∈ {169, 289, 625, 841}) and (289, 54, 1, 12), already marked “–”: 14 of the 21 pairs that fail the parity corollary. Rows with λ &lt; 0 on one side are not feasible parameter sets in the first place.</p>
+</section>
+
+<section aria-labelledby="chk-h">
+  <div class="eyebrow">Try it</div>
+  <h2 id="chk-h">Parity checker</h2>
+  <p>Enter parameters. Your browser computes the eigenvalues and multiplicities and runs Corollary 4.1 in the two centred representations of the graph and of its complement. Only this simplest case is implemented here; the full Theorem 3.1 needs an enumeration of finite quadratic modules.</p>
+  <div class="filter" role="group" aria-label="Examples">
+    <button type="button" data-p="169,42,5,12">(169,42,5,12)</button>
+    <button type="button" data-p="289,54,1,12">(289,54,1,12) known “–”</button>
+    <button type="button" data-p="625,130,15,30">(625,130,15,30)</button>
+    <button type="button" data-p="169,84,41,42">Paley(169)</button>
+    <button type="button" data-p="169,24,11,2">Latin square LS₂(13)</button>
+    <button type="button" data-p="289,144,71,72">Paley(289)</button>
+    <button type="button" data-p="36,14,7,4">T(9)</button>
+    <button type="button" data-p="75,32,10,16">(75,32,10,16) known “–”</button>
+  </div>
+  <form class="controls" id="pform">
+    <label>v <input type="number" id="pv" min="2" step="1" value="169" required></label>
+    <label>k <input type="number" id="pk" min="1" step="1" value="42" required></label>
+    <label>λ <input type="number" id="pl" min="0" step="1" value="5" required></label>
+    <label>μ <input type="number" id="pm" min="0" step="1" value="12" required></label>
+    <button type="submit" class="btn">Check</button>
+  </form>
+  <div class="detail out" id="pout" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="t1-h">
+  <div class="eyebrow">Table 1 of the paper</div>
+  <h2 id="t1-h">All 70 excluded pairs</h2>
+  <p>Brouwer's layout: the first line of a pair is (v, k, λ, μ) with 2k &lt; v and its eigenvalues r<sup>f</sup>, s<sup>g</sup>; the second line is the complement. Every pair had status “?” in Brouwer's table on 8 October 2026. The data are generated from the LaTeX source of the paper (<a href="data/bmv_table1.json">JSON</a>, <a href="data/bmv_table1.csv">CSV</a>). Select a column heading to sort.</p>
+  <div class="controls">
+    <label>Grade <select id="fg"><option value="">all</option><option value="H">H: proof in the paper</option><option value="C2">C2: two or more programs</option></select></label>
+    <label>Reason <select id="fr"><option value="">any</option><option value="parity">parity (Corollary 4.1)</option><option value="ph">Milgram phase, by hand</option><option value="none">no admissible module</option></select></label>
+    <label class="cb"><input type="checkbox" id="fnl"> NL<sub>m</sub>(q) only</label>
+    <label>Search <input id="fq" type="search" placeholder="v, k or (v,k,λ,μ)"></label>
+  </div>
+  <p class="count" id="fcount" aria-live="polite"></p>
+  <div class="tbl-wrap"><table id="t1">
+    <thead><tr>
+      <th class="r" aria-sort="ascending"><button type="button" data-s="v">v</button></th>
+      <th class="r" aria-sort="none"><button type="button" data-s="k">k</button></th>
+      <th class="r" aria-sort="none"><button type="button" data-s="lambda">λ</button></th>
+      <th class="r" aria-sort="none"><button type="button" data-s="mu">μ</button></th>
+      <th class="r" aria-sort="none"><button type="button" data-s="r">r<sup>f</sup></button></th>
+      <th class="r" aria-sort="none"><button type="button" data-s="s">s<sup>g</sup></button></th>
+      <th aria-sort="none"><button type="button" data-s="grade">grade</button></th>
+      <th aria-sort="none"><button type="button" data-s="prog">programs</button></th>
+      <th>representation</th>
+      <th aria-sort="none"><button type="button" data-s="reason">reason</button></th>
+    </tr></thead>
+  </table></div>
+  <p class="muted">Grade H: proved by hand in the paper (every H row is also excluded by at least one program). C2: excluded by at least two of the independent programs V1, V3, V4, V5; there is no certificate beyond rerunning the enumeration. “Programs” gives, for V1–V5, the representations without an admissible module out of those decided (timeouts are never counted); V2 is a cross-check only, and P means Corollary 4.1 fails. A representation (ρ, b, c)<sub>d</sub> means G = b(A − ρI) + cJ on the first orientation, of rank d; “proof” marks the one used in the paper's hand proof.</p>
+</section>
+
+<section aria-labelledby="hand-h">
+  <div class="eyebrow">Worked proofs · Section 5 of the paper</div>
+  <h2 id="hand-h">Phase arguments by hand</h2>
+  <p>Eight H rows are not parity rows; each is a short phase computation. In each case the exponent bound (iv) splits D into p-parts, the class ȳ pins down one part, condition (C) forces the 2-part to be of even type, and the Gauss-sum phases (F3) add up to a value that Milgram's formula (ii) forbids. The same table reproduces srg(75, 32, 10, 16), excluded by Azarija and Marc (2018) with star complements and an exhaustive computer search.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>representation</th><th class="r">e</th><th class="r">T</th><th class="r">γ</th><th class="r">Y</th><th class="r">r_y</th><th>forced ph(D)</th><th>d</th></tr></thead>
+    <tbody>
+      <tr><td class="num">(96,35,10,14)</td><td class="num">A′ + 4I on (96,60,38,36)</td><td class="num r">10</td><td class="num r">64</td><td class="num r">64</td><td class="num r">3/2</td><td class="num r">2</td><td class="num">{3, 7}</td><td class="num">33 ≡ 1</td></tr>
+      <tr><td class="num">(176,25,0,4)</td><td class="num">A′ + 4I on (176,150,128,126)</td><td class="num r">10</td><td class="num r">154</td><td class="num r">154</td><td class="num r">8/7</td><td class="num r">7</td><td class="num">{2, 6}</td><td class="num">56 ≡ 0</td></tr>
+      <tr><td class="num">(616,205,90,57)</td><td class="num">A + 4I</td><td class="num r">41</td><td class="num r">209</td><td class="num r">209</td><td class="num r">56/19</td><td class="num r">19</td><td class="num">{2, 6}</td><td class="num">56 ≡ 0</td></tr>
+      <tr><td class="num">(300,26,4,2)</td><td class="num">A + 4I</td><td class="num r">10</td><td class="num r">30</td><td class="num r">30</td><td class="num r">10</td><td class="num r">1</td><td class="num">{0, 4}</td><td class="num">118 ≡ 6</td></tr>
+      <tr><td class="num">(430,39,8,3)</td><td class="num">A + 4I</td><td class="num r">13</td><td class="num r">43</td><td class="num r">43</td><td class="num r">10</td><td class="num r">1</td><td class="num">{0, 4}</td><td class="num">130 ≡ 2</td></tr>
+      <tr><td class="num">(690,318,121,168)</td><td class="num">A′ + 4I on (690,371,220,175)</td><td class="num r">53</td><td class="num r">375</td><td class="num r">75</td><td class="num r">46</td><td class="num r">1</td><td class="num">{0, 4}</td><td class="num">46 ≡ 6</td></tr>
+      <tr><td class="num">(508,247,126,114)</td><td class="num">A + 7I + J</td><td class="num r">26</td><td class="num r">762</td><td class="num r">762</td><td class="num r">2/3</td><td class="num r">3</td><td class="num">{2, 6}</td><td class="num">128 ≡ 0</td></tr>
+      <tr><td class="num">(1072,391,150,138)</td><td class="num">A + 11I + J</td><td class="num r">34</td><td class="num r">1474</td><td class="num r">737</td><td class="num r">32/11</td><td class="num r">11</td><td class="num">{2, 6}</td><td class="num">336 ≡ 0</td></tr>
+      <tr><td class="num">(75,32,10,16) known</td><td class="num">2I − A + 2J</td><td class="num r">10</td><td class="num r">120</td><td class="num r">60</td><td class="num r">5/2</td><td class="num r">2</td><td class="num">{1, 5}</td><td class="num">19 ≡ 3</td></tr>
+    </tbody>
+  </table></div>
+  <div class="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">96</span><span class="t"><strong>srg(96, 35, 10, 14), written out</strong><span class="s">Brouwer's table comments “pg(5,6,2)?” on this row.</span><span class="d"><span>Pass to the complement srg(96, 60, 38, 36): r = 6, s = −4, f = 32, g = 63. Take G = A + 4I, i.e. (ρ, b, c) = (−4, 1, 0): e = 10, T = 64, ν = 4, d = 33, and G² = 10G + 36J. Then κ = 9/1024 and B = 9/16. For h ∈ H: 16 | h, then 32 | h, then h = 32u with u even; so γ = 64, Y = 3/2, r_y = 2, C = 36.</span><span><em>Exponent.</em> 10x = Σ zᵢvᵢ − 18(2t)y with 2y ∈ M, so 10D = 0 and D = D₂ ⊕ D₅, both elementary, ȳ ∈ D₂.</span><span><em>The 2-part.</em> b(ȳ, ȳ) = ½ is a unit, so D₂ = ⟨ȳ⟩ ⊥ ȳ<sup>⊥</sup>. On ȳ<sup>⊥</sup>, t ∈ ℤ and (C) gives 10Q ∈ 2ℤ, so Q ∈ ℤ: even type, phase 0 or 4. ⟨ȳ⟩ with q = 3/2 has phase 7. So ph(D₂) ∈ {3, 7}; the 5-part has phase 0 or 4.</span><span class="formula">ph(D) ∈ {3, 7}   but   d = 33 ≡ 1 (mod 8)</span><span>Condition (ii) fails: no srg(96, 35, 10, 14). The blind auditor's weaker decider admits modules in this representation and excludes the row through an odd representation instead (Lemma 3.5).</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">176</span><span class="t"><strong>srg(176, 25, 0, 4), written out</strong><span class="s">A triangle-free parameter set.</span><span class="d"><span>Complement srg(176, 150, 128, 126): r = 6, s = −4, f = 55, g = 120; G = A + 4I gives e = 10, T = 154, ν = 4, d = 56. κ = 9/1694, B = 9/11; so γ = 154, Y = 8/7, r_y = 7, C = 126.</span><span>By Lemma 2.4(3), 10D ⊆ ⟨ȳ⟩ ≅ ℤ/7 and exp D | 70. Multiplication by 10 is bijective on D₇, so D₇ = ⟨ȳ⟩ with q(ȳ) = 8/7 = 2·(4/7), of phase 2. On D₂, (C) gives Q ∈ ℤ, phase 0 or 4; D₅ has phase 0 or 4.</span><span class="formula">ph(D) ∈ {2, 6}   but   d = 56 ≡ 0 (mod 8)</span><span>No srg(176, 25, 0, 4).</span></span></span></button>
+  </div>
+  <p class="muted">For (508,247,126,114) and (1072,391,150,138) the weaker form without ȳ admits modules (even the trivial one, since d ≡ 0 mod 8); it is (iii) together with (iv), an element of order r_y = 3 resp. 11 that pins the r_y-part to ⟨ȳ⟩, that excludes them.</p>
+</section>
+
+<section aria-labelledby="ctl-h">
+  <div class="eyebrow">Implementations and controls · Section 7</div>
+  <h2 id="ctl-h">Four independent programs, and graphs that exist</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>program</th><th>written by</th><th>what it tests</th></tr></thead>
+    <tbody>
+      <tr><td class="num">V1</td><td>Claude, derivation session</td><td>Theorem 3.1 for primitive representations, (iv) as exp D | e·r_y; all anisotropic modules on the primes of e·r_y, no order cap. Drives the full sweep.</td></tr>
+      <tr><td class="num">V2</td><td>older classifier, same lane as V1</td><td>cross-check only, not counted as independent</td></tr>
+      <tr><td class="num">V3</td><td>Claude Fable, blind audit, before reading the derivation</td><td>Proposition 3.4 (no ȳ) on 8–10 standard representations per row, odd ones via Lemma 3.5</td></tr>
+      <tr><td class="num">V4</td><td>Codex (OpenAI), review; standard library only</td><td>Theorem 3.1 with the weaker exponent bound e·den(C)·r_y²; rerun on every (row, representation) pair that V1 excludes</td></tr>
+      <tr><td class="num">V5</td><td>Claude, separate session, without reading V1–V4</td><td>Theorem 3.1 with (iv) in full and in V1's weak form; 2-parts by brute force</td></tr>
+      <tr><td class="num">P</td><td>Claude</td><td>Corollary 4.1 on every row</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>every existing row up to 1300 vertices</td><td>V5 with all of (i)–(v) on the 557 complementary pairs with status “+” or “!” and integral eigenvalues, both sides (1114 representations); V1 on the same (1043 decided, 71 timeouts); V3 on 458 existing rows with v ≤ 400 (4034 representations); V4 on 112 existing rows; P on all 1096 existing rows</td><td class="yes">0 exclusions; V5: all 1114 admissible, 0 timeouts</td></tr>
+      <tr><td>real graphs, actual lattices</td><td>blind audit: 254 graphs (158 parameter sets: triangular, lattice, Latin-square, Paley up to 169, generalized quadrangles, polar, affine polar, Steiner block graphs, sporadic graphs up to McLaughlin); vertex lattice, a maximal even overlattice and D(M) computed in PARI/GP for 8–10 representations each</td><td class="yes">1304 records, 0 violations; ȳ checked in 560 records, 0 violations</td></tr>
+      <tr><td>derivation lane</td><td>112 (graph, representation) pairs on 28 graphs, every condition of Theorem 3.1 on every class</td><td class="yes">0 violations</td></tr>
+      <tr><td>a recent construction</td><td>srg(85,30,11,10) (Hancock, “+” since 2026) and its complement</td><td class="yes">V1: one admissible module in each of 12 representations; V3 accepts all 16</td></tr>
+      <tr><td>known nonexistence</td><td>srg(75,32,10,16) (Azarija–Marc) and srg(289,54,1,12) (Bondarenko–Radchenko)</td><td class="yes">both reproduced, as independent second proofs</td></tr>
+      <tr><td>every (row, representation) that V1 excludes</td><td>151 pairs re-decided by V4 and by V5</td><td class="yes">151 agreements, no disagreement, no timeout</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The condition is not a complete test. The known nonexistent sets (49,16,3,6), (57,14,1,4), (95,40,12,20), (96,38,10,18) and (1127,486,165,243) pass it; for the last, Bannai, Munemasa and Venkov needed gluing and theta series.</p>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">Limits</div>
+  <h2 id="lim-h">What the condition does not do</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>limit</th><th>detail</th></tr></thead>
+    <tbody>
+      <tr><td>The genus is not a function of the parameters</td><td>W(3) and Q(4,3) are both srg(40,12,2,4). In the same representation A + 4I the blind audit found D(M) ≅ ⟨½⟩ for W(3) and a group of order 72 for Q(4,3). The test therefore only asks whether <em>some</em> admissible module exists; any argument that pins the genus from the parameters alone would be unsound.</td></tr>
+      <tr><td>Finitely many representations</td><td>A row that passes every tested representation is not shown to pass the condition. Only the smallest admissible c is tested on each side.</td></tr>
+      <tr><td>Scan coverage</td><td>The V1 sweep of all 1402 open pairs with integral eigenvalues is complete (2804 representations; 227 timeouts at 90 s rerun at 900 s): 70 excluded, 1318 admit a module on both sides, 14 admit one on one side and are undecided on the other after 900 s.</td></tr>
+      <tr><td>Strength</td><td>Genus-level only. Where admissible modules exist, for example srg(88,27,6,9) and srg(99,14,1,2), it says nothing.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How it was checked, and the grade</h2>
+  <p>A blind adversarial audit by a separate Claude Fable session re-derived the obstruction from first principles before reading the derivation, wrote the decider V3, computed the actual discriminant forms of 254 real graphs and found the W(3)/Q(4,3) example. Codex (OpenAI) independently reviewed the uniform lemma and the two main hand proofs, found a missing step in Lemma 2.4(3), supplied its repair, and wrote V4. A further Fable session made the literature check. No step rests on the judgement of an AI system: every claim is proved in the text or is an exact finite computation that can be rerun.</p>
+  <p>The grade is stated per row. <strong>Hand proofs for the 28 H rows</strong>: 20 by the parity corollary, which needs only the arithmetic in the reason column, and 8 by the phase arguments above. <strong>Computer-assisted for the 42 C2 rows</strong>: exhaustive finite enumerations of quadratic modules, each repeated by at least two independent programs; no row rests on one program only. No human expert has read the paper yet.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper, scripts and scan outputs: <a href="https://doi.org/10.5281/zenodo.23275433">doi:10.5281/zenodo.23275433</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
+</footer>
+</div>
+
+<!--T1:BEGIN-->
+<script id="t1data" type="application/json">[{"v":96,"k":35,"lambda":10,"mu":14,"r":3,"f":63,"s":-7,"g":32,"comp":{"k":60,"lambda":38,"mu":36,"r":6,"f":32,"s":-4,"g":63},"V1":[6,6],"V2":[4,4],"V3":[1,9],"V4":[4,4],"V5":[4,4],"P":false,"grade":"H","reps":[{"by":"proof","rep":[3,-1,1],"d":33,"also":["V1","V4","V5"]},{"by":"V3","rep":[3,-1,2],"d":33,"also":[]}],"reason":"ph ∈ {3,7} vs d = 33 (§5)","nl":null},{"v":105,"k":40,"lambda":15,"mu":15,"r":5,"f":48,"s":-5,"g":56,"comp":{"k":64,"lambda":38,"mu":40,"r":4,"f":56,"s":-6,"g":48},"V1":[6,6],"V2":[4,4],"V3":[1,8],"V4":[4,4],"V5":[4,4],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":49,"also":[]},{"by":"V3","rep":[5,-1,2],"d":57,"also":[]}],"reason":"no admissible module","nl":null},{"v":112,"k":36,"lambda":10,"mu":12,"r":4,"f":63,"s":-6,"g":48,"comp":{"k":75,"lambda":50,"mu":50,"r":5,"f":48,"s":-5,"g":63},"V1":[6,6],"V2":[4,4],"V3":[1,9],"V4":[4,4],"V5":[4,4],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":49,"also":[]},{"by":"V3","rep":[4,-1,1],"d":49,"also":[]}],"reason":"no admissible module","nl":null},{"v":120,"k":34,"lambda":8,"mu":10,"r":4,"f":68,"s":-6,"g":51,"comp":{"k":85,"lambda":60,"mu":60,"r":5,"f":51,"s":-5,"g":68},"V1":[6,6],"V2":[2,2],"V3":[2,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":52,"also":[]},{"by":"V3","rep":[-6,1,0],"d":69,"also":[]}],"reason":"no admissible module","nl":null},{"v":120,"k":35,"lambda":10,"mu":10,"r":5,"f":56,"s":-5,"g":63,"comp":{"k":84,"lambda":58,"mu":60,"r":4,"f":63,"s":-6,"g":56},"V1":[6,6],"V2":[2,2],"V3":[2,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":57,"also":[]},{"by":"V3","rep":[-5,1,0],"d":57,"also":[]}],"reason":"no admissible module","nl":null},{"v":133,"k":32,"lambda":6,"mu":8,"r":4,"f":76,"s":-6,"g":56,"comp":{"k":100,"lambda":75,"mu":75,"r":5,"f":56,"s":-5,"g":76},"V1":[6,6],"V2":[2,2],"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":57,"also":[]},{"by":"V3","rep":[-6,1,1],"d":77,"also":[]}],"reason":"no admissible module","nl":null},{"v":169,"k":42,"lambda":5,"mu":12,"r":3,"f":126,"s":-10,"g":42,"comp":{"k":126,"lambda":95,"mu":90,"r":9,"f":42,"s":-4,"g":126},"V1":[6,6],"V2":[2,2],"V3":[6,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[-10,13,-4],"d":126,"also":["V3","P"]},{"by":"V1","rep":[3,-1,1],"d":43,"also":[]}],"reason":"parity, ℓ = 13², n = 126 (§5)","nl":[[3,13],[9,13]]},{"v":169,"k":70,"lambda":27,"mu":30,"r":5,"f":98,"s":-8,"g":70,"comp":{"k":98,"lambda":57,"mu":56,"r":7,"f":70,"s":-6,"g":98},"V1":[6,6],"V2":[2,2],"V3":[4,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-13,5],"d":70,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":71,"also":[]}],"reason":"parity, ℓ = 169, n = 98","nl":[[5,13],[7,13]]},{"v":176,"k":25,"lambda":0,"mu":4,"r":3,"f":120,"s":-7,"g":55,"comp":{"k":150,"lambda":128,"mu":126,"r":6,"f":55,"s":-4,"g":120},"V1":[6,6],"V2":[2,2],"V3":[1,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[3,-1,1],"d":56,"also":["V1","V4","V5"]},{"by":"V3","rep":[-7,1,1],"d":121,"also":[]}],"reason":"ph ∈ {2,6} vs d = 56 (§5)","nl":null},{"v":209,"k":52,"lambda":15,"mu":12,"r":8,"f":76,"s":-5,"g":132,"comp":{"k":156,"lambda":115,"mu":120,"r":4,"f":132,"s":-9,"g":76},"V1":[6,6],"V2":[2,2],"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":77,"also":[]},{"by":"V3","rep":[8,-1,2],"d":133,"also":[]}],"reason":"no admissible module","nl":null},{"v":235,"k":52,"lambda":9,"mu":12,"r":5,"f":140,"s":-8,"g":94,"comp":{"k":182,"lambda":141,"mu":140,"r":7,"f":94,"s":-6,"g":140},"V1":[5,5],"V2":[2,2],"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-5,1],"d":94,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":95,"also":[]}],"reason":"parity, ℓ = 65, n = 94","nl":null},{"v":289,"k":90,"lambda":23,"mu":30,"r":5,"f":198,"s":-12,"g":90,"comp":{"k":198,"lambda":137,"mu":132,"r":11,"f":90,"s":-6,"g":198},"V1":[3,3],"V2":[2,2],"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-17,5],"d":90,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":91,"also":[]}],"reason":"parity, ℓ = 289, n = 198","nl":[[5,17],[11,17]]},{"v":289,"k":126,"lambda":53,"mu":56,"r":7,"f":162,"s":-10,"g":126,"comp":{"k":162,"lambda":91,"mu":90,"r":9,"f":126,"s":-8,"g":162},"V1":[2,2],"V2":[2,2],"V3":[7,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[7,-17,7],"d":126,"also":["V3","P"]},{"by":"V1","rep":[7,-1,1],"d":127,"also":[]}],"reason":"parity, ℓ = 289, n = 162","nl":[[7,17],[9,17]]},{"v":300,"k":26,"lambda":4,"mu":2,"r":6,"f":117,"s":-4,"g":182,"comp":{"k":273,"lambda":248,"mu":252,"r":3,"f":182,"s":-7,"g":117},"V1":[2,2],"V2":[1,1],"V3":[2,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[-4,1,0],"d":118,"also":["V1","V3","V4","V5"]}],"reason":"ph ∈ {0,4} vs d = 118 (§5.4)","nl":null},{"v":352,"k":26,"lambda":0,"mu":2,"r":4,"f":208,"s":-6,"g":143,"comp":{"k":325,"lambda":300,"mu":300,"r":5,"f":143,"s":-5,"g":208},"V1":[2,2],"V2":[1,1],"V3":[1,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":144,"also":[]},{"by":"V3","rep":[-6,1,0],"d":209,"also":[]}],"reason":"no admissible module","nl":null},{"v":375,"k":154,"lambda":53,"mu":70,"r":4,"f":308,"s":-21,"g":66,"comp":{"k":220,"lambda":135,"mu":120,"r":20,"f":66,"s":-5,"g":308},"V1":[2,2],"V2":null,"V3":[2,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[4,-5,2],"d":66,"also":["V3","P"]},{"by":"V1","rep":[4,-1,2],"d":67,"also":[]}],"reason":"parity, ℓ = 125, n = 66","nl":null},{"v":375,"k":170,"lambda":85,"mu":70,"r":20,"f":68,"s":-5,"g":306,"comp":{"k":204,"lambda":103,"mu":120,"r":4,"f":306,"s":-21,"g":68},"V1":[2,2],"V2":[2,2],"V3":[2,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[20,-5,2],"d":306,"also":["V3","P"]},{"by":"V1","rep":[-5,1,1],"d":69,"also":[]}],"reason":"parity, ℓ = 125, n = 306","nl":null},{"v":391,"k":140,"lambda":39,"mu":56,"r":4,"f":322,"s":-21,"g":68,"comp":{"k":250,"lambda":165,"mu":150,"r":20,"f":68,"s":-5,"g":322},"V1":[2,2],"V2":null,"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[-21,17,-7],"d":322,"also":["V3","P"]},{"by":"V1","rep":[4,-1,2],"d":69,"also":[]}],"reason":"parity, ℓ = 425, n = 322","nl":null},{"v":391,"k":182,"lambda":93,"mu":77,"r":21,"f":68,"s":-5,"g":322,"comp":{"k":208,"lambda":102,"mu":120,"r":4,"f":322,"s":-22,"g":68},"V1":[2,2],"V2":[2,2],"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":69,"also":[]},{"by":"V3","rep":[21,-17,7],"d":322,"also":[]}],"reason":"no admissible module","nl":null},{"v":430,"k":39,"lambda":8,"mu":3,"r":9,"f":129,"s":-4,"g":300,"comp":{"k":390,"lambda":353,"mu":360,"r":3,"f":300,"s":-10,"g":129},"V1":[2,2],"V2":[2,2],"V3":[5,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[-4,1,0],"d":130,"also":["V1","V3","V4","V5"]}],"reason":"ph ∈ {0,4} vs d = 130 (§5.4)","nl":null},{"v":441,"k":190,"lambda":89,"mu":76,"r":19,"f":98,"s":-6,"g":342,"comp":{"k":250,"lambda":135,"mu":150,"r":5,"f":342,"s":-20,"g":98},"V1":[2,2],"V2":[2,2],"V3":[2,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-6,1,0],"d":99,"also":[]},{"by":"V3","rep":[-6,1,0],"d":99,"also":[]}],"reason":"no admissible module","nl":null},{"v":456,"k":130,"lambda":24,"mu":42,"r":4,"f":380,"s":-22,"g":75,"comp":{"k":325,"lambda":236,"mu":220,"r":21,"f":75,"s":-5,"g":380},"V1":[1,1],"V2":null,"V3":[2,10],"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-22,1,0],"d":381,"also":[]},{"by":"V3","rep":[-22,1,0],"d":381,"also":[]}],"reason":"no admissible module","nl":null},{"v":456,"k":195,"lambda":74,"mu":90,"r":5,"f":360,"s":-21,"g":95,"comp":{"k":260,"lambda":154,"mu":140,"r":20,"f":95,"s":-6,"g":360},"V1":[2,2],"V2":[2,2],"V3":[1,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[5,-1,1],"d":96,"also":[]},{"by":"V3","rep":[-21,1,0],"d":361,"also":[]}],"reason":"no admissible module","nl":null},{"v":494,"k":85,"lambda":12,"mu":15,"r":7,"f":285,"s":-10,"g":208,"comp":{"k":408,"lambda":337,"mu":336,"r":9,"f":208,"s":-8,"g":285},"V1":[2,2],"V2":null,"V3":[4,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[7,-1,1],"d":209,"also":[]},{"by":"V3","rep":[7,-1,1],"d":209,"also":[]}],"reason":"no admissible module","nl":null},{"v":507,"k":44,"lambda":1,"mu":4,"r":5,"f":308,"s":-8,"g":198,"comp":{"k":462,"lambda":421,"mu":420,"r":7,"f":198,"s":-6,"g":308},"V1":[2,2],"V2":[2,2],"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-13,1],"d":198,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":199,"also":[]}],"reason":"parity, ℓ = 169, n = 198","nl":null},{"v":507,"k":138,"lambda":49,"mu":33,"r":21,"f":92,"s":-5,"g":414,"comp":{"k":368,"lambda":262,"mu":280,"r":4,"f":414,"s":-22,"g":92},"V1":[2,2],"V2":[2,2],"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":93,"also":[]},{"by":"V3","rep":[21,-13,3],"d":414,"also":[]}],"reason":"no admissible module","nl":null},{"v":507,"k":240,"lambda":106,"mu":120,"r":6,"f":380,"s":-20,"g":126,"comp":{"k":266,"lambda":145,"mu":133,"r":19,"f":126,"s":-7,"g":380},"V1":[2,2],"V2":[2,2],"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[6,-1,2],"d":127,"also":[]},{"by":"V3","rep":[6,-13,6],"d":126,"also":[]}],"reason":"no admissible module","nl":null},{"v":508,"k":234,"lambda":100,"mu":114,"r":6,"f":381,"s":-20,"g":126,"comp":{"k":273,"lambda":152,"mu":140,"r":19,"f":126,"s":-7,"g":381},"V1":[1,1],"V2":null,"V3":[2,10],"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-20,1,0],"d":382,"also":[]},{"by":"V3","rep":[6,-1,2],"d":127,"also":[]}],"reason":"no admissible module","nl":null},{"v":508,"k":247,"lambda":126,"mu":114,"r":19,"f":127,"s":-7,"g":380,"comp":{"k":260,"lambda":126,"mu":140,"r":6,"f":380,"s":-20,"g":127},"V1":[2,2],"V2":[2,2],"V3":[0,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[-7,1,1],"d":128,"also":["V1","V4","V5"]}],"reason":"ph ∈ {2,6} vs d = 128 (§5.4)","nl":null},{"v":560,"k":247,"lambda":102,"mu":114,"r":7,"f":399,"s":-19,"g":160,"comp":{"k":312,"lambda":178,"mu":168,"r":18,"f":160,"s":-8,"g":399},"V1":[2,2],"V2":[1,1],"V3":[1,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[7,-1,1],"d":161,"also":[]},{"by":"V3","rep":[7,-1,1],"d":161,"also":[]}],"reason":"no admissible module","nl":null},{"v":616,"k":205,"lambda":90,"mu":57,"r":37,"f":55,"s":-4,"g":560,"comp":{"k":410,"lambda":261,"mu":296,"r":3,"f":560,"s":-38,"g":55},"V1":[2,2],"V2":null,"V3":[2,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[-4,1,0],"d":56,"also":["V1","V4","V5"]},{"by":"V3","rep":[37,-1,1],"d":561,"also":[]}],"reason":"ph ∈ {2,6} vs d = 56 (§5.4)","nl":null},{"v":625,"k":130,"lambda":15,"mu":30,"r":5,"f":494,"s":-20,"g":130,"comp":{"k":494,"lambda":393,"mu":380,"r":19,"f":130,"s":-6,"g":494},"V1":[2,2],"V2":[2,2],"V3":[4,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-5,1],"d":130,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":131,"also":[]}],"reason":"parity, ℓ = 625, n = 494","nl":[[5,25],[19,25]]},{"v":625,"k":182,"lambda":45,"mu":56,"r":7,"f":442,"s":-18,"g":182,"comp":{"k":442,"lambda":315,"mu":306,"r":17,"f":182,"s":-8,"g":442},"V1":[2,2],"V2":null,"V3":[6,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[7,-25,7],"d":182,"also":["V3","P"]},{"by":"V1","rep":[7,-1,1],"d":183,"also":[]}],"reason":"parity, ℓ = 625, n = 442","nl":[[7,25],[17,25]]},{"v":625,"k":234,"lambda":83,"mu":90,"r":9,"f":390,"s":-16,"g":234,"comp":{"k":390,"lambda":245,"mu":240,"r":15,"f":234,"s":-10,"g":390},"V1":[2,2],"V2":[2,2],"V3":[6,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[9,-25,9],"d":234,"also":["V3","P"]},{"by":"V1","rep":[9,-1,1],"d":235,"also":[]}],"reason":"parity, ℓ = 125, n = 390","nl":[[9,25],[15,25]]},{"v":625,"k":286,"lambda":129,"mu":132,"r":11,"f":338,"s":-14,"g":286,"comp":{"k":338,"lambda":183,"mu":182,"r":13,"f":286,"s":-12,"g":338},"V1":[2,2],"V2":[2,2],"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[11,-25,11],"d":286,"also":["V3","P"]},{"by":"V1","rep":[11,-1,1],"d":287,"also":[]}],"reason":"parity, ℓ = 625, n = 338","nl":[[11,25],[13,25]]},{"v":630,"k":68,"lambda":1,"mu":8,"r":5,"f":440,"s":-12,"g":189,"comp":{"k":561,"lambda":500,"mu":495,"r":11,"f":189,"s":-6,"g":440},"V1":[2,2],"V2":[2,2],"V3":[5,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[5,-1,1],"d":190,"also":[]},{"by":"V3","rep":[5,-10,1],"d":189,"also":[]}],"reason":"no admissible module","nl":null},{"v":664,"k":170,"lambda":24,"mu":50,"r":4,"f":580,"s":-30,"g":83,"comp":{"k":493,"lambda":372,"mu":348,"r":29,"f":83,"s":-5,"g":580},"V1":[2,2],"V2":[2,2],"V3":[1,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":84,"also":[]},{"by":"V3","rep":[-30,1,0],"d":581,"also":[]}],"reason":"no admissible module","nl":null},{"v":690,"k":260,"lambda":94,"mu":100,"r":10,"f":414,"s":-16,"g":275,"comp":{"k":429,"lambda":268,"mu":264,"r":15,"f":275,"s":-11,"g":414},"V1":[1,1],"V2":null,"V3":[1,9],"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-16,1,0],"d":415,"also":[]},{"by":"V3","rep":[-16,5,-2],"d":414,"also":[]}],"reason":"no admissible module","nl":null},{"v":690,"k":318,"lambda":121,"mu":168,"r":3,"f":644,"s":-50,"g":45,"comp":{"k":371,"lambda":220,"mu":175,"r":49,"f":45,"s":-4,"g":644},"V1":[2,2],"V2":[1,1],"V3":[4,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[3,-1,1],"d":46,"also":["V1","V3","V4","V5"]}],"reason":"ph ∈ {0,4} vs d = 46 (§5.4)","nl":null},{"v":715,"k":272,"lambda":102,"mu":104,"r":12,"f":374,"s":-14,"g":340,"comp":{"k":442,"lambda":273,"mu":273,"r":13,"f":340,"s":-13,"g":374},"V1":[2,2],"V2":null,"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[12,-1,2],"d":341,"also":[]},{"by":"V3","rep":[-14,5,-2],"d":374,"also":[]}],"reason":"no admissible module","nl":null},{"v":721,"k":220,"lambda":69,"mu":66,"r":14,"f":308,"s":-11,"g":412,"comp":{"k":500,"lambda":345,"mu":350,"r":10,"f":412,"s":-15,"g":308},"V1":[2,2],"V2":null,"V3":[2,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-11,1,1],"d":309,"also":[]},{"by":"V3","rep":[-11,1,1],"d":309,"also":[]}],"reason":"no admissible module","nl":null},{"v":732,"k":238,"lambda":92,"mu":70,"r":28,"f":122,"s":-6,"g":609,"comp":{"k":493,"lambda":324,"mu":348,"r":5,"f":609,"s":-29,"g":122},"V1":[2,2],"V2":null,"V3":[1,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-6,1,0],"d":123,"also":[]},{"by":"V3","rep":[-6,1,0],"d":123,"also":[]}],"reason":"no admissible module","nl":null},{"v":741,"k":260,"lambda":91,"mu":91,"r":13,"f":360,"s":-13,"g":380,"comp":{"k":480,"lambda":310,"mu":312,"r":12,"f":380,"s":-14,"g":360},"V1":[2,2],"V2":null,"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-13,1,1],"d":361,"also":[]},{"by":"V3","rep":[13,-1,2],"d":381,"also":[]}],"reason":"no admissible module","nl":null},{"v":750,"k":210,"lambda":55,"mu":60,"r":10,"f":441,"s":-15,"g":308,"comp":{"k":539,"lambda":388,"mu":385,"r":14,"f":308,"s":-11,"g":441},"V1":[2,2],"V2":null,"V3":[3,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[10,-1,2],"d":309,"also":[]},{"by":"V3","rep":[10,-1,2],"d":309,"also":[]}],"reason":"no admissible module","nl":null},{"v":750,"k":214,"lambda":63,"mu":60,"r":14,"f":321,"s":-11,"g":428,"comp":{"k":535,"lambda":380,"mu":385,"r":10,"f":428,"s":-15,"g":321},"V1":[2,2],"V2":[2,2],"V3":[3,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-11,1,1],"d":322,"also":[]},{"by":"V3","rep":[-11,10,-3],"d":321,"also":[]}],"reason":"no admissible module","nl":null},{"v":760,"k":252,"lambda":82,"mu":84,"r":12,"f":399,"s":-14,"g":360,"comp":{"k":507,"lambda":338,"mu":338,"r":13,"f":360,"s":-13,"g":399},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[12,-1,2],"d":361,"also":[]},{"by":"V4","rep":[12,-1,2],"d":361,"also":[]}],"reason":"no admissible module","nl":null},{"v":780,"k":246,"lambda":76,"mu":78,"r":12,"f":410,"s":-14,"g":369,"comp":{"k":533,"lambda":364,"mu":364,"r":13,"f":369,"s":-13,"g":410},"V1":[2,2],"V2":[2,2],"V3":[2,10],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[12,-1,2],"d":370,"also":[]},{"by":"V3","rep":[12,-1,2],"d":370,"also":[]}],"reason":"no admissible module","nl":null},{"v":780,"k":247,"lambda":78,"mu":78,"r":13,"f":380,"s":-13,"g":399,"comp":{"k":532,"lambda":362,"mu":364,"r":12,"f":399,"s":-14,"g":380},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-13,1,1],"d":381,"also":[]},{"by":"V4","rep":[-13,1,1],"d":381,"also":[]}],"reason":"no admissible module","nl":null},{"v":780,"k":369,"lambda":158,"mu":189,"r":5,"f":675,"s":-36,"g":104,"comp":{"k":410,"lambda":229,"mu":200,"r":35,"f":104,"s":-6,"g":675},"V1":[2,2],"V2":[1,1],"V3":[2,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[5,-1,1],"d":105,"also":[]},{"by":"V3","rep":[5,-1,1],"d":105,"also":[]}],"reason":"no admissible module","nl":null},{"v":836,"k":375,"lambda":190,"mu":150,"r":45,"f":76,"s":-5,"g":759,"comp":{"k":460,"lambda":234,"mu":276,"r":4,"f":759,"s":-46,"g":76},"V1":[2,2],"V2":[2,2],"V3":[1,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-5,1,1],"d":77,"also":[]},{"by":"V3","rep":[-5,1,1],"d":77,"also":[]}],"reason":"no admissible module","nl":null},{"v":841,"k":150,"lambda":11,"mu":30,"r":5,"f":690,"s":-24,"g":150,"comp":{"k":690,"lambda":569,"mu":552,"r":23,"f":150,"s":-6,"g":690},"V1":[2,2],"V2":null,"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[5,-29,5],"d":150,"also":["V3","P"]},{"by":"V1","rep":[5,-1,1],"d":151,"also":[]}],"reason":"parity, ℓ = 841, n = 690","nl":[[5,29],[23,29]]},{"v":841,"k":210,"lambda":41,"mu":56,"r":7,"f":630,"s":-22,"g":210,"comp":{"k":630,"lambda":475,"mu":462,"r":21,"f":210,"s":-8,"g":630},"V1":[2,2],"V2":null,"V3":[5,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[7,-29,7],"d":210,"also":["V3","P"]},{"by":"V1","rep":[7,-1,1],"d":211,"also":[]}],"reason":"parity, ℓ = 841, n = 630","nl":[[7,29],[21,29]]},{"v":841,"k":270,"lambda":79,"mu":90,"r":9,"f":570,"s":-20,"g":270,"comp":{"k":570,"lambda":389,"mu":380,"r":19,"f":270,"s":-10,"g":570},"V1":[2,2],"V2":null,"V3":[6,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[9,-29,9],"d":270,"also":["V3","P"]},{"by":"V1","rep":[9,-1,1],"d":271,"also":[]}],"reason":"parity, ℓ = 841, n = 570","nl":[[9,29],[19,29]]},{"v":841,"k":330,"lambda":125,"mu":132,"r":11,"f":510,"s":-18,"g":330,"comp":{"k":510,"lambda":311,"mu":306,"r":17,"f":330,"s":-12,"g":510},"V1":[2,2],"V2":null,"V3":[5,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[11,-29,11],"d":330,"also":["V3","P"]},{"by":"V1","rep":[11,-1,1],"d":331,"also":[]}],"reason":"parity, ℓ = 841, n = 510","nl":[[11,29],[17,29]]},{"v":841,"k":390,"lambda":179,"mu":182,"r":13,"f":450,"s":-16,"g":390,"comp":{"k":450,"lambda":241,"mu":240,"r":15,"f":390,"s":-14,"g":450},"V1":[2,2],"V2":null,"V3":[4,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[13,-29,13],"d":390,"also":["V3","P"]},{"by":"V1","rep":[13,-1,1],"d":391,"also":[]}],"reason":"parity, ℓ = 841, n = 450","nl":[[13,29],[15,29]]},{"v":871,"k":348,"lambda":137,"mu":140,"r":13,"f":468,"s":-16,"g":402,"comp":{"k":522,"lambda":313,"mu":312,"r":15,"f":402,"s":-14,"g":468},"V1":[2,2],"V2":null,"V3":[3,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[13,-13,5],"d":402,"also":["V3","P"]},{"by":"V1","rep":[13,-1,1],"d":403,"also":[]}],"reason":"parity, ℓ = 377, n = 402","nl":null},{"v":875,"k":184,"lambda":33,"mu":40,"r":9,"f":552,"s":-16,"g":322,"comp":{"k":690,"lambda":545,"mu":540,"r":15,"f":322,"s":-10,"g":552},"V1":[2,2],"V2":[2,2],"V3":[5,8],"V4":[2,2],"V5":[2,2],"P":true,"grade":"H","reps":[{"by":"proof","rep":[9,-5,1],"d":322,"also":["V3","P"]},{"by":"V1","rep":[9,-1,1],"d":323,"also":[]}],"reason":"parity, ℓ = 125, n = 322","nl":null},{"v":875,"k":304,"lambda":78,"mu":120,"r":4,"f":798,"s":-46,"g":76,"comp":{"k":570,"lambda":385,"mu":345,"r":45,"f":76,"s":-5,"g":798},"V1":[2,2],"V2":[2,2],"V3":[1,8],"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[4,-1,2],"d":77,"also":[]},{"by":"V3","rep":[-46,5,-2],"d":798,"also":[]}],"reason":"no admissible module","nl":null},{"v":931,"k":180,"lambda":29,"mu":36,"r":9,"f":588,"s":-16,"g":342,"comp":{"k":750,"lambda":605,"mu":600,"r":15,"f":342,"s":-10,"g":588},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[9,-1,1],"d":343,"also":[]},{"by":"V4","rep":[9,-1,1],"d":343,"also":[]}],"reason":"no admissible module","nl":null},{"v":1026,"k":451,"lambda":212,"mu":187,"r":33,"f":189,"s":-8,"g":836,"comp":{"k":574,"lambda":309,"mu":336,"r":7,"f":836,"s":-34,"g":189},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-8,1,0],"d":190,"also":[]},{"by":"V4","rep":[-8,1,0],"d":190,"also":[]}],"reason":"no admissible module","nl":null},{"v":1072,"k":391,"lambda":150,"mu":138,"r":23,"f":335,"s":-11,"g":736,"comp":{"k":680,"lambda":426,"mu":440,"r":10,"f":736,"s":-24,"g":335},"V1":[2,2],"V2":null,"V3":[0,9],"V4":[2,2],"V5":[2,2],"P":false,"grade":"H","reps":[{"by":"proof","rep":[-11,1,1],"d":336,"also":["V1","V4","V5"]}],"reason":"ph ∈ {2,6} vs d = 336 (§5.4)","nl":null},{"v":1140,"k":391,"lambda":126,"mu":138,"r":11,"f":759,"s":-23,"g":380,"comp":{"k":748,"lambda":494,"mu":484,"r":22,"f":380,"s":-12,"g":759},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[11,-1,1],"d":381,"also":[]},{"by":"V4","rep":[11,-1,1],"d":381,"also":[]}],"reason":"no admissible module","nl":null},{"v":1148,"k":481,"lambda":210,"mu":195,"r":26,"f":328,"s":-11,"g":819,"comp":{"k":666,"lambda":379,"mu":396,"r":10,"f":819,"s":-27,"g":328},"V1":[1,1],"V2":null,"V3":null,"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-11,1,1],"d":329,"also":[]},{"by":"V4","rep":[-11,1,1],"d":329,"also":[]}],"reason":"no admissible module","nl":null},{"v":1183,"k":192,"lambda":26,"mu":32,"r":10,"f":720,"s":-16,"g":462,"comp":{"k":990,"lambda":829,"mu":825,"r":15,"f":462,"s":-11,"g":720},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[10,-1,2],"d":463,"also":[]},{"by":"V4","rep":[10,-1,2],"d":463,"also":[]}],"reason":"no admissible module","nl":null},{"v":1190,"k":492,"lambda":202,"mu":204,"r":16,"f":615,"s":-18,"g":574,"comp":{"k":697,"lambda":408,"mu":408,"r":17,"f":574,"s":-17,"g":615},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[16,-1,2],"d":575,"also":[]},{"by":"V4","rep":[16,-1,2],"d":575,"also":[]}],"reason":"no admissible module","nl":null},{"v":1190,"k":493,"lambda":204,"mu":204,"r":17,"f":580,"s":-17,"g":609,"comp":{"k":696,"lambda":406,"mu":408,"r":16,"f":609,"s":-18,"g":580},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-17,1,1],"d":581,"also":[]},{"by":"V4","rep":[-17,1,1],"d":581,"also":[]}],"reason":"no admissible module","nl":null},{"v":1236,"k":195,"lambda":34,"mu":30,"r":15,"f":515,"s":-11,"g":720,"comp":{"k":1040,"lambda":874,"mu":880,"r":10,"f":720,"s":-16,"g":515},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-11,1,1],"d":516,"also":[]},{"by":"V4","rep":[-11,1,1],"d":516,"also":[]}],"reason":"no admissible module","nl":null},{"v":1248,"k":203,"lambda":22,"mu":35,"r":8,"f":896,"s":-21,"g":351,"comp":{"k":1044,"lambda":875,"mu":864,"r":20,"f":351,"s":-9,"g":896},"V1":[2,2],"V2":null,"V3":null,"V4":[2,2],"V5":[2,2],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[8,-1,2],"d":352,"also":[]},{"by":"V4","rep":[8,-1,2],"d":352,"also":[]}],"reason":"no admissible module","nl":null},{"v":1276,"k":204,"lambda":14,"mu":36,"r":6,"f":1044,"s":-28,"g":231,"comp":{"k":1071,"lambda":902,"mu":882,"r":27,"f":231,"s":-7,"g":1044},"V1":[1,1],"V2":null,"V3":null,"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[-28,1,0],"d":1045,"also":[]},{"by":"V4","rep":[-28,1,0],"d":1045,"also":[]}],"reason":"no admissible module","nl":null},{"v":1288,"k":195,"lambda":26,"mu":30,"r":11,"f":735,"s":-15,"g":552,"comp":{"k":1092,"lambda":926,"mu":924,"r":14,"f":552,"s":-12,"g":735},"V1":[1,1],"V2":null,"V3":null,"V4":[1,1],"V5":[1,1],"P":false,"grade":"C2","reps":[{"by":"V1","rep":[11,-1,1],"d":553,"also":[]},{"by":"V4","rep":[11,-1,1],"d":553,"also":[]}],"reason":"no admissible module","nl":null}]</script>
+<!--T1:END-->
+<script>
+(function(){
+  function neg(n){return n<0?'−'+(-n):String(n);}
+  function tup(a){return '('+a.map(neg).join(', ')+')';}
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+  // 169 stepper
+  var p169=[].slice.call(document.querySelectorAll('#p169 .step'));
+  document.getElementById('p169next').addEventListener('click',function(){
+    for(var i=0;i<p169.length;i++){if(p169[i].getAttribute('aria-expanded')!=='true'){p169[i].setAttribute('aria-expanded','true');break;}}
+  });
+  document.getElementById('p169reset').addEventListener('click',function(){p169.forEach(function(b){b.setAttribute('aria-expanded','false');});});
+
+  var T=JSON.parse(document.getElementById('t1data').textContent);
+  var byKey={};T.forEach(function(R){byKey[[R.v,R.k,R.lambda,R.mu].join(',')]=R;byKey[[R.v,R.comp.k,R.comp.lambda,R.comp.mu].join(',')]=R;});
+  function anchor(R){return 'p'+R.v+'_'+R.k;}
+
+  // ---------- arithmetic ----------
+  function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=a%b;a=b;b=t;}return a;}
+  function isqrt(n){var r=Math.floor(Math.sqrt(n));while(r*r>n)r--;while((r+1)*(r+1)<=n)r++;return r;}
+  function primes(n){var p=[],d=2;n=Math.abs(n);while(d*d<=n){if(n%d===0){var e=0;while(n%d===0){n/=d;e++;}p.push([d,e]);}d++;}if(n>1)p.push([n,1]);return p;}
+  function sup(n){var m='⁰¹²³⁴⁵⁶⁷⁸⁹';return String(n).split('').map(function(c){return m[+c];}).join('');}
+  function fact(n){return primes(n).map(function(x){return x[0]+(x[1]>1?sup(x[1]):'');}).join('·')||'1';}
+  function eig(v,k,l,m){var D=(l-m)*(l-m)+4*(k-m),r0=isqrt(D);if(r0*r0!==D)return null;var r=(l-m+r0)/2,s=(l-m-r0)/2;if(r===s)return null;var fn=(v-1)*(-s)-k;if(fn%(r-s))return null;var f=fn/(r-s);return {r:r,s:s,f:f,g:v-1-f};}
+  // Corollary 4.1 in the centred representation with rho; returns an object describing it
+  function centred(v,k,E,rho){
+    var theta=rho===E.r?E.s:E.r,n=rho===E.r?E.g:E.f,a=v/gcd(v,k-rho),b=a*Math.sign(theta-rho),c=-b*(k-rho)/v,nu=c-b*rho,ell=a*Math.abs(theta-rho);
+    var o={rho:rho,theta:theta,n:n,a:a,b:b,c:c,nu:nu,ell:ell,P:primes(ell)};
+    if(nu%2!==0){o.st='na';o.why='ν = '+neg(nu)+' is odd: the corollary does not apply.';return o;}
+    if(ell%2===0){o.st='na';o.why='ℓ = '+ell+' is even: the corollary does not apply.';return o;}
+    if(n%2!==0){o.st='fail';o.why='n = '+n+' is odd, but an even lattice of odd determinant has even rank.';return o;}
+    var all1=o.P.every(function(x){return x[0]%4===1;});
+    if(n%4===2&&all1){o.st='fail';o.why='n = '+n+' ≡ 2 (mod 4) needs det L ≡ 3 (mod 4), but every prime of ℓ is ≡ 1 (mod 4), so det L ≡ 1.';return o;}
+    o.st='pass';o.why=n%4===0?'n = '+n+' ≡ 0 (mod 4): Δ = 1 works.':'n = '+n+' ≡ 2 (mod 4), and ℓ has a prime ≡ 3 (mod 4): some Δ ≡ 3 is possible.';return o;
+  }
+  function parity(v,k,l,m){
+    var res=[];
+    [[k,l,m,'graph'],[v-k-1,v-2*k+m-2,v-2*k+l,'complement']].forEach(function(P){
+      var E=eig(v,P[0],P[1],P[2]);if(!E)return;
+      [E.s,E.r].forEach(function(rho){var o=centred(v,P[0],E,rho);o.side=P[3];o.par=[v,P[0],P[1],P[2]];res.push(o);});
+    });
+    return res;
+  }
+
+  // ---------- parity checker ----------
+  var pv=document.getElementById('pv'),pk=document.getElementById('pk'),pl=document.getElementById('pl'),pm=document.getElementById('pm'),pout=document.getElementById('pout');
+  function check(){
+    var v=+pv.value,k=+pk.value,l=+pl.value,m=+pm.value,h='';
+    if(![v,k,l,m].every(function(x){return Number.isInteger(x)&&x>=0;})||v<3||k<1||k>v-2){pout.innerHTML='<p>Enter integers with 0 &lt; k &lt; v − 1 and λ, μ ≥ 0.</p>';return;}
+    if(k*(k-l-1)!==(v-k-1)*m){pout.innerHTML='<p class="verdict no">Not strongly regular parameters: k(k − λ − 1) = '+k*(k-l-1)+' but (v − k − 1)μ = '+(v-k-1)*m+'.</p>';return;}
+    if(m===0||m===k){pout.innerHTML='<p>μ = '+m+': the graph is a disjoint union of cliques or complete multipartite. These exist whenever the parameters fit; the corollary has nothing to say.</p>';return;}
+    var E=eig(v,k,l,m);
+    if(!E){pout.innerHTML='<p>The restricted eigenvalues are not integers (or the multiplicities are not). Corollary 4.1 needs integral eigenvalues; for a conference graph other conditions apply.</p>';return;}
+    h+='<p class="mono">eigenvalues '+k+'<sup>1</sup>, '+neg(E.r)+'<sup>'+E.f+'</sup>, '+neg(E.s)+'<sup>'+E.g+'</sup>   ·   complement ('+[v,v-k-1,v-2*k+m-2,v-2*k+l].join(', ')+'): '+(v-k-1)+'<sup>1</sup>, '+neg(-1-E.s)+'<sup>'+E.g+'</sup>, '+neg(-1-E.r)+'<sup>'+E.f+'</sup></p>';
+    if(v-2*k+m-2<0||v-2*k+l<0||E.f<0||E.g<0){h+='<p>Not a feasible parameter set (negative complement parameter or multiplicity).</p>';pout.innerHTML=h;return;}
+    var res=parity(v,k,l,m),fail=res.filter(function(o){return o.st==='fail';}),app=res.filter(function(o){return o.st!=='na';});
+    h+='<div class="reps">';
+    res.forEach(function(o){
+      var G=neg(o.b)+'(A '+(o.rho<0?'+ '+(-o.rho):'− '+o.rho)+'I)'+(o.c===0?'':o.c<0?' − '+(-o.c)+'J':' + '+o.c+'J');
+      if(o.b===1||o.b===-1)G=G.replace(/^−?1\(/,o.b<0?'−(':'(');
+      h+='<div class="rep '+(o.st==='fail'?'fail':o.st==='pass'?'pass':'')+'"><span class="eyebrow">'+o.side+' · ρ = '+neg(o.rho)+'</span><span class="mono">G = '+G+'</span><span class="mono">a = '+o.a+', ν = '+neg(o.nu)+', rank n = '+o.n+'</span><span class="mono">ℓ = '+o.ell+(o.ell>1?' = '+fact(o.ell)+'   primes mod 4: '+o.P.map(function(x){return x[0]+'≡'+(x[0]%4);}).join(', '):'')+'</span><span>'+o.why+'</span></div>';
+    });
+    h+='</div>';
+    var key=[v,k,l,m].join(','),R=byKey[key];
+    if(fail.length){h+='<p class="verdict no">Corollary 4.1 fails: no srg('+[v,k,l,m].join(', ')+') exists.</p>';}
+    else if(app.length){h+='<p class="verdict pass">Passes the parity test.</p><p class="muted">This says nothing about existence: passing a necessary condition is not a construction.</p>';}
+    else{h+='<p class="verdict">The parity test does not apply in any centred representation (ν odd or ℓ even).</p>';}
+    if(R)h+='<p>This pair is in <a href="#'+anchor(R)+'">Table 1</a>, grade '+R.grade+': '+R.reason+'.'+(R.P?'':' Its exclusion uses the full Theorem 3.1, not the parity corollary.')+'</p>';
+    else if(key==='289,54,1,12'||key==='289,234,197,182')h+='<p>Known: Bondarenko and Radchenko (2013) proved there is no such graph by a different route; this is an independent second proof.</p>';
+    else if(key==='75,32,10,16'||key==='75,42,25,21')h+='<p>Known: no such graph (Azarija–Marc 2018). The paper excludes it with Theorem 3.1 in the representation 2I − A + 2J, where ph(D) ∈ {1, 5} but d = 19 ≡ 3 (mod 8); the parity corollary alone cannot.</p>';
+    pout.innerHTML=h;
+  }
+  document.getElementById('pform').addEventListener('submit',function(e){e.preventDefault();check();});
+  document.querySelectorAll('#chk-h ~ .filter button').forEach(function(b){
+    b.addEventListener('click',function(){var p=b.dataset.p.split(',');pv.value=p[0];pk.value=p[1];pl.value=p[2];pm.value=p[3];check();});
+  });
+  check();
+
+  // ---------- NL_m(q) ----------
+  var nlq=document.getElementById('nlq'),nlb=document.getElementById('nlbody');
+  [5,13,17,25,29,37,41,53,61,73].forEach(function(q){var o=document.createElement('option');o.value=q;o.textContent=q===25?'25 = 5²':String(q);nlq.appendChild(o);});
+  nlq.value='13';
+  function nl(){
+    var q=+nlq.value,h='';
+    for(var m=1;m<=q-2;m+=2){
+      var v=q*q,k=m*(q+1),l=-q+m*m+3*m,mu=m*(m+1),ck=v-k-1,cl=v-2*k+mu-2,st,cls='';
+      var R=byKey[[v,k,l,mu].join(',')];
+      if(l<0||cl<0)st='λ &lt; 0 on one side: not a feasible parameter set';
+      else if(R){st='Table 1, grade '+R.grade+' · <a href="#'+anchor(R)+'">row</a>';cls='st-t';}
+      else if(v===289&&(k===54||k===234)){st='known “–” (Bondarenko–Radchenko 2013)';cls='st-k';}
+      else if(v>1300)st='beyond Brouwer\'s table (v &gt; 1300)';
+      else st='not in Table 1';
+      h+='<tr><td class="num">'+m+'</td><td class="num">('+[v,k,neg(l),mu].join(', ')+')</td><td class="'+cls+'">'+st+'</td></tr>';
+    }
+    nlb.innerHTML=h;
+  }
+  nlq.addEventListener('change',nl);nl();
+
+  // ---------- Table 1 ----------
+  var t1=document.getElementById('t1'),fg=document.getElementById('fg'),fr=document.getElementById('fr'),fnl=document.getElementById('fnl'),fq=document.getElementById('fq'),fc=document.getElementById('fcount');
+  var sortKey='v',sortDir=1;
+  function rkind(R){return R.P?'parity':/^ph/.test(R.reason)?'ph':'none';}
+  function progs(R){return ['V1','V2','V3','V4','V5'].filter(function(i){return R[i];}).map(function(i){return i+' '+R[i][0]+'/'+R[i][1];}).join(' · ')+(R.P?' · P':'');}
+  function repTxt(x){return (x.by==='proof'?'proof ':x.by+' ')+'<span class="mono" title="G = '+neg(x.rep[1])+'(A − ('+neg(x.rep[0])+')I) + ('+neg(x.rep[2])+')J, rank '+x.d+'">'+tup(x.rep)+'<sub>'+x.d+'</sub></span>'+(x.also.length?' <span class="vc">['+x.also.join(', ')+']</span>':'');}
+  function key(R,k){if(k==='prog')return (R.V1?R.V1[1]:0)+(R.V3?R.V3[1]:0)+(R.V4?R.V4[1]:0)+(R.V5?R.V5[1]:0);if(k==='reason')return rkind(R)+R.reason;return R[k];}
+  function render(){
+    var g=fg.value,r=fr.value,q=fq.value.replace(/\s/g,'').replace(/[()]/g,''),rows=T.filter(function(R){
+      if(g&&R.grade!==g)return false; if(r&&rkind(R)!==r)return false; if(fnl.checked&&!R.nl)return false;
+      if(q){var a=[R.v,R.k,R.lambda,R.mu].join(','),b=[R.v,R.comp.k,R.comp.lambda,R.comp.mu].join(',');if(a.indexOf(q)!==0&&b.indexOf(q)!==0&&String(R.k)!==q&&String(R.comp.k)!==q)return false;}
+      return true;});
+    rows=rows.slice().sort(function(a,b){var x=key(a,sortKey),y=key(b,sortKey);return ((x<y?-1:x>y?1:0)||(a.v-b.v)||(a.k-b.k))*sortDir;});
+    [].slice.call(t1.tBodies).forEach(function(tb){t1.removeChild(tb);});
+    rows.forEach(function(R){
+      var tb=document.createElement('tbody');tb.id=anchor(R);
+      var nl=R.nl?' <span class="vc">NL'+R.nl.map(function(x){return '<sub>'+x[0]+'</sub>('+x[1]+')';}).join(', NL')+'</span>':'';
+      tb.innerHTML='<tr><td class="r v">'+R.v+'</td><td class="r num">'+R.k+'</td><td class="r num">'+R.lambda+'</td><td class="r num">'+R.mu+'</td><td class="r num">'+neg(R.r)+'<sup>'+R.f+'</sup></td><td class="r num">'+neg(R.s)+'<sup>'+R.g+'</sup></td><td><span class="gr '+R.grade+'">'+R.grade+'</span></td><td class="vc">'+progs(R)+'</td><td>'+(R.reps[0]?repTxt(R.reps[0]):'')+'</td><td>'+R.reason+nl+'</td></tr>'
+        +'<tr class="c"><td></td><td class="r num">'+R.comp.k+'</td><td class="r num">'+R.comp.lambda+'</td><td class="r num">'+R.comp.mu+'</td><td class="r num">'+neg(R.comp.r)+'<sup>'+R.comp.f+'</sup></td><td class="r num">'+neg(R.comp.s)+'<sup>'+R.comp.g+'</sup></td><td></td><td></td><td>'+(R.reps[1]?repTxt(R.reps[1]):'')+'</td><td></td></tr>';
+      t1.appendChild(tb);
+    });
+    var nH=rows.filter(function(R){return R.grade==='H';}).length;
+    fc.textContent=rows.length+' of '+T.length+' pairs shown ('+nH+' H, '+(rows.length-nH)+' C2).';
+  }
+  t1.querySelectorAll('th button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.s;if(sortKey===k)sortDir=-sortDir;else{sortKey=k;sortDir=1;}
+      t1.querySelectorAll('th').forEach(function(th){if(th.hasAttribute('aria-sort'))th.setAttribute('aria-sort','none');});
+      b.parentNode.setAttribute('aria-sort',sortDir>0?'ascending':'descending');render();
+    });
+  });
+  [fg,fr,fnl].forEach(function(e){e.addEventListener('change',render);});fq.addEventListener('input',render);
+  render();
+  if(location.hash&&document.getElementById(location.hash.slice(1)))document.getElementById(location.hash.slice(1)).scrollIntoView();
+})();
+</script>
+</body>
+</html>

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open SRG Cases</title>
-<meta name="description" content="Sixteen parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: seven nonexistence proofs and nine sets realised by new graphs.">
+<meta name="description" content="Parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: seven single-set nonexistence proofs, 70 further open pairs excluded by one lattice condition, and nine sets realised by new graphs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* page-specific: landing */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;min-width:0}
 .stat b{font:600 30px/1.1 var(--mono)}
 .stat.no b{color:var(--kill)}
@@ -38,18 +38,20 @@ a.card:hover{border-color:var(--hand)}
 .how ol{margin:0;padding-left:20px;display:grid;gap:4px}
 .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .checks .box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+@media (max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.how{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · September–October 2026</div>
-  <h1>Sixteen open cases of Brouwer's table, settled</h1>
-  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that seven of these graphs do not exist and constructed graphs for nine further parameter sets. All results are preprints with open code and data.</p>
+  <h1>Open cases of Brouwer's table, settled</h1>
+  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that seven of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for nine further parameter sets. All results are preprints with open code and data.</p>
   <div class="chips">
-    <span class="chip kill">7 nonexistence proofs</span>
+    <span class="chip kill">7 single-set nonexistence proofs</span>
+    <span class="chip kill">70 further pairs excluded by one condition</span>
     <span class="chip ok">9 parameter sets realised</span>
     <span class="chip">Preprints, not yet peer-reviewed</span>
     <span class="chip">AI-assisted; author coordinated and checked</span>
@@ -60,7 +62,8 @@ a.card:hover{border-color:var(--hand)}
   <div class="eyebrow">At a glance</div>
   <h2 id="map-h">Where the results sit</h2>
   <div class="stats">
-    <div class="stat no"><span class="eyebrow">no graph exists</span><b>7</b><span class="muted">v = 69, 99, 105, 154, 162, 288, 405</span></div>
+    <div class="stat no"><span class="eyebrow">no graph exists · one paper each</span><b>7</b><span class="muted">v = 69, 99, 105, 154, 162, 288, 405</span></div>
+    <div class="stat no"><span class="eyebrow">excluded by one condition</span><b>70</b><span class="muted">open complementary pairs, v = 96 to 1288</span></div>
     <div class="stat yes"><span class="eyebrow">graphs constructed</span><b>9</b><span class="muted">v = 250, 300, 320, 324, 486</span></div>
     <div class="stat"><span class="eyebrow">new graphs in the data files</span><b>262</b><span class="muted">pairwise non-isomorphic per set</span></div>
   </div>
@@ -68,6 +71,7 @@ a.card:hover{border-color:var(--hand)}
   <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with seven nonexistence results and nine constructions"></div>
   <div class="vaxis" id="vaxis"></div>
   <div class="legend"><span><i style="background:var(--kill)"></i>no graph exists</span><span><i style="background:var(--ok)"></i>graphs constructed</span></div>
+  <p class="muted">The line shows the sixteen single-set results. The 70 pairs excluded by the uniform condition run from 96 to 1288 vertices and are listed in a sortable table on <a href="bmv.html#t1-h">their own page</a>.</p>
 </section>
 
 <section aria-labelledby="no-h">
@@ -82,6 +86,15 @@ a.card:hover{border-color:var(--hand)}
     <a class="card no" id="r162" href="srg162.html"><span class="p">srg(162, 69, 36, 24)</span><span class="m">Gram matrix A + 3I + 5J of rank 24; two forms of determinant 12. All 2,968 hosts of the first kind contain a forbidden dual vector; in all 7,795 of the second kind a certified enumeration finds no candidate.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23211005</span></a>
     <a class="card no" id="r288" href="srg288.html"><span class="p">srg(288, 105, 52, 30)</span><span class="m">Gram matrix A + 3I + J of rank 28; four discriminant forms. Each glues to an even unimodular lattice of rank 32, whose harmonic theta series give 1,297 linear equations; exact certificates force a negative root count or fewer than the 15,120 norm-4 vectors that adjacent vertices supply. No lattice classification is needed. Hence no partial geometry pg(7,25,5).</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip">Brouwer's table: “?” at the time of writing</span></span><span class="doi">doi:10.5281/zenodo.23263506</span></a>
     <a class="card no" id="r405" href="srg405.html"><span class="p">srg(405, 132, 63, 33)</span><span class="m">Gram matrix A + 3I + J of rank 31; four discriminant forms, found by hand. A new elementary counting lemma gives 36|R₀| ≤ 3(|S₄| − 405), while six printed theta-series equations force |S₄| = 171 + 3|R₀| for the main form; the other three fall to exact certificates. Hence no partial geometry pg(8,33,6).</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip hand">main case by hand</span><span class="chip">Brouwer's table: “?” at the time of writing</span></span><span class="doi">doi:10.5281/zenodo.23263684</span></a>
+  </div>
+</section>
+
+<section aria-labelledby="bmv-h">
+  <div class="eyebrow">Nonexistence · a uniform condition</div>
+  <h2 id="bmv-h">Seventy more pairs, by one lattice condition</h2>
+  <p>The lattice method of Bannai, Munemasa and Venkov for tight spherical designs, extended to every strongly regular graph with integral eigenvalues, gives a test on the parameters alone. A complete sweep of Brouwer's table finds 70 open complementary pairs that fail it. None of them overlaps the sixteen results above.</p>
+  <div class="cards">
+    <a class="card no" id="rbmv" href="bmv.html"><span class="p">70 open pairs, v = 96 … 1288</span><span class="m">The discriminant form of a maximal even overlattice of the vertex lattice must be anisotropic, satisfy Milgram's formula, and be tied to the class of the rescaled vertex sum by an exact dual-vector identity. Among the excluded: (96,35,10,14), the triangle-free (176,25,0,4) and (169,42,5,12). Its simplest case also excludes the parameters of NL<sub>m</sub>(q) for q a power of a prime ≡ 1 mod 4 and m odd.</span><span class="meta"><span class="chip hand">28 by hand</span><span class="chip comp">42 computer-assisted, two or more programs</span><span class="chip">Brouwer's table: “?” at the time of writing</span></span><span class="doi">doi:10.5281/zenodo.23275433</span></a>
   </div>
 </section>
 
@@ -103,6 +116,7 @@ a.card:hover{border-color:var(--hand)}
         <li>Milgram's formula leaves a few discriminant forms. Gluing turns each into a unimodular lattice: one from a known classification (Niemeier, Borcherds, Chenevier), or, for 288 and 405, an even unimodular lattice of rank 32 or 40 whose harmonic theta series give exact linear equations.</li>
         <li>Each candidate host is excluded: by an explicit forbidden vector, by an identity proved by hand, by an exhaustive enumeration with exact certificates, or by an exact rational certificate that the theta-series equations have no admissible solution.</li>
       </ol>
+      <p class="muted">For the 70 pairs, the first steps alone suffice: no admissible discriminant form exists, so no gluing and no theta series are needed.</p>
     </div>
     <div class="box"><h3>Existence: unions of orbitals</h3>
       <ol>
@@ -120,7 +134,7 @@ a.card:hover{border-color:var(--hand)}
   <h2 id="chk-h">How this was checked</h2>
   <div class="checks">
     <div class="box"><h3>Two derivations</h3><p class="muted">Each step of the nonexistence proofs was derived twice, by separate sessions or separate programs, or audited with independent code. Each paper states exactly which parts rest on one implementation.</p></div>
-    <div class="box"><h3>Controls</h3><p class="muted">The same machinery was run on known graphs of the same shape. It must let them through; it does. The search engines recovered known graphs as must-find controls.</p></div>
+    <div class="box"><h3>Controls</h3><p class="muted">The same machinery was run on known graphs of the same shape. It must let them through; it does. The search engines recovered known graphs as must-find controls. The uniform condition accepts every existing parameter set of the table with integral eigenvalues up to 1300 vertices.</p></div>
     <div class="box"><h3>Referees</h3><p class="muted">The papers were reviewed by separate AI sessions (Claude, including a different model, Claude Fable, and Codex) acting as auditors or referees; for 288 and 405 the referee re-implemented every computation from the text. No human referee has read them yet.</p></div>
     <div class="box"><h3>Open data</h3><p class="muted">Each paper is on Zenodo and says where its code, logs and data are archived. Every new graph is in graph6 format with a short verifier that checks A² = kI + λA + μ(J − I − A) exactly; see <a href="graphs.html">New graphs</a>.</p></div>
   </div>
