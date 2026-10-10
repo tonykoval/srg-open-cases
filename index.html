@@ -4,21 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open SRG Cases</title>
-<meta name="description" content="Parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: seven single-set nonexistence proofs, 70 further open pairs excluded by one lattice condition, and nine sets realised by new graphs.">
+<meta name="description" content="Parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: seven single-set nonexistence proofs, 70 further open pairs excluded by one lattice condition, nine sets realised by new graphs, and the uniqueness of the regular two-graphs on 126 and 176 points, which makes four parameter sets unique.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 <style>
 /* page-specific: landing */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:4px;min-width:0}
 .stat b{font:600 30px/1.1 var(--mono)}
 .stat.no b{color:var(--kill)}
 .stat.yes b{color:var(--ok)}
+.stat.uniq b{color:var(--ok)}
 .vline{position:relative;height:96px;margin:6px 0 0;border-bottom:1px solid var(--line)}
 .vline .dot{position:absolute;width:14px;height:14px;margin-left:-7px;border-radius:50%;border:2px solid var(--surface);text-decoration:none}
 .vline .dot.no{background:var(--kill)}
 .vline .dot.yes{background:var(--ok)}
+.vline .dot.uniq{background:var(--surface);border:3px solid var(--ok)}
 .vline .dot:focus-visible{outline:2px solid var(--hand);outline-offset:2px}
 .vaxis{position:relative;height:22px;font:12px/1.4 var(--mono);color:var(--muted)}
 .vaxis span{position:absolute;transform:translateX(-50%)}
@@ -26,6 +28,7 @@
 .card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start;min-width:0;color:inherit;text-decoration:none}
 .card.no{border-left-color:var(--kill)}
 .card.yes{border-left-color:var(--ok)}
+.card.uniq{border-left-color:var(--ok);border-left-style:double;border-left-width:6px}
 a.card:hover{border-color:var(--hand)}
 .card .p{font:600 19px/1.2 var(--mono);overflow-wrap:anywhere}
 .card .m{font-size:14px}
@@ -39,20 +42,22 @@ a.card:hover{border-color:var(--hand)}
 .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .checks .box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
 @media (max-width:860px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.legend i.ring{background:var(--surface);border:2px solid var(--ok);border-radius:50%}
 @media (max-width:640px){.how{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · September–October 2026</div>
   <h1>Open cases of Brouwer's table, settled</h1>
-  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that seven of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for nine further parameter sets. All results are preprints with open code and data.</p>
+  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that seven of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for nine further parameter sets. We also proved that the regular two-graphs on 126 and 176 points are unique, a question Brouwer and Van Maldeghem list as open; as a consequence four parameter sets of the table each have exactly one graph. All results are preprints with open code and data.</p>
   <div class="chips">
     <span class="chip kill">7 single-set nonexistence proofs</span>
     <span class="chip kill">70 further pairs excluded by one condition</span>
     <span class="chip ok">9 parameter sets realised</span>
+    <span class="chip ok">2 two-graphs unique, so 4 sets have exactly one graph</span>
     <span class="chip">Preprints, not yet peer-reviewed</span>
     <span class="chip">AI-assisted; author coordinated and checked</span>
   </div>
@@ -65,13 +70,14 @@ a.card:hover{border-color:var(--hand)}
     <div class="stat no"><span class="eyebrow">no graph exists · one paper each</span><b>7</b><span class="muted">v = 69, 99, 105, 154, 162, 288, 405</span></div>
     <div class="stat no"><span class="eyebrow">excluded by one condition</span><b>70</b><span class="muted">open complementary pairs, v = 96 to 1288</span></div>
     <div class="stat yes"><span class="eyebrow">graphs constructed</span><b>9</b><span class="muted">v = 250, 300, 320, 324, 486</span></div>
+    <div class="stat uniq"><span class="eyebrow">exactly one graph</span><b>4</b><span class="muted">v = 125, 175, from two unique two-graphs</span></div>
     <div class="stat"><span class="eyebrow">new graphs in the data files</span><b>262</b><span class="muted">pairwise non-isomorphic per set</span></div>
   </div>
   <p>Each dot is one parameter set, placed by its number of vertices. Select a dot to jump to its entry.</p>
-  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with seven nonexistence results and nine constructions"></div>
+  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with seven nonexistence results, nine constructions and four parameter sets shown to have exactly one graph"></div>
   <div class="vaxis" id="vaxis"></div>
-  <div class="legend"><span><i style="background:var(--kill)"></i>no graph exists</span><span><i style="background:var(--ok)"></i>graphs constructed</span></div>
-  <p class="muted">The line shows the sixteen single-set results. The 70 pairs excluded by the uniform condition run from 96 to 1288 vertices and are listed in a sortable table on <a href="bmv.html#t1-h">their own page</a>.</p>
+  <div class="legend"><span><i style="background:var(--kill)"></i>no graph exists</span><span><i style="background:var(--ok)"></i>graphs constructed</span><span><i class="ring"></i>exactly one graph</span></div>
+  <p class="muted">The line shows the sixteen single-set results; the two rings at 125 and 175 stand for the four parameter sets (two complementary pairs) made unique by the two-graph result. The 70 pairs excluded by the uniform condition run from 96 to 1288 vertices and are listed in a sortable table on <a href="bmv.html#t1-h">their own page</a>.</p>
 </section>
 
 <section aria-labelledby="no-h">
@@ -105,6 +111,15 @@ a.card:hover{border-color:var(--hand)}
   <div class="cards" id="ycards"></div>
 </section>
 
+<section aria-labelledby="uq-h">
+  <div class="eyebrow">Uniqueness</div>
+  <h2 id="uq-h">Two regular two-graphs, each unique</h2>
+  <p>Brouwer and Van Maldeghem write, for 126 and for 176 points, that it is unknown whether the regular two-graph is unique. Both are unique. Their descendants give four parameter sets that Brouwer's table marks “+”, each of which now has exactly one graph.</p>
+  <div class="cards">
+    <a class="card uniq" id="rtg" href="twographs.html"><span class="p">Regular two-graphs on 126 and 176 points</span><span class="m">Equivalently, 126 equiangular lines in ℝ²¹ and 176 in ℝ²² at angle arccos 1/5 are unique. The vectors of the lines span an even lattice with no short dual vectors; Milgram's formula leaves eight discriminant forms, gluing excludes five or forces the Leech lattice, and an exhaustive enumeration of sections of the 276-line system finds only Taylor's U₃(5) two-graph and the Higman–Sims two-graph. Hence srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) are unique.</span><span class="meta"><span class="chip comp">computer-assisted</span><span class="chip ok">4 parameter sets: exactly one graph</span><span class="chip">Brouwer's table: “+”</span></span><span class="doi">doi:10.5281/zenodo.23279444</span></a>
+  </div>
+</section>
+
 <section aria-labelledby="how-h">
   <div class="eyebrow">Methods</div>
   <h2 id="how-h">How the results were obtained</h2>
@@ -135,7 +150,7 @@ a.card:hover{border-color:var(--hand)}
   <div class="checks">
     <div class="box"><h3>Two derivations</h3><p class="muted">Each step of the nonexistence proofs was derived twice, by separate sessions or separate programs, or audited with independent code. Each paper states exactly which parts rest on one implementation.</p></div>
     <div class="box"><h3>Controls</h3><p class="muted">The same machinery was run on known graphs of the same shape. It must let them through; it does. The search engines recovered known graphs as must-find controls. The uniform condition accepts every existing parameter set of the table with integral eigenvalues up to 1300 vertices.</p></div>
-    <div class="box"><h3>Referees</h3><p class="muted">The papers were reviewed by separate AI sessions (Claude, including a different model, Claude Fable, and Codex) acting as auditors or referees; for 288 and 405 the referee re-implemented every computation from the text. No human referee has read them yet.</p></div>
+    <div class="box"><h3>Referees</h3><p class="muted">The papers were reviewed by separate AI sessions (Claude, including a different model, Claude Fable, and Codex) acting as auditors or referees; for 288, 405 and the two-graphs the referee re-implemented every computation from the text. No human referee has read them yet.</p></div>
     <div class="box"><h3>Open data</h3><p class="muted">Each paper is on Zenodo and says where its code, logs and data are archived. Every new graph is in graph6 format with a short verifier that checks A² = kI + λA + μ(J − I − A) exactly; see <a href="graphs.html">New graphs</a>.</p></div>
   </div>
   <p class="muted">The work was done with substantial assistance from AI systems, coordinated and checked by the author, who is responsible for all content. See <a href="about.html">About</a>.</p>
@@ -170,10 +185,11 @@ a.card:hover{border-color:var(--hand)}
   // number line 0..500
   var N=[[69,'srg(69,20,7,5)','r69'],[99,'srg(99,42,21,15)','r99'],[105,'srg(105,52,21,30)','r105'],[154,'srg(154,72,26,40)','r154'],[162,'srg(162,69,36,24)','r162'],[288,'srg(288,105,52,30)','r288'],[405,'srg(405,132,63,33)','r405']];
   var vl=document.getElementById('vline'),va=document.getElementById('vaxis'),seen={};
-  function dot(v,label,id,cls){var k=seen[v]||0;seen[v]=k+1;var a=document.createElement('a');a.className='dot '+cls;a.href='#'+id;a.title=label+(cls==='no'?': no graph exists':': graphs constructed');a.setAttribute('aria-label',a.title);
+  function dot(v,label,id,cls){var k=seen[v]||0;seen[v]=k+1;var a=document.createElement('a');a.className='dot '+cls;a.href='#'+id;a.title=label+(cls==='no'?': no graph exists':cls==='uniq'?': exactly one graph':': graphs constructed');a.setAttribute('aria-label',a.title);
     a.style.left=(100*v/500)+'%';a.style.bottom=(8+k*18)+'px';vl.appendChild(a);}
   N.forEach(function(n){dot(n[0],n[1],n[2],'no');});
   Y.forEach(function(y){dot(y[0],'srg('+y.slice(0,4).join(',')+')','c'+y[7],'yes');});
+  [[125,'srg(125,52,15,26) and complement'],[175,'srg(175,72,20,36) and complement']].forEach(function(u){dot(u[0],u[1],'rtg','uniq');});
   [0,100,200,300,400,500].forEach(function(t){var s=document.createElement('span');s.textContent=t;s.style.left=Math.min(97,Math.max(3,t/5))+'%';va.appendChild(s);});
 })();
 </script>

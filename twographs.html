@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unique Regular Two-Graphs</title>
+<meta name="description" content="The regular two-graphs on 126 and 176 points are unique; equivalently, 126 equiangular lines in R^21 and 176 in R^22 at angle arccos 1/5 are unique. Hence srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) each have exactly one graph.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: two-graphs */
+.thm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.thm .box{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ok);border-radius:8px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.thm .nm{font:600 20px/1.2 var(--mono)}
+.thm .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.filter{display:flex;flex-wrap:wrap;gap:8px}
+.filter button{font:500 13px/1 var(--body);padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filter button[aria-pressed="true"]{border-color:var(--hand);color:var(--hand)}
+.cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.case{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--kill);border-radius:6px;padding:8px 10px;display:grid;gap:2px;cursor:pointer;text-align:left;font:inherit;color:inherit;min-width:0}
+.case.known{border-top-color:var(--ok)}
+.case .id{font:600 14px/1.3 var(--mono)}
+.case .rs{font:12px/1.3 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.case[aria-pressed="true"]{outline:2px solid var(--hand)}
+.case-group{display:grid;gap:6px}
+.fork.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fork.three>div{align-content:start}
+.bars{display:grid;gap:6px}
+.bars .r{display:grid;grid-template-columns:7.5em 1fr 3em;gap:8px;align-items:center;font-size:13px}
+.bars .k{font-family:var(--mono);color:var(--muted)}
+.bars .t{height:14px;background:var(--bg);border:1px solid var(--line);border-radius:3px;overflow:hidden;position:relative}
+.bars .f{display:block;height:100%;background:var(--comp)}
+.bars .f.hit{background:var(--ok)}
+.bars .need{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--kill)}
+.bars .v{font-family:var(--mono);text-align:right}
+@media (prefers-reduced-motion:no-preference){.case{transition:border-color .15s}.case:hover{border-color:var(--hand)}}
+@media (max-width:640px){.fork.three{grid-template-columns:1fr}.thm{grid-template-columns:1fr}.cases{grid-template-columns:repeat(2,minmax(0,1fr))}.bars .r{grid-template-columns:6em 1fr 2.6em}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="twographs.html" aria-current="page">Two-graphs</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Two-graphs and equiangular lines · open question from Brouwer–Van Maldeghem</div>
+  <h1>The regular two-graphs on 126 and 176 points are unique</h1>
+  <p class="lead">There is only one regular two-graph on 126 points, Taylor's unitary two-graph for U₃(5), and only one on 176 points, the Higman–Sims two-graph. Equivalently, 126 equiangular lines in ℝ²¹, or 176 in ℝ²², are unique up to isometry. As a consequence, four parameter sets of Brouwer's table each have exactly one strongly regular graph. The proof is lattice-theoretic and ends in an exhaustive enumeration inside the Leech lattice.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23279444">doi:10.5281/zenodo.23279444</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip ok">Uniqueness: 2 two-graphs, 4 srg parameter sets</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="st-h">
+  <div class="eyebrow">The theorem</div>
+  <h2 id="st-h">Two maximal line systems, each unique</h2>
+  <div class="thm">
+    <div class="box"><span class="nm">126 points · ℝ²¹</span><span class="meta">Seidel spectrum 25²¹ (−5)¹⁰⁵ · angle arccos 1/5</span><span>Up to isomorphism there is exactly one regular two-graph on 126 points: Taylor's unitary two-graph on the 126 isotropic points of a Hermitian form over 𝔽₂₅, on which U₃(5) acts 2-transitively. Equivalently, any two sets of 126 equiangular lines in ℝ²¹ with angle arccos 1/5 are isometric.</span></div>
+    <div class="box"><span class="nm">176 points · ℝ²²</span><span class="meta">Seidel spectrum 35²² (−5)¹⁵⁴ · angle arccos 1/5</span><span>Up to isomorphism there is exactly one regular two-graph on 176 points: the two-graph of the Higman–Sims group. Equivalently, any two sets of 176 equiangular lines in ℝ²² with angle arccos 1/5 are isometric.</span></div>
+  </div>
+  <p>A <em>two-graph</em> is a switching class of graphs; it is <em>regular</em> when its Seidel matrix S has two eigenvalues. Regular two-graphs are exactly the equiangular line systems that meet the relative bound of Lemmens and Seidel. For angle arccos α and d &lt; α⁻² that bound is n ≤ d(1 − α²)/(1 − dα²); for α = 1/5:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>dimension d</th><th>bound n</th><th>system</th><th>uniqueness</th></tr></thead>
+    <tbody>
+      <tr><td class="num">21</td><td class="num">21·(24/25)/(4/25) = 126</td><td>Taylor's two-graph, U₃(5)</td><td class="yes">this paper</td></tr>
+      <tr><td class="num">22</td><td class="num">22·(24/25)/(3/25) = 176</td><td>Higman–Sims two-graph</td><td class="yes">this paper</td></tr>
+      <tr><td class="num">23</td><td class="num">23·(24/25)/(2/25) = 276</td><td>the 276-line system, Co₃</td><td>Goethals and Seidel, 1975</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">By Lemmens and Seidel, 126 and 176 are the largest numbers of equiangular lines in ℝ²¹ and ℝ²² for <em>any</em> angle, and every system of that size has angle arccos 1/5. So the theorem says that the maximum equiangular line systems in dimensions 21 and 22 are unique. The first two systems are both sections of the 276-line system, but the proof does not use the uniqueness of the 276-point two-graph.</p>
+</section>
+
+<section aria-labelledby="open-h">
+  <div class="eyebrow">Why it was open</div>
+  <h2 id="open-h">What was known before</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>source</th><th>what it says</th></tr></thead>
+    <tbody>
+      <tr><td>Brouwer and Van Maldeghem, <em>Strongly Regular Graphs</em> (2022), §8.10.1</td><td>For both 126 and 176 points: “It is unknown whether the two-graph is unique.” Their enumeration table gives “≥ 1” for both.</td></tr>
+      <tr><td>Goethals graph srg(126,50,13,24) (Coolsaet and Degraer) and srg(176,70,18,34)</td><td>Each is unique, and each lies in the respective switching class. Uniqueness of one graph in a switching class does not decide the two-graph.</td></tr>
+      <tr><td>Glazyrin and Yu (2018); Kao and Yu (2022)</td><td>Uniqueness of maximum equiangular line systems at angle arccos 1/5 for 23 ≤ d ≤ 59 and 23 ≤ d ≤ 64, building on the 276-line system, which spans ℝ²³. Dimensions 21 and 22 are of a different kind.</td></tr>
+      <tr><td>Brouwer's table</td><td>Marks srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) “+” (exists), not “!” (unique).</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">A web search on 8–9 October 2026 found no proof of uniqueness of either two-graph.</p>
+</section>
+
+<section aria-labelledby="cor-h">
+  <div class="eyebrow">Corollary</div>
+  <h2 id="cor-h">Four parameter sets with exactly one graph</h2>
+  <p>A graph is a <em>descendant</em> of a two-graph if it arises by switching one point to be isolated and deleting it. By Seidel's theorem, every srg(v, k, λ, μ) with k = 2μ is a descendant of a regular two-graph on v + 1 = 3k − 2λ points. The automorphism groups of the two two-graphs are 2-transitive, so all descendants are isomorphic, and uniqueness passes to the graphs:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>k = 2μ</th><th>two-graph</th><th>the graph</th><th>number of graphs</th></tr></thead>
+    <tbody>
+      <tr><td class="num">srg(125, 52, 15, 26)</td><td class="num">52 = 2·26</td><td>Taylor, 126 points</td><td>Godsil's graph from the unital, q = 5</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(125, 72, 45, 36)</td><td class="num">72 = 2·36</td><td>its complement</td><td>complement of Godsil's graph</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(175, 72, 20, 36)</td><td class="num">72 = 2·36</td><td>Higman–Sims, 176 points</td><td>Haemers' graph on the edges of the Hoffman–Singleton graph</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(175, 102, 65, 51)</td><td class="num">102 = 2·51</td><td>its complement</td><td>complement of Haemers' graph</td><td class="yes">exactly 1</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">As a check that does not use the transitivity of the groups, all 126 resp. 176 descendants of each two-graph and of its complement were computed: in each of the four families they all have the same nauty canonical form. A partial geometry pg(4,12,2), whose existence Brouwer's table lists as open, would have an srg(125,52,15,26) as point graph; by the corollary its lines would have to partition the edges of Godsil's graph into 5-cliques. The paper does not pursue this.</p>
+</section>
+
+<section aria-labelledby="sw-h">
+  <div class="eyebrow">Switching classes</div>
+  <h2 id="sw-h">One two-graph, many regular graphs</h2>
+  <p>Uniqueness of the two-graph does not make the regular graphs in its switching class unique. Every srg(126,60,33,24), srg(126,65,28,39), srg(176,85,48,34) or srg(176,90,38,54) lies in the switching class of a regular two-graph on 126 resp. 176 points, so by the theorem it is a switching of the unique two-graph or of its complement. These classes contain many such graphs:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>graphs found by switching</th><th>how</th></tr></thead>
+    <tbody>
+      <tr><td class="num">srg(126, 60, 33, 24)</td><td class="num">≥ 150</td><td>exact 0/1 model for switching sets that produce a regular graph, sampled with a constraint solver; all with trivial automorphism group</td></tr>
+      <tr><td class="num">srg(176, 85, 48, 34)</td><td class="num">≥ 4,335</td><td>100 by the same model (trivial automorphism group), plus 4,235 by Godsil–McKay switching on sets of size 6 applied to one of them</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Every graph was verified exactly and distinguished by nauty canonical forms. The counts are lower bounds; the exact numbers are open. Nozaki observed the same phenomenon for the 276-point two-graph.</p>
+</section>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From a Seidel matrix to vectors</h2>
+  <div class="filter" role="group" aria-label="Choose the number of points">
+    <button type="button" data-n="126" aria-pressed="true">126 points</button>
+    <button type="button" data-n="176" aria-pressed="false">176 points</button>
+  </div>
+  <div class="spec" id="spec"></div>
+  <div class="detail" id="specout" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>finite computation, three independent implementations</span><span><i style="background:var(--kill)"></i>contradiction or conclusion</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>An even lattice K and one class γ</strong><span class="s">The vectors wᵢ ± wⱼ generate an even lattice; every wᵢ lies in one class of order 2.</span><span class="d"><span>The frame identity Σ wᵢwᵢᵀ = c·I holds. K = ℤ⟨wᵢ ± wⱼ⟩ is even of rank r. A vector x lies in the dual K<sup>#</sup> exactly when the numbers zᵢ = ⟨x, wᵢ⟩ are all integers or all half-integers, and then</span><span class="formula">Σ zᵢ² = c·x²,   Σ zᵢwᵢ = c·x,   S z = ρ z</span><span>All wᵢ lie in K<sup>#</sup> and in one class γ of D(K) = K<sup>#</sup>/K, of order 2 with q(γ) = 1/2. Switching (wᵢ ↦ −wᵢ) changes nothing.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Key lemma: no short dual vectors</strong><span class="s">Every nonzero x ∈ K<sup>#</sup> has x² &gt; 2.</span><span class="d"><span>If z is half-integral, Σ zᵢ² ≥ n/4, which is 31.5 &gt; 30 for n = 126 and 44 &gt; 40 for n = 176, while c·x² ≤ 2c. So z is integral; after switching z ≥ 0, and the row of S z = ρ z at a largest entry forces z to be the indicator of a set T with |T| ∈ {ρ + 1, ρ + 3, ρ + 5}.</span><span>A rank argument on the Gram matrix J + 4I − 2A<sub>T</sub> (rank at most r) rules out every case except |T| = 30 for n = 126 with A<sub>T</sub> ten disjoint triangles; then every triangle sum is one vector s, and a point outside T would need S<sub>aj</sub> + S<sub>bj</sub> + S<sub>cj</sub> = 0, a sum of three odd numbers. Contradiction.</span><span class="muted">For the known two-graphs the minimum of K<sup>#</sup> is 21/10 resp. 11/5, attained by the half-integral bound.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Milgram's formula: eight discriminant forms</strong><span class="s">Four for 126 points (G1–G4), four for 176 points (H1a, H1b, two forms of H2).</span><span class="d"><span>Take an even overlattice N ⊇ K, maximal subject to keeping γ a nonzero class. Its discriminant form is anisotropic away from γ, its exponent divides 2c ∈ {30, 40}, and its 2-part is pinned down by the vectors wᵢ: ⟨γ⟩ alone for 126, ⟨γ⟩ plus an anisotropic elementary form for 176. Milgram's formula Br(q<sub>N</sub>) ≡ rank N (mod 8) leaves</span><span class="formula">G1  ⟨1/2⟩ ⊕ ⟨4/5⟩            det 10
+G2  ⟨1/2⟩ ⊕ P₅               det 50
+G3  ⟨1/2⟩ ⊕ P₃               det 18
+G4  ⟨1/2⟩ ⊕ P₃ ⊕ ⟨2/5⟩       det 90
+H1a ⟨1/2⟩² ⊕ ⟨4/5⟩           det 20
+H1b ⟨1/2⟩² ⊕ P₅              det 100
+H2  ⟨1/2⟩ ⊕ ⟨3/2⟩³ (⊕ ⟨2/5⟩)  det 16, 80</span><span class="muted">P₃, P₅ are the anisotropic planes over 𝔽₃, 𝔽₅. The known two-graphs have N = K of types G2 and H1a. All eight cases are in the explorer below.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5</span><span class="t"><strong>Gluing: short vectors live in the partner</strong><span class="s">Glue N to a small lattice R; Niemeier's classification decides.</span><span class="d"><span>Gluing N (or a slightly larger M) to a lattice R of rank 24 − rank M with the opposite discriminant form gives an even unimodular lattice U of rank 24. By the key lemma every vector of U of norm ≤ 2 lies in R, so the root system of U has rank ≤ 3. By Niemeier, U is the Leech lattice Λ, which has no roots.</span><span>So one partner R with a root excludes a case, and a rootless partner forces U = Λ. Only the existence of one partner is used; no class number or genus enumeration enters.</span></span></span></button>
+    <div class="fork three">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">G1, G3, H2 · partners with roots</span>
+        <button class="step" data-kind="end" aria-expanded="false"><span class="n">6a</span><span class="t"><strong>Excluded by Niemeier</strong><span class="s">A root in R is impossible.</span><span class="d"><span>G1: R = [[2,−1,−1],[−1,2,0],[−1,0,4]], 6 roots. G3: R = A₂ ⊥ ⟨6⟩, 6 roots. H2: after passing to an even overlattice M = N + ℤỹ of rank 22, the partners A₁ ⊥ A₁ (4 roots) and A₁ ⊥ ⟨10⟩ (2 roots).</span><span class="muted">The audit also noted that G1 and G3 already fall to the Hermite bound: every even rank-3 lattice of determinant 10 or 18 has a root.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">H1b · an odd detour</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6b</span><span class="t"><strong>No rank-25 lattice with roots exactly A₁</strong><span class="s">Borcherds' classification, in Chenevier's list.</span><span class="d"><span>Adding a vector of odd norm gives an odd lattice N′ of rank 22 with D(N′) ≅ (ℤ/5)². Gluing it to R′ = [[2,1],[1,3]] ⊥ ⟨5⟩ gives an odd unimodular lattice of rank 25 without vectors of norm 1 whose roots are exactly ±e₁.</span><span>Chenevier's list of the 368 such lattices has root counts 4, 12, 20, 28, …, all ≡ 4 (mod 8); none has exactly 2. Checked by three programs. This is the only use of Borcherds' classification, so part (a) does not depend on it.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">G2, G4, H1a · rootless partners</span>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6c</span><span class="t"><strong>Forced into the Leech lattice</strong><span class="s">N is the orthogonal complement of R in Λ.</span><span class="d"><span>G2: R = [[4,−1,−1],[−1,4,−1],[−1,−1,4]]. G4: R = [[4,−1,0],[−1,4,0],[0,0,6]]. H1a: R = [[4,−2],[−2,6]]. Each is rootless, so U = Λ and N = R<sup>⊥</sup> in Λ.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">7</span><span class="t"><strong>Sections of the 276-line system</strong><span class="s">The configuration is fixed by the embedding of R.</span><span class="d"><span>R contains a norm-6 vector b with b/2 glued to γ. Then uᵢ = wᵢ + b/2 are Leech vectors of norm 4 with ⟨uᵢ, b⟩ = 3. They lie in</span><span class="formula">T_b = { u ∈ Λ : u² = 4, ⟨u, b⟩ = 3 },   |T_b| = 552</span><span>whose pairs {u, b − u} are the 276 equiangular lines. The lines of the two-graph are exactly those of T_b that project onto b/2 in R, and there are exactly n of them. Since Co₀ is transitive on norm-6 vectors, b can be fixed; what remains is to run over all embeddings of R.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8</span><span class="t"><strong>Exhaustive enumeration in the Leech lattice</strong><span class="s">H1a: 11,178 cases, all Higman–Sims. G2: all Taylor. G4: at most 96 lines.</span><span class="d"><span>H1a: for every one of the 11,178 vectors a, 176 lines, all isomorphic to the Higman–Sims two-graph. G2: all 3,934,656 ordered pairs give 126 lines and Taylor's two-graph (655,776 distinct line sets). G4: all 1,394,131,200 ordered pairs give 81 or 96 lines, never 126.</span><span class="muted">Three independent implementations; two of them used no group action. Details in the enumeration panel below.</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">9</span><span class="t"><strong>Each two-graph is unique</strong><span class="s">Every case is either impossible or gives the known two-graph.</span><span class="d"><span>126 points: G1, G3 impossible; G4 never reaches 126 lines; G2 always gives Taylor's two-graph. 176 points: H1b and H2 impossible; H1a always gives the Higman–Sims two-graph. No symmetry of the two-graph is assumed anywhere.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="cases-h">
+  <div class="eyebrow">Steps 4–6 · the eight cases</div>
+  <h2 id="cases-h">Every discriminant form, and what becomes of it</h2>
+  <p>Select a case. Red tiles are impossible; green tiles are realised, and only by the known two-graph.</p>
+  <div class="case-group"><span class="fork-label">126 points · rank 21</span><div class="cases" id="cases126"></div></div>
+  <div class="case-group"><span class="fork-label">176 points · rank 22</span><div class="cases" id="cases176"></div></div>
+  <div class="detail" id="casedetail" aria-live="polite"></div>
+  <p class="muted">Roots are counted with sign. In every row q<sub>R</sub> ≅ −q<sub>M</sub>: −⟨1/2⟩ = ⟨3/2⟩, −1 is a square modulo 5 so the 5-parts are self-opposite, and −P<sub>p</sub> ≅ P<sub>p</sub>.</p>
+</section>
+
+<section aria-labelledby="leech-h">
+  <div class="eyebrow">Steps 7–8 · the Leech computations</div>
+  <h2 id="leech-h">Inside the Leech lattice</h2>
+  <p>Fix a vector b of norm 6. The 196,560 minimal vectors of Λ meet it as follows:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>⟨u, b⟩</th><th>vectors (each sign)</th><th>role</th></tr></thead>
+    <tbody>
+      <tr><td class="num">±3</td><td class="num">552</td><td>T_b: the 276 equiangular lines, Seidel spectrum 55²³ (−5)²⁵³</td></tr>
+      <tr><td class="num">±2</td><td class="num">11,178</td><td>A₂: embeddings for H1a (one vector a) and G2 (pairs e₁, e₂)</td></tr>
+      <tr><td class="num">±1</td><td class="num">48,600</td><td></td></tr>
+      <tr><td class="num">0</td><td class="num">75,900</td><td>A₀: embeddings for G4 (pairs e₁, e₂)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted mono" id="sumcheck"></p>
+  <div class="filter" role="group" aria-label="Choose the Leech case">
+    <button type="button" data-c="h1a" aria-pressed="true">H1a · 176 points</button>
+    <button type="button" data-c="g2" aria-pressed="false">G2 · 126 points</button>
+    <button type="button" data-c="g4" aria-pressed="false">G4 · 126 points</button>
+  </div>
+  <div class="detail" id="leechout" aria-live="polite"></div>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>derivation</th><th>blind audit</th><th>referee</th></tr></thead>
+    <tbody>
+      <tr><td>lemmas, forms, exclusions</td><td>proofs written</td><td>re-derived without reading the derivation's form sections; checked line by line: sound, no gap</td><td>every hand step checked; 83 numerical items in pure Python, all passed</td></tr>
+      <tr><td>anisotropic 2-elementary forms</td><td>exhaustive enumeration</td><td>own enumeration up to rank 6</td><td>brute force over all quadratic forms on (ℤ/2)ᵏ, k ≤ 4</td></tr>
+      <tr><td>partners, H1b</td><td>PARI/GP</td><td>own PARI/GP; own checks of the 368 lattices</td><td>own checks; root counts agree with Chenevier's labels for all 368</td></tr>
+      <tr><td>Leech lattice</td><td>Gram matrix, PARI qfminim</td><td>own construction from the binary Golay code</td><td>own Golay code, own construction</td></tr>
+      <tr><td>H1a</td><td>all 11,178 vectors a</td><td>all 11,178 vectors a</td><td>all 11,178 vectors a</td></tr>
+      <tr><td>G2</td><td>e₁ fixed by transitivity of Co₃ (certified by orbit–stabiliser), all 352 e₂</td><td>all 3,934,656 ordered pairs, no group used</td><td>all 3,934,656 ordered pairs, no group used</td></tr>
+      <tr><td>G4</td><td>e₁ fixed likewise, all 18,368 e₂</td><td>all 1,394,131,200 ordered pairs, no group used</td><td>all 1,394,131,200 ordered pairs, no group used</td></tr>
+      <tr><td>known two-graphs</td><td>from descendant graphs built earlier</td><td>own constructions from S(4,7,23) and the Hermitian unital over 𝔽₂₅</td><td>own constructions, same sources</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The derivation was done by Claude Opus agents. The blind audit was done by Claude Fable, a different model of the same vendor, instructed to be adversarial, with its own code and no access to the derivation's code; logs were compared only at the end. An independent referee (a fresh Claude Fable session, working from the paper alone) re-implemented the numerical content, including the Leech enumeration without any group action, found no fatal or major issue and recommended acceptance with minor revisions, which are incorporated. Codex (OpenAI) reviewed the derivation independently (review C32): it re-proved the hand lemmas and reproduced the Leech counts with its own integer code. The grade is <strong>computer-assisted</strong>: every hand step is proved in the paper, and the Leech enumerations cannot be done by hand. Isomorphism tests rest on nauty canonical labelling. No human expert has read the paper yet.</p>
+</section>
+
+<section aria-labelledby="ext-h">
+  <div class="eyebrow">External inputs</div>
+  <h2 id="ext-h">What the proof takes from the literature</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>input</th><th>used for</th></tr></thead>
+    <tbody>
+      <tr><td class="num">E1</td><td>Milgram's formula; Nikulin's theory of overlattices and gluing; the normal form of 2-elementary forms; Chevalley–Warning</td><td>the eight forms and the gluing</td></tr>
+      <tr><td class="num">E2</td><td>Niemeier's classification; Conway's characterisation of Λ as the only rootless even unimodular lattice of rank 24</td><td>step 5</td></tr>
+      <tr><td class="num">E3</td><td>Co₀ = Aut(Λ) is transitive on norm-6 vectors, with stabiliser Co₃</td><td>fixing b (also confirmed numerically)</td></tr>
+      <tr><td class="num">E4</td><td>Borcherds' classification of rank-25 unimodular lattices, via Chenevier's list of 368</td><td>case H1b only, so part (b) only</td></tr>
+      <tr><td class="num">E5</td><td>the relative bound; two-graphs ↔ switching classes; nauty</td><td>throughout</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The uniqueness of the 276-point two-graph (Goethals and Seidel) is not used. For Chenevier's list, its internal properties (count, unimodularity, no norm-1 vectors, root counts) were re-verified, not its completeness.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The machinery on the systems that exist</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>system</th><th>lattice K</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>Taylor, 126 lines</td><td>rank 21, det 50, q<sub>K</sub> = ⟨1/2⟩ ⊕ P₅, minimum 4, min K<sup>#</sup> = 21/10</td><td class="yes">type G2, N = K</td></tr>
+      <tr><td>Higman–Sims, 176 lines</td><td>rank 22, det 20, q<sub>K</sub> = ⟨1/2⟩² ⊕ ⟨4/5⟩, minimum 4, min K<sup>#</sup> = 11/5</td><td class="yes">type H1a, N = K</td></tr>
+      <tr><td>Goethals–Seidel, 276 lines</td><td>rank 23, det 6, q<sub>K</sub> = ⟨1/2⟩ ⊕ ⟨4/3⟩, min K<sup>#</sup> = 5/2</td><td class="yes">consistent</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The known two-graphs were built without the Leech lattice (the audit used the heptads of S(4,7,23) and the Hermitian unital over 𝔽₂₅), and the Leech enumerations re-find them in every embedding.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23279444">doi:10.5281/zenodo.23279444</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab101-150.html">A. E. Brouwer, v = 101–150</a>, <a href="https://aeb.win.tue.nl/graphs/srg/srgtab151-200.html">v = 151–200</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+
+  // Step 1: spectrum for n = 126 / 176
+  var P={126:{r:21,rho:25,name:"Taylor's two-graph"},176:{r:22,rho:35,name:'the Higman–Sims two-graph'}};
+  var spec=document.getElementById('spec'),so=document.getElementById('specout');
+  function showSpec(n){
+    var p=P[n],c=(p.rho+5)/2,m=n-p.r;
+    spec.innerHTML='<div class="cell"><span class="eyebrow">eigenvalue of S</span><span class="big">'+p.rho+'</span><span class="muted">multiplicity '+p.r+' &nbsp;<span class="arrow">→ S + 5I: '+(p.rho+5)+'</span></span></div>'
+      +'<div class="cell"><span class="eyebrow">eigenvalue of S</span><span class="big">−5</span><span class="muted">multiplicity '+m+' &nbsp;<span class="arrow">→ S + 5I: 0</span></span></div>'
+      +'<div class="cell"><span class="eyebrow">vectors</span><span class="big">'+n+' in ℝ<sup>'+p.r+'</sup></span><span class="muted">norm 5/2, inner products ±1/2</span></div>';
+    var tr=p.rho*p.r-5*m, sq=p.rho*p.rho*p.r+25*m;
+    so.innerHTML='<p>S + 5I is positive semidefinite of rank '+p.r+', so (S + 5I)/2 is the Gram matrix of vectors w₁, …, w<sub>'+n+'</sub> in ℝ<sup>'+p.r+'</sup>. Here ρ = '+p.rho+' and c = (ρ + 5)/2 = '+c+', and the frame identity reads Σ wᵢwᵢᵀ = '+c+'·I.</p>'
+      +'<div class="formula">trace S = '+p.rho+'·'+p.r+' − 5·'+m+' = '+tr+'\ntrace S² = '+p.rho+'²·'+p.r+' + 25·'+m+' = '+fmt(sq)+' = n(n − 1) = '+n+'·'+(n-1)+'\nn = 1 − ρ₁ρ₂ = 1 + 5·'+p.rho+' = '+(1+5*p.rho)+'</div>'
+      +'<p class="muted">Key-lemma numbers: a half-integral dual vector has Σ zᵢ² ≥ n/4 = '+(n/4)+' &gt; 2c = '+(2*c)+'. The known two-graph here is '+p.name+'.</p>';
+  }
+  document.querySelectorAll('[data-n]').forEach(function(b){
+    b.addEventListener('click',function(){document.querySelectorAll('[data-n]').forEach(function(o){o.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');showSpec(+b.dataset.n);});
+  });
+  showSpec(126);
+
+  // case explorer
+  var C=[
+    {id:'G1',n:126,q:'⟨1/2⟩ ⊕ ⟨4/5⟩',det:10,M:'N',R:'[[2,−1,−1],[−1,2,0],[−1,0,4]]',qR:'⟨3/2⟩ ⊕ ⟨4/5⟩',roots:6,known:false,v:'Partner with 6 roots: the glued Niemeier lattice would have a root system of rank ≤ 3. Impossible. (Also by the Hermite bound.)'},
+    {id:'G2',n:126,q:'⟨1/2⟩ ⊕ P₅',det:50,M:'N',R:'R_G2 = [[4,−1,−1],[−1,4,−1],[−1,−1,4]]',qR:'⟨3/2⟩ ⊕ P₅',roots:0,known:true,v:'Rootless partner, so U is the Leech lattice. All 3,934,656 ordered pairs (e₁, e₂) give 126 lines and Taylor’s two-graph. The type of the known two-graph.'},
+    {id:'G3',n:126,q:'⟨1/2⟩ ⊕ P₃',det:18,M:'N',R:'A₂ ⊥ ⟨6⟩',qR:'⟨3/2⟩ ⊕ P₃',roots:6,known:false,v:'Partner with 6 roots. Impossible. (Also by the Hermite bound.)'},
+    {id:'G4',n:126,q:'⟨1/2⟩ ⊕ P₃ ⊕ ⟨2/5⟩',det:90,M:'N',R:'R_G4 = [[4,−1,0],[−1,4,0],[0,0,6]]',qR:'⟨3/2⟩ ⊕ P₃ ⊕ ⟨2/5⟩',roots:0,known:false,v:'Rootless partner, so U is the Leech lattice; but all 1,394,131,200 ordered pairs give 81 or 96 lines, never 126. Impossible.'},
+    {id:'H1a',n:176,q:'⟨1/2⟩² ⊕ ⟨4/5⟩',det:20,M:'N',R:'R_H1a = [[4,−2],[−2,6]]',qR:'⟨3/2⟩² ⊕ ⟨4/5⟩',roots:0,known:true,v:'Rootless partner, so U is the Leech lattice. All 11,178 vectors a give 176 lines and the Higman–Sims two-graph. The type of the known two-graph.'},
+    {id:'H1b',n:176,q:'⟨1/2⟩² ⊕ P₅',det:100,M:'N′ = N + ℤx̃ (odd, rank 22)',R:'R′ = [[2,1],[1,3]] ⊥ ⟨5⟩',qR:'anisotropic bilinear form on 𝔽₅²',roots:2,known:false,v:'No even partner of rank 2 exists. The odd gluing gives a unit-free unimodular lattice of rank 25 with roots exactly ±e₁; Chenevier’s list of 368 has none with exactly 2 roots. Impossible (uses Borcherds’ classification).'},
+    {id:'H2 (16)',n:176,q:'⟨1/2⟩ ⊕ ⟨3/2⟩³',det:16,M:'M = N + ℤỹ (even, rank 22)',R:'A₁ ⊥ A₁',qR:'⟨1/2⟩²',roots:4,known:false,v:'Partner with 4 roots. Impossible.'},
+    {id:'H2 (80)',n:176,q:'⟨1/2⟩ ⊕ ⟨3/2⟩³ ⊕ ⟨2/5⟩',det:80,M:'M = N + ℤỹ (even, rank 22)',R:'A₁ ⊥ ⟨10⟩',qR:'⟨1/2⟩² ⊕ ⟨2/5⟩',roots:2,known:false,v:'Partner with 2 roots. Impossible.'}
+  ];
+  var cd=document.getElementById('casedetail'),btns=[];
+  function showCase(i){
+    var c=C[i];btns.forEach(function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false');});
+    cd.innerHTML='<h3 class="mono">'+c.id+' · '+c.n+' points</h3><div class="formula">q_N = '+c.q+'    det N = '+c.det+'\nglued lattice: '+c.M+'\npartner R = '+c.R+'\nq_R = '+c.qR+'    roots of R: '+c.roots+'</div><p'+(c.known?' class="yes"':'')+'>'+c.v+'</p>';
+  }
+  C.forEach(function(c,i){
+    var b=document.createElement('button');b.type='button';b.className='case'+(c.known?' known':'');b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="id">'+c.id+'</span><span class="rs">det '+c.det+' · '+(c.known?'known two-graph':'impossible')+'</span>';
+    b.addEventListener('click',function(){showCase(i);});
+    document.getElementById(c.n===126?'cases126':'cases176').appendChild(b);btns.push(b);
+  });
+  showCase(1);
+
+  // Leech distribution check
+  var tot=2*(552+11178+48600)+75900;
+  document.getElementById('sumcheck').textContent='2·(552 + 11,178 + 48,600) + 75,900 = '+fmt(tot)+(tot===196560?' ✓ all minimal vectors':'');
+
+  // Leech cases
+  var L={
+    h1a:{need:176,emb:'one vector a ∈ A₂ with ⟨a, b⟩ = 2',total:11178,rows:[[176,11178]],res:'Every one of the 11,178 cases gives 176 lines with S² = 30S + 175I (spectrum 35²² (−5)¹⁵⁴), and the two-graph is isomorphic to the Higman–Sims two-graph.',hit:true},
+    g2:{need:126,emb:'ordered pairs (e₁, e₂) in A₂ with ⟨e₁, e₂⟩ = −1; 352 partners e₂ per e₁',total:3934656,rows:[[126,3934656]],res:'Every one of the 11,178 · 352 = 3,934,656 ordered pairs gives 126 lines with S² = 20S + 125I (spectrum 25²¹ (−5)¹⁰⁵) and Taylor’s two-graph. They give 655,776 distinct line sets, each from exactly 6 ordered pairs; 655,776 = |Co₃| / |U₃(5):S₃|.',hit:true},
+    g4:{need:126,emb:'ordered pairs (e₁, e₂) in A₀ with ⟨e₁, e₂⟩ = −1; 18,368 partners e₂ per e₁',total:1394131200,rows:[[81,17001600],[96,1377129600]],res:'Over all 75,900 · 18,368 = 1,394,131,200 ordered pairs the section has 81 lines (17,001,600 pairs) or 96 lines (1,377,129,600 pairs); per e₁ these are 224 and 18,144. Never 126, so G4 is impossible.',hit:false}
+  };
+  var lo=document.getElementById('leechout');
+  function showLeech(k){
+    var c=L[k],h='<p><strong>Embeddings:</strong> '+c.emb+' ('+fmt(c.total)+' in all).</p><div class="bars" role="img" aria-label="Number of lines found against the '+c.need+' needed">';
+    c.rows.forEach(function(r){var w=100*r[0]/176;h+='<div class="r"><span class="k">'+fmt(r[1])+'</span><span class="t"><span class="f'+(r[0]===c.need?' hit':'')+'" style="width:'+w+'%"></span><span class="need" style="left:'+(100*c.need/176)+'%"></span></span><span class="v">'+r[0]+'</span></div>';});
+    h+='</div><div class="legend"><span><i style="background:var(--comp)"></i>lines in the section, too few</span><span><i style="background:var(--ok)"></i>lines in the section, as needed</span><span><i style="background:var(--kill)"></i>needed: '+c.need+'</span></div><p'+(c.hit?'':' class="muted"')+'>'+c.res+'</p>';
+    lo.innerHTML=h;
+  }
+  document.querySelectorAll('[data-c]').forEach(function(b){
+    b.addEventListener('click',function(){document.querySelectorAll('[data-c]').forEach(function(o){o.setAttribute('aria-pressed','false');});b.setAttribute('aria-pressed','true');showLeech(b.dataset.c);});
+  });
+  showLeech('h1a');
+})();
+</script>
+</body>
+</html>

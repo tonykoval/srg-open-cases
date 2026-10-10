@@ -21,11 +21,11 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
 <header>
   <div class="eyebrow">About this site</div>
   <h1>Method, standards and credits</h1>
-  <p class="lead">This site explains, for a general mathematical reader, results on parameter sets that were open in A. E. Brouwer's table of strongly regular graphs. The papers are the authoritative versions; nothing here goes beyond them.</p>
+  <p class="lead">This site explains, for a general mathematical reader, results on parameter sets that were open in A. E. Brouwer's table of strongly regular graphs, and a related uniqueness result for two-graphs. The papers are the authoritative versions; nothing here goes beyond them.</p>
 </header>
 
 <section aria-labelledby="srg-h">
@@ -44,6 +44,8 @@
     <p>The eigenvalues of a strongly regular graph are fixed by its parameters. Shifting the adjacency matrix by suitable multiples of I and J gives a positive semidefinite matrix of small rank, so the vertices can be drawn as short vectors in a space of 21 to 31 dimensions, with inner products that record adjacency. These vectors generate an integral lattice. Unimodular lattices of these dimensions are classified (Niemeier, Borcherds, Chenevier), and the lattice of the graph must glue into one of them. Alternatively (for 288 and 405 vertices) it glues into an even unimodular lattice of rank 32 or 40, where the theta series, weighted by harmonic polynomials, live in spaces of modular forms of dimension one or two; this turns the numbers of short vectors of each kind into the unknowns of exact linear equations. Exact identities about how a dual vector meets the vertices rule out many short dual vectors. In every possible host lattice we then find a vector that the identities forbid, or prove an identity that leaves no room, or enumerate all remaining candidates with certificates that nothing was missed, or give an exact rational (Farkas) certificate that the linear equations have no solution compatible with the vectors the graph supplies. No symmetry of the graph is assumed.</p>
     <h3>One condition for many parameter sets</h3>
     <p>The first steps of this method, before any gluing, already give a condition on the parameters alone. It goes back to Bannai, Munemasa and Venkov (2005) and Nebe and Venkov (2013), who used it for tight spherical designs; one paper extends it to every strongly regular graph with integral eigenvalues. The discriminant form of a maximal even overlattice of the vertex lattice must have no isotropic element, must satisfy Milgram's formula, and is tied by an exact identity to the class of the rescaled sum of the vertex vectors. Such forms are few and can be listed. A sweep of Brouwer's table finds 70 open complementary pairs for which none exists: 28 with proofs written out by hand, 42 by exhaustive enumerations repeated by at least two independent programs. See <a href="bmv.html">70 pairs</a>.</p>
+    <h3>Proving that a structure is unique</h3>
+    <p>The same lattice method also proves uniqueness. For the regular two-graphs on 126 and 176 points (equivalently, maximal systems of equiangular lines in ℝ²¹ and ℝ²²), the line vectors span an even lattice with no short dual vectors; gluing leaves either a contradiction or the Leech lattice, and inside the Leech lattice an exhaustive enumeration finds only the known two-graph. Uniqueness of the two-graph then gives uniqueness of its descendant strongly regular graphs. See <a href="twographs.html">Two-graphs</a>.</p>
     <h3>Constructing graphs</h3>
     <p>A group acting on v points splits the pairs of points into orbitals. Any union of orbitals is a graph on which the group acts, so the search is over subsets of a short list rather than over all graphs. We searched such unions for coset actions of many groups (from the GAP library of tables of marks, affine groups, subgroups found by descent, and layers over p-groups), and searched for partial difference sets directly. Every graph found was then checked by the exact identity A² = kI + λA + μ(J − I − A).</p>
   </div>
@@ -72,7 +74,7 @@
       <li>The lattice method was developed for srg(69,20,7,5) and srg(99,42,21,15) with suggestions from OpenAI's model gpt-6-astra and JetBrains' Junie agent; the specific contributions are stated in those papers, and the archived prompts and answers are cited there.</li>
       <li>Claude (Anthropic), working in the author's repository under the author's direction, wrote most of the code, ran the computations and controls, derived and checked arguments, searched for the new graphs and drafted the papers.</li>
       <li>Codex (OpenAI's coding agent) contributed derivations and independent implementations for some steps and acted as auditor and referee in separate sessions.</li>
-      <li>Audits and referee reports were done by AI sessions separate from the ones that produced the results, each with its own code where computation was involved. For 288 and 405, the referee and (for 405) the blind audit ran on a different model, Claude Fable, so that errors of one model are less likely to repeat.</li>
+      <li>Audits and referee reports were done by AI sessions separate from the ones that produced the results, each with its own code where computation was involved. For 288, 405 and the two-graphs, the referee and (for 405 and the two-graphs) the blind audit ran on a different model, Claude Fable, so that errors of one model are less likely to repeat.</li>
     </ul>
     <p>No step of the proofs rests on the judgement of an AI system: every claim is either proved in the text or reduced to a named computation that can be rerun. The author coordinated the work and checked it. The papers record who did what and where independent review was incomplete. This site was also drafted with AI assistance and checked against the papers.</p>
   </div>
@@ -100,6 +102,7 @@
       <tr><td>There is no strongly regular graph with parameters (288,105,52,30)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23263506">10.5281/zenodo.23263506</a></td></tr>
       <tr><td>There is no strongly regular graph with parameters (405,132,63,33)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23263684">10.5281/zenodo.23263684</a></td></tr>
       <tr><td>The Bannai–Munemasa–Venkov lattice method for strongly regular graphs: a uniform discriminant-form condition and new nonexistence results</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23275433">10.5281/zenodo.23275433</a></td></tr>
+      <tr><td>The regular two-graphs on 126 and 176 points are unique</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23279444">10.5281/zenodo.23279444</a></td></tr>
       <tr><td>New strongly regular graphs on open parameter sets of Brouwer's table</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23210829">10.5281/zenodo.23210829</a></td></tr>
     </tbody>
   </table></div>
