@@ -5,7 +5,7 @@ https://tonykoval.github.io/srg-open-cases/
 A small static website that explains results on parameter sets of strongly regular graphs that were marked open
 ("?") in A. E. Brouwer's table, settled in September–October 2026, and related uniqueness results:
 
-- **No graph exists**: srg(69,20,7,5), srg(99,42,21,15), srg(105,52,21,30), srg(154,72,26,40), srg(162,69,36,24),
+- **No graph exists**: srg(69,20,7,5), srg(99,42,21,15), srg(105,52,21,30), srg(154,72,26,40), srg(162,69,36,24), srg(196,81,42,27),
   srg(288,105,52,30), srg(405,132,63,33), srg(476,133,60,28) (one paper each).
 - **No graph exists, by one uniform condition**: 70 further open complementary pairs with 96 ≤ v ≤ 1288 (the
   Bannai–Munemasa–Venkov lattice method extended to all strongly regular graphs with integral eigenvalues; 28 pairs
@@ -27,7 +27,7 @@ beyond them.
 | file | content |
 |---|---|
 | `index.html` | landing page: all results, methods, how they were checked |
-| `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg288.html`, `srg405.html`, `srg476.html` | one page per nonexistence proof |
+| `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg196.html`, `srg288.html`, `srg405.html`, `srg476.html` | one page per nonexistence proof |
 | `bmv.html` | the uniform lattice condition: statement, parity corollary, NL_m(q) family, parity checker, sortable Table 1 of the 70 pairs, controls |
 | `twographs.html` | uniqueness of the regular two-graphs on 126 and 176 points: statement, corollary for four srg parameter sets, switching classes, proof steps, case explorer, Leech enumeration, verification |
 | `uniq243_253.html` | uniqueness of srg(243,110,37,60) (Delsarte graph) and srg(253,112,36,60) (M23 graph): statement, prior rank-3 results, proof steps, the 16 forms for 253, Leech counts, verification, controls |
@@ -69,6 +69,7 @@ sets of the full archive that are not copied here.
 | No srg(105,52,21,30) | [10.5281/zenodo.23210908](https://doi.org/10.5281/zenodo.23210908) |
 | No srg(154,72,26,40) | [10.5281/zenodo.23210954](https://doi.org/10.5281/zenodo.23210954) |
 | No srg(162,69,36,24) | [10.5281/zenodo.23211005](https://doi.org/10.5281/zenodo.23211005) |
+| No srg(196,81,42,27) | [10.5281/zenodo.23296112](https://doi.org/10.5281/zenodo.23296112) |
 | No srg(288,105,52,30) | [10.5281/zenodo.23263506](https://doi.org/10.5281/zenodo.23263506) |
 | No srg(405,132,63,33) | [10.5281/zenodo.23263684](https://doi.org/10.5281/zenodo.23263684) |
 | No srg(476,133,60,28) | [10.5281/zenodo.23295959](https://doi.org/10.5281/zenodo.23295959) |

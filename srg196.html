@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(196,81,42,27)</title>
+<meta name="description" content="There is no strongly regular graph with parameters (196,81,42,27), hence no partial geometry pg(6,18,4): four discriminant forms by hand, odd unimodular hosts of rank 27 and 28 with their shadows, determinant 30 by hand, the other three by exact Farkas certificates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg196 */
+.key{background:var(--hand-soft);border:1px solid var(--line);border-left:4px solid var(--hand);border-radius:8px;padding:14px;display:grid;gap:10px}
+.key .formula{background:var(--surface)}
+.genera{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--comp);border-radius:8px;padding:12px 14px;display:grid;gap:6px;align-content:start;min-width:0}
+.gcard.h{border-top-color:var(--hand)}
+.gcard .nm{font:600 18px/1.2 var(--mono)}
+.gcard .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.gcard .verdict{font-weight:600;color:var(--kill)}
+@media (max-width:640px){.genera{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html" aria-current="page">196</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (196, 81, 42, 27)</h1>
+  <p class="lead">No graph on 196 vertices, each of degree 81, where adjacent vertices share 42 neighbours and non-adjacent vertices share 27. Its complement would be the point graph of a partial geometry pg(6,18,4), so that geometry does not exist either. The vertices become vectors of an even lattice of rank 25; by hand, its maximal even overlattice has one of exactly four discriminant forms. The new ingredient is the use of <em>odd</em> unimodular hosts of rank 27 and 28, together with the theta series of their shadows. One form falls by hand, the other three by exact Farkas certificates. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23296112">doi:10.5281/zenodo.23296112</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Forms and determinant 30 by hand</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From eigenvalues to vectors</h2>
+  <p>The restricted eigenvalues are the roots of x² − 15x − 54 = (x − 18)(x + 3). The matrix G = A + 3I + J sends the eigenvalue −3 to 0, so G is positive semidefinite of rank 25 and is the Gram matrix of 196 vectors in 25 dimensions.</p>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">81</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 280</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">18</span><span class="muted">multiplicity 24 &nbsp;<span class="arrow">→ G: 21</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 171 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">Each vertex becomes a vector of norm 4; adjacent vertices have inner product 2, non-adjacent ones 1. They span an even lattice L of rank 25, and we fix a maximal even overlattice N; its discriminant form is anisotropic. The normalized sum y = (Σ vᵢ)/280 has norm 7/10 and inner product 1 with every vertex; it lies in N<sup>#</sup>, 10y ∈ N, and its class ȳ has order 10. The parameters pass the absolute bound (196 ≤ 324) and both Krein conditions (−171 ≤ 396, 60 ≤ 28158).</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation, checked without any solver</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The dual-vector lemma</strong><span class="s">Every dual vector gives a small integer problem.</span><span class="d"><span>M = Σ vᵢvᵢᵀ = 21I + 370 yyᵀ. For x ∈ N<sup>#</sup> with ν = x² and t = ⟨x, y⟩ (10t ∈ ℤ), the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 280t,   Σ zᵢ² = 21ν + 370t²,   Σ_{j~i} zⱼ = 18zᵢ + 90t,   21x + 37(10t)y ∈ N</span><span>and, for every integer m,</span><span class="formula">0 ≤ Σ (zᵢ − m)(zᵢ − m − 1) = 21ν + 370t² − (2m + 1)·280t + 196·m(m + 1)</span><span class="muted">Every host contains y, the 196 vertex vectors, the 15,876 differences vᵢ − vⱼ of adjacent vertices, the 196 vectors y − vᵢ and the 196 vectors vᵢ − 2y.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Exactly four discriminant forms, by hand</strong><span class="s">21·D(N) ⊆ ⟨ȳ⟩, then Milgram.</span><span class="d"><span>The last identity of step 2 gives 21·D(N) ⊆ ⟨ȳ⟩ ≅ ℤ/10. So D₂ = ⟨3/2⟩ and D₅ = ⟨4/5⟩ are generated by multiples of ȳ, D₃ and D₇ are elementary and anisotropic, and nothing else occurs. Milgram's formula, 7 + 4 + Br(D₃) + Br(D₇) ≡ 25 (mod 8), leaves</span><span class="formula">det 30     ⟨3/2⟩ ⊥ ⟨4/3⟩ ⊥ ⟨4/5⟩
+det 70     ⟨3/2⟩ ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩
+det 630    ⟨3/2⟩ ⊥ ⟨2/3⟩ ⊥ ⟨2/3⟩ ⊥ ⟨4/5⟩ ⊥ ⟨2/7⟩
+det 1470   ⟨3/2⟩ ⊥ ⟨2/3⟩ ⊥ ⟨4/5⟩ ⊥ ⟨2/7⟩ ⊥ ⟨2/7⟩</span><span class="muted">In each, ȳ generates the summand ℤ/2 ⊕ ℤ/5. The audit obtained the same four forms with exact Gauss sums in ℚ(ζ₈₄₀). The discriminant-form condition of the 70-pair paper alone does not exclude these parameters.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Odd unimodular hosts and their shadows</strong><span class="s">Glue along a bilinear anti-isometry to an odd lattice of rank 2 or 3.</span><span class="d"><span>Only the bilinear form of D(K) enters, so K may be odd. Gluing N to K gives a unimodular lattice U of rank 27 or 28, which is odd. Its vectors are X + p with X ∈ N<sup>#</sup>, and its characteristic vectors are 2ξ + p with ξ ∈ N<sup>#</sup>, so both restrict to dual vectors of N.</span><span>The theta series of U, the theta series of its shadow (the characteristic vectors), and harmonic theta series of degrees 2 and 4 are combinations of a few known forms. After exact elimination of the free coefficients they give linear equations in the numbers n(C, ν, t) of vectors of N<sup>#</sup> in each class C with norm ν and ⟨x, y⟩ = t. These numbers do not depend on the construction, so the equations of several constructions can be <em>coupled</em>.</span></span></span></button>
+    <div class="fork">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">det 30 · by hand</span>
+        <button class="step" data-kind="end" aria-expanded="false"><span class="n">5a</span><span class="t"><strong>A negative number of roots</strong><span class="s">R = −18.</span><span class="d"><span>Glue to K = diag(5,6): U is odd unimodular of rank 27. Two identities hold for every such lattice, and the shells of U are known (no vector of norm 1; norm 2 = the roots of N; two characteristic vectors of norm 3; 4 + S of norm 11). They give</span><span class="formula">S − 8R = 1634,   S + 64R = 338   ⇒   72R = −1296,   R = −18</span><span class="muted">See the worked computation below.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">det 70, 630, 1470 · exact certificates</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">5b</span><span class="t"><strong>Farkas certificates</strong><span class="s">The equations have no nonnegative solution.</span><span class="d"><span><strong>det 70</strong>: K = diag(2,5,7), one anti-isometry, degrees 0 and 2, no lower bounds: 18 rows × 25 cells.</span><span><strong>det 630</strong>: K = diag(3,3,70), one anti-isometry, degrees 0, 2, 4, no lower bounds: 57 rows × 73 cells.</span><span><strong>det 1470</strong>: six glue lattices × sixteen anti-isometries each, 96 constructions coupled, with the pins and lower bounds from the graph: 8,464 rows × 888 cells. A single glue lattice tested alone did not suffice.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">6</span><span class="t"><strong>No host lattice exists, so no graph exists</strong><span class="s">All four forms are excluded.</span><span class="d"><span>Every srg(196,81,42,27) would give a maximal even lattice N with one of the four forms, and each is impossible. The complement srg(196,114,59,76), the partial geometry pg(6,18,4) and its dual pg(18,6,4) are excluded with it.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="d30-h">
+  <div class="eyebrow">Step 5a · determinant 30, worked</div>
+  <h2 id="d30-h">Two identities and four shells</h2>
+  <div class="key">
+    <p>For every odd unimodular lattice U of rank 27, with N<sub>m</sub> its vectors of norm m, c<sub>m</sub> its characteristic vectors of norm m, and H<sub>m</sub>, H<sup>c</sup><sub>m</sub> the corresponding sums of the degree-2 harmonic polynomial ⟨w, x⟩² − m·x²/27 (with ¼ and η for the characteristic ones):</p>
+    <div class="formula">240N₁ − 8N₂ + 45c₃ + c₁₁ = 1728
+−96H₁ + 16H₂ + 21H<sup>c</sup>₃ + H<sup>c</sup>₁₁ = 0</div>
+    <p>Take K = diag(5,6), one of its four anti-isometries, and x = y ± (2/5)k₁ + (1/2)k₂ ∈ U, of norm 3. Then N₁ = 0, N₂ = R (the roots of N, all orthogonal to y and to x), c₃ = 2 (the vectors ±(2y + p₀)), and c₁₁ = 4 + S (the four vectors ±k₁ ± k₂ of K and S others). Each root contributes −2/9 to H₂, each norm-3 vector 1/6 to H<sup>c</sup>₃, the four vectors of K together 106/9 to H<sup>c</sup>₁₁, and each of the other S vectors −1/18:</p>
+    <div class="formula">−8R + 90 + 4 + S = 1728               ⇒   S − 8R = 1634
+16·(−2/9)R + 21·(1/3) + 106/9 − S/18 = 0   ⇒   S + 64R = 338
+                                          ⇒   72R = −1296,  R = −18 &lt; 0</div>
+  </div>
+  <p class="muted">The identities were checked on the four lattices E₈<sup>a</sup> ⊕ ℤ<sup>27−8a</sup>, a = 0, …, 3, whose (N₁, N₂, c₃, c₁₁) are (54, 1404, 0, 0), (38, 924, 0, 0), (22, 700, 0, 2048) and (6, 732, 8, 5784). Which types occur in the shells is decided by the dual-vector lemma: 22 types are rejected, 17 by the quadratic bound alone (Table 2 of the paper lists each with its value) and 5 by an exhaustive local test. Each of the four anti-isometries gives R = −18; the audit's independent three-relation certificate for this form reduces to the same statement.</p>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Step 5 · Tables 3 and 4 of the paper</div>
+  <h2 id="gen-h">Four forms, four exclusions</h2>
+  <div class="genera">
+    <div class="gcard h"><span class="nm">det 30 · ⟨3/2⟩ ⊥ ⟨4/3⟩ ⊥ ⟨4/5⟩</span><span class="meta">K = diag(5,6) · 4 anti-isometries · rank 27</span><span>Two identities give R = −18. Also an exact certificate: 28 rows × 7 cells, 28 multipliers, y·c′ ≈ 3.435, no lower bounds.</span><span class="verdict">excluded · by hand</span></div>
+    <div class="gcard"><span class="nm">det 70 · ⟨3/2⟩ ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩</span><span class="meta">K = diag(2,5,7) · 1 of 4 anti-isometries · rank 28</span><span>Ordinary shells 1–3, characteristic shells 4 and 12, degrees 0 and 2: 18 × 25, 13 multipliers, y·c′ ≈ 0.0689, no lower bounds.</span><span class="verdict">excluded · exact certificate</span></div>
+    <div class="gcard"><span class="nm">det 630 · ⟨3/2⟩ ⊥ ⟨2/3⟩² ⊥ ⟨4/5⟩ ⊥ ⟨2/7⟩</span><span class="meta">K = diag(3,3,70) · 1 of 32 anti-isometries · rank 28</span><span>Degrees 0, 2 and 4: 57 × 73, 42 multipliers, y·c′ ≈ 0.621, no lower bounds. The second implementation found its own certificate with 92 relations.</span><span class="verdict">excluded · exact certificate</span></div>
+    <div class="gcard"><span class="nm">det 1470 · ⟨3/2⟩ ⊥ ⟨2/3⟩ ⊥ ⟨4/5⟩ ⊥ ⟨2/7⟩²</span><span class="meta">6 glue lattices × 16 of 64 anti-isometries · ranks 27 and 28</span><span>Coupled, shells up to 4, degrees 0, 2, 4, with the pins and lower bounds: 8,464 × 888, y·c′ ≈ 0.0627; second implementation 14,960 × 888, y·c′ ≈ 10.83.</span><span class="verdict">excluded · coupled certificate</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>form</th><th>glue lattices K (Gram matrices, all odd, determinant det N)</th><th>anti-isometries</th></tr></thead>
+    <tbody>
+      <tr><td class="num">30</td><td class="mono">diag(5,6)</td><td class="num">4</td></tr>
+      <tr><td class="num">70</td><td class="mono">diag(2,5,7)</td><td class="num">4</td></tr>
+      <tr><td class="num">630</td><td class="mono">diag(3,3,70)</td><td class="num">32</td></tr>
+      <tr><td class="num">1470</td><td class="mono">diag(21,70), diag(1,21,70), [[4,2,−1],[2,22,−11],[−1,−11,23]], [[4,2,−1],[2,22,10],[−1,10,23]], diag(7,7,30), [[11,4,0],[4,11,0],[0,0,14]]</td><td class="num">64 each</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">A Farkas certificate is a rational vector y with (yᵀA)<sub>v</sub> ≥ 0 for every cell after shifting by the lower bounds, and y·c′ &gt; 0; then no nonnegative solution exists. Using a subset of the constructions discards equations and is always sound. Pins and lower bounds for determinant 1470: n(0,0,0) = 1, exactly one vector each of type y and 2y, and n(0,4,±1) ≥ 196, n(0,4,0) ≥ 15876, n(ȳ,27/10,−3/10) ≥ 196, n(−2ȳ,14/5,−2/5) ≥ 196. Two further coupled certificates for determinants 70 and 630 are valid but not load-bearing.</p>
+</section>
+
+<section aria-labelledby="types-h">
+  <div class="eyebrow">Admissibility · Appendix B of the paper</div>
+  <h2 id="types-h">Every omitted vector type has a reason</h2>
+  <p>A type wrongly declared impossible would set a count to 0, so every type met by the shells but absent from the systems is listed with its reason: (b) the quadratic bound is negative, (c) every value multiset fails the local test, (d) no value multiset exists at all.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>form</th><th>cells met</th><th>accepted = unknowns</th><th>omitted types</th><th>(b) by hand</th><th>(c) local test</th><th>(d) no multiset</th></tr></thead>
+    <tbody>
+      <tr><td class="num">30</td><td class="num">39</td><td class="num">7</td><td class="num">22</td><td class="num">17</td><td class="num">5</td><td class="num">0</td></tr>
+      <tr><td class="num">70</td><td class="num">114</td><td class="num">25</td><td class="num">51</td><td class="num">39</td><td class="num">12</td><td class="num">0</td></tr>
+      <tr><td class="num">630</td><td class="num">503</td><td class="num">73</td><td class="num">108</td><td class="num">83</td><td class="num">24</td><td class="num">1</td></tr>
+      <tr><td class="num">1470</td><td class="num">2,875</td><td class="num">888</td><td class="num">189</td><td class="num">142</td><td class="num">44</td><td class="num">3</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The lists come from the referee's solver-free decider; the accepted cells are exactly the models' unknowns, which the derivation produced with two separately written deciders (identical unknown sets). The local test needs at most 82 candidate multisets per type, and the types with t = 0 also follow from a short hand argument: a positive entry zᵢ needs 81 other entries summing to 18zᵢ, which forces ν ≥ 38/21.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The same machinery lets real graphs through</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>by</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>L₃(9) = srg(81,24,9,6): D(N) = ℤ/12, ȳ of order 4, a non-generator</td><td>derivation</td><td>true counts planted, N<sup>#</sup> enumerated to norm 6</td><td class="yes">0 nonzero residuals in up to 1,750 rows; no true type rejected; feasible with lower bounds</td></tr>
+      <tr><td>three random Steiner triple systems S(2,3,25), block graphs srg(100,33,14,9): D(N) = ℤ/34, ȳ a generator, short characteristic vectors 2y + p</td><td>derivation</td><td>same</td><td class="yes">0 nonzero residuals in up to 1,726 rows; feasible</td></tr>
+      <tr><td>S(2,3,25), all 12 odd K of rank ≤ 3, all anti-isometries</td><td>audit</td><td>own pipeline, +1 mutations</td><td class="yes">0 of 2,512 blocks with nonzero residual; every mutation detected; exactly feasible</td></tr>
+      <tr><td>L₃(9), K = A₂ ⊥ ⟨4⟩ ⊥ ⟨1⟩</td><td>audit</td><td>own pipeline</td><td class="yes">0 of 468 blocks; exactly feasible</td></tr>
+      <tr><td>S(2,3,25) and L₃(9)</td><td>referee</td><td>own pipeline</td><td class="yes">378 resp. 252 relations, 0 nonzero residuals, every true type accepted</td></tr>
+      <tr><td>theta bases</td><td>all three</td><td>E₈<sup>a</sup> ⊕ ℤ<sup>b</sup> (and D₁₂⁺ ⊕ ℤ<sup>b</sup> by the audit), bulk and shadow, degrees 0, 2, 4</td><td class="yes">exact; referee 72 of 72 tests</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Together the controls exercise the mechanism of the determinant-30 kill: L₃(9) has a non-generator ȳ, and the Steiner triple system graphs have short characteristic vectors 2y + p; no single control has both features.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>derivation</th><th>audit</th><th>referee</th></tr></thead>
+    <tbody>
+      <tr><td>four forms</td><td>exhaustive classifier; hand proof in the paper</td><td>by hand; exact Gauss sums in ℚ(ζ₈₄₀)</td><td>re-derived by hand</td></tr>
+      <tr><td>det 30</td><td>hand-style script, R = −18</td><td>own exact certificate, 3 relations, no lower bounds: reduces to R = −18</td><td>shells rebuilt for all 4 φ; R = −18 for each; 22 rejected types entry by entry</td></tr>
+      <tr><td>det 70</td><td>certificate, 18 × 25</td><td>own certificate, 16 relations</td><td>own Farkas check; rows in the span of its own relations</td></tr>
+      <tr><td>det 630</td><td>certificate, 57 × 73; second implementation: 92 relations</td><td>needed all 32 anti-isometries: two certificates (71 and 67 relations)</td><td>own builder reproduces all 57 rows and the certificate</td></tr>
+      <tr><td>det 1470</td><td>two implementations: 8,464 and 14,960 rows on 888 unknowns</td><td>not blind: 67,200 equations on 886 cells, certificate on 798 relations</td><td>rebuilt the audit's model (identical hash) and checked it</td></tr>
+      <tr><td>certificates</td><td>solver-free checker</td><td>own verifier, no shared code with its solver</td><td>all 12 VALID; 8 of 8 corruptions detected</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The derivation (Claude Opus) used two implementations of the equations that share no code. The audit (Claude Fable, a different Claude model, with its own code) was blind for determinants 30, 70 and 630, but not for 1470: its first coupled model for 1470 was feasible, and while comparing models with the derivation's second implementation it found a defect in its own direction generator; after the fix its own model is exactly infeasible. The paper states this openly. An independent referee (a fresh Claude Fable session, own code) re-derived the hand arguments, checked every certificate and every type exclusion, and recommended acceptance after minor revisions, with no fatal or major finding; its points are applied. A standard-library Python checker written for the paper rechecks everything again (399 s, plus 25 to 80 minutes to rebuild the audit's determinant-1470 model). The independence is of session and of code, not of vendor. The grade is <strong>computer-assisted</strong>: the four forms and determinant 30 can be checked by hand, while the equations and certificates for 70, 630 and 1470 are generated by computer. No human expert has read the paper yet.</p>
+</section>
+
+<section aria-labelledby="ctx-h">
+  <div class="eyebrow">Context</div>
+  <h2 id="ctx-h">What else follows</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>statement</th><th>why</th></tr></thead>
+    <tbody>
+      <tr><td>There is no srg(196,114,59,76).</td><td>It is the complement.</td></tr>
+      <tr><td>There is no partial geometry pg(6,18,4).</td><td>Its point graph would be an srg(196,114,59,76).</td></tr>
+      <tr><td>There is no partial geometry pg(18,6,4).</td><td>Its dual would be a pg(6,18,4).</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Brouwer's table lists (196,81,42,27) as open (“?”), with the comment “pg(6,18,4)?” on the complementary line. Since v ≤ 276, the set is not among the open cases of Koolen and Gebremichel's Table 1. The audit's and the referee's web searches found no construction or nonexistence proof; the paper notes that a search of zbMATH Open and of the literature on partial geometries should be made before any claim of priority.</p>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="files-h">Paper, data and how to rerun</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>file</th><th>contents</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="https://zenodo.org/records/23296112">srg196.pdf</a></td><td>the paper</td></tr>
+      <tr><td class="mono"><a href="https://zenodo.org/records/23296112">srg196_data.zip</a></td><td>scripts, models, certificates and logs of the derivation, the audit and the referee, including the large model files and the rebuilt determinant-1470 model of the audit; Appendix A of the paper lists them with SHA-256 prefixes</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The paper's checker uses only the Python 3 standard library. Without the rebuilt audit model it checks the stored determinant-1470 relations for the Farkas condition only and reports PARTIAL:</p>
+  <div class="formula">python3 out/srg196_paper/check_srg196.py --model1470 /tmp/m1470.json
+python3 out/srg196_paper/omitted_types_table.py &gt; /tmp/types.tex</div>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper, checker and data: <a href="https://doi.org/10.5281/zenodo.23296112">doi:10.5281/zenodo.23296112</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab151-200.html">A. E. Brouwer, strongly regular graphs v = 151–200</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+})();
+</script>
+</body>
+</html>
