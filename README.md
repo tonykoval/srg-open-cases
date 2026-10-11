@@ -6,7 +6,7 @@ A small static website that explains results on parameter sets of strongly regul
 ("?") in A. E. Brouwer's table, settled in September–October 2026, and a related uniqueness result:
 
 - **No graph exists**: srg(69,20,7,5), srg(99,42,21,15), srg(105,52,21,30), srg(154,72,26,40), srg(162,69,36,24),
-  srg(288,105,52,30), srg(405,132,63,33) (one paper each).
+  srg(288,105,52,30), srg(405,132,63,33), srg(476,133,60,28) (one paper each).
 - **No graph exists, by one uniform condition**: 70 further open complementary pairs with 96 ≤ v ≤ 1288 (the
   Bannai–Munemasa–Venkov lattice method extended to all strongly regular graphs with integral eigenvalues; 28 pairs
   by hand, 42 by enumerations repeated by at least two independent programs), and every parameter set of
@@ -25,7 +25,7 @@ beyond them.
 | file | content |
 |---|---|
 | `index.html` | landing page: all results, methods, how they were checked |
-| `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg288.html`, `srg405.html` | one page per nonexistence proof |
+| `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg288.html`, `srg405.html`, `srg476.html` | one page per nonexistence proof |
 | `bmv.html` | the uniform lattice condition: statement, parity corollary, NL_m(q) family, parity checker, sortable Table 1 of the 70 pairs, controls |
 | `twographs.html` | uniqueness of the regular two-graphs on 126 and 176 points: statement, corollary for four srg parameter sets, switching classes, proof steps, case explorer, Leech enumeration, verification |
 | `graphs.html` | the new graphs: counts, automorphism groups, sources, data files |
@@ -68,6 +68,7 @@ sets of the full archive that are not copied here.
 | No srg(162,69,36,24) | [10.5281/zenodo.23211005](https://doi.org/10.5281/zenodo.23211005) |
 | No srg(288,105,52,30) | [10.5281/zenodo.23263506](https://doi.org/10.5281/zenodo.23263506) |
 | No srg(405,132,63,33) | [10.5281/zenodo.23263684](https://doi.org/10.5281/zenodo.23263684) |
+| No srg(476,133,60,28) | [10.5281/zenodo.23295959](https://doi.org/10.5281/zenodo.23295959) |
 | The Bannai–Munemasa–Venkov lattice method for strongly regular graphs: a uniform discriminant-form condition and new nonexistence results | [10.5281/zenodo.23275433](https://doi.org/10.5281/zenodo.23275433) |
 | The regular two-graphs on 126 and 176 points are unique | [10.5281/zenodo.23279444](https://doi.org/10.5281/zenodo.23279444) |
 | New strongly regular graphs on open parameter sets of Brouwer's table | [10.5281/zenodo.23210829](https://doi.org/10.5281/zenodo.23210829) |
