@@ -14,7 +14,7 @@ A small static website that explains results on parameter sets of strongly regul
 - **New graphs** for fourteen parameter sets: (250,81,24,27), (300,69,18,15), (320,87,22,24), (320,88,24,24),
   (324,114,36,42), (324,133,52,56), (324,136,58,56), (486,97,16,20), (486,100,22,20), and, in a second paper, (306,55,4,11), (400,171,74,72), (576,253,112,110),
   (784,351,158,156), (1296,595,274,272) (Bush-type Hadamard graphs with two orthogonal spreads deleted, and a
-  pseudo-GQ(5,10) on Q(4,5); marked "+" in Brouwer's table since 12 October 2026).
+  pseudo-GQ(5,10) on Q(4,5); marked "+" in Brouwer's table since 11 October 2026).
 - **Uniqueness**: the regular two-graphs on 126 and 176 points are unique (equivalently, 126 equiangular lines in
   R^21 and 176 in R^22 at angle arccos 1/5 are unique; listed as unknown by Brouwer–Van Maldeghem 2022, §8.10.1).
   Hence srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) each have exactly one graph.
