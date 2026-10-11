@@ -3,7 +3,7 @@
 https://tonykoval.github.io/srg-open-cases/
 
 A small static website that explains results on parameter sets of strongly regular graphs that were marked open
-("?") in A. E. Brouwer's table, settled in September–October 2026, and a related uniqueness result:
+("?") in A. E. Brouwer's table, settled in September–October 2026, and related uniqueness results:
 
 - **No graph exists**: srg(69,20,7,5), srg(99,42,21,15), srg(105,52,21,30), srg(154,72,26,40), srg(162,69,36,24),
   srg(288,105,52,30), srg(405,132,63,33), srg(476,133,60,28) (one paper each).
@@ -16,6 +16,8 @@ A small static website that explains results on parameter sets of strongly regul
 - **Uniqueness**: the regular two-graphs on 126 and 176 points are unique (equivalently, 126 equiangular lines in
   R^21 and 176 in R^22 at angle arccos 1/5 are unique; listed as unknown by Brouwer–Van Maldeghem 2022, §8.10.1).
   Hence srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) each have exactly one graph.
+  By the same method, the Delsarte graph is the only srg(243,110,37,60) and the M23 graph the only
+  srg(253,112,36,60) (no group assumed), so these two sets and their complements also have exactly one graph.
 
 All results are preprints, not yet peer-reviewed. The papers are the authoritative versions; the site states nothing
 beyond them.
@@ -28,6 +30,7 @@ beyond them.
 | `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg288.html`, `srg405.html`, `srg476.html` | one page per nonexistence proof |
 | `bmv.html` | the uniform lattice condition: statement, parity corollary, NL_m(q) family, parity checker, sortable Table 1 of the 70 pairs, controls |
 | `twographs.html` | uniqueness of the regular two-graphs on 126 and 176 points: statement, corollary for four srg parameter sets, switching classes, proof steps, case explorer, Leech enumeration, verification |
+| `uniq243_253.html` | uniqueness of srg(243,110,37,60) (Delsarte graph) and srg(253,112,36,60) (M23 graph): statement, prior rank-3 results, proof steps, the 16 forms for 253, Leech counts, verification, controls |
 | `graphs.html` | the new graphs: counts, automorphism groups, sources, data files |
 | `about.html` | method in plain words, verification standard, use of AI, licence, how to cite |
 | `assets/site.css` | shared stylesheet (light and dark theme) |
@@ -71,6 +74,7 @@ sets of the full archive that are not copied here.
 | No srg(476,133,60,28) | [10.5281/zenodo.23295959](https://doi.org/10.5281/zenodo.23295959) |
 | The Bannai–Munemasa–Venkov lattice method for strongly regular graphs: a uniform discriminant-form condition and new nonexistence results | [10.5281/zenodo.23275433](https://doi.org/10.5281/zenodo.23275433) |
 | The regular two-graphs on 126 and 176 points are unique | [10.5281/zenodo.23279444](https://doi.org/10.5281/zenodo.23279444) |
+| The strongly regular graphs with parameters (243,110,37,60) and (253,112,36,60) are unique | [10.5281/zenodo.23296040](https://doi.org/10.5281/zenodo.23296040) |
 | New strongly regular graphs on open parameter sets of Brouwer's table | [10.5281/zenodo.23210829](https://doi.org/10.5281/zenodo.23210829) |
 
 Brouwer's table: <https://aeb.win.tue.nl/graphs/srg/>

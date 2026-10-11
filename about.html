@@ -21,11 +21,11 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="about.html" aria-current="page">About</a></nav>
 <header>
   <div class="eyebrow">About this site</div>
   <h1>Method, standards and credits</h1>
-  <p class="lead">This site explains, for a general mathematical reader, results on parameter sets that were open in A. E. Brouwer's table of strongly regular graphs, and a related uniqueness result for two-graphs. The papers are the authoritative versions; nothing here goes beyond them.</p>
+  <p class="lead">This site explains, for a general mathematical reader, results on parameter sets that were open in A. E. Brouwer's table of strongly regular graphs, and related uniqueness results. The papers are the authoritative versions; nothing here goes beyond them.</p>
 </header>
 
 <section aria-labelledby="srg-h">
@@ -45,7 +45,7 @@
     <h3>One condition for many parameter sets</h3>
     <p>The first steps of this method, before any gluing, already give a condition on the parameters alone. It goes back to Bannai, Munemasa and Venkov (2005) and Nebe and Venkov (2013), who used it for tight spherical designs; one paper extends it to every strongly regular graph with integral eigenvalues. The discriminant form of a maximal even overlattice of the vertex lattice must have no isotropic element, must satisfy Milgram's formula, and is tied by an exact identity to the class of the rescaled sum of the vertex vectors. Such forms are few and can be listed. A sweep of Brouwer's table finds 70 open complementary pairs for which none exists: 28 with proofs written out by hand, 42 by exhaustive enumerations repeated by at least two independent programs. See <a href="bmv.html">70 pairs</a>.</p>
     <h3>Proving that a structure is unique</h3>
-    <p>The same lattice method also proves uniqueness. For the regular two-graphs on 126 and 176 points (equivalently, maximal systems of equiangular lines in ℝ²¹ and ℝ²²), the line vectors span an even lattice with no short dual vectors; gluing leaves either a contradiction or the Leech lattice, and inside the Leech lattice an exhaustive enumeration finds only the known two-graph. Uniqueness of the two-graph then gives uniqueness of its descendant strongly regular graphs. See <a href="twographs.html">Two-graphs</a>.</p>
+    <p>The same lattice method also proves uniqueness. For the regular two-graphs on 126 and 176 points (equivalently, maximal systems of equiangular lines in ℝ²¹ and ℝ²²), the line vectors span an even lattice with no short dual vectors; gluing leaves either a contradiction or the Leech lattice, and inside the Leech lattice an exhaustive enumeration finds only the known two-graph. Uniqueness of the two-graph then gives uniqueness of its descendant strongly regular graphs. See <a href="twographs.html">Two-graphs</a>. The same method, in ℝ²³, shows that the Delsarte graph is the only srg(243,110,37,60) and the M₂₃ graph the only srg(253,112,36,60): the lines are forced into the 276-line system of a norm-6 Leech vector, where an exhaustive enumeration finds 128,800 and 48,600 admissible subsystems, each giving the known graph. See <a href="uniq243_253.html">243/253</a>.</p>
     <h3>Constructing graphs</h3>
     <p>A group acting on v points splits the pairs of points into orbitals. Any union of orbitals is a graph on which the group acts, so the search is over subsets of a short list rather than over all graphs. We searched such unions for coset actions of many groups (from the GAP library of tables of marks, affine groups, subgroups found by descent, and layers over p-groups), and searched for partial difference sets directly. Every graph found was then checked by the exact identity A² = kI + λA + μ(J − I − A).</p>
   </div>
@@ -104,6 +104,7 @@
       <tr><td>There is no strongly regular graph with parameters (476,133,60,28)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23295959">10.5281/zenodo.23295959</a></td></tr>
       <tr><td>The Bannai–Munemasa–Venkov lattice method for strongly regular graphs: a uniform discriminant-form condition and new nonexistence results</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23281359">10.5281/zenodo.23281359</a></td></tr>
       <tr><td>The regular two-graphs on 126 and 176 points are unique</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23279444">10.5281/zenodo.23279444</a></td></tr>
+      <tr><td>The strongly regular graphs with parameters (243,110,37,60) and (253,112,36,60) are unique</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23296040">10.5281/zenodo.23296040</a></td></tr>
       <tr><td>On the local structure of a hypothetical strongly regular graph with parameters (99,14,1,2)</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23281436">10.5281/zenodo.23281436</a></td></tr>
       <tr><td>New strongly regular graphs on open parameter sets of Brouwer's table</td><td class="num"><a href="https://doi.org/10.5281/zenodo.23210829">10.5281/zenodo.23210829</a></td></tr>
     </tbody>

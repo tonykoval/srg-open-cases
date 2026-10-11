@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unique SRGs 243 and 253</title>
+<meta name="description" content="The Delsarte graph is the only srg(243,110,37,60) and the M23 graph the only srg(253,112,36,60), with no symmetry assumed: equiangular lines at angle arccos 1/5 in R^23, discriminant forms, gluing into the Leech lattice, and an exhaustive enumeration in the 276-line system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: uniq243_253 */
+.thm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.thm .box{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ok);border-radius:8px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.thm .nm{font:600 20px/1.2 var(--mono)}
+.thm .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.fork.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fork.four>div{align-content:start}
+tr.surv td{background:var(--ok-soft)}
+@media (max-width:640px){.fork.four{grid-template-columns:1fr}.thm{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html" aria-current="page">243/253</a><a href="graphs.html">New graphs</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · uniqueness without a group assumption</div>
+  <h1>The strongly regular graphs with parameters (243, 110, 37, 60) and (253, 112, 36, 60) are unique</h1>
+  <p class="lead">The Delsarte graph is the only srg(243,110,37,60), and the M₂₃ graph on the 253 heptads of S(4,7,23) is the only srg(253,112,36,60); so the complementary parameter sets are realised uniquely too. No symmetry of the graph is assumed. Each graph is a system of equiangular lines at angle arccos 1/5 in ℝ²³; lattice arguments force the lines into the 276-line system of a norm-6 vector of the Leech lattice, where an exhaustive enumeration finds only the known graph. The method is that of the <a href="twographs.html">two-graph paper</a>.</p>
+  <div class="chips">
+    <span class="chip">Preprint, October 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23296040">doi:10.5281/zenodo.23296040</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip ok">Uniqueness: 4 srg parameter sets</span>
+    <span class="chip">Brouwer's table: “+”</span>
+    <span class="chip">Not yet peer-reviewed</span>
+  </div>
+</header>
+
+<section aria-labelledby="st-h">
+  <div class="eyebrow">The theorem</div>
+  <h2 id="st-h">Two graphs, each the only one with its parameters</h2>
+  <div class="thm">
+    <div class="box"><span class="nm">srg(243, 110, 37, 60)</span><span class="meta">the Delsarte graph · |Aut| = |3⁵:(2 × M₁₁)| = 3,849,120</span><span>Let C be the ternary Golay code of length 11 and C<sup>⊥</sup> its dual, a [11,5,6] code with weights 0, 6, 9. The Cayley graph on the 243 words of C<sup>⊥</sup>, two words adjacent when their difference has weight 9, is the Delsarte graph. Every srg(243,110,37,60) is isomorphic to it.</span></div>
+    <div class="box"><span class="nm">srg(253, 112, 36, 60)</span><span class="meta">the M₂₃ graph · |Aut| = |M₂₃| = 10,200,960</span><span>The 253 heptads of the Steiner system S(4,7,23) meet in 1 or 3 points; the graph on the heptads with adjacency “meet in one point” is the M₂₃ graph. Every srg(253,112,36,60) is isomorphic to it.</span></div>
+  </div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>the graph</th><th>number of graphs</th></tr></thead>
+    <tbody>
+      <tr><td class="num">srg(243, 110, 37, 60)</td><td>Delsarte graph</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(243, 132, 81, 60)</td><td>its complement (weight 6)</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(253, 112, 36, 60)</td><td>M₂₃ graph</td><td class="yes">exactly 1</td></tr>
+      <tr><td class="num">srg(253, 140, 87, 65)</td><td>its complement (meet in 3 points), the block graph of a quasi-symmetric 2-(23,7,21) design</td><td class="yes">exactly 1</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">In the language of lines: a set of 243 (resp. 253) equiangular lines in ℝ²³ at angle arccos 1/5 whose Seidel matrix switches to that of the complementary graph is isometric to the complement, in the 276-line system of Goethals and Seidel, of 33 lines whose Seidel matrix switches to J − I − 2(11K₃) (resp. of 23 lines whose Seidel matrix switches to J − I).</p>
+</section>
+
+<section aria-labelledby="open-h">
+  <div class="eyebrow">What was known before</div>
+  <h2 id="open-h">Unique among rank-3 graphs only</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>source</th><th>what it says</th></tr></thead>
+    <tbody>
+      <tr><td>Brouwer and Van Maldeghem, <em>Strongly Regular Graphs</em> (2022), §10.56</td><td>There is a unique rank-3 srg(253,112,36,60).</td></tr>
+      <tr><td>same, §10.55</td><td>The Berlekamp–van Lint–Seidel graph srg(243,22,1,2) is the unique rank-3 graph with its parameters; its Delsarte dual is a rank-3 srg(243,110,37,60). No uniqueness statement for the dual.</td></tr>
+      <tr><td>Brouwer's table</td><td>Both parameter sets marked “+” (exists), not “!” (unique); the complementary rows carry no marker of their own. Comments: “3⁵.2.M₁₁ (rk 3) – Delsarte; projective ternary [55,5] code with weights 36, 45” and “S(4,7,23) – M₂₃”.</td></tr>
+      <tr><td>related uniqueness results</td><td>the ternary and binary Golay codes (Delsarte and Goethals), the 276-point two-graph (Goethals and Seidel), maximum equiangular line systems at angle arccos 1/5 in dimensions 23 ≤ d ≤ 64 (Glazyrin and Yu; Kao and Yu). None of them implies uniqueness of these graphs.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Uniqueness among rank-3 graphs is a statement about graphs with a given group. A web search on 10–11 October 2026 found no uniqueness proof for either parameter set and no classification of subsystems of the 276 lines of size 243 or 253.</p>
+</section>
+
+<section aria-labelledby="spec-h">
+  <div class="eyebrow">Step 1 · spectrum</div>
+  <h2 id="spec-h">From the complement to equiangular lines</h2>
+  <p>The proof works with the complements srg(243,132,81,60) and srg(253,140,87,65), for which the smallest eigenvalue is s = −3 and the other nontrivial eigenvalue r has multiplicity f = 22. The Seidel matrix S′ = 2A − J + I then has only one negative eigenvalue, −5, so G = (5I + S′)/2 is positive semidefinite of rank 23.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>v</th><th>A (complement)</th><th>S′ = 2A − J + I</th><th>G = (5I + S′)/2</th></tr></thead>
+    <tbody>
+      <tr><td class="num">243</td><td class="num">132¹ 24²² (−3)²²⁰</td><td class="num">22¹ 49²² (−5)²²⁰</td><td class="num">27/2 on 𝟏, 27 (22×), 0</td></tr>
+      <tr><td class="num">253</td><td class="num">140¹ 25²² (−3)²³⁰</td><td class="num">28¹ 51²² (−5)²³⁰</td><td class="num">33/2 on 𝟏, 28 (22×), 0</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">So G is the Gram matrix of vectors wᵢ ∈ ℝ²³ with wᵢ² = 5/2 and ⟨wᵢ, wⱼ⟩ = ±1/2: v equiangular lines at angle arccos 1/5. The graph is determined by the line system, because the eigenvalue on 𝟏 is simple. The vectors wᵢ ± wⱼ generate an even lattice K of rank 23; all wᵢ lie in K<sup>#</sup> and in one class γ of order 2 with q(γ) = 1/2.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>finite computation, independent implementations</span><span><i style="background:var(--kill)"></i>contradiction or conclusion</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>Dual vectors and a norm identity</strong><span class="s">x ∈ K<sup>#</sup> exactly when the zᵢ = ⟨x, wᵢ⟩ are all integers or all half-integers.</span><span class="d"><span>With m = 9, c = 27, c′ = 27 for v = 243 and m = 11, c = 28, c′ = 33 for v = 253, and Σ zᵢ = m·s:</span><span class="formula">S′z = ρz − s·𝟏,   x² = (|z|² + s²/3) / c,   c·x = Σ zᵢwᵢ + s·e/c′</span><span class="muted">The norm identity was pointed out by the audit of the 243 case; it turns the key lemma into a short argument.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Key lemma: no short dual vectors</strong><span class="s">Every nonzero x ∈ K<sup>#</sup> has x² &gt; 2.</span><span class="d"><span>If x² ≤ 2 then |z|² + s²/3 ≤ 2c ∈ {54, 56}. Half-integral z has |z|² ≥ v/4 ∈ {60.75, 63.25}: too large. An entry |zᵢ| ≥ 2 gives |ρzᵢ − s| ≥ 2ρ − 12 ≥ 86, while row i of S′z bounds it by 2c − 4 ≤ 52: impossible. So z ∈ {0, ±1}<sup>v</sup> with support T of size t.</span><span>The equation S′z = ρz − s𝟏 gives t ≥ 38 and makes the graph B of entries −1 on T have maximum degree ≤ 2; a rank argument in ℝ²³ gives eigenvalue 2 of B with multiplicity ≥ t − 24, while a union of paths and cycles has at most t/3. So t ≤ 36 &lt; 38. Contradiction.</span><span class="muted">For the known graphs the minimum of K<sup>#</sup> is 5/2, attained by the wᵢ.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>The frame congruence and Milgram's formula</strong><span class="s">243: one genus. 253: four.</span><span class="d"><span>With g = e/c′ + w₁, every dual vector with integral z satisfies c·x ≡ s·g (mod K), and c′g ∈ K. So 27·D(K) ⊆ ⟨ḡ⟩ + ⟨γ⟩ for v = 243 and 28·D(K) ⊆ ⟨ḡ⟩ for v = 253. Take an even overlattice N, maximal with γ ∉ it.</span><span class="formula">v = 243:  q_N ≅ ⟨1/2⟩ ⊕ ⟨4/3⟩ ≅ ⟨11/6⟩,  det N = 6
+
+v = 253:  T   ⟨1/2⟩ ⊕ ⟨4/3⟩                          det 6
+          B′  ⟨1/2⟩ ⊕ ⟨1/2⟩² ⊕ ⟨4/3⟩ ⊕ ⟨6/7⟩          det 168
+          A   ⟨1/2⟩ ⊕ ⟨3/2⟩² ⊕ ⟨4/3⟩ ⊕ ⟨2/7⟩          det 168
+          B   ⟨1/2⟩ ⊕ V ⊕ ⟨4/3⟩ ⊕ P₇                  det 1176</span><span class="muted">For 253, D(K)₁₁ = 0, D(K)₃ = ⟨4/3⟩, and the part A₂ of the 2-part orthogonal to γ is elementary. Of the 16 Milgram-admissible forms (table below), 12 fall to these two facts. The known graphs have type T, with N = K.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5</span><span class="t"><strong>Type T: into the Leech lattice</strong><span class="s">A partner of rank 1 suffices.</span><span class="d"><span>Glue N to ℤb with b² = 6 (q = ⟨1/6⟩ ≅ −⟨11/6⟩): the result is an even unimodular lattice of rank 24 whose roots would lie in ℤb, so it is rootless, hence the Leech lattice Λ. γ is glued to b/2, so uᵢ = wᵢ + b/2 ∈ Λ, with uᵢ² = 4 and ⟨uᵢ, b⟩ = 3.</span></span></span></button>
+    <div class="fork four">
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">253 · type B′ · rank 25</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6a</span><span class="t"><strong>An odd unimodular lattice of rank 25 without roots</strong><span class="s">None of Borcherds' 368 has fewer than 4 roots.</span><span class="d"><span>An odd overlattice N₁ glued to diag(6,7) gives an odd unimodular lattice of rank 25 without vectors of norm 1 or 2. Every lattice in Chenevier's list of the 368 such lattices (Borcherds' classification) has roots. The audit's argument; the derivation used a rank-26 route instead.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">253 · type A · a norm-42 vector</span>
+        <button class="step" data-kind="end" aria-expanded="false"><span class="n">6b</span><span class="t"><strong>The Leech lemma</strong><span class="s">K ⊆ b<sup>⊥</sup> in Λ forces b² = 6.</span><span class="d"><span>An even overlattice M with q_M on ℤ/42 glues to ℤb′, b′² = 42, giving the Leech lattice with K ⊆ b′<sup>⊥</sup>. But the vectors 2wᵢ lie in one class of Λ/2Λ, and Conway's description of these classes forces a primitive b with K ⊆ b<sup>⊥</sup> to have norm 6. Contradiction.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">253 · type B · rank 26</span>
+        <button class="step" data-kind="comp" aria-expanded="false"><span class="n">6c</span><span class="t"><strong>Too many vectors in O₂₆</strong><span class="s">506 needed, at most 192 available.</span><span class="d"><span>Gluing to diag(6,7,7) gives the unique unimodular lattice O₂₆ of rank 26 without vectors of norm 1 or 2 (Borcherds), containing 506 vectors ±wᵢ + r₁/2 of norm 4 with inner product 3 with a norm-6 vector r₁. A count over all norm-6 vectors r of O₂₆ gives |T(r)| ∈ {104, 128, 168, 192} (occurring 32, 304, 11,808 and 59,664 times), so at most 192 &lt; 506.</span><span class="muted">O₂₆ has 3,120 vectors of norm 3, 102,180 of norm 4, and automorphism group of order 18,720,000. The same counter gives 552 on the Leech lattice.</span></span></span></button>
+      </div>
+      <div style="display:grid;gap:8px;min-width:0"><span class="fork-label">Both · type T survives</span>
+        <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6d</span><span class="t"><strong>Lines inside T_b</strong><span class="s">The lines are v of the 276 lines of a norm-6 Leech vector.</span><span class="d"><span>The uᵢ lie in T_b = {u ∈ Λ : u² = 4, ⟨u, b⟩ = 3}, 552 vectors forming 276 lines {u, b − u}: the 276 equiangular lines of Goethals and Seidel. Since Co₀ is transitive on norm-6 vectors, b can be fixed.</span></span></span></button>
+      </div>
+    </div>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">7</span><span class="t"><strong>The complementary lines</strong><span class="s">23 resp. 33 lines with a rigid Seidel matrix.</span><span class="d"><span>The frame of the 276 lines is 30·I, so the complementary set X of 276 − v lines has frame 30I − F. This forces its Seidel matrix:</span><span class="formula">v = 253:  23 lines, S_X switches to J − I
+v = 243:  33 lines, S_X switches to J − I − 2B,  B = 11 disjoint triangles</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8</span><span class="t"><strong>Exhaustive enumeration, no group action</strong><span class="s">48,600 and 128,800 admissible sets, one isomorphism class each.</span><span class="d"><span>v = 253: exactly 48,600 sets of 23 lines switch to J − I; every line lies in 4,050 of them. v = 243: over all 276 · 15,400 = 4,250,400 pairs, exactly 128,800 sets X (each from 33 pairs); every line lies in 15,400 of them.</span><span>For every set, the complementary lines carry the strongly regular graph, and all graphs have the same nauty canonical form, equal to that of the independently built known graph.</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">9</span><span class="t"><strong>Each graph is unique</strong><span class="s">Every case is impossible or gives the known graph.</span><span class="d"><span>243: one genus, forced into Λ, every admissible complement gives the complement of the Delsarte graph. 253: types B′, A, B impossible; type T forced into Λ, every admissible complement gives the complement of the M₂₃ graph.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Step 4 · Table 2 of the paper</div>
+  <h2 id="gen-h">The 16 Milgram-admissible forms for 253 vertices</h2>
+  <p>Forms ⟨1/2⟩ ⊕ A₂ ⊕ D₃ ⊕ D₇ of rank 23, with A₂ anisotropic of exponent dividing 4, D₃ ∈ {0, ⟨4/3⟩} and D₇ anisotropic elementary. Highlighted rows survive the two hand facts.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>det N</th><th>A₂</th><th>D₃</th><th>D₇</th><th>excluded by</th></tr></thead>
+    <tbody>
+      <tr class="surv"><td class="num">6</td><td>0</td><td>⟨4/3⟩</td><td>0</td><td>survives (type T): Leech lattice</td></tr>
+      <tr><td class="num">8</td><td>⟨3/2⟩²</td><td>0</td><td>0</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">14</td><td>0</td><td>0</td><td>⟨6/7⟩</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">16</td><td>⟨1/2⟩ ⊕ ⟨5/4⟩</td><td>0</td><td>0</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">48</td><td>⟨1/2⟩ ⊕ ⟨7/4⟩</td><td>⟨4/3⟩</td><td>0</td><td>A₂ elementary</td></tr>
+      <tr><td class="num">56</td><td>V</td><td>0</td><td>⟨2/7⟩</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">112</td><td>⟨1/2⟩ ⊕ ⟨3/4⟩</td><td>0</td><td>⟨2/7⟩</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">112</td><td>⟨1/2⟩ ⊕ ⟨7/4⟩</td><td>0</td><td>⟨6/7⟩</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr class="surv"><td class="num">168</td><td>⟨1/2⟩²</td><td>⟨4/3⟩</td><td>⟨6/7⟩</td><td>survives (type B′): rank 25</td></tr>
+      <tr class="surv"><td class="num">168</td><td>⟨3/2⟩²</td><td>⟨4/3⟩</td><td>⟨2/7⟩</td><td>survives (type A): Leech lemma</td></tr>
+      <tr><td class="num">336</td><td>⟨1/2⟩ ⊕ ⟨1/4⟩</td><td>⟨4/3⟩</td><td>⟨6/7⟩</td><td>A₂ elementary</td></tr>
+      <tr><td class="num">336</td><td>⟨1/2⟩ ⊕ ⟨5/4⟩</td><td>⟨4/3⟩</td><td>⟨2/7⟩</td><td>A₂ elementary</td></tr>
+      <tr><td class="num">392</td><td>⟨1/2⟩²</td><td>0</td><td>P₇</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr><td class="num">784</td><td>⟨1/2⟩ ⊕ ⟨1/4⟩</td><td>0</td><td>P₇</td><td>D₃ = ⟨4/3⟩</td></tr>
+      <tr class="surv"><td class="num">1176</td><td>V</td><td>⟨4/3⟩</td><td>P₇</td><td>survives (type B): count in O₂₆</td></tr>
+      <tr><td class="num">2352</td><td>⟨1/2⟩ ⊕ ⟨3/4⟩</td><td>⟨4/3⟩</td><td>P₇</td><td>A₂ elementary</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The derivation's notes listed 12 of these: its program had dropped the four rows with D₃ = ⟨4/3⟩ and non-elementary A₂ without saying so. The audit found the full count 16 (point G1); the paper lists all of them and excludes the four explicitly. The four survivors also follow by hand from Milgram's formula, without the list.</p>
+</section>
+
+<section aria-labelledby="leech-h">
+  <div class="eyebrow">Step 8 · inside the Leech lattice</div>
+  <h2 id="leech-h">Counts that match the groups</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>v = 253</th><th>v = 243</th></tr></thead>
+    <tbody>
+      <tr><td>complement X</td><td>23 lines, S_X ~ J − I</td><td>33 lines, S_X ~ J − I − 2(11K₃)</td></tr>
+      <tr><td>admissible sets X</td><td class="num">48,600</td><td class="num">128,800</td></tr>
+      <tr><td>sets through a given line</td><td class="num">4,050</td><td class="num">15,400</td></tr>
+      <tr><td>isomorphism classes</td><td class="yes">1: complement of the M₂₃ graph</td><td class="yes">1: complement of the Delsarte graph</td></tr>
+      <tr><td>|Co₃| / |Aut|</td><td class="num">495,766,656,000 / 10,200,960 = 48,600</td><td class="num">495,766,656,000 / 3,849,120 = 128,800</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The counts are what one expects if Co₃, the stabiliser of b, is transitive on each family with stabiliser the automorphism group of the graph. The referee also derived both counts by hand from the McLaughlin graph srg(275,112,30,56): 276 · 4,050 / 23 = 48,600 from its 22-cocliques, and 276 · 15,400 / 33 = 128,800 from its 15,400 edges. None of these identities is used in the proof, which is group-free on purpose.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step was checked</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>item</th><th>first derivation</th><th>audits</th></tr></thead>
+    <tbody>
+      <tr><td>key lemma</td><td>written; a 17/19-case table</td><td>the short proof (audit 243); a 138-case checker with the exact norm identity (audit 253), 0 survivors</td></tr>
+      <tr><td>243 genus</td><td>by hand</td><td>by hand, each prime separately; Gauss sums recomputed</td></tr>
+      <tr><td>253 genera</td><td>by hand; a program listing 12 forms</td><td>by hand; own program: 16 forms, the same 4 survivors; D(K)₁₁ = 0 directly</td></tr>
+      <tr><td>B′, A, B</td><td>B′ via diag(2,6,14) and rank 26; A and B as in the paper</td><td>B′ via rank 25 (new); A, B re-derived; own construction of all 1901 + 368 lattices and their roots</td></tr>
+      <tr><td>count in O₂₆</td><td>PARI qfauto, all u′ per orbit representative</td><td>own code: |Aut|, 3 orbits, maximum 192</td></tr>
+      <tr><td>Leech lattice</td><td>PARI Gram matrix, qfminim</td><td>own constructions from the binary Golay code (196,560 minimal vectors)</td></tr>
+      <tr><td>enumeration 253</td><td>C program: 48,600</td><td>own C program: 48,600 (79 s)</td></tr>
+      <tr><td>enumeration 243</td><td>Python: 128,800</td><td>own Python, all ℓ₁ and all 4,250,400 pairs: 128,800</td></tr>
+      <tr><td>isomorphism</td><td>nauty: 1 class each, equal to the known graph</td><td>nauty: 1 class each, equal to the audit's own known graph</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The derivation was done by Claude Opus. Each of the two blind audits, one per parameter set, was done in a separate session by Claude Fable, a different Claude model of the same vendor, instructed to be adversarial; each re-derived every step by hand or with new code before opening any of the derivation's files. Both returned the verdict <strong>sound</strong>, with no error and no gap; their two presentation points (the 12 vs. 16 genera, and the parity of s for half-integral z) are fixed in the paper. A further separate referee session (Claude Fable) checked the logical chain line by line, reran the checker (“ALL CHECKS PASSED (169 checks)”) and the O₂₆ count, counted |T(r)| by brute force for 3000 random r, recomputed the 368 rank-25 lattices and the rootless rank-26 entry, and recommended minor revision with no mathematical error and no gap; its points are applied. The independence is of session and of code, not of vendor. The canonical forms written independently by the derivation and the audits are byte-identical. The grade is <strong>computer-assisted</strong>: the two Leech enumerations cannot be done by hand, and isomorphism rests on nauty.</p>
+</section>
+
+<section aria-labelledby="ext-h">
+  <div class="eyebrow">External inputs</div>
+  <h2 id="ext-h">What the proof takes from the literature</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th></th><th>input</th><th>used for</th></tr></thead>
+    <tbody>
+      <tr><td class="num">E1</td><td>Milgram's formula; Nikulin's overlattices and gluing (even and odd); the normal form of 2-elementary forms; Chevalley–Warning</td><td>forms and gluing</td></tr>
+      <tr><td class="num">E2</td><td>Niemeier; Conway: Λ is the only rootless even unimodular lattice of rank 24</td><td>type T</td></tr>
+      <tr><td class="num">E3</td><td>Co₀ is transitive on norm-6 vectors with stabiliser Co₃; the classes of Λ/2Λ</td><td>fixing b; the Leech lemma</td></tr>
+      <tr><td class="num">E4</td><td>Borcherds' classification of rank-25 unimodular lattices, via Chenevier's list of 368</td><td>type B′ only</td></tr>
+      <tr><td class="num">E5</td><td>Borcherds: a unique unimodular lattice of rank 26 without vectors of norm 1 or 2</td><td>type B only</td></tr>
+      <tr><td class="num">E6</td><td>nauty; PARI/GP (qfauto only to reduce the O₂₆ count by symmetry, every generator checked)</td><td>isomorphism; computation</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Part (a), the 243 case, uses no classification of lattices beyond Niemeier's. Neither the uniqueness of the 276-point two-graph nor any group acting on the hypothetical graph is used. For E4 and E5 the internal properties of the lists were re-verified, not their completeness.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The machinery on graphs that exist</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>control</th><th>what was checked</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>known graphs, built without Λ</td><td>M₂₃ complement from the heptads of S(4,7,23); Delsarte complement as a Cayley graph on C<sup>⊥</sup>; audits from their own Golay codes</td><td class="yes">srg identities exact; |Aut| = 10,200,960 and 3,849,120</td></tr>
+      <tr><td>their lattices</td><td>K even of rank 23, det 6, D(K) ≅ ℤ/6, min K<sup>#</sup> = 5/2</td><td class="yes">N = K, type T</td></tr>
+      <tr><td>Higman–Sims</td><td>same Leech lattice and b; the 11,178 norm-4 vectors a with ⟨a, b⟩ = 2 each select 176 lines</td><td class="yes">all 11,178 give the Higman–Sims two-graph; the 253 audit also recovered srg(100,22,0,6) from the remaining 100 lines</td></tr>
+      <tr><td>must-find</td><td>the enumerations</td><td class="yes">re-find the known graphs</td></tr>
+      <tr><td>T(r) counter</td><td>on the Leech lattice</td><td class="yes">552 for every norm-6 vector, so it does not exclude the true host</td></tr>
+      <tr><td>partner test</td><td>on the true genus T</td><td class="yes">does not exclude it</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="files-h">Paper, data and how to rerun</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>file</th><th>contents</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="https://zenodo.org/records/23296040">uniq243_253.pdf</a></td><td>the paper</td></tr>
+      <tr><td class="mono"><a href="https://zenodo.org/records/23296040">uniq243_253_data.zip</a></td><td>scripts and logs of the derivation, the two audits and the referee, the standalone checker and its log; Appendix A of the paper lists them with SHA-256 hashes</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The standalone checker (Python 3 standard library, exact rational arithmetic) re-verifies the finite lattice-theoretic claims in under a minute; the PARI script recomputes the O₂₆ count from Chenevier's file gram_N26. The Leech enumerations are documented by their logs.</p>
+  <div class="formula">python3 out/uniq_paper/check_uniq243_253.py
+gp -q -s 2000000000 out/uniq_paper/o26_tbound.gp</div>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper and data: <a href="https://doi.org/10.5281/zenodo.23296040">doi:10.5281/zenodo.23296040</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab201-250.html">A. E. Brouwer, v = 201–250</a>, <a href="https://aeb.win.tue.nl/graphs/srg/srgtab251-300.html">v = 251–300</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+})();
+</script>
+</body>
+</html>
