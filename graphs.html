@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>New Strongly Regular Graphs</title>
-<meta name="description" content="Graphs for nine parameter sets that were open in Brouwer's table: counts, automorphism groups, sources and graph6 data files.">
+<meta name="description" content="Graphs for fourteen parameter sets that were open in Brouwer's table: counts, automorphism groups, sources and graph6 data files, including Bush-type Hadamard graphs with two spreads deleted on 400, 576, 784 and 1296 vertices and a pseudo-GQ(5,10) on 306 vertices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -43,11 +43,12 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 <nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html" aria-current="page">New graphs</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · constructions</div>
-  <h1>New graphs for nine open parameter sets</h1>
-  <p class="lead">For nine parameter sets marked “?” in Brouwer's table we give explicit strongly regular graphs: 262 graphs in all, pairwise non-isomorphic within each set. All nine sets are now marked as realised in the table, on the basis of this work.</p>
+  <h1>New graphs for fourteen open parameter sets</h1>
+  <p class="lead">For fourteen parameter sets marked “?” in Brouwer's table we give explicit strongly regular graphs, in two papers. The first nine sets, with 262 graphs in all, pairwise non-isomorphic within each set, are now marked as realised in the table, on the basis of this work. The second paper adds five sets on 306, 400, 576, 784 and 1296 vertices, with at least 24 graphs; Brouwer's table still marked them “?” on 11 October 2026.</p>
   <div class="chips">
     <span class="chip">Preprint, October 2026</span>
     <a class="chip" href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a>
     <span class="chip ok">Every graph checked exactly</span>
     <span class="chip">Not yet peer-reviewed</span>
   </div>
@@ -56,7 +57,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 <section aria-labelledby="sets-h">
   <div class="eyebrow">Per parameter set</div>
   <h2 id="sets-h">Counts and automorphism groups</h2>
-  <p>A “≥” count is a lower bound on the number of graphs: our searches did not finish. The bars show how many of the listed graphs have each automorphism group order |Aut|.</p>
+  <p>A “≥” count is a lower bound on the number of graphs: our searches did not finish. The bars show how many of the listed graphs have each automorphism group order |Aut|; for the five sets of the second paper |Aut| was computed only for some graphs, and the bars show those.</p>
   <div class="sets" id="sets"></div>
 </section>
 
@@ -65,7 +66,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
   <h2 id="tbl-h">Where each graph comes from</h2>
   <p>Each row is a batch of graphs with a common source. “Lines” are line numbers in the data file, which are the graph numbers used in the paper. Select a column heading to sort.</p>
   <div class="controls">
-    <label>Parameter set <select id="fset"><option value="">all nine</option></select></label>
+    <label>Parameter set <select id="fset"><option value="">all fourteen</option></select></label>
     <label>Cayley graph <select id="fcay"><option value="">any</option><option value="yes">yes</option><option value="no">no</option><option value="na">not examined or not stated</option></select></label>
     <label>Search <input id="fq" type="search" placeholder="group, method …"></label>
   </div>
@@ -81,7 +82,32 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     </tr></thead>
     <tbody id="tbody"></tbody>
   </table></div>
-  <p class="muted">For the 320-vertex sets the rows are the families of the paper, which group graphs by their automorphism group; their line numbers are not split by family there, so the column is empty. “Cayley?” for a 320 family follows the paper's family table.</p>
+  <p class="muted">For the 320-vertex sets the rows are the families of the paper, which group graphs by their automorphism group; their line numbers are not split by family there, so the column is empty. “Cayley?” for a 320 family follows the paper's family table. For the five sets of the second paper the graphs are not numbered within one file, so the column is empty as well; Γ<sub>K(H,L)</sub> is the graph of Kharaghani's matrix built from H and a Latin square L (L the round-robin square, L* a relabelled copy).</p>
+</section>
+
+<section aria-labelledby="two-h">
+  <div class="eyebrow">Second paper · 306, 400, 576, 784, 1296 vertices</div>
+  <h2 id="two-h">Two orbits, and two spreads deleted</h2>
+  <p>A search that extends coset fusion to groups acting with <em>two</em> orbits, on G/H₁ ⊔ G/H₂, found three graphs, from 2 × M₁₂ (576 vertices), 5¹⁺²₊:4A₅ (306) and Sp(6,2) (1296). Analysing the hits gave constructions that work by hand.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>spectrum</th><th>graphs</th><th>Brouwer's comment</th><th>Brouwer, 11 Oct 2026</th></tr></thead>
+    <tbody>
+      <tr><td class="num">(306,55,4,11)</td><td class="num">55¹ 4²²⁰ (−11)⁸⁵</td><td class="num">1</td><td>none</td><td>“?”</td></tr>
+      <tr><td class="num">(400,171,74,72)</td><td class="num">171¹ 11¹⁷¹ (−9)²²⁸</td><td class="num">≥ 5</td><td>OA(20,9)?</td><td>“?”</td></tr>
+      <tr><td class="num">(576,253,112,110)</td><td class="num">253¹ 13²⁵³ (−11)³²²</td><td class="num">≥ 7</td><td>OA(24,11)?</td><td>“?”</td></tr>
+      <tr><td class="num">(784,351,158,156)</td><td class="num">351¹ 15³⁵¹ (−13)⁴³²</td><td class="num">≥ 5</td><td>OA(28,13)?</td><td>“?”</td></tr>
+      <tr><td class="num">(1296,595,274,272)</td><td class="num">595¹ 19⁵⁹⁵ (−17)⁷⁰⁰</td><td class="num">≥ 6</td><td>OA(36,17)?</td><td>“?”</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The last column is Brouwer's live table as fetched on 11 October 2026: all five rows were still marked “?”. The complements (306,250,205,200), (400,228,128,132), (576,322,178,182), (784,432,236,240) and (1296,700,376,380) are realised too.</p>
+  <h3>Bush-type Hadamard graphs with two spreads deleted</h3>
+  <p>A symmetric Bush-type Hadamard matrix K of order n² whose n × n blocks have unit diagonal, for instance one of Kharaghani's matrices, defines a strongly regular graph Γ₀ = ½(J + K) − I with the parameters of the Latin square graph LS<sub>n/2+1</sub>(n). Its block rows and its block columns are two orthogonal spreads of Delsarte cliques. Deleting one spread gives the known graphs with λ = μ of Bonato, Holzmann and Kharaghani (2001); by an elementary spread lemma (essentially Haemers and Tonchev, 1996), deleting both gives a strongly regular graph with the parameters of LS<sub>n/2−1</sub>(n):</p>
+  <div class="formula">srg( n²,  (n−1)(n−2)/2,  (n/2−1)(n/2−2) + 2,  (n/2−1)(n/2−2) ),   eigenvalues 1 ± n/2</div>
+  <p>Kharaghani's matrices (1985) exist for every Hadamard order n, so such a graph exists for every n = 4m ≥ 8. For n = 20, 24, 28, 36 these are the four “?” rows above; beyond the table, n = 40 and 44 give srg(1600,741,344,342) and srg(1936,903,422,420). A second source, found first from the search hits, is the rule (a,b) ~ (c,d) iff a ≠ c, b ≠ d and H<sub>ab</sub>H<sub>bc</sub>H<sub>cd</sub>H<sub>da</sub> = 1, for a symmetric Hadamard matrix H of order n; it is an instance of the same theorem and also has a direct proof. The graphs come from Paley's matrices, the symplectic regular two-graph on 36 points, the Latin square graphs of ℤ₆ and S₃, and Kharaghani's matrices; pairwise non-isomorphism within each set is by nauty canonical forms. None of the graphs tested on these four vertex numbers is a Latin square graph (an exhaustive count of cliques of size n), so they say nothing about the orthogonal arrays OA(n, n/2 − 1) named in the table.</p>
+  <h3>The graph on 306 vertices</h3>
+  <p>Δ has as vertices the 300 non-square points of the parabolic quadric Q(4,5) and the 6 points of a totally singular line ℓ, which form a Delsarte clique. Two non-square points y, z are adjacent if B(y,z) = 0 and their perpendicular points on ℓ differ, or if z lies on the line through y and its perpendicular point; each non-square point is also adjacent to its perpendicular point on ℓ. Its automorphism group is the stabiliser of ℓ in SO(5,5), of order 60,000, with orbits 300 + 6. Δ has the parameters of the collinearity graph of a generalized quadrangle GQ(5,10), but only 61 cliques of size 6 where such a quadrangle would need 561 lines, so it is a sporadic, non-geometric pseudo-GQ(5,10). The same rule over 𝔽₃ gives the collinearity graph of Q(4,3); over 𝔽₇ and 𝔽₉ it is not strongly regular. Strong regularity of Δ is an exact computer check, by several programs; there is no hand proof yet.</p>
+  <h3>Open: a third spread?</h3>
+  <p>A third spread of Γ₀, orthogonal to the block rows and block columns, could be deleted as well and would give the parameters of LS<sub>n/2−2</sub>(n): (400,152,60,56), (576,230,94,90), (784,324,136,132) and (1296,560,244,240), all marked “?”. None was found. For n = 12 a SAT model over all symmetric Latin squares is unsatisfiable, so no Kharaghani matrix of order 144 has one; the runs for n = 20 stopped after 7200 seconds without a verdict, so these rows remain open.</p>
 </section>
 
 <section aria-labelledby="files-h">
@@ -104,6 +130,24 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
       <tr><td><a href="data/sumgraph_D0_88.g6">sumgraph_D0_88.g6</a></td><td class="num">(320,88,24,24)</td><td class="num">1</td><td class="num">99fb2750c3a5ecbb</td></tr>
     </tbody>
   </table></div>
+  <p>The graphs of the second paper are in its own archive, <a href="https://zenodo.org/records/23296158">new_srgs_multiorbit_data.zip</a> (with the paper, new_srgs_multiorbit.pdf), one graph per file, with a standalone standard-library verifier; they are not copied here.</p>
+  <div class="tbl-wrap"><table class="files">
+    <thead><tr><th>file (in the archive)</th><th>graph</th><th>SHA-256 (prefix)</th></tr></thead>
+    <tbody>
+      <tr><td>srg306_55_4_11.g6</td><td>Δ</td><td class="num">68139471b37b8747</td></tr>
+      <tr><td>srg400_171_74_72.g6</td><td>Γ(Pal<sub>II</sub>(9))</td><td class="num">a5abf2e296792042</td></tr>
+      <tr><td>srg576_253_112_110.g6</td><td>Γ(Pal<sub>II</sub>(5) ⊗ H₂)</td><td class="num">de1d020f27e8a608</td></tr>
+      <tr><td>srg784_351_158_156.g6</td><td>Γ(Pal<sub>II</sub>(13))</td><td class="num">0483e16d5bf9f656</td></tr>
+      <tr><td>srg1296_595_274_272.g6</td><td>Γ(S − I), symplectic</td><td class="num">ea647de0a9ac4ea7</td></tr>
+      <tr><td>srg1296_595_274_272_latin.g6</td><td>Γ(2E − J), ℤ₆</td><td class="num">02da950da5d20471</td></tr>
+      <tr><td>srg1296_595_274_272_latinS3.g6</td><td>Γ(2E − J), S₃</td><td class="num">57e8730ff425f6b2</td></tr>
+      <tr><td>srg1296_595_274_272_paley.g6</td><td>Γ(Pal<sub>II</sub>(17))</td><td class="num">040e34f430c48a95</td></tr>
+      <tr><td>hit306_55_4_11.g6</td><td>search hit, isomorphic to Δ</td><td class="num">6e8abae2680e2ca9</td></tr>
+      <tr><td>hit576_253_112_110.g6</td><td>search hit, isomorphic to Γ(Pal<sub>II</sub>(5) ⊗ H₂)</td><td class="num">06d3394fc8b72e80</td></tr>
+      <tr><td>hit1296_595_274_272.g6</td><td>search hit, isomorphic to Γ(S − I)</td><td class="num">e580257894cf2c86</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The Kharaghani graphs Γ<sub>K(H,L)</sub> counted above are built by the archive's programs rather than stored as files.</p>
   <p>Also in <span class="mono">data/</span>: the verifier <a href="data/verify_srg.py">verify_srg.py</a>, the <a href="data/README.txt">README.txt</a> of the ancillary files and <a href="data/SHA256SUMS">SHA256SUMS</a> with the full hashes. SHA256SUMS also lists programs and connection sets that belong to the full archive but are not copied here.</p>
   <div class="formula">python3 verify_srg.py srg324_136_58_56.g6 324 136 58 56</div>
   <p class="muted">The verifier is plain Python 3 with no packages. It decodes each line and checks A² = kI + λA + μ(J − I − A) directly: every vertex has degree k, and every pair of distinct vertices has λ (adjacent) or μ (non-adjacent) common neighbours. It passes on all 264 lines of the eleven files. The two sum-graph files contain the graphs obtained from a known abelian (320,88,24) difference set of Davis and Jedwab (1997); they are not vertex-transitive (64 automorphisms) and are not counted among the new graphs.</p>
@@ -120,6 +164,9 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
       <tr><td>graphs within a file are pairwise non-isomorphic</td><td>computer (nauty canonical forms; invariants where stated)</td></tr>
       <tr><td>automorphism groups, Cayley property, counts, invariants</td><td>computer (nauty, GAP); counts are lower bounds where the search was incomplete</td></tr>
       <tr><td>none of the 93 srg(324,136,58,56) comes from an orthogonal array OA(18,8)</td><td>computer (clique numbers: no 18-clique)</td></tr>
+      <tr><td>second paper: Γ₀ and the two-spread graphs are strongly regular, for every Hadamard order (spread lemma, Bush-type theorem, Kharaghani's matrices, the symmetric-Hadamard rule)</td><td>hand proofs; the symmetric-Hadamard rule has two</td></tr>
+      <tr><td>second paper: Δ is an srg(306,55,4,11); its 61 six-cliques; not geometric</td><td>computer, exact check by several programs; the action of the stabiliser of ℓ by hand</td></tr>
+      <tr><td>second paper: non-isomorphism, |Aut|, not Latin square graphs, no third spread in the tested graphs</td><td>computer (nauty canonical forms; exhaustive clique counts by three programs; SAT for n = 12)</td></tr>
       <tr><td>novelty</td><td>literature search, “to the best of our knowledge”</td></tr>
     </tbody>
   </table></div>
@@ -128,7 +175,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 
 <footer>
   <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
-  <div>Paper and data: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
+  <div>Papers and data: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>, <a href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
 </footer>
 </div>
 
@@ -144,7 +191,12 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     ["324b","(324,133,52,56)",10,true,"“?” 1 Oct 2026 → “+” (seen 6 Oct 2026)","Negative Latin square type NL₇(18). All ten are Cayley graphs of 𝔽₄ × 𝔽₈₁ ≅ ℤ₂² × ℤ₃⁴ from a two-stage slice search.","p324b"],
     ["324c","(324,136,58,56)",93,true,"“?” 30 Sep 2026 (comment “OA(18,8)?”) → listed as existing","Latin square type LS₈(18). None contains an 18-clique, so none is the graph of an orthogonal array OA(18,8): all are pseudo-Latin-square graphs. One cyclotomic Cayley graph on 𝔽₄ × 𝔽₈₁ is proved strongly regular by hand.","p324c"],
     ["486a","(486,97,16,20)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Δ, a Cayley graph of SmallGroup(486,166) and a coset graph of a point stabiliser of the split Cayley hexagon H(3) in G₂(3); and Θ, a Cayley graph of SmallGroup(486,183) and (486,103).","p486a"],
-    ["486b","(486,100,22,20)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Γ⁽¹⁾ and Γ⁽²⁾, Cayley graphs of SmallGroup(486,117) with automorphism group 3⁴:(2 × S₅) of order 19,440.","p486b"]
+    ["486b","(486,100,22,20)",2,false,"“?” 29 Sep 2026 → “+” 30 Sep 2026","Γ⁽¹⁾ and Γ⁽²⁾, Cayley graphs of SmallGroup(486,117) with automorphism group 3⁴:(2 × S₅) of order 19,440.","p486b"],
+    ["306","(306,55,4,11)",1,false,"“?” on 11 Oct 2026 (no comment)","Δ on the 300 non-square points of Q(4,5) and the 6 points of a totally singular line, a Delsarte clique. A non-geometric pseudo-GQ(5,10): 61 cliques of size 6. Not vertex-transitive.","p306"],
+    ["400","(400,171,74,72)",5,true,"“?” on 11 Oct 2026 (comment “OA(20,9)?”)","Bush-type Hadamard graphs with two orthogonal spreads deleted, parameters of LS₉(20). None of the graphs tested is a Latin square graph.","p400"],
+    ["576","(576,253,112,110)",7,true,"“?” on 11 Oct 2026 (comment “OA(24,11)?”)","Two spreads deleted, parameters of LS₁₁(24). Γ(Pal_II(5) ⊗ H₂) is vertex-transitive, |Aut| = 760,320 = 8·|M₁₂|, and is the search hit of 2 × M₁₂.","p576"],
+    ["784","(784,351,158,156)",5,true,"“?” on 11 Oct 2026 (comment “OA(28,13)?”)","Two spreads deleted, parameters of LS₁₃(28). None of the graphs tested is a Latin square graph.","p784"],
+    ["1296","(1296,595,274,272)",6,true,"“?” on 11 Oct 2026 (comment “OA(36,17)?”)","Two spreads deleted, parameters of LS₁₇(36). The graph of the symplectic two-graph on 36 points has Aut = Sp(6,2) × C₂ and is the search hit of Sp(6,2).","p1296"]
   ];
   // Rows: set key, lines label, line sort key, count, lower bound?, aut {order:count}, source, cayley (yes/no/na), cayley note
   var R=[
@@ -183,7 +235,21 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     ["324c","84",84,1,false,{2592:1},"server run of 6 Oct 2026, Cayley mode","yes","SmallGroup(324,170)"],
     ["486a","1",1,1,false,{3888:1},"Δ: compiled decider on (3¹⁺²₊ × 3²):2S₄; coset graph in G₂(3)","yes","SmallGroup(486,166)"],
     ["486a","2",2,1,false,{3888:1},"Θ: server run, affine mode (2 Oct 2026)","yes","SmallGroup(486,183), (486,103)"],
-    ["486b","1–2",1,2,false,{19440:2},"coset action of 3⁴:S₅ (TomLib)","yes","SmallGroup(486,117)"]
+    ["486b","1–2",1,2,false,{19440:2},"coset action of 3⁴:S₅ (TomLib)","yes","SmallGroup(486,117)"],
+    ["306","",0,1,false,{"60000":1},"Δ on Q(4,5); also the two-orbit hit of 5¹⁺²₊:4A₅ on 300 + 6 points","no","not vertex-transitive"],
+    ["400","",0,1,false,{"5760":1},"Γ(H), symmetric-Hadamard rule, H = Pal_II(9)","no","not vertex-transitive"],
+    ["400","",0,1,false,{"171":1},"Γ_K(H,L), Kharaghani matrix, H = Pal_I(19), L","na",""],
+    ["400","",0,3,false,{},"Γ_K(H,L): Pal_I(19) with L*; Pal_II(9) with L and L*","na",""],
+    ["576","",0,1,false,{"760320":1},"Γ(H), H = Pal_II(5) ⊗ H₂; also the two-orbit hit of 2 × M₁₂ on 288 + 288 points","na","vertex-transitive; Cayley not examined"],
+    ["576","",0,1,false,{"253":1},"Γ_K(H,L), H = Pal_I(23), L","na",""],
+    ["576","",0,5,false,{},"Γ_K(H,L): Pal_I(23) with L*; H₂ ⊗ Pal_I(11) and Pal_II(5) ⊗ H₂, each with L and L*","na",""],
+    ["784","",0,1,false,{"8736":1},"Γ(H), H = Pal_II(13)","no","not vertex-transitive"],
+    ["784","",0,4,false,{},"Γ_K(H,L): Pal_I(27) and Pal_II(13), each with L and L*","na",""],
+    ["1296","",0,1,false,{"2903040":1},"Γ(S − I), symplectic regular two-graph on 36 points; also the two-orbit hit of Sp(6,2) on 1260 + 36 points","no","not vertex-transitive"],
+    ["1296","",0,1,false,{"3456":1},"Γ(2E − J), E the Latin square graph of ℤ₆","no","not vertex-transitive"],
+    ["1296","",0,1,false,{"31104":1},"Γ(2E − J), E the Latin square graph of S₃","no","not vertex-transitive"],
+    ["1296","",0,1,false,{"19584":1},"Γ(H), H = Pal_II(17)","no","not vertex-transitive"],
+    ["1296","",0,2,false,{},"Γ_K(H,L): Pal_II(17) with L and L*","na",""]
   ];
   var SL={};S.forEach(function(s){SL[s[0]]=s;});
   var order=S.map(function(s){return s[0];});
@@ -192,18 +258,18 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
   var sets=document.getElementById('sets');
   S.forEach(function(s){
     var agg={};R.forEach(function(r){if(r[0]!==s[0])return;for(var k in r[5])agg[k]=(agg[k]||0)+r[5][k];});
-    var keys=Object.keys(agg).map(Number).sort(function(a,b){return a-b;}),mx=Math.max.apply(null,keys.map(function(k){return agg[k];}));
+    var keys=Object.keys(agg).map(Number).sort(function(a,b){return a-b;}),mx=Math.max.apply(null,keys.map(function(k){return agg[k];})),known=keys.reduce(function(t,k){return t+agg[k];},0);
     var bars=keys.map(function(k){return '<div class="r"><span class="k">'+fmt(k)+'</span><span class="t"><span class="f" style="width:'+Math.max(4,100*agg[k]/mx)+'%"></span></span><span class="v">'+agg[k]+'</span></div>';}).join('');
     var el=document.createElement('article');el.className='set';el.id=s[6];
-    el.innerHTML='<span class="p">srg'+s[1]+'</span><span class="n">'+(s[3]?'≥ ':'')+s[2]+'<small>graph'+(s[2]>1?'s':'')+'</small></span><p>'+s[5]+'</p><div class="auts" role="img" aria-label="Automorphism group orders: '+keys.map(function(k){return agg[k]+' with '+k;}).join(', ')+'"><span class="eyebrow">|Aut| of the listed graphs</span>'+bars+'</div><span class="chip ok" style="justify-self:start">Brouwer: '+s[4]+'</span>';
+    el.innerHTML='<span class="p">srg'+s[1]+'</span><span class="n">'+(s[3]?'≥ ':'')+s[2]+'<small>graph'+(s[2]>1?'s':'')+'</small></span><p>'+s[5]+'</p><div class="auts" role="img" aria-label="Automorphism group orders: '+keys.map(function(k){return agg[k]+' with '+k;}).join(', ')+'"><span class="eyebrow">|Aut| of the listed graphs'+(known<s[2]?' (computed for '+known+' of '+s[2]+')':'')+'</span>'+bars+'</div><span class="chip ok" style="justify-self:start">Brouwer: '+s[4]+'</span>';
     sets.appendChild(el);
   });
   // filter + sortable table
   var fset=document.getElementById('fset'),fcay=document.getElementById('fcay'),fq=document.getElementById('fq'),tb=document.getElementById('tbody'),cnt=document.getElementById('fcount');
   S.forEach(function(s){var o=document.createElement('option');o.value=s[0];o.textContent=s[1];fset.appendChild(o);});
   var sortKey=null,sortDir=1;
-  function autStr(a){return Object.keys(a).map(Number).sort(function(x,y){return y-x;}).map(function(k){return a[k]>1&&Object.keys(a).length>1?fmt(k)+' ×'+a[k]:fmt(k);}).join(', ');}
-  function autMax(a){return Math.max.apply(null,Object.keys(a).map(Number));}
+  function autStr(a){if(!Object.keys(a).length)return 'not stated';return Object.keys(a).map(Number).sort(function(x,y){return y-x;}).map(function(k){return a[k]>1&&Object.keys(a).length>1?fmt(k)+' ×'+a[k]:fmt(k);}).join(', ');}
+  function autMax(a){var k=Object.keys(a);return k.length?Math.max.apply(null,k.map(Number)):0;}
   function key(r,k){if(k==='set')return order.indexOf(r[0])*1000+r[2];if(k==='lines')return r[2];if(k==='n')return r[3];if(k==='aut')return autMax(r[5]);if(k==='src')return r[6].toLowerCase();if(k==='cay')return r[7];}
   function render(){
     var q=fq.value.trim().toLowerCase(),rows=R.filter(function(r){

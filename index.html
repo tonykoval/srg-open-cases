@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Open SRG Cases</title>
-<meta name="description" content="Parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: nine single-set nonexistence proofs, 70 further open pairs excluded by one lattice condition, nine sets realised by new graphs, the uniqueness of the regular two-graphs on 126 and 176 points, which makes four parameter sets unique, and the uniqueness of the srg(243,110,37,60) and srg(253,112,36,60), four more sets.">
+<meta name="description" content="Parameter sets marked open in Brouwer's table of strongly regular graphs, settled in September and October 2026: nine single-set nonexistence proofs, 70 further open pairs excluded by one lattice condition, fourteen sets realised by new graphs, the uniqueness of the regular two-graphs on 126 and 176 points, which makes four parameter sets unique, and the uniqueness of the srg(243,110,37,60) and srg(253,112,36,60), four more sets.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -52,11 +52,11 @@ a.card:hover{border-color:var(--hand)}
 <header>
   <div class="eyebrow">Strongly regular graphs · September–October 2026</div>
   <h1>Open cases of Brouwer's table, settled</h1>
-  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that nine of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for nine further parameter sets. We also proved that the regular two-graphs on 126 and 176 points are unique, a question Brouwer and Van Maldeghem list as open; as a consequence four parameter sets of the table each have exactly one graph. By the same method, the Delsarte graph and the M₂₃ graph are the only graphs with their parameters, (243,110,37,60) and (253,112,36,60), with no group assumed; with the complements, four more sets have exactly one graph. All results are preprints with open code and data.</p>
+  <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that nine of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for fourteen further parameter sets. We also proved that the regular two-graphs on 126 and 176 points are unique, a question Brouwer and Van Maldeghem list as open; as a consequence four parameter sets of the table each have exactly one graph. By the same method, the Delsarte graph and the M₂₃ graph are the only graphs with their parameters, (243,110,37,60) and (253,112,36,60), with no group assumed; with the complements, four more sets have exactly one graph. All results are preprints with open code and data.</p>
   <div class="chips">
     <span class="chip kill">9 single-set nonexistence proofs</span>
     <span class="chip kill">70 further pairs excluded by one condition</span>
-    <span class="chip ok">9 parameter sets realised</span>
+    <span class="chip ok">14 parameter sets realised</span>
     <span class="chip ok">2 two-graphs unique, so 4 sets have exactly one graph</span>
     <span class="chip ok">srg on 243 and 253 vertices unique: 4 more sets</span>
     <span class="chip">Preprints, not yet peer-reviewed</span>
@@ -70,15 +70,15 @@ a.card:hover{border-color:var(--hand)}
   <div class="stats">
     <div class="stat no"><span class="eyebrow">no graph exists · one paper each</span><b>9</b><span class="muted">v = 69, 99, 105, 154, 162, 196, 288, 405, 476</span></div>
     <div class="stat no"><span class="eyebrow">excluded by one condition</span><b>70</b><span class="muted">open complementary pairs, v = 96 to 1288</span></div>
-    <div class="stat yes"><span class="eyebrow">graphs constructed</span><b>9</b><span class="muted">v = 250, 300, 320, 324, 486</span></div>
+    <div class="stat yes"><span class="eyebrow">graphs constructed</span><b>14</b><span class="muted">v = 250, 300, 306, 320, 324, 400, 486, 576, 784, 1296</span></div>
     <div class="stat uniq"><span class="eyebrow">exactly one graph</span><b>8</b><span class="muted">v = 125, 175, 243, 253, with complements</span></div>
     <div class="stat"><span class="eyebrow">new graphs in the data files</span><b>262</b><span class="muted">pairwise non-isomorphic per set</span></div>
   </div>
   <p>Each dot is one parameter set, placed by its number of vertices. Select a dot to jump to its entry.</p>
-  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with nine nonexistence results, nine constructions and eight parameter sets shown to have exactly one graph"></div>
+  <div class="vline" id="vline" role="img" aria-label="Number line of vertex counts from 0 to 500 with nine nonexistence results, eleven constructions and eight parameter sets shown to have exactly one graph"></div>
   <div class="vaxis" id="vaxis"></div>
   <div class="legend"><span><i style="background:var(--kill)"></i>no graph exists</span><span><i style="background:var(--ok)"></i>graphs constructed</span><span><i class="ring"></i>exactly one graph</span></div>
-  <p class="muted">The line shows the eighteen single-set results; the four rings at 125, 175, 243 and 253 stand for eight parameter sets (four complementary pairs) shown to have exactly one graph. The 70 pairs excluded by the uniform condition run from 96 to 1288 vertices and are listed in a sortable table on <a href="bmv.html#t1-h">their own page</a>.</p>
+  <p class="muted">The line shows the single-set results up to 500 vertices; the constructions on 576, 784 and 1296 vertices lie beyond it and are listed below; the four rings at 125, 175, 243 and 253 stand for eight parameter sets (four complementary pairs) shown to have exactly one graph. The 70 pairs excluded by the uniform condition run from 96 to 1288 vertices and are listed in a sortable table on <a href="bmv.html#t1-h">their own page</a>.</p>
 </section>
 
 <section aria-labelledby="no-h">
@@ -101,7 +101,7 @@ a.card:hover{border-color:var(--hand)}
 <section aria-labelledby="bmv-h">
   <div class="eyebrow">Nonexistence · a uniform condition</div>
   <h2 id="bmv-h">Seventy more pairs, by one lattice condition</h2>
-  <p>The lattice method of Bannai, Munemasa and Venkov for tight spherical designs, extended to every strongly regular graph with integral eigenvalues, gives a test on the parameters alone. A complete sweep of Brouwer's table finds 70 open complementary pairs that fail it. None of them overlaps the eighteen results above.</p>
+  <p>The lattice method of Bannai, Munemasa and Venkov for tight spherical designs, extended to every strongly regular graph with integral eigenvalues, gives a test on the parameters alone. A complete sweep of Brouwer's table finds 70 open complementary pairs that fail it. None of them overlaps the twenty-three results above.</p>
   <div class="cards">
     <a class="card no" id="rbmv" href="bmv.html"><span class="p">70 open pairs, v = 96 … 1288</span><span class="m">The discriminant form of a maximal even overlattice of the vertex lattice must be anisotropic, satisfy Milgram's formula, and be tied to the class of the rescaled vertex sum by an exact dual-vector identity. Among the excluded: (96,35,10,14), the triangle-free (176,25,0,4) and (169,42,5,12). Its simplest case also excludes the parameters of NL<sub>m</sub>(q) for q a power of a prime ≡ 1 mod 4 and m odd.</span><span class="meta"><span class="chip hand">28 by hand</span><span class="chip comp">42 computer-assisted, two or more programs</span><span class="chip ok">parity part checked in Lean 4</span><span class="chip">Brouwer's table: “–”</span></span><span class="doi">doi:10.5281/zenodo.23281359</span></a>
   </div>
@@ -109,8 +109,8 @@ a.card:hover{border-color:var(--hand)}
 
 <section aria-labelledby="yes-h">
   <div class="eyebrow">Constructions</div>
-  <h2 id="yes-h">Nine parameter sets realised by new graphs</h2>
-  <p>All nine were marked “?” when the work started and are now marked as realised, on the basis of this work. A “≥” count is a lower bound: the searches did not finish. One paper covers all nine: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>.</p>
+  <h2 id="yes-h">Fourteen parameter sets realised by new graphs</h2>
+  <p>All fourteen were marked “?” when the work started. The first nine are now marked as realised, on the basis of this work; one paper covers them: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>. The other five, on 306, 400, 576, 784 and 1296 vertices, are in a second paper, <a href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a>; Brouwer's table still marked them “?” on 11 October 2026. A “≥” count is a lower bound: the searches did not finish, or more graphs may exist.</p>
   <div class="cards" id="ycards"></div>
 </section>
 
@@ -143,6 +143,7 @@ a.card:hover{border-color:var(--hand)}
         <li>Search the unions with the right degree for the strong regularity equation A² = kI + λA + μ(J − I − A), using the exact intersection numbers of the action.</li>
         <li>Sources: coset actions from the GAP table-of-marks library, affine groups over 𝔽₃⁴, descents to subgroups, and coset layers over p-groups.</li>
         <li>On 324 vertices, also exact searches for partial difference sets in abelian groups, using character values and a “slice” decomposition.</li>
+        <li>Groups with two orbits, on G/H₁ ⊔ G/H₂. Its hits led to a construction by hand: a Bush-type Hadamard graph with two orthogonal spreads of Delsarte cliques deleted.</li>
       </ol>
     </div>
   </div>
@@ -178,12 +179,17 @@ a.card:hover{border-color:var(--hand)}
     [324,133,52,56,"≥ 10","“+” (seen 6 Oct 2026)","Negative Latin square NL₇(18): Cayley graphs of 𝔽₄ × 𝔽₈₁ from a two-stage slice search.","p324b"],
     [324,136,58,56,"≥ 93","listed as existing","Latin square type LS₈(18); none comes from an orthogonal array. One cyclotomic example proved by hand.","p324c"],
     [486,97,16,20,"2","“+” since 30 Sep 2026","Cayley graphs of nonabelian groups; one is a coset graph in G₂(3).","p486a"],
-    [486,100,22,20,"2","“+” since 30 Sep 2026","Cayley graphs of SmallGroup(486,117), automorphism group of order 19,440.","p486b"]
+    [486,100,22,20,"2","“+” since 30 Sep 2026","Cayley graphs of SmallGroup(486,117), automorphism group of order 19,440.","p486b"],
+    [306,55,4,11,"1","“?” on 11 Oct 2026","On the non-square points of Q(4,5) and a totally singular line. Pseudo-geometric for a GQ(5,10), but not geometric. Not vertex-transitive.","p306","23296158"],
+    [400,171,74,72,"≥ 5","“?” on 11 Oct 2026","A Bush-type Hadamard graph with two orthogonal spreads deleted, with the parameters of LS₉(20). None of the graphs tested is a Latin square graph.","p400","23296158"],
+    [576,253,112,110,"≥ 7","“?” on 11 Oct 2026","Two spreads deleted, parameters of LS₁₁(24); one graph is vertex-transitive with |Aut| = 8·|M₁₂|. None of the graphs tested is a Latin square graph.","p576","23296158"],
+    [784,351,158,156,"≥ 5","“?” on 11 Oct 2026","Two spreads deleted, parameters of LS₁₃(28). None of the graphs tested is a Latin square graph.","p784","23296158"],
+    [1296,595,274,272,"≥ 6","“?” on 11 Oct 2026","Two spreads deleted, parameters of LS₁₇(36); one graph comes from the symplectic two-graph on 36 points, with |Aut| = 2·|Sp(6,2)|.","p1296","23296158"]
   ];
   var yc=document.getElementById('ycards');
   Y.forEach(function(y){
     var a=document.createElement('a');a.className='card yes';a.href='graphs.html#'+y[7];a.id='c'+y[7];
-    a.innerHTML='<span class="p">srg('+y[0]+', '+y[1]+', '+y[2]+', '+y[3]+')</span><span class="cnt">'+y[4]+' graph'+(y[4]==='1'?'':'s')+'</span><span class="m">'+y[6]+'</span><span class="meta"><span class="chip ok">Brouwer: '+y[5]+'</span></span><span class="doi">doi:10.5281/zenodo.23210829</span>';
+    a.innerHTML='<span class="p">srg('+y[0]+', '+y[1]+', '+y[2]+', '+y[3]+')</span><span class="cnt">'+y[4]+' graph'+(y[4]==='1'?'':'s')+'</span><span class="m">'+y[6]+'</span><span class="meta"><span class="chip ok">Brouwer: '+y[5]+'</span></span><span class="doi">doi:10.5281/zenodo.'+(y[8]||'23210829')+'</span>';
     yc.appendChild(a);
   });
   // number line 0..500
@@ -192,7 +198,7 @@ a.card:hover{border-color:var(--hand)}
   function dot(v,label,id,cls){var k=seen[v]||0;seen[v]=k+1;var a=document.createElement('a');a.className='dot '+cls;a.href='#'+id;a.title=label+(cls==='no'?': no graph exists':cls==='uniq'?': exactly one graph':': graphs constructed');a.setAttribute('aria-label',a.title);
     a.style.left=(100*v/500)+'%';a.style.bottom=(8+k*18)+'px';vl.appendChild(a);}
   N.forEach(function(n){dot(n[0],n[1],n[2],'no');});
-  Y.forEach(function(y){dot(y[0],'srg('+y.slice(0,4).join(',')+')','c'+y[7],'yes');});
+  Y.forEach(function(y){if(y[0]>500)return;dot(y[0],'srg('+y.slice(0,4).join(',')+')','c'+y[7],'yes');});
   [[125,'srg(125,52,15,26) and complement','rtg'],[175,'srg(175,72,20,36) and complement','rtg'],[243,'srg(243,110,37,60) and complement','r243'],[253,'srg(253,112,36,60) and complement','r243']].forEach(function(u){dot(u[0],u[1],u[2],'uniq');});
   [0,100,200,300,400,500].forEach(function(t){var s=document.createElement('span');s.textContent=t;s.style.left=Math.min(97,Math.max(3,t/5))+'%';va.appendChild(s);});
 })();
