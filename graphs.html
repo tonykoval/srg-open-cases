@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>New Strongly Regular Graphs</title>
-<meta name="description" content="Graphs for fourteen parameter sets that were open in Brouwer's table: counts, automorphism groups, sources and graph6 data files, including Bush-type Hadamard graphs with two spreads deleted on 400, 576, 784 and 1296 vertices and a pseudo-GQ(5,10) on 306 vertices.">
+<meta name="description" content="Graphs for eighteen parameter sets that were open in Brouwer's table: counts, automorphism groups, sources and graph6 data files, including Bush-type Hadamard graphs with two spreads deleted on 400, 576, 784 and 1296 vertices, a pseudo-GQ(5,10) on 306 vertices, and eight graphs on 160, 232, 261 and 280 vertices from fusions of orbitals of PΓL(2,8) and 2⁴:(S₃×S₃).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/site.css">
@@ -43,12 +43,13 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 <nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html" aria-current="page">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · constructions</div>
-  <h1>New graphs for fourteen open parameter sets</h1>
-  <p class="lead">For fourteen parameter sets marked “?” in Brouwer's table we give explicit strongly regular graphs, in two papers. The first nine sets, with 262 graphs in all, pairwise non-isomorphic within each set, are now marked as realised in the table, on the basis of this work. The second paper adds five sets on 306, 400, 576, 784 and 1296 vertices, with at least 24 graphs; Brouwer's table marks them “+” since 11 October 2026.</p>
+  <h1>New graphs for eighteen open parameter sets</h1>
+  <p class="lead">For eighteen parameter sets marked “?” in Brouwer's table we give explicit strongly regular graphs, in three papers. The first nine sets, with 262 graphs in all, pairwise non-isomorphic within each set, are now marked as realised in the table, on the basis of this work. The second paper adds five sets on 306, 400, 576, 784 and 1296 vertices, with at least 24 graphs; Brouwer's table marks them “+” since 11 October 2026. The third paper adds four sets on 160, 232, 261 and 280 vertices, with eight graphs; these rows were still “?” in the table on 12 October 2026.</p>
   <div class="chips">
     <span class="chip">Preprint, October 2026</span>
     <a class="chip" href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>
     <a class="chip" href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23313400">doi:10.5281/zenodo.23313400</a>
     <span class="chip ok">Every graph checked exactly</span>
     <span class="chip">Not yet peer-reviewed</span>
   </div>
@@ -57,7 +58,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 <section aria-labelledby="sets-h">
   <div class="eyebrow">Per parameter set</div>
   <h2 id="sets-h">Counts and automorphism groups</h2>
-  <p>A “≥” count is a lower bound on the number of graphs: our searches did not finish. The bars show how many of the listed graphs have each automorphism group order |Aut|; for the five sets of the second paper |Aut| was computed only for some graphs, and the bars show those.</p>
+  <p>A “≥” count is a lower bound on the number of graphs: our searches did not finish, or, for the four sets of the third paper, the search was complete only for the group actions used and no classification is claimed. The bars show how many of the listed graphs have each automorphism group order |Aut|; for the five sets of the second paper |Aut| was computed only for some graphs, and the bars show those.</p>
   <div class="sets" id="sets"></div>
 </section>
 
@@ -66,7 +67,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
   <h2 id="tbl-h">Where each graph comes from</h2>
   <p>Each row is a batch of graphs with a common source. “Lines” are line numbers in the data file, which are the graph numbers used in the paper. Select a column heading to sort.</p>
   <div class="controls">
-    <label>Parameter set <select id="fset"><option value="">all fourteen</option></select></label>
+    <label>Parameter set <select id="fset"><option value="">all eighteen</option></select></label>
     <label>Cayley graph <select id="fcay"><option value="">any</option><option value="yes">yes</option><option value="no">no</option><option value="na">not examined or not stated</option></select></label>
     <label>Search <input id="fq" type="search" placeholder="group, method …"></label>
   </div>
@@ -82,7 +83,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     </tr></thead>
     <tbody id="tbody"></tbody>
   </table></div>
-  <p class="muted">For the 320-vertex sets the rows are the families of the paper, which group graphs by their automorphism group; their line numbers are not split by family there, so the column is empty. “Cayley?” for a 320 family follows the paper's family table. For the five sets of the second paper the graphs are not numbered within one file, so the column is empty as well; Γ<sub>K(H,L)</sub> is the graph of Kharaghani's matrix built from H and a Latin square L (L the round-robin square, L* a relabelled copy).</p>
+  <p class="muted">For the 320-vertex sets the rows are the families of the paper, which group graphs by their automorphism group; their line numbers are not split by family there, so the column is empty. “Cayley?” for a 320 family follows the paper's family table. For the five sets of the second paper the graphs are not numbered within one file, so the column is empty as well; for the third paper it gives the data file, one graph per file. Γ<sub>K(H,L)</sub> is the graph of Kharaghani's matrix built from H and a Latin square L (L the round-robin square, L* a relabelled copy).</p>
 </section>
 
 <section aria-labelledby="two-h">
@@ -110,10 +111,43 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
   <p>A third spread of Γ₀, orthogonal to the block rows and block columns, could be deleted as well and would give the parameters of LS<sub>n/2−2</sub>(n): (400,152,60,56), (576,230,94,90), (784,324,136,132) and (1296,560,244,240), all marked “?”. None was found. For n = 12 a SAT model over all symmetric Latin squares is unsatisfiable, so no Kharaghani matrix of order 144 has one; the runs for n = 20 stopped after 7200 seconds without a verdict, so these rows remain open.</p>
 </section>
 
+<section aria-labelledby="three-h">
+  <div class="eyebrow">Third paper · 160, 232, 261, 280 vertices</div>
+  <h2 id="three-h">Cross ratios over PG(1,8), and a grid with flags</h2>
+  <p>The same search, extended to three orbits and to direct products G × C<sub>m</sub>, found five graphs on four rows of the table; enumerating all fusions of the same group actions, instead of stopping at the first, gave three more. None of the eight graphs is vertex-transitive, so no search over transitive actions could have found them.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameters</th><th>spectrum</th><th>graphs</th><th>Brouwer's comment</th><th>Brouwer's table</th></tr></thead>
+    <tbody>
+      <tr><td class="num">(160,54,18,18)</td><td class="num">54¹ 6⁷⁵ (−6)⁸⁴</td><td class="num">≥ 3</td><td>pg(9,5,3) does not exist</td><td>“?” (as of 12 Oct 2026)</td></tr>
+      <tr><td class="num">(232,63,14,18)</td><td class="num">63¹ 5¹⁴⁴ (−9)⁸⁷</td><td class="num">≥ 1</td><td>pg(7,8,2)?</td><td>“?” (as of 12 Oct 2026)</td></tr>
+      <tr><td class="num">(261,64,14,16)</td><td class="num">64¹ 6¹⁴⁴ (−8)¹¹⁶</td><td class="num">≥ 2</td><td>pg(8,7,2)?</td><td>“?” (as of 12 Oct 2026)</td></tr>
+      <tr><td class="num">(280,63,14,14)</td><td class="num">63¹ 7¹³⁵ (−7)¹⁴⁴</td><td class="num">≥ 2</td><td>pg(9,6,2)?</td><td>“?” (as of 12 Oct 2026)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">All four rows were “?” in Brouwer's table on 11 and 12 October 2026; the paper was sent to him on 12 October 2026 and the update of the table is pending. The complements (160,105,68,70), (232,168,122,120), (261,196,147,147) and (280,216,166,168) are realised too. The counts are lower bounds: every completeness statement of the paper concerns all unions of orbitals of one stated group action, and there may be further graphs with other groups or with no symmetry.</p>
+  <h3>Five graphs over the projective line</h3>
+  <p>Let 𝒫 be the 9 points of PG(1,8), ℒ the 36 pairs of points of 𝒫, and ℰ the 28 conjugate pairs {e, e⁸} of points of PG(1,64) ∖ PG(1,8). The vertices are labelled pairs or labelled conjugate pairs, each carrying a label in 𝔽₈*, together with a small orbit: the 9 points (261), the 28 conjugate pairs (280), or the 36 pairs (232). Adjacency is decided by cross ratios: for two labelled vertices on disjoint pairs, the quotient (rule Q) or the product (rule P) of the two labels must equal the cross ratio of the two pairs or its inverse; for pairs sharing a point it must equal 1; a labelled pair and a conjugate pair are adjacent when their cross ratio is a primitive cube root of unity.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>graph</th><th>vertices</th><th>|Aut|</th><th>Aut</th><th>orbits</th></tr></thead>
+    <tbody>
+      <tr><td>Γ<sub>232</sub>, rule Q</td><td>ℰ × 𝔽₈* ∪ ℒ</td><td class="num">21,168</td><td>GL(2,8) ⋊ C₆</td><td class="num">196 + 36</td></tr>
+      <tr><td>Γ<sup>P</sup><sub>261</sub>, rule P</td><td>ℒ × 𝔽₈* ∪ 𝒫</td><td class="num">3,024</td><td>C₂ × PΓL(2,8)</td><td class="num">216 + 36 + 9</td></tr>
+      <tr><td>Γ<sup>Q</sup><sub>261</sub>, rule Q</td><td>ℒ × 𝔽₈* ∪ 𝒫</td><td class="num">21,168</td><td>GL(2,8) ⋊ C₆</td><td class="num">252 + 9</td></tr>
+      <tr><td>Γ<sup>P</sup><sub>280</sub>, rule P</td><td>ℒ × 𝔽₈* ∪ ℰ</td><td class="num">3,024</td><td>C₂ × PΓL(2,8)</td><td class="num">216 + 36 + 28</td></tr>
+      <tr><td>Γ<sup>Q</sup><sub>280</sub>, rule Q</td><td>ℒ × 𝔽₈* ∪ ℰ</td><td class="num">21,168</td><td>GL(2,8) ⋊ C₆</td><td class="num">252 + 28</td></tr>
+    </tbody>
+  </table></div>
+  <p>GL(2,8) ⋊ C₆ = (SL(2,8) × C₇) ⋊ (C₃ × C₂), the C₃ generated by the Frobenius map and the C₂ inverting the labels. In both graphs on 261 vertices the 9 points form a Delsarte clique; in both graphs on 280 vertices the 28 conjugate pairs form a Hoffman coclique; the local graph of a point of Γ<sup>Q</sup><sub>261</sub> is the 8 × 8 rook's graph.</p>
+  <h3>Three graphs on 160 vertices</h3>
+  <p>Γ<sup>(1)</sup><sub>160</sub> lives on the 16 cells of a 4 × 4 grid and three copies of the 48 flags of its even transversals; its automorphism group is C₃ × 2⁴:(S₃ × S₃), of order 1,728, with orbits 144 + 16, and the cells form a Hoffman coclique. Γ<sup>(2)</sup><sub>160</sub> and Γ<sup>(3)</sup><sub>160</sub> are fusions of orbitals of 2⁴:(S₃ × S₃) acting on 96 + 48 + 16 points, with automorphism groups C₃:(2⁴:(S₃ × S₃)) of order 1,728 (not isomorphic to that of Γ<sup>(1)</sup><sub>160</sub>) and 2⁴:(S₃ × S₃) of order 576.</p>
+  <h3>Not geometric, and sporadic</h3>
+  <p>The four rows are the parameters of the partial geometries pg(9,5,3), pg(7,8,2), pg(8,7,2) and pg(9,6,2). None of the eight graphs is geometric: the three graphs on 160 vertices and both on 280 have no Delsarte clique at all; the graphs on 261 vertices have only 46 and 100 Delsarte cliques, fewer than the 232 lines of a pg(8,7,2); and no subfamily of the 513 Delsarte cliques of Γ<sub>232</sub> partitions its edge set. The same rules over PG(1,q) give, for q = 4, the classical skew-lines graph of PG(3,2) and a second known srg(35,16,6,8), and no strongly regular graph for q = 16 or q = 32 under the groups searched (complete solver verdicts): within this model the graphs for q = 8 are sporadic.</p>
+</section>
+
 <section aria-labelledby="files-h">
   <div class="eyebrow">Data</div>
   <h2 id="files-h">The graph6 files</h2>
-  <p>One file per parameter set, one graph per line, in graph6 format. These are the ancillary files of the paper, copied unchanged into the <span class="mono">data/</span> folder of this site's repository; the links open or download them from there. The files for 320, 324 and 486 vertices are in nauty canonical form.</p>
+  <p>For the first paper, one file per parameter set, one graph per line, in graph6 format. These are the ancillary files of the paper, copied unchanged into the <span class="mono">data/</span> folder of this site's repository; the links open or download them from there. The files for 320, 324 and 486 vertices are in nauty canonical form.</p>
   <div class="tbl-wrap"><table class="files">
     <thead><tr><th>file</th><th>parameters</th><th>graphs</th><th>SHA-256 (prefix)</th></tr></thead>
     <tbody>
@@ -148,9 +182,23 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     </tbody>
   </table></div>
   <p class="muted">The Kharaghani graphs Γ<sub>K(H,L)</sub> counted above are built by the archive's programs rather than stored as files.</p>
+  <p>The eight graphs of the third paper are copied unchanged from the folder <span class="mono">graphs/</span> of its archive, <a href="https://zenodo.org/records/23313400">new_srgs_twoorbit_data.zip</a>, into <span class="mono">data/</span>, one graph per file, under the names used in the paper; the full hashes are in <a href="data/SHA256SUMS_twoorbit">SHA256SUMS_twoorbit</a> and printed in the paper.</p>
+  <div class="tbl-wrap"><table class="files">
+    <thead><tr><th>file</th><th>graph</th><th>parameters</th><th>SHA-256 (prefix)</th></tr></thead>
+    <tbody>
+      <tr><td><a href="data/G160.g6">G160.g6</a></td><td>Γ<sup>(1)</sup><sub>160</sub>, grid and flags</td><td class="num">(160,54,18,18)</td><td class="num">ac81a833841a7853</td></tr>
+      <tr><td><a href="data/G160b.g6">G160b.g6</a></td><td>Γ<sup>(2)</sup><sub>160</sub></td><td class="num">(160,54,18,18)</td><td class="num">aea444beb1e20fb5</td></tr>
+      <tr><td><a href="data/G160c.g6">G160c.g6</a></td><td>Γ<sup>(3)</sup><sub>160</sub></td><td class="num">(160,54,18,18)</td><td class="num">b8b704026038b6ea</td></tr>
+      <tr><td><a href="data/G232.g6">G232.g6</a></td><td>Γ<sub>232</sub>, rule Q</td><td class="num">(232,63,14,18)</td><td class="num">1329c8c0786a3866</td></tr>
+      <tr><td><a href="data/G261a.g6">G261a.g6</a></td><td>Γ<sup>P</sup><sub>261</sub>, rule P</td><td class="num">(261,64,14,16)</td><td class="num">a617f1302d361592</td></tr>
+      <tr><td><a href="data/G261b.g6">G261b.g6</a></td><td>Γ<sup>Q</sup><sub>261</sub>, rule Q</td><td class="num">(261,64,14,16)</td><td class="num">d7b9b95afd8db219</td></tr>
+      <tr><td><a href="data/G280a.g6">G280a.g6</a></td><td>Γ<sup>P</sup><sub>280</sub>, rule P</td><td class="num">(280,63,14,14)</td><td class="num">fe5ea67d817b5855</td></tr>
+      <tr><td><a href="data/G280b.g6">G280b.g6</a></td><td>Γ<sup>Q</sup><sub>280</sub>, rule Q</td><td class="num">(280,63,14,14)</td><td class="num">8a9cbb0b9cb9dfaa</td></tr>
+    </tbody>
+  </table></div>
   <p>Also in <span class="mono">data/</span>: the verifier <a href="data/verify_srg.py">verify_srg.py</a>, the <a href="data/README.txt">README.txt</a> of the ancillary files and <a href="data/SHA256SUMS">SHA256SUMS</a> with the full hashes. SHA256SUMS also lists programs and connection sets that belong to the full archive but are not copied here.</p>
   <div class="formula">python3 verify_srg.py srg324_136_58_56.g6 324 136 58 56</div>
-  <p class="muted">The verifier is plain Python 3 with no packages. It decodes each line and checks A² = kI + λA + μ(J − I − A) directly: every vertex has degree k, and every pair of distinct vertices has λ (adjacent) or μ (non-adjacent) common neighbours. It passes on all 264 lines of the eleven files. The two sum-graph files contain the graphs obtained from a known abelian (320,88,24) difference set of Davis and Jedwab (1997); they are not vertex-transitive (64 automorphisms) and are not counted among the new graphs.</p>
+  <p class="muted">The verifier is plain Python 3 with no packages. It decodes each line and checks A² = kI + λA + μ(J − I − A) directly: every vertex has degree k, and every pair of distinct vertices has λ (adjacent) or μ (non-adjacent) common neighbours. It passes on all 264 lines of the eleven files of the first paper and on the eight files of the third (python3 verify_srg.py G280b.g6 280 63 14 14, and so on). The two sum-graph files contain the graphs obtained from a known abelian (320,88,24) difference set of Davis and Jedwab (1997); they are not vertex-transitive (64 automorphisms) and are not counted among the new graphs.</p>
 </section>
 
 <section aria-labelledby="chk-h">
@@ -167,15 +215,18 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
       <tr><td>second paper: Γ₀ and the two-spread graphs are strongly regular, for every Hadamard order (spread lemma, Bush-type theorem, Kharaghani's matrices, the symmetric-Hadamard rule)</td><td>hand proofs; the symmetric-Hadamard rule has two</td></tr>
       <tr><td>second paper: Δ is an srg(306,55,4,11); its 61 six-cliques; not geometric</td><td>computer, exact check by several programs; the action of the stabiliser of ℓ by hand</td></tr>
       <tr><td>second paper: non-isomorphism, |Aut|, not Latin square graphs, no third spread in the tested graphs</td><td>computer (nauty canonical forms; exhaustive clique counts by three programs; SAT for n = 12)</td></tr>
+      <tr><td>third paper: the constructions, the valencies, invariance under the named groups (lower bounds on |Aut|), the orbit structure, the local graph of Γ<sup>Q</sup><sub>261</sub>, several cliques and cocliques</td><td>hand proofs</td></tr>
+      <tr><td>third paper: strong regularity of the eight graphs</td><td>exact computer check by several independently written programs, one written from the text of the constructions alone; λ and μ have no complete hand proof yet</td></tr>
+      <tr><td>third paper: |Aut|, non-isomorphism, clique and coclique counts (not geometric), no graph for q = 16, 32</td><td>computer (nauty, GAP, CP-SAT, exhaustive clique enumerators)</td></tr>
       <tr><td>novelty</td><td>literature search, “to the best of our knowledge”</td></tr>
     </tbody>
   </table></div>
-  <p class="muted">Independent review was uneven, and the paper says exactly what it covered. The first drafts (graphs reported on 30 September) were refereed by separate Claude agents with their own code. Several later additions (from 1 and 2 October) were not refereed independently at the time. On 6 October a Codex referee re-verified strong regularity and pairwise non-isomorphism of all 256 graphs then listed, with its own program, without recomputing every invariant. The eight srg(324,114,36,42) nos. 15–22, added on 7 October 2026, have not been refereed independently.</p>
+  <p class="muted">Independent review was uneven, and the paper says exactly what it covered. The first drafts (graphs reported on 30 September) were refereed by separate Claude agents with their own code. Several later additions (from 1 and 2 October) were not refereed independently at the time. On 6 October a Codex referee re-verified strong regularity and pairwise non-isomorphism of all 256 graphs then listed, with its own program, without recomputing every invariant. The eight srg(324,114,36,42) nos. 15–22, added on 7 October 2026, have not been refereed independently. For the third paper every computer result was reproduced by a blind audit with separately written code (Claude Fable), and version 2 was refereed by a further session with its own code, which re-implemented the constructions from the text.</p>
 </section>
 
 <footer>
   <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
-  <div>Papers and data: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>, <a href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
+  <div>Papers and data: <a href="https://doi.org/10.5281/zenodo.23210829">doi:10.5281/zenodo.23210829</a>, <a href="https://doi.org/10.5281/zenodo.23296158">doi:10.5281/zenodo.23296158</a>, <a href="https://doi.org/10.5281/zenodo.23313400">doi:10.5281/zenodo.23313400</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/">A. E. Brouwer, Parameters of strongly regular graphs</a></div>
 </footer>
 </div>
 
@@ -196,7 +247,11 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     ["400","(400,171,74,72)",5,true,"“?” until 11 Oct 2026 (snapshot 04:02 UTC); “+” since 11 Oct 2026, comment “Kovaľ; OA(20,9)?”","Bush-type Hadamard graphs with two orthogonal spreads deleted, parameters of LS₉(20). None of the graphs tested is a Latin square graph.","p400"],
     ["576","(576,253,112,110)",7,true,"“?” until 11 Oct 2026 (snapshot 04:02 UTC); “+” since 11 Oct 2026, comment “Kovaľ; OA(24,11)?”","Two spreads deleted, parameters of LS₁₁(24). Γ(Pal_II(5) ⊗ H₂) is vertex-transitive, |Aut| = 760,320 = 8·|M₁₂|, and is the search hit of 2 × M₁₂.","p576"],
     ["784","(784,351,158,156)",5,true,"“?” until 11 Oct 2026 (snapshot 04:02 UTC); “+” since 11 Oct 2026, comment “Kovaľ; OA(28,13)?”","Two spreads deleted, parameters of LS₁₃(28). None of the graphs tested is a Latin square graph.","p784"],
-    ["1296","(1296,595,274,272)",6,true,"“?” until 11 Oct 2026 (snapshot 04:02 UTC); “+” since 11 Oct 2026, comment “Kovaľ; OA(36,17)?”","Two spreads deleted, parameters of LS₁₇(36). The graph of the symplectic two-graph on 36 points has Aut = Sp(6,2) × C₂ and is the search hit of Sp(6,2).","p1296"]
+    ["1296","(1296,595,274,272)",6,true,"“?” until 11 Oct 2026 (snapshot 04:02 UTC); “+” since 11 Oct 2026, comment “Kovaľ; OA(36,17)?”","Two spreads deleted, parameters of LS₁₇(36). The graph of the symplectic two-graph on 36 points has Aut = Sp(6,2) × C₂ and is the search hit of Sp(6,2).","p1296"],
+    ["160","(160,54,18,18)",3,true,"“?” (as of 12 Oct 2026); update of the table pending","Pseudo-geometric for pg(9,5,3), which does not exist. Γ⁽¹⁾ on the 16 cells of a 4 × 4 grid and three copies of the 48 flags of its even transversals; Γ⁽²⁾, Γ⁽³⁾ fusions of orbitals of 2⁴:(S₃ × S₃) on 96 + 48 + 16 points. Not geometric: no Delsarte clique. Not vertex-transitive.","p160"],
+    ["232","(232,63,14,18)",1,true,"“?” (as of 12 Oct 2026); update of the table pending","Γ<sub>232</sub> on the 28 conjugate pairs of PG(1,64) ∖ PG(1,8) labelled by 𝔽₈*, and the 36 pairs of points of PG(1,8); the quotient rule in cross ratios. Not geometric: no subfamily of its 513 Delsarte cliques partitions the edges.","p232"],
+    ["261","(261,64,14,16)",2,true,"“?” (as of 12 Oct 2026); update of the table pending","Γ<sup>P</sup> and Γ<sup>Q</sup> on the 36 pairs of points of PG(1,8) labelled by 𝔽₈*, and the 9 points, which form a Delsarte clique; product and quotient rules in cross ratios. Not geometric: 46 and 100 Delsarte cliques, fewer than the 232 lines of a pg(8,7,2).","p261"],
+    ["280","(280,63,14,14)",2,true,"“?” (as of 12 Oct 2026); update of the table pending","Γ<sup>P</sup> and Γ<sup>Q</sup> on the labelled pairs of points of PG(1,8) and the 28 conjugate pairs, which form a Hoffman coclique; product and quotient rules. Not geometric: no Delsarte clique.","p280"]
   ];
   // Rows: set key, lines label, line sort key, count, lower bound?, aut {order:count}, source, cayley (yes/no/na), cayley note
   var R=[
@@ -249,7 +304,15 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     ["1296","",0,1,false,{"3456":1},"Γ(2E − J), E the Latin square graph of ℤ₆","no","not vertex-transitive"],
     ["1296","",0,1,false,{"31104":1},"Γ(2E − J), E the Latin square graph of S₃","no","not vertex-transitive"],
     ["1296","",0,1,false,{"19584":1},"Γ(H), H = Pal_II(17)","no","not vertex-transitive"],
-    ["1296","",0,2,false,{},"Γ_K(H,L): Pal_II(17) with L and L*","na",""]
+    ["1296","",0,2,false,{},"Γ_K(H,L): Pal_II(17) with L and L*","na",""],
+    ["160","G160",1,1,false,{"1728":1},"Γ⁽¹⁾: grid and flags; C₃ × 2⁴:(S₃ × S₃), orbits 144 + 16; search hit of 2⁴:(S₃ × S₃) × C₃","no","not vertex-transitive"],
+    ["160","G160b",2,1,false,{"1728":1},"Γ⁽²⁾: fusion of 2⁴:(S₃ × S₃) on 96 + 48 + 16 points; Aut C₃:(2⁴:(S₃ × S₃)), orbits 144 + 16","no","not vertex-transitive"],
+    ["160","G160c",3,1,false,{"576":1},"Γ⁽³⁾: the other fusion class of the same action; Aut 2⁴:(S₃ × S₃), orbits 96 + 48 + 16","no","not vertex-transitive"],
+    ["232","G232",1,1,false,{"21168":1},"Γ<sub>232</sub>: quotient rule on ℰ × 𝔽₈* ∪ ℒ; Aut GL(2,8) ⋊ C₆, orbits 196 + 36","no","not vertex-transitive"],
+    ["261","G261a",1,1,false,{"3024":1},"Γ<sup>P</sup><sub>261</sub>: product rule on ℒ × 𝔽₈* ∪ 𝒫; Aut C₂ × PΓL(2,8), orbits 216 + 36 + 9","no","not vertex-transitive"],
+    ["261","G261b",2,1,false,{"21168":1},"Γ<sup>Q</sup><sub>261</sub>: quotient rule on ℒ × 𝔽₈* ∪ 𝒫; Aut GL(2,8) ⋊ C₆, orbits 252 + 9","no","not vertex-transitive"],
+    ["280","G280a",1,1,false,{"3024":1},"Γ<sup>P</sup><sub>280</sub>: product rule on ℒ × 𝔽₈* ∪ ℰ; Aut C₂ × PΓL(2,8), orbits 216 + 36 + 28","no","not vertex-transitive"],
+    ["280","G280b",2,1,false,{"21168":1},"Γ<sup>Q</sup><sub>280</sub>: quotient rule on ℒ × 𝔽₈* ∪ ℰ; Aut GL(2,8) ⋊ C₆, orbits 252 + 28","no","not vertex-transitive"]
   ];
   var SL={};S.forEach(function(s){SL[s[0]]=s;});
   var order=S.map(function(s){return s[0];});
