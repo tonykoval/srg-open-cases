@@ -39,7 +39,7 @@ beyond them.
 | `graphs.html` | the new graphs of the three construction papers: counts, automorphism groups, sources, data files, the two-spread construction, the 306-vertex graph, the cross-ratio graphs on 160–280 vertices |
 | `about.html` | method in plain words, verification standard, use of AI, licence, how to cite |
 | `assets/site.css` | shared stylesheet (light and dark theme) |
-| `data/` | graph6 files of the new graphs (first paper: one file per set; third paper: `G160.g6` … `G280b.g6`, one graph per file, hashes in `SHA256SUMS_twoorbit`), the verifier `verify_srg.py`, `README.txt`, `SHA256SUMS`; `bmv_table1.json` and `bmv_table1.csv` (Table 1 of the 70-pair paper) |
+| `data/` | graph6 files of the new graphs (first paper: one file per set; third paper: `G160.g6` … `G280b.g6`, one graph per file, hashes in `SHA256SUMS_twoorbit`; also a fourth srg(160,54,18,18) and an srg(400,171,74,72) outside the Hadamard family, found 12–13 Oct 2026, not yet in the papers), the verifier `verify_srg.py`, `README.txt`, `SHA256SUMS`; `bmv_table1.json` and `bmv_table1.csv` (Table 1 of the 70-pair paper) |
 | `tools/bmv_table1.mjs` | regenerates the two Table 1 files from the paper's LaTeX source and embeds the JSON in `bmv.html` (Node 18+, no packages) |
 
 ## Viewing locally
