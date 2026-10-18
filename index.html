@@ -48,12 +48,11 @@ a.card:hover{border-color:var(--hand)}
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html" aria-current="page">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · September–October 2026</div>
   <h1>Open cases of Brouwer's table, settled</h1>
   <p class="lead">A. E. Brouwer's table lists every feasible parameter set of strongly regular graphs and marks with “?” those for which nobody knows whether a graph exists. In September and October 2026 we proved that nine of these graphs do not exist, one paper for each; showed with one uniform lattice condition that no graph exists for 70 further open complementary pairs; and constructed graphs for nineteen further parameter sets, four of them (on 160, 232, 261 and 280 vertices) on 12 October 2026 and the latest, srg(217,66,15,22), on 18 October 2026. We also proved that the regular two-graphs on 126 and 176 points are unique, a question Brouwer and Van Maldeghem list as open; as a consequence four parameter sets of the table each have exactly one graph. By the same method, the Delsarte graph and the M₂₃ graph are the only graphs with their parameters, (243,110,37,60) and (253,112,36,60), with no group assumed; with the complements, four more sets have exactly one graph. All results are preprints with open code and data.</p>
-  <p>Of the open rows with at most 100 vertices, srg(85,42,20,21) is now settled by existence: H. Verma, <a href="https://arxiv.org/abs/2610.08893">arXiv:2610.08893</a>, which we confirmed independently (<a href="srg85_42.html">details</a>), and srg(96,35,10,14) is one of the 70 excluded pairs. Still open with v ≤ 100: srg(88,27,6,9), srg(99,14,1,2) (Conway's 99-graph problem) and srg(100,33,8,12). On the existing row srg(243,22,1,2) we added three graphs to the four known ones (<a href="srg243_22.html">seven graphs</a>).</p>
   <div class="chips">
     <span class="chip kill">9 single-set nonexistence proofs</span>
     <span class="chip kill">70 further pairs excluded by one condition</span>
@@ -61,9 +60,6 @@ a.card:hover{border-color:var(--hand)}
     <span class="chip ok">new: srg(217,66,15,22), first graph on its row</span>
     <span class="chip ok">2 two-graphs unique, so 4 sets have exactly one graph</span>
     <span class="chip ok">srg on 243 and 253 vertices unique: 4 more sets</span>
-    <span class="chip ok">srg(243,22,1,2): 7 graphs known, 3 new</span>
-    <span class="chip">srg(85,42,20,21) exists (Verma), confirmed</span>
-    <span class="chip">open with v ≤ 100: 88, 99 (k = 14), 100</span>
     <span class="chip">Preprints, not yet peer-reviewed</span>
     <span class="chip">AI-assisted; author coordinated and checked</span>
   </div>
@@ -120,18 +116,6 @@ a.card:hover{border-color:var(--hand)}
     <a class="card yes" id="r217" href="srg217.html"><span class="p">srg(217, 66, 15, 22)</span><span class="cnt">1 graph · new, 18 Oct 2026</span><span class="m">The first graph on this row, and with its complement on (217,150,105,100). A 7 × 7 block-circulant graph over ℤ₃₁ whose connection sets are unions of {0} and cosets of the index-6 subgroup of 𝔽₃₁*; strong regularity from the cyclotomic numbers of order 6. |Aut| = 930, orbits 31 + 186, not a Cayley graph; a spread of 31 Delsarte 7-cliques but only 31 seven-cliques, so not geometric: pg(6,10,2) stays open.</span><span class="meta"><span class="chip ok">first graph on an open row</span><span class="chip hand">proof by hand</span><span class="chip">Brouwer: “?” on 18 Oct 2026, comment “pg(6,10,2)?”; update pending</span></span><span class="doi">doi:10.5281/zenodo.23454170</span></a>
   </div>
   <div class="cards" id="ycards"></div>
-  <p>Beyond the open rows: new graphs on a parameter set that already had graphs.</p>
-  <div class="cards">
-    <a class="card yes" id="r243k22" href="srg243_22.html"><span class="p">srg(243, 22, 1, 2)</span><span class="cnt">7 graphs known, 3 new</span><span class="m">The Berlekamp–van Lint–Seidel graph (1973) and Djematene's three (2026) are joined by Γ₅, a vertex-transitive Cayley graph of the non-abelian group SmallGroup(243,51) with |Aut| = 2,916, and by Γ₆ and Γ₇, with |Aut| = 108, found by lifting orbit matrices under subgroups. Different from the unique srg(243,110,37,60).</span><span class="meta"><span class="chip ok">Brouwer: “+”</span><span class="chip">Γ₅ preprint; Γ₆, Γ₇ referee pass in progress</span></span><span class="doi">doi: pending</span></a>
-  </div>
-</section>
-
-<section aria-labelledby="oth-h">
-  <div class="eyebrow">Settled elsewhere</div>
-  <h2 id="oth-h">An open row settled by another author</h2>
-  <div class="cards">
-    <a class="card yes" id="r85" href="srg85_42.html"><span class="p">srg(85, 42, 20, 21)</span><span class="m">Exists: H. Verma gives a symmetric conference matrix of order 86, whose descendants form ten classes of srg(85,42,20,21). We rebuilt the matrix independently and confirmed his claims. His graphs satisfy every automorphism restriction we had proved for the row, including no automorphism of order 14, 15 or 21.</span><span class="meta"><span class="chip ok">existence: Verma</span><span class="chip">confirmed here</span></span><span class="doi">arXiv:2610.08893</span></a>
-  </div>
 </section>
 
 <section aria-labelledby="uq-h">
@@ -202,14 +186,14 @@ a.card:hover{border-color:var(--hand)}
     [486,97,16,20,"2","“+” since 30 Sep 2026","Cayley graphs of nonabelian groups; one is a coset graph in G₂(3).","p486a"],
     [486,100,22,20,"2","“+” since 30 Sep 2026","Cayley graphs of SmallGroup(486,117), automorphism group of order 19,440.","p486b"],
     [306,55,4,11,"1","“+” since 11 Oct 2026","On the non-square points of Q(4,5) and a totally singular line. Pseudo-geometric for a GQ(5,10), but not geometric. Not vertex-transitive.","p306","23296158"],
-    [400,171,74,72,"≥ 25","“+” since 11 Oct 2026","A Bush-type Hadamard graph with two orthogonal spreads deleted, with the parameters of LS₉(20). None of the graphs tested is a Latin square graph.","p400","23296158"],
-    [576,253,112,110,"≥ 25","“+” since 11 Oct 2026","Two spreads deleted, parameters of LS₁₁(24); one graph is vertex-transitive with |Aut| = 8·|M₁₂|. None of the graphs tested is a Latin square graph.","p576","23296158"],
+    [400,171,74,72,"≥ 6","“+” since 11 Oct 2026","A Bush-type Hadamard graph with two orthogonal spreads deleted, with the parameters of LS₉(20). None of the graphs tested is a Latin square graph.","p400","23296158"],
+    [576,253,112,110,"≥ 7","“+” since 11 Oct 2026","Two spreads deleted, parameters of LS₁₁(24); one graph is vertex-transitive with |Aut| = 8·|M₁₂|. None of the graphs tested is a Latin square graph.","p576","23296158"],
     [784,351,158,156,"≥ 5","“+” since 11 Oct 2026","Two spreads deleted, parameters of LS₁₃(28). None of the graphs tested is a Latin square graph.","p784","23296158"],
     [1296,595,274,272,"≥ 6","“+” since 11 Oct 2026","Two spreads deleted, parameters of LS₁₇(36); one graph comes from the symplectic two-graph on 36 points, with |Aut| = 2·|Sp(6,2)|.","p1296","23296158"],
-    [160,54,18,18,"≥ 21","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(9,5,3) does not exist (no 2-graph* for line graph)”","On the cells of a 4 × 4 grid and three copies of the flags of its even transversals, and fusions of orbitals of 2⁴:(S₃ × S₃). pg(9,5,3) does not exist; not geometric.","p160","23313400"],
-    [232,63,14,18,"≥ 14","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(7,8,2)?”","Conjugate pairs of PG(1,64) ∖ PG(1,8) labelled by 𝔽₈*, and the pairs of PG(1,8); adjacency by cross ratios. |Aut| = 21,168. Not geometric.","p232","23313400"],
-    [261,64,14,16,"≥ 9","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(8,7,2)?”","Labelled pairs of points of PG(1,8) and the 9 points; product and quotient rules in cross ratios, |Aut| = 3,024 and 21,168. Not geometric.","p261","23313400"],
-    [280,63,14,14,"≥ 20","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(9,6,2)?”","Labelled pairs of points of PG(1,8) and the 28 conjugate pairs, a Hoffman coclique; |Aut| = 3,024 and 21,168. Not geometric.","p280","23313400"]
+    [160,54,18,18,"≥ 4","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(9,5,3) does not exist (no 2-graph* for line graph)”","On the cells of a 4 × 4 grid and three copies of the flags of its even transversals, and fusions of orbitals of 2⁴:(S₃ × S₃). pg(9,5,3) does not exist; not geometric.","p160","23313400"],
+    [232,63,14,18,"≥ 1","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(7,8,2)?”","Conjugate pairs of PG(1,64) ∖ PG(1,8) labelled by 𝔽₈*, and the pairs of PG(1,8); adjacency by cross ratios. |Aut| = 21,168. Not geometric.","p232","23313400"],
+    [261,64,14,16,"≥ 2","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(8,7,2)?”","Labelled pairs of points of PG(1,8) and the 9 points; product and quotient rules in cross ratios, |Aut| = 3,024 and 21,168. Not geometric.","p261","23313400"],
+    [280,63,14,14,"≥ 2","“?” until 12 Oct 2026; “+” since 12 Oct 2026, comment “Kovaľ + AI; pg(9,6,2)?”","Labelled pairs of points of PG(1,8) and the 28 conjugate pairs, a Hoffman coclique; |Aut| = 3,024 and 21,168. Not geometric.","p280","23313400"]
   ];
   var yc=document.getElementById('ycards');
   Y.forEach(function(y){
