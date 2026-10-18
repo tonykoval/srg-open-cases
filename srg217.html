@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>An srg(217,66,15,22)</title>
+<meta name="description" content="A strongly regular graph with parameters (217,66,15,22), the first on this open row of Brouwer's table: a 7 × 7 block-circulant graph over ℤ₃₁ with cyclotomic connection sets and automorphism group C₂ × (C₃₁:C₁₅) of order 930. It is not geometric, so the existence of pg(6,10,2) stays open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html" aria-current="page">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · new graph on an open parameter set</div>
+  <h1>A strongly regular graph with parameters (217, 66, 15, 22)</h1>
+  <p class="lead">On 18 October 2026 Brouwer's table marked srg(217,66,15,22) and its complement srg(217,150,105,100) with “?”: no graph was known. The row's comment is “pg(6,10,2)?”, because these are the parameters of the point graph of a hypothetical partial geometry pg(6,10,2). We construct one graph Γ, and hence its complement. Γ lives on ℤ₃₁ × {0, …, 6}. It is a 7 × 7 block-circulant graph whose connection sets are unions of {0} and cosets of the subgroup of index 6 of 𝔽₃₁*. Strong regularity follows from the cyclotomic numbers of order 6 over 𝔽₃₁. Γ is not geometric, so the existence of pg(6,10,2) remains open.</p>
+  <div class="chips">
+    <span class="chip ok">first graph on this row</span>
+    <span class="chip ok">2 parameter sets, with the complement</span>
+    <span class="chip hand">strong regularity by hand, from cyclotomic numbers</span>
+    <span class="chip comp">|Aut| and the 7-clique count computer-assisted</span>
+    <span class="chip">Brouwer's table: “?” on 18 Oct 2026; update pending</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23454170">preprint, doi:10.5281/zenodo.23454170</a>
+  </div>
+</header>
+
+<section aria-labelledby="row-h">
+  <div class="eyebrow">The row</div>
+  <h2 id="row-h">Brouwer's entry on 18 October 2026</h2>
+  <div class="formula">?   217   66   15   22    4^154   -11^62    pg(6,10,2)?
+       (complement)  150  105  100   10^62   -5^154</div>
+  <p>A pg(s,t,α) with s = 6, t = 10, α = 2 has v = (s+1)(st+α)/α = 217 points, k = s(t+1) = 66, λ = s − 1 + t(α − 1) = 15 and μ = α(t+1) = 22. No reference is given in the row, and we found no mention of the parameter set in the literature.</p>
+</section>
+
+<section aria-labelledby="con-h">
+  <div class="eyebrow">Construction</div>
+  <h2 id="con-h">Seven blocks over ℤ₃₁</h2>
+  <p>3 is a primitive root modulo 31, and the subgroup of index 6 of 𝔽₃₁* is C = ⟨2⟩ = {1, 2, 4, 8, 16}. Write C<sub>r</sub> = rC. The six cosets are C₁, C₃, C₅, C₇, C₁₁ and C₁₅, with −C₁ = C₁₅, −C₃ = C₇ and −C₅ = C₁₁. Put Z = {0}, and write + for disjoint union. The vertices are (x, j) with x ∈ ℤ₃₁ and block j ∈ {0, …, 6}. Two vertices (x, i) and (y, j) are adjacent if and only if y − x ∈ S<sub>ij</sub>, where (Definition 2.1 of the paper)</p>
+  <div class="tbl-wrap"><table>
+    <tbody>
+      <tr><td>S₀₁ = Z + C₅ + C₁₅</td><td>S₀₂ = Z + C₇ + C₁₁</td><td>S₀₃ = Z + C₁ + C₃</td></tr>
+      <tr><td>S₁₁ = C₁ + C₁₅</td><td>S₁₂ = Z + C₇</td><td>S₁₃ = Z + C₁₁</td></tr>
+      <tr><td>S₁₄ = Z + C₃ + C₇</td><td>S₁₅ = Z + C₃ + C₅</td><td>S₁₆ = Z + C₅ + C₁₅</td></tr>
+      <tr><td>S₂₂ = C₅ + C₁₁</td><td>S₂₃ = Z + C₁</td><td>S₂₄ = Z + C₇ + C₁₁</td></tr>
+      <tr><td>S₂₅ = Z + C₁ + C₁₅</td><td>S₂₆ = Z + C₇ + C₁₅</td><td></td></tr>
+      <tr><td>S₃₃ = C₃ + C₇</td><td>S₃₄ = Z + C₁ + C₁₁</td><td>S₃₅ = Z + C₁ + C₃</td></tr>
+      <tr><td>S₃₆ = Z + C₅ + C₁₁</td><td></td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p>completed by the rules S₀₀ = ∅, S<sub>0,j+3</sub> = S<sub>0j</sub>, S<sub>i+3,j+3</sub> = S<sub>ij</sub> (1 ≤ i ≤ j ≤ 3) and S<sub>ji</sub> = −S<sub>ij</sub>. The diagonal sets are symmetric and do not contain 0, so Γ is a simple undirected graph. Every set is invariant under multiplication by 2. The partition into blocks is equitable: a vertex of block 0 has 11 neighbours in each other block, and the other entries of the 7 × 7 quotient are 10, 6 and 11, every row summing to 66.</p>
+</section>
+
+<section aria-labelledby="pf-h">
+  <div class="eyebrow">Proof idea</div>
+  <h2 id="pf-h">Cyclotomic numbers of order 6, and 49 identities reduced to 6</h2>
+  <p>Strong regularity is the matrix identity A² = 44I − 7A + 22J. The matrix A is a 7 × 7 array of 31 × 31 circulants, and circulants multiply like elements of the group ring ℤ[ℤ₃₁]. Every S<sub>ij</sub> lies in the rank-7 subring spanned by 1 and the six Gaussian periods η₀, …, η₅. Products of periods are given by the cyclotomic numbers (i, j)₆ of 𝔽₃₁, a 6 × 6 table printed in the paper that can be checked by hand from the powers of 3 modulo 31. The matrix identity becomes 49 block identities in this ring.</p>
+  <p>The automorphisms (x, j) ↦ (7x, πj) with π = (1 3 2)(4 6 5) and (x, j) ↦ (x, τj) with τ = (1 4)(2 5)(3 6), together with S<sub>ji</sub> = −S<sub>ij</sub>, reduce the 49 identities to six block pairs: (0,0), (0,1), (1,1), (1,2), (1,4) and (1,5). The paper works the block (0,0) in full. A standard-library program evaluates all 49 from the cyclotomic table alone and checks the symmetry claims.</p>
+</section>
+
+<section aria-labelledby="pr-h">
+  <div class="eyebrow">Properties</div>
+  <h2 id="pr-h">Spectrum, group, cliques</h2>
+  <div class="tbl-wrap"><table>
+    <tbody>
+      <tr><th>spectrum</th><td>66<sup>1</sup>, 4<sup>154</sup>, (−11)<sup>62</sup>. The complement srg(217,150,105,100) has 150<sup>1</sup>, 10<sup>62</sup>, (−5)<sup>154</sup>.</td></tr>
+      <tr><th>automorphism group</th><td>C₂ × (C₃₁:C₁₅), of order 930. It is generated by the translations, x ↦ 7x with the block permutation π, and the block swap τ. The order was computed with dreadnaut and pynauty, and GAP identifies the group.</td></tr>
+      <tr><th>vertex orbits</th><td>31 + 186 (block 0, and blocks 1–6), with stabilisers C₃₀ and C₅. Γ is not vertex-transitive, and since 217 ∤ 930 it is not a Cayley graph.</td></tr>
+      <tr><th>Delsarte cliques</th><td>K<sub>x</sub> = {(x, j) : 0 ≤ j ≤ 6} is a 7-clique meeting the Hoffman bound 1 − k/s = 7. The 31 cliques K<sub>x</sub> partition the vertex set, a spread. Every vertex outside K<sub>x</sub> has 2 neighbours in it.</td></tr>
+      <tr><th>Hoffman coclique</th><td>Block 0, of size 31 = v/(1 − k/s). Every other vertex has 11 neighbours in it.</td></tr>
+      <tr><th>7-cliques</th><td>Exactly 31, the K<sub>x</sub> (computed). The maximal cliques have sizes 3, 4 and 7.</td></tr>
+      <tr><th>geometric?</th><td>No. A pg(6,10,2) has 341 lines, all of them 7-cliques of its point graph. Γ is pseudo-geometric but not geometric, so the existence of pg(6,10,2) remains open.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="rem-h">
+  <div class="eyebrow">Remarks in the paper</div>
+  <h2 id="rem-h">The block shape, and uniqueness within the family</h2>
+  <p><strong>Other primes.</strong> Take a prime p ≡ 1 mod 6 and a graph on ℤ<sub>p</sub> × {0, …, 6} of the same shape: block 0 a coclique, the K<sub>x</sub> cliques. It can be strongly regular only if p + 14 divides 1260. The only such primes are p = 7, giving (49,18,7,6), the parameters of the Latin square graphs LS₃(7), and p = 31, giving (217,66,15,22). The same class table transferred to p = 7, 13, 19, 37 and 43 gives regular graphs that are not strongly regular.</p>
+  <p><strong>Within the ℤ₃₁ cyclotomic family.</strong> If an srg(217,66,15,22) has a semiregular automorphism of order 31, its quotient is one of exactly 15 matrices, and 4 of them pass the eigenvalue-multiplicity test. A complete search finds Γ as the only graph on ℤ₃₁ × {0, …, 6} whose connection sets are unions of {0} and orbits of a multiplier group of index 1, 2, 3, 5, 6 or 10. For index 15 and 30 ({±1} and the trivial group) the search was not completed, and nothing is claimed there. In particular no srg(217,66,15,22) has a semiregular automorphism of order 31 whose seven orbits are all cocliques. The classification of the parameter set is open.</p>
+</section>
+
+<section aria-labelledby="how-h">
+  <div class="eyebrow">How it was found</div>
+  <h2 id="how-h">A search with prescribed intransitive groups</h2>
+  <p>The graph came from a search for strongly regular graphs on the open rows with v ≤ 300 that admit a prescribed intransitive group with 3 to 12 orbits. CP-SAT enumerates the quotient matrices of the orbit partition, and a SAT model over the orbits of the group on pairs lifts each quotient. This extends the method of the <a href="graphs.html#three-h">two-orbit search</a> that gave the graphs on 160, 232, 261 and 280 vertices. The search ran on three servers on disjoint shards and found the same graph twice, independently. One server found it under the Frobenius group C₃₁:C₁₅, with orbits 31 + 93 + 93. Another found it under C₂ × (C₃₁:C₅), with orbits 31 + 62 + 62 + 62. Both groups are subgroups of Aut Γ.</p>
+  <p>A separate verification session with its own code checked A² exactly, the spectrum, the group with two canonicalisers, the cliques and further invariants. It also read off the cyclotomic description from the group, and the graph built from that description is isomorphic to the search graph. A referee session re-derived the hand proofs and reproduced the computations; its minor corrections are in version 1.0. Strong regularity is confirmed three ways: the cyclotomic proof, a direct common-neighbour count from the definition, and the standalone verifier on the graph6 file.</p>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="files-h">Data</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>file</th><th>contents</th><th>SHA-256</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="data/srg217_66_15_22_8c81bbd8e812ace3.g6">srg217_66_15_22_8c81bbd8e812ace3.g6</a></td><td>Γ, one graph6 line (3911 bytes), the file of the paper's data statement</td><td class="mono">8cc5000a…5bcff2b22a</td></tr>
+      <tr><td class="mono"><a href="data/construct_srg217.py">construct_srg217.py</a></td><td>plain Python 3: builds Γ from the table above and counts the common neighbours of all pairs</td><td class="mono">66ababd7…7ed771967</td></tr>
+      <tr><td class="mono"><a href="data/SHA256SUMS">SHA256SUMS</a></td><td>full hashes; check with <span class="mono">sha256sum -c</span> on these two lines</td><td></td></tr>
+      <tr><td class="mono"><a href="data/verify_srg.py">verify_srg.py</a></td><td>plain Python 3 verifier of A² = kI + λA + μ(J − I − A)</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="formula">python3 data/verify_srg.py data/srg217_66_15_22_8c81bbd8e812ace3.g6 217 66 15 22
+python3 data/construct_srg217.py</div>
+  <p>Paper: A. Kovaľ, “A strongly regular graph with parameters (217,66,15,22)”, version 1.0, 18 October 2026, CC-BY-4.0, <a href="https://doi.org/10.5281/zenodo.23454170">doi:10.5281/zenodo.23454170</a>. The deposit also holds the program checking the cyclotomic proof and the verification report.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23454170">doi:10.5281/zenodo.23454170</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab201-250.html">A. E. Brouwer, v = 201–250</a></div>
+</footer>
+</div>
+</body>
+</html>
