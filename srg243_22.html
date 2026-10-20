@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seven srg(243,22,1,2)</title>
+<meta name="description" content="Seven pairwise non-isomorphic strongly regular graphs with parameters (243,22,1,2) are known: the Berlekamp–van Lint–Seidel graph, Djematene's three, a vertex-transitive Cayley graph on SmallGroup(243,51), and two graphs with automorphism group of order 108 found by lifting under a subgroup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg243_22 */
+th.c,td.c{text-align:center}
+tr.ours td{background:var(--ok-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html" aria-current="page">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · new graphs on an existing parameter set</div>
+  <h1>Seven strongly regular graphs with parameters (243, 22, 1, 2)</h1>
+  <p class="lead">In an srg(243,22,1,2) every edge lies in exactly one triangle and two non-adjacent vertices have exactly two common neighbours. For about fifty years the Berlekamp–van Lint–Seidel graph of 1973 was the only known example. In October 2026 Djematene deposited three more. We add three: a vertex-transitive Cayley graph Γ₅ of a non-abelian group of order 243, and two graphs Γ₆ and Γ₇ with automorphism group of order 108. The seven are pairwise non-isomorphic. Their invariants alone show this, without a canonical labelling. The classification of the parameter set is open. This is a different parameter set from the unique <a href="uniq243_253.html">srg(243,110,37,60)</a>.</p>
+  <div class="chips">
+    <span class="chip ok">7 graphs known</span>
+    <a class="chip ok" href="https://doi.org/10.5281/zenodo.23491895">Γ₅, Γ₆, Γ₇: note deposited 20 Oct 2026, doi:10.5281/zenodo.23491895</a>
+    <span class="chip">Γ₆, Γ₇: verified by two independent checks; referee pass completed 18 Oct 2026 (ACCEPT)</span>
+    <span class="chip comp">computer-assisted</span>
+    <span class="chip">Brouwer's table: row “+”, not unique; update for Γ₅–Γ₇ sent to A. E. Brouwer 20 Oct 2026, pending</span>
+  </div>
+</header>
+
+<section aria-labelledby="t-h">
+  <div class="eyebrow">At a glance</div>
+  <h2 id="t-h">Invariants of the seven graphs</h2>
+  <p>Every srg(243,22,1,2) has eigenvalues 22, 4<sup>132</sup> and (−5)<sup>110</sup>. The table lists the order of the full automorphism group, the number of induced 3 × 3 grids, the rank over 𝔽₃ of A − 4I, and Makhnev's condition (∗): two vertex-disjoint triangles joined by at least two edges are joined by exactly three.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>graph</th><th>source</th><th class="num">|Aut|</th><th>vertex orbits</th><th class="num">3 × 3 grids</th><th class="num">rank₃(A − 4I)</th><th class="c">vertex-transitive</th><th class="c">Cayley</th><th class="c">(∗)</th></tr></thead>
+    <tbody>
+      <tr><td>BvLS</td><td>Berlekamp, van Lint, Seidel 1973</td><td class="num">3,849,120</td><td>243</td><td class="num">1485</td><td class="num">67</td><td class="c">yes</td><td class="c">yes, ℤ₃⁵</td><td class="c">holds</td></tr>
+      <tr><td>Γ′</td><td>Djematene 2026</td><td class="num">4,320</td><td>3 + 60 + 180</td><td class="num">405</td><td class="num">86</td><td class="c">no</td><td class="c">no</td><td class="c">violated</td></tr>
+      <tr><td>Γ₃</td><td>Djematene 2026</td><td class="num">864</td><td>27 + 108 + 108</td><td class="num">621</td><td class="num">90</td><td class="c">no</td><td class="c">no</td><td class="c">violated</td></tr>
+      <tr><td>Γ₄</td><td>Djematene 2026</td><td class="num">3,888</td><td>81 + 162</td><td class="num">837</td><td class="num">81</td><td class="c">no</td><td class="c">no</td><td class="c">violated</td></tr>
+      <tr class="ours"><td>Γ₅</td><td>this work</td><td class="num">2,916</td><td>243</td><td class="num">675</td><td class="num">84</td><td class="c">yes</td><td class="c">yes, non-abelian only</td><td class="c">violated</td></tr>
+      <tr class="ours"><td>Γ₆</td><td>this work</td><td class="num">108</td><td>27 + 54 + 54 + 108</td><td class="num">459</td><td class="num">94</td><td class="c">no</td><td class="c">no</td><td class="c">violated</td></tr>
+      <tr class="ours"><td>Γ₇</td><td>this work</td><td class="num">108</td><td>27 + 54 + 54 + 108</td><td class="num">513</td><td class="num">90</td><td class="c">no</td><td class="c">no</td><td class="c">violated</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The grid counts are pairwise distinct, so the seven graphs are pairwise non-isomorphic without a canonical labelling. The 3-rank alone does not separate them: Γ₇ and Γ₃ both have 90. The values for Djematene's graphs were computed from his deposit and agree with his table. Γ₆ and Γ₇ have four vertex orbits and |Aut| = 108, which is not divisible by 243, so they are neither vertex-transitive nor Cayley graphs. Djematene's three graphs are 3-fold covers of the Brouwer–Haemers graph srg(81,20,1,6) along triangle spreads, in his terminology. Γ₅ is not.</p>
+</section>
+
+<section aria-labelledby="g5-h">
+  <div class="eyebrow">Γ₅</div>
+  <h2 id="g5-h">A Cayley graph on SmallGroup(243, 51)</h2>
+  <p>Let R = C₃ × (C₃ ≀ C₃) ≅ SmallGroup(243,51), written as triples (a; x; t) with a, t ∈ ℤ₃ and x = (x₀, x₁, x₂) ∈ ℤ₃³, with product (a; x; t)(b; y; u) = (a + b; x + y<sup>(t)</sup>; t + u), where y<sup>(t)</sup><sub>i</sub> = y<sub>i−t</sub>. Γ₅ is the Cayley graph on R with g ~ h if and only if hg⁻¹ ∈ S, where S is the 22-set below. Each word is read as a, x₀x₁x₂, t.</p>
+  <div class="formula">00022 00100 00120 00200 00210 01001 01200 02100 02112 02121 10112
+11010 11121 12001 12020 12022 20012 21010 21101 22020 22021 22122</div>
+  <p>S is inverse-closed and does not contain the identity. The automorphism group has order 2916 = 2²·3⁶ and is vertex-transitive with three orbits on edges, so Γ₅ is not edge-transitive. All nine regular subgroups of Aut Γ₅ are non-abelian, so Γ₅ is not a Cayley graph of an abelian group and not a translation graph. Γ₅ has no triangle spread whose triangles are pairwise joined by 0 or 3 edges. Hence it is not a 3-fold cover of the Brouwer–Haemers graph along a spread, and Djematene's re-voltaging construction cannot produce it.</p>
+  <p><strong>How it was found.</strong> Take Djematene's Γ₄ and the unique class of subgroups H ≅ SmallGroup(486,185) of Aut Γ₄ with three vertex orbits of size 81. Every H-invariant graph on the same vertices is a union of the 90 orbits of H on pairs. We enumerated all such graphs with the same orbit matrix that are strongly regular. Three encodings and two SAT solvers give the same 243 solutions in three classes: Γ₄, the BvLS graph and Γ₅.</p>
+  <p class="muted">Computationally, Γ₅ has no coclique meeting the Hoffman bound 45 (two independent SAT runs, no proof certificate). This is stated as an observation only.</p>
+</section>
+
+<section aria-labelledby="g67-h">
+  <div class="eyebrow">Γ₆ and Γ₇</div>
+  <h2 id="g67-h">Lifts under subgroups of order 108</h2>
+  <p>The same method was applied to Djematene's Γ₃ (|Aut| = 864) and two subgroups H of order 108, each with four vertex orbits. The models have 302 and 328 Boolean variables, one per orbit of H on pairs. Among the solutions are two classes not isomorphic to any known graph: Γ₆, from the first subgroup, and Γ₇, from the second. Both have full automorphism group of order 108, with vertex orbits 27 + 54 + 54 + 108.</p>
+  <p>Two independent checks confirmed them. The first is exact A² and a standalone verifier. The second is a separate verification session that used its own code and two canonicalisers, dreadnaut and pynauty. That session also compared the graphs with every stored srg(243,22,1,2) and computed the invariants of the table, which were controlled on the five earlier graphs. A referee pass was completed on 18 Oct 2026 (verdict ACCEPT). The note was deposited on Zenodo on 20 October 2026, <a href="https://doi.org/10.5281/zenodo.23491895">doi:10.5281/zenodo.23491895</a>.</p>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="files-h">Data</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>file</th><th>contents</th><th>SHA-256</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="data/srg243_22_1_2_563151de03542769.g6">srg243_22_1_2_563151de03542769.g6</a></td><td>Γ₅, one graph6 line (the file of the preprint's appendix)</td><td class="mono">6e2a0276…de9ec14e</td></tr>
+      <tr><td class="mono"><a href="data/srg243_22_1_2_79d042e6d9631c76.g6">srg243_22_1_2_79d042e6d9631c76.g6</a></td><td>Γ₆</td><td class="mono">4c6828f2…3d1990a8</td></tr>
+      <tr><td class="mono"><a href="data/srg243_22_1_2_18a34b4cf57941f9.g6">srg243_22_1_2_18a34b4cf57941f9.g6</a></td><td>Γ₇</td><td class="mono">dca1fed1…3bf39f7c0</td></tr>
+      <tr><td class="mono"><a href="data/SHA256SUMS">SHA256SUMS</a></td><td>full hashes; check with <span class="mono">sha256sum -c</span> on these three lines</td><td></td></tr>
+      <tr><td class="mono"><a href="data/verify_srg.py">verify_srg.py</a></td><td>plain Python 3 verifier of A² = kI + λA + μ(J − I − A)</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="formula">python3 data/verify_srg.py data/srg243_22_1_2_563151de03542769.g6 243 22 1 2</div>
+  <p>The file name ends in the first 16 hex digits of the SHA-256 of the pynauty canonical graph6 string. The BvLS graph is a standard construction, from the perfect ternary Golay code: see Berlekamp, van Lint and Seidel, in <em>A Survey of Combinatorial Theory</em> (1973). Djematene's three graphs are not redistributed here; they are in his deposit, <a href="https://doi.org/10.5281/zenodo.23305123">doi:10.5281/zenodo.23305123</a>.</p>
+  <p class="muted">Preprint: A. Kovaľ, “Three further strongly regular graphs with parameters (243,22,1,2)”, note v1.2, Zenodo, 20 October 2026, CC-BY 4.0 (on Γ₅, Γ₆, Γ₇): <a href="https://doi.org/10.5281/zenodo.23491895">doi:10.5281/zenodo.23491895</a> (all versions: <a href="https://doi.org/10.5281/zenodo.23491894">doi:10.5281/zenodo.23491894</a>). The update of Brouwer's table was sent to A. E. Brouwer on 20 Oct 2026 and is pending.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Note: <a href="https://doi.org/10.5281/zenodo.23491895">doi:10.5281/zenodo.23491895</a> · Djematene's graphs: <a href="https://doi.org/10.5281/zenodo.23305123">doi:10.5281/zenodo.23305123</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab201-250.html">A. E. Brouwer, v = 201–250</a></div>
+</footer>
+</div>
+</body>
+</html>

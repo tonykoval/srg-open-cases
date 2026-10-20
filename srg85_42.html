@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>srg(85,42,20,21) exists</title>
+<meta name="description" content="The open row srg(85,42,20,21) of Brouwer's table is settled by existence: H. Verma (arXiv:2610.08893) gives a symmetric conference matrix of order 86. Our independent confirmation, and how his graphs fit the automorphism restrictions proved earlier for this row.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html" aria-current="page">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · settled by existence</div>
+  <h1>srg(85, 42, 20, 21) exists</h1>
+  <p class="lead">The conference-type parameter set (85,42,20,21) was marked “?” in Brouwer's table. In October 2026 Harshit Verma published a symmetric conference matrix of order 86, <a href="https://arxiv.org/abs/2610.08893">arXiv:2610.08893</a>, and this settles the row: the graph exists. The result and the construction are entirely his. We recomputed his matrix independently and confirmed every finite claim we checked. Before his paper we had proved several restrictions on the automorphisms of such a graph; his graphs satisfy all of them.</p>
+  <div class="chips">
+    <a class="chip ok" href="https://arxiv.org/abs/2610.08893">Existence: H. Verma, arXiv:2610.08893 (v1, 6 Oct 2026)</a>
+    <span class="chip">Independently confirmed here, 12 Oct 2026</span>
+    <span class="chip">Brouwer's table: still “?” in our snapshot of 12 Oct 2026</span>
+  </div>
+</header>
+
+<section aria-labelledby="v-h">
+  <div class="eyebrow">The result</div>
+  <h2 id="v-h">Verma's conference matrix of order 86</h2>
+  <p>Verma gives a 12 × 12 array of integers M and a sign vector t. They describe a matrix with one row and column for each of two points ∞ and ∞′ and for each of the 84 points (i, a), i = 0…11, a ∈ ℤ₇; the bits of M<sub>ij</sub> give the signs of a circulant 7 × 7 block. The result is a symmetric conference matrix C of order 86: symmetric, zero diagonal, ±1 elsewhere, and C² = 85I. Hence there is a regular two-graph on 86 points, and each of its 86 descendants is an srg(85,42,20,21). Verma proves that the descendants fall into exactly ten isomorphism classes, one for each orbit of the group G = ⟨g, h⟩ that he gives (orbits {∞}, {∞′}, six orbits of size 7 and two of size 21).</p>
+</section>
+
+<section aria-labelledby="c-h">
+  <div class="eyebrow">Our role</div>
+  <h2 id="c-h">Independent confirmation</h2>
+  <p>We read M and t from the TeX source of v1, rebuilt C with our own code in exact integer arithmetic and checked the claims below. We checked only the finite claims. The search that found the matrix is not described in v1, and the proof does not need it.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>claim of the paper</th><th>our check</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>Lemma 2.1 (a)–(c), the block identities</td><td>all 1,008 coefficient identities and 24 row sums</td><td class="yes">hold, 0 violations</td></tr>
+      <tr><td>C symmetric, zero diagonal, ±1 elsewhere, C² = 85I</td><td>full 86 × 86 product</td><td class="yes">holds exactly</td></tr>
+      <tr><td>Prop. 3.2: g and h are automorphisms of C, with the stated orbits</td><td>direct</td><td class="yes">holds</td></tr>
+      <tr><td>Prop. 3.1: every descendant is an srg(85,42,20,21)</td><td>two separate verifiers on all 86</td><td class="yes">86 / 86</td></tr>
+      <tr><td>Thm. 3.3: exactly ten isomorphism classes</td><td>nauty canonical forms of all 86 descendants</td><td class="yes">10 classes, equal to the G-orbits</td></tr>
+      <tr><td>Table 1: numbers of 4-cliques</td><td>own count on all 86</td><td class="yes">all ten values agree</td></tr>
+      <tr><td>Remark 3.4: |Aut Γ<sub>∞</sub>| = 21</td><td>nauty, full group, no colouring</td><td class="yes">21</td></tr>
+    </tbody>
+  </table></div>
+  <p>We also computed the full automorphism group of every descendant. It is the stabiliser of the root in G: order 21 for the roots ∞ and ∞′, order 3 for the six orbits of size 7, trivial for the two orbits of size 21. The group of order 21 is the Frobenius group 7:3 (hgh⁻¹ = g²), not ℤ₂₁. The complements of the ten graphs are again srg(85,42,20,21), descendants of the two-graph of −C, and none of them is isomorphic to one of the ten; so the matrix gives twenty graphs.</p>
+  <p class="muted">The file name of our report, <span class="mono">docs/verma86_verification_2026_10_12.md</span>, refers to the order 86 of the conference matrix; the graphs have 85 vertices.</p>
+</section>
+
+<section aria-labelledby="p-h">
+  <div class="eyebrow">Before the existence result</div>
+  <h2 id="p-h">What we had shown about automorphisms</h2>
+  <p>While the row was open, we studied which automorphisms an srg(85,42,20,21) could have. Now that graphs exist, these statements restrict their symmetries. <em>Proved</em> means a hand argument; <em>computational</em> means an exhaustive computation with controls.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>statement</th><th>status</th><th>Verma's graphs</th></tr></thead>
+    <tbody>
+      <tr><td>Fixed points of an automorphism of prime order p: f ≡ 85 (mod 2p), and a bound from the bordered conference matrix. So p = 7 forces f = 1, p = 5 forces f = 5, p = 3 forces f ∈ {1, 7, 13, 19}, and p = 17, 43 are impossible.</td><td>proved by hand, audited</td><td class="yes">consistent: order 7 with f = 1, order 3 with f = 7</td></tr>
+      <tr><td>Order 3 with f = 7: the fixed vertices induce K₄ + 3K₁ or its complement; further restrictions for f = 13 and 19. No value of f is excluded.</td><td>proved by hand</td><td class="yes">consistent: on all eight descendants where h acts, the fixed graph is K₄ + 3K₁ or its complement, the first examples of the lemma</td></tr>
+      <tr><td>Order 5: the five fixed vertices induce a 5-cycle, and their adjacencies to the 16 moving orbits form a binary orthogonal array of strength 2. Order 5 is not excluded.</td><td>proved by hand (restrictions only)</td><td class="yes">consistent: no element of order 5</td></tr>
+      <tr><td>No automorphism of order 15</td><td>proved by hand (one derivation)</td><td class="yes">consistent</td></tr>
+      <tr><td>No automorphism of order 14</td><td>computational: two independent programs, must-find controls</td><td class="yes">consistent: the group orders are odd</td></tr>
+      <tr><td>No automorphism of order 21, none of order 42</td><td>proved (order 21: hand proof, audited, 26 Sep 2026)</td><td class="yes">consistent: 7:3 has no element of order 21</td></tr>
+      <tr><td>Exactly four graphs have an automorphism group of order 21, each with full group of order exactly 21 (12 Oct 2026, after Verma's paper)</td><td>computational: 1,822 cases decided, 0 time-outs; blind audit with its own code (one subcase rests on a single program)</td><td class="yes">the four are Verma's Γ<sub>∞</sub>, Γ<sub>∞′</sub> and their complements</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>No conflict.</strong> Every group order that occurs in the twenty graphs (1, 3, 21) is allowed, and every exclusion holds for all of them. The order-7 element of Γ<sub>∞</sub> and of Γ<sub>∞′</sub> gives two quotient matrices; both appear in our complete list of 1,536 ℤ₇-quotients with one fixed point, which reproduces the count of Behbahani and Lam. This was the first must-find control of that list on a real graph.</p>
+  <p class="muted">The classification remains open. For example, it is unknown whether a graph with an automorphism of order 5, or of order 3 with f = 1, 13 or 19, exists. These are questions about the class, not about existence.</p>
+</section>
+
+<section aria-labelledby="f-h">
+  <div class="eyebrow">Sources</div>
+  <h2 id="f-h">References and our notes</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>source</th><th>contents</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://arxiv.org/abs/2610.08893">H. Verma, arXiv:2610.08893</a></td><td>A symmetric conference matrix of order 86: the construction and the ten classes</td></tr>
+      <tr><td class="mono">docs/verma86_verification_2026_10_12.md</td><td>our confirmation, as summarised above</td></tr>
+      <tr><td class="mono">docs/srg85_order21_2026_10_12.md<br>docs/audit_srg85_order21_fable_2026_10_12.md</td><td>groups of order 21, and the blind audit</td></tr>
+      <tr><td class="mono">docs/srg85_42_orders14_15_2026_09_28.md</td><td>orders 14 and 15</td></tr>
+      <tr><td class="mono">docs/junie_srg85_orders5_3_2026_10_01.md<br>docs/codex_srg85_orders3_2_2026_10_01.md</td><td>orders 5, 3 and 2: restrictions, no exclusions</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The notes are working notes in the project repository, not preprints.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Existence: <a href="https://arxiv.org/abs/2610.08893">H. Verma, arXiv:2610.08893</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab51-100.html">A. E. Brouwer, v = 51–100</a></div>
+</footer>
+</div>
+</body>
+</html>
