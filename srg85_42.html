@@ -15,7 +15,7 @@
 <header>
   <div class="eyebrow">Strongly regular graphs · settled by existence</div>
   <h1>srg(85, 42, 20, 21) exists</h1>
-  <p class="lead">The conference-type parameter set (85,42,20,21) was marked “?” in Brouwer's table. In October 2026 Harshit Verma published a symmetric conference matrix of order 86, <a href="https://arxiv.org/abs/2610.08893">arXiv:2610.08893</a>, and this settles the row: the graph exists. The result and the construction are entirely his. We recomputed his matrix independently and confirmed every finite claim we checked. Before his paper we had proved several restrictions on the automorphisms of such a graph; his graphs satisfy all of them.</p>
+  <p class="lead">The conference-type parameter set (85,42,20,21) was marked “?” in Brouwer's table. In October 2026 Harshit Verma published a symmetric conference matrix of order 86, <a href="https://arxiv.org/abs/2610.08893v1">arXiv:2610.08893v1</a>, and this settles the row: the graph exists. The result and the construction are entirely his. We recomputed his matrix independently and confirmed every finite claim we checked. Before his paper we had proved several restrictions on the automorphisms of such a graph; his graphs satisfy all of them. <a href="#graphs-h">Download the 86 derived graphs and 10 representatives</a>.</p>
   <div class="chips">
     <a class="chip ok" href="https://arxiv.org/abs/2610.08893">Existence: H. Verma, arXiv:2610.08893 (v1, 6 Oct 2026)</a>
     <span class="chip">Independently confirmed here, 12 Oct 2026</span>
@@ -47,6 +47,40 @@
   </table></div>
   <p>We also computed the full automorphism group of every descendant. It is the stabiliser of the root in G: order 21 for the roots ∞ and ∞′, order 3 for the six orbits of size 7, trivial for the two orbits of size 21. The group of order 21 is the Frobenius group 7:3 (hgh⁻¹ = g²), not ℤ₂₁. The complements of the ten graphs are again srg(85,42,20,21), descendants of the two-graph of −C, and none of them is isomorphic to one of the ten; so the matrix gives twenty graphs.</p>
   <p class="muted">The file name of our report, <span class="mono">docs/verma86_verification_2026_10_12.md</span>, refers to the order 86 of the conference matrix; the graphs have 85 vertices.</p>
+</section>
+
+<section aria-labelledby="graphs-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="graphs-h">Download the graphs</h2>
+  <p>These files contain the 86 descendants of Harshit Verma's conference matrix, in the original root order. The 86 records represent <strong>10 isomorphism classes</strong> with sizes 1, 1, 7, 7, 7, 7, 7, 7, 21 and 21; they are not 86 non-isomorphic graphs. The ten complementary classes mentioned above are not included, and these descendants are not a classification of all graphs with these parameters. Verma's paper gives the construction; the independent checks and data formatting are ours.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>class representative (root)</th><th class="num">descendants</th><th class="num">|Aut|</th><th class="num">4-cliques</th><th>graph6 file</th></tr></thead>
+    <tbody>
+      <tr><td>∞ (0)</td><td class="num">1</td><td class="num">21</td><td class="num">25,900</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root00.g6">root00.g6</a></td></tr>
+      <tr><td>∞′ (1)</td><td class="num">1</td><td class="num">21</td><td class="num">26,152</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root01.g6">root01.g6</a></td></tr>
+      <tr><td>(0,0) (2)</td><td class="num">7</td><td class="num">3</td><td class="num">26,018</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root02.g6">root02.g6</a></td></tr>
+      <tr><td>(1,0) (9)</td><td class="num">7</td><td class="num">3</td><td class="num">26,182</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root09.g6">root09.g6</a></td></tr>
+      <tr><td>(2,0) (16)</td><td class="num">7</td><td class="num">3</td><td class="num">26,098</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root16.g6">root16.g6</a></td></tr>
+      <tr><td>(3,0) (23)</td><td class="num">7</td><td class="num">3</td><td class="num">26,084</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root23.g6">root23.g6</a></td></tr>
+      <tr><td>(4,0) (30)</td><td class="num">7</td><td class="num">3</td><td class="num">26,078</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root30.g6">root30.g6</a></td></tr>
+      <tr><td>(5,0) (37)</td><td class="num">7</td><td class="num">3</td><td class="num">26,096</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root37.g6">root37.g6</a></td></tr>
+      <tr><td>(6,0) (44)</td><td class="num">21</td><td class="num">1</td><td class="num">26,070</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root44.g6">root44.g6</a></td></tr>
+      <tr><td>(9,0) (65)</td><td class="num">21</td><td class="num">1</td><td class="num">26,086</td><td class="mono"><a href="data/verma85/verma86_srg85_42_20_21_root65.g6">root65.g6</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>download</th><th>contents</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="data/verma85/descendants_all86.g6">descendants_all86.g6</a></td><td>All 86 graph6 records in original root order</td></tr>
+      <tr><td class="mono"><a href="data/verma85/representatives10.g6">representatives10.g6</a></td><td>One graph6 representative for each of the ten classes</td></tr>
+      <tr><td class="mono"><a href="data/verma85/roots.csv">roots.csv</a></td><td>Root-to-representative mapping and class invariants for all 86 records</td></tr>
+      <tr><td class="mono"><a href="data/verma85/README.txt">README.txt</a></td><td>Provenance, indexing, scope and verification instructions</td></tr>
+      <tr><td class="mono"><a href="data/verma85/SHA256SUMS">SHA256SUMS</a></td><td>SHA-256 checksums for every file in this data package except the manifest itself</td></tr>
+    </tbody>
+  </table></div>
+  <p>Verify every graph in either bundle with the existing dependency-free checker:</p>
+  <div class="formula">python3 data/verify_srg.py data/verma85/descendants_all86.g6 85 42 20 21<br>python3 data/verify_srg.py data/verma85/representatives10.g6 85 42 20 21</div>
+  <p>From the <span class="mono">data/verma85/</span> directory, verify the package checksums with <span class="mono">sha256sum -c SHA256SUMS</span>.</p>
 </section>
 
 <section aria-labelledby="p-h">

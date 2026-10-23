@@ -32,6 +32,7 @@ beyond them.
 | file | content |
 |---|---|
 | `index.html` | landing page: all results, methods, how they were checked |
+| `srg85_42.html` | Harshit Verma's `srg(85,42,20,21)` conference-matrix construction, independent checks, and downloads for 86 descendants / 10 isomorphism-class representatives |
 | `srg69.html`, `srg99_42.html`, `srg105.html`, `srg154.html`, `srg162.html`, `srg196.html`, `srg288.html`, `srg405.html`, `srg476.html` | one page per nonexistence proof |
 | `bmv.html` | the uniform lattice condition: statement, parity corollary, NL_m(q) family, parity checker, sortable Table 1 of the 70 pairs, controls |
 | `twographs.html` | uniqueness of the regular two-graphs on 126 and 176 points: statement, corollary for four srg parameter sets, switching classes, proof steps, case explorer, Leech enumeration, verification |
@@ -39,7 +40,7 @@ beyond them.
 | `graphs.html` | the new graphs of the three construction papers: counts, automorphism groups, sources, data files, the two-spread construction, the 306-vertex graph, the cross-ratio graphs on 160–280 vertices |
 | `about.html` | method in plain words, verification standard, use of AI, licence, how to cite |
 | `assets/site.css` | shared stylesheet (light and dark theme) |
-| `data/` | graph6 files of the new graphs (first paper: one file per set; third paper: `G160.g6` … `G280b.g6`, one graph per file, hashes in `SHA256SUMS_twoorbit`; also a fourth srg(160,54,18,18) and an srg(400,171,74,72) outside the Hadamard family, found 12–13 Oct 2026, not yet in the papers), the verifier `verify_srg.py`, `README.txt`, `SHA256SUMS`; `bmv_table1.json` and `bmv_table1.csv` (Table 1 of the 70-pair paper) |
+| `data/` | graph6 files of the new graphs (first paper: one file per set; third paper: `G160.g6` … `G280b.g6`, one graph per file, hashes in `SHA256SUMS_twoorbit`; also a fourth srg(160,54,18,18) and an srg(400,171,74,72) outside the Hadamard family, found 12–13 Oct 2026, not yet in the papers); `verma85/` contains Verma's 86 descendants, 10 class representatives and a root mapping; the verifier `verify_srg.py`, `README.txt`, `SHA256SUMS`; `bmv_table1.json` and `bmv_table1.csv` (Table 1 of the 70-pair paper) |
 | `tools/bmv_table1.mjs` | regenerates the two Table 1 files from the paper's LaTeX source and embeds the JSON in `bmv.html` (Node 18+, no packages) |
 
 ## Viewing locally
