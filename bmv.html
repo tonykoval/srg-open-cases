@@ -92,7 +92,7 @@ sub,sup{line-height:0}
   <div class="two">
     <div class="box"><h3>New, as far as we found</h3><ul>
       <li>A dual-vector identity and a distinguished class ȳ for <em>any</em> integral representation b(A − ρI) + cJ of <em>any</em> strongly regular graph with integral eigenvalues. This turns the first, genus-level step of the method into one condition on the parameters.</li>
-      <li>Its simplest case, the textbook congruence for even lattices of odd determinant applied to the centred representation, and the resulting exclusion of the NL<sub>m</sub>(q) family below.</li>
+      <li>Its simplest case, the textbook congruence for even lattices of odd determinant applied to the centred representation, and the resulting exclusion of the NL<sub>m</sub>(q) family below. <strong>Correction (24 October 2026):</strong> this odd-determinant case was found first by Daijiro Obata (Zenodo, 9 September 2026), who excluded the same 35 parameter sets with <em>r</em> − <em>s</em> odd; see the box below. The 35 sets with <em>r</em> − <em>s</em> even remain the contribution of this page.</li>
       <li>A complete sweep of Brouwer's table up to 1300 vertices, with the 70 exclusions of Table 1, each graded.</li>
     </ul></div>
     <div class="box"><h3>Not new</h3><ul>
@@ -100,6 +100,13 @@ sub,sup{line-height:0}
       <li>The step “maximal integral overlattice ⇒ anisotropic discriminant form”, used by Akiyama for srg(266,45,0,9).</li>
       <li>The facts about finite quadratic forms (Nikulin, Conway–Sloane, Milnor–Husemoller) and the parity congruence for even lattices of odd determinant (Conway–Sloane, Elkies).</li>
     </ul></div>
+  </div>
+  <div class="credit" id="priority">
+    <h3>Priority and concurrent work (added 24 October 2026)</h3>
+    <p><strong>Daijiro Obata</strong>, <em>srg-eigenlattice-obstruction</em> v0.1.1, Zenodo, 9 September 2026, <a href="https://doi.org/10.5281/zenodo.22682072">doi:10.5281/zenodo.22682072</a> (<a href="https://github.com/daijiro-obata/srg-eigenlattice-obstruction">GitHub</a>). A Lean 4 / Mathlib formalisation that applies the classical congruence det ≡ (−1)<sup>n/2</sup> (mod 4) for even lattices of odd determinant to the integral eigenvalue lattices ℤ<sup>v</sup> ∩ ker(A − θI). It proves the nonexistence of the same 35 open parameter sets with <em>r</em> − <em>s</em> odd that appear in Table 1 below, together with the known cases (154,51,8,21) and (289,54,1,12). It predates this work by a month; the author of this page was not aware of it when the paper was deposited on 10 October and did not cite it. The 12 sets of Table 1 that this page could only settle by exhaustive computation all follow from Obata's short argument.</p>
+    <p><strong>Dilan Djematene</strong>, Zenodo, 11 October 2026, <a href="https://doi.org/10.5281/zenodo.23305123">doi:10.5281/zenodo.23305123</a>: independently the same 35 sets by a determinant-odd condition, found while working on Conway's 99-graph.</p>
+    <p>The three works were found independently. At A. E. Brouwer's suggestion (21 October 2026) the three authors are preparing one joint paper: the easier condition with its short proof first, then the stronger condition for the 35 sets with <em>r</em> − <em>s</em> even, which needs Milgram's formula modulo 8 and control of the 2-part of the discriminant form. In the joint work the stronger condition has been reduced, for <em>r</em> − <em>s</em> ≡ 2 (mod 4), to a congruence modulo 4 that can be checked by hand for each of the 35 even sets, so no row rests on computation alone; it also gives a short arithmetic proof that there is no regular two-graph on 76 points (the rows (75,32,10,16), (76,30,8,14) and (76,35,18,14), previously excluded by Bondarenko–Prymak–Radchenko and by Azarija–Marc with computer searches).</p>
+    <p class="muted">Related, on Conway's 99-graph only: F. Rannou, GitHub Math680/conway99-minimal-lean (16 October 2026), an even rank-44 lattice with a 7-adic Milgram step overlapping the proposition in our Conway-local note (Zenodo 23281436, 10 October) and Djematene's deposit; and two SAT certificates by Machuca (Zenodo 23496157, 23496196) re-checking known automorphism exclusions.</p>
   </div>
 </section>
 
