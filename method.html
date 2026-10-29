@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Working method with AI</title>
+<meta name="description" content="How the results on this site are produced with AI systems: roles, the pipeline from idea to deposit, the standing rules, controls and gates, record keeping, infrastructure, lessons from failures, and the credit policy. With a worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html" aria-current="page">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="srg833.html">833</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a><a href="method.html" aria-current="page">Method</a></nav>
+<header>
+  <div class="eyebrow">Method</div>
+  <h1>How this work is done with AI systems</h1>
+  <p class="lead">Every result on this site was produced by one person directing several AI systems, under a fixed set of rules that make the output checkable by anyone. This page describes the method in detail: who does what, how a result travels from an idea to a deposit, what is required before anything is believed, and what has gone wrong along the way. It is written so that another group can copy the method; nothing in it is specific to strongly regular graphs except the examples.</p>
+  <div class="chips">
+    <span class="chip">one author, several AI systems, no AI author</span>
+    <span class="chip hand">every claim proved in the text or reduced to a rerunnable computation</span>
+    <span class="chip comp">controls before verdicts, blind audits before claims</span>
+    <span class="chip ok">everything public: DOI, graph6, programs, logs</span>
+  </div>
+</header>
+
+<section aria-labelledby="roles-h">
+  <div class="eyebrow">1 · Roles</div>
+  <h2 id="roles-h">Who does what</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>role</th><th>held by</th><th>does</th><th>does not</th></tr></thead>
+    <tbody>
+      <tr><th>author</th><td>Anton Kovaľ</td><td>sets the problems and the priorities, decides what is claimed, reads every paper before deposit, sends every email, presses every “publish”, pushes every website change, runs the servers</td><td>write the code or the first drafts</td></tr>
+      <tr><th>coordinator</th><td>Claude (Anthropic), in a long-running session in the author's repository</td><td>keeps the programme state, queries the ledger, derives, writes engines and controls, runs searches, verifies, drafts papers and emails, records everything, briefs the other agents</td><td>publish, send, push, or claim a verdict its controls do not support</td></tr>
+      <tr><th>auditor</th><td>a fresh session of a different model family (Claude Fable), with its own code</td><td>receives a claim <em>without</em> the derivation, derives it independently, writes its verdict before reading the original, then compares; rebuilds objects from the paper's definitions</td><td>see the coordinator's reasoning before forming its own</td></tr>
+      <tr><th>referee</th><td>a fresh session of a different model family, with its own code</td><td>reads the finished paper and its programs; re-derives the proofs, reproduces the computations, checks the bibliography and the wording; returns ACCEPT / MINOR / MAJOR with numbered corrections</td><td>edit the paper</td></tr>
+      <tr><th>theory lanes</th><td>JetBrains Junie and OpenAI Codex, each in its own checkout, communicating through append-only mailboxes</td><td>derivations, independent implementations, brainstorms from the knowledge vault and the literature; sometimes a construction idea</td><td>run searches on open targets without a passed gate; touch private data; edit the ledger</td></tr>
+      <tr><th>external people</th><td>other mathematicians who answer email</td><td>share constructions, data and pointers (always credited, never reproduced without permission)</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p>The separation that matters most is between <em>producing</em> a result and <em>checking</em> it. Checking is always done by a session that did not produce it, with its own code, and when the claim is a theorem or a nonexistence, by a different model family, so that a systematic error of one model is less likely to repeat in its own audit.</p>
+</section>
+
+<section aria-labelledby="pipe-h">
+  <div class="eyebrow">2 · Pipeline</div>
+  <h2 id="pipe-h">From an idea to a deposit</h2>
+  <ol class="prose">
+    <li><strong>Ledger query.</strong> Before any search or proof attempt on a parameter set, the programme ledger is queried for that row. It lists every method already applied, with its verdict, grade, scope and source. A complete verdict for the same method and scope means “not again”; an uncollected server result means “look there first”. The rule is called <em>no method twice</em>, and it is machine-checked.</li>
+    <li><strong>Derivation first, code second.</strong> The finite object to be searched (a cover, a weighing matrix, a quotient matrix, a lattice) is derived by hand and written down before any engine exists. The derivation states what the engine will decide and what it will not.</li>
+    <li><strong>Blind audit of the derivation</strong> when it carries weight: an auditor session derives the same claims without seeing the original, writes its verdicts, then compares. Verdicts are PROVED, GAP (stated exactly) or FALSE.</li>
+    <li><strong>Engine with controls.</strong> Every search program must pass <em>must-find controls</em>: known objects of exactly the shape searched, which the engine has to find unseeded, and <em>mutants</em>, deliberately broken inputs it has to reject. An engine that cannot rediscover a known graph is not allowed to report a zero on an open one.</li>
+    <li><strong>The search</strong>, with a stated budget and the verdict vocabulary below. UNKNOWN decides nothing and is not retried with a longer limit; a residue of undecided cases is recorded and parked.</li>
+    <li><strong>Verification of a find</strong> by at least two independent programs (exact integer arithmetic on A², two canonical-labelling programs for the automorphism group and isomorphism classes), and a rebuild of the object from the paper's own definition, which must reproduce the file byte for byte.</li>
+    <li><strong>Existence check against the world:</strong> the live table, the literature, the weekly arXiv/Zenodo watch, and a direct comparison with any known object of the same parameters.</li>
+    <li><strong>Paper</strong> with hand proofs where they exist, computations named and reproducible, a “Status of the claims” paragraph saying which statements are proved by hand and which are computer results, and an acknowledgement saying which AI system did what.</li>
+    <li><strong>Referee pass</strong> by a fresh session with its own code; corrections applied; the referee's report deposited with the paper.</li>
+    <li><strong>Deposit and announcement</strong> by the author: Zenodo with a DOI, the data archive (graphs, programs, audit and referee reports, build logs, checksums), an email to the maintainer of the table, the website. Credit to every outside contributor is settled with them before anything is public.</li>
+  </ol>
+</section>
+
+<section aria-labelledby="rules-h">
+  <div class="eyebrow">3 · Standing rules</div>
+  <h2 id="rules-h">What is never done</h2>
+  <ul class="prose">
+    <li><strong>No claim without a verdict marker.</strong> A nonexistence statement needs a complete, exhausted search or a proof; “timeout”, “unknown” and “incomplete” support nothing. Counts are compared only at a complete status.</li>
+    <li><strong>No zero without a control.</strong> A generator or solver that returns “no object” on an open target must have returned the known objects on controls of the same shape, in the same run configuration.</li>
+    <li><strong>No method twice.</strong> See the ledger. Every finished lane adds its per-row results; the ledger is rebuilt and its consistency checks must all pass.</li>
+    <li><strong>No grinding.</strong> An undecided case is not relaunched with a longer limit on the same model; the next attempt needs a new idea.</li>
+    <li><strong>Nothing public without the author.</strong> The AI systems never deposit, email, push or post. Drafts are left on the author's desk with a clear “unsent” mark.</li>
+    <li><strong>Other people's material is private until they say otherwise.</strong> Graphs or notes received by email are kept outside the repository, read only by sandboxed scripts, never quoted, never passed to the theory lanes; receipts hold verdicts and hashes only. Attribution wording is agreed with the person before deposit.</li>
+    <li><strong>Downloaded data are untrusted.</strong> Repositories and files from the web go into their own directory and are read with an isolated interpreter; results derived from them say so.</li>
+    <li><strong>No fabricated references.</strong> Every bibliography entry resolves to a published item, a DOI, a URL, or a named personal communication. A placeholder “in preparation” once slipped into a draft and was removed before deposit; it is now checked for.</li>
+    <li><strong>Exact scope in every record.</strong> A ledger line quotes the source document's own statement of what remains open. An overclaim (a family verdict written as a row verdict) was caught once by a preflight check and corrected the same day.</li>
+    <li><strong>Separate the layers.</strong> Public mathematics (CC‑BY, Zenodo, this site) is kept apart from anything confidential; the knowledge vault contains no email addresses, credentials, server names or private correspondence.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">4 · Controls and gates</div>
+  <h2 id="ctrl-h">What has to pass before anything is believed</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>kind</th><th>what it is</th><th>example</th></tr></thead>
+    <tbody>
+      <tr><th>must-find</th><td>a known object of exactly the searched shape, which the engine must find unseeded, in the same run configuration as the target; the control must carry the exact symmetry the engine assumes</td><td>a cyclic engine for Paley(9) fibres over Paley(q) must rebuild a known 153-vertex graph before it may run on 261; a four-cycle-cover search must rebuild the 833 graph before it reports on another q</td></tr>
+      <tr><th>accept</th><td>the engine must accept a pinned known solution (weaker than must-find; used to validate the model, never to pass a gate)</td><td>a conference-matrix engine fed a printed order-86 matrix</td></tr>
+      <tr><th>mutant</th><td>a deliberately broken input (one sign flipped, one line swapped, a wrong parameter) the engine must reject</td><td>one sign in a four-cycle cover flipped: the 833-vertex graph is no longer strongly regular</td></tr>
+      <tr><th>blind audit</th><td>an independent derivation written before the original is read</td><td>the Jacobi-sum theorem on covers for every q ≡ 1 (mod 16): the auditor re-derived the character-sum table, then confirmed</td></tr>
+      <tr><th>second build</th><td>the object rebuilt from the paper's definition by a separate program; the file must be identical</td><td>construct_srg833.py reproduces the auditor's graph6 byte for byte</td></tr>
+      <tr><th>second canonicaliser</th><td>automorphism group and isomorphism classes by two programs</td><td>dreadnaut and pynauty agree on |Aut| = 3 and 24 classes</td></tr>
+      <tr><th>referee</th><td>a fresh session re-derives the proofs and reproduces the computations, including a rebuild from the paper's table with its own arithmetic</td><td>the 833 paper: MINOR, five corrections, all applied</td></tr>
+      <tr><th>gate</th><td>a lane may run on open targets only after its controls pass; a failed gate parks the lane</td><td>two constraint engines for Paley(9) fibres could not rediscover a known graph in an hour: parked, no target run, the structural finder was briefed instead</td></tr>
+    </tbody>
+  </table></div>
+  <p>The verdict vocabulary is fixed: FOUND (self-verifying: the object is in the archive), INFEASIBLE-COMPLETE (a finished search or a proof, with its scope), UNKNOWN-INCOMPLETE (decides nothing), and grades PROVED-LIT, PROVED-OURS-AUDITED, COMPUTED-CONTROLLED, COMPUTED-UNCONTROLLED. A computed result without a control is graded as such and never quoted as a theorem.</p>
+</section>
+
+<section aria-labelledby="rec-h">
+  <div class="eyebrow">5 · Record keeping</div>
+  <h2 id="rec-h">Four records, one source of truth</h2>
+  <ul class="prose">
+    <li><strong>CHANGELOG.</strong> Every lane, result, failure, correction and decision, dated, with file paths and hashes. Read at the start of every session. Entries are never rewritten; corrections are new entries that cite the old one.</li>
+    <li><strong>Programme ledger.</strong> One line per (parameter set, method, scope): verdict, count, grade, source, date, what remains open. Built by a script from the CHANGELOG and curated lines; rebuilt after every lane; a check file must report all checks passed. This is what “no method twice” queries.</li>
+    <li><strong>Knowledge vault.</strong> A linked set of notes: one card per method (definition, controls required, known defects, open pockets), one lesson per incident with the incident behind it, one page per parameter set generated from the ledger, one note per day. Hand text survives rebuilds; the ledger stays the source of truth.</li>
+    <li><strong>Session memory.</strong> The coordinator's own notes across sessions: resume protocol, standing decisions, corrections the author made and why. These are the rules of the house, not results.</li>
+  </ul>
+  <p>Agents communicate through append-only mailbox files in the repository; every brief states the goal, what is already ruled out, the controls required, the budget, and where receipts go. Live receipts of multi-process runs are written to local scratch and mirrored, after four runs were lost to I/O races on a shared mount.</p>
+</section>
+
+<section aria-labelledby="infra-h">
+  <div class="eyebrow">6 · Infrastructure</div>
+  <h2 id="infra-h">Where things run</h2>
+  <ul class="prose">
+    <li>A home workstation with a container holding the solvers (CP-SAT, SAT solvers, nauty, GAP, PARI) and the verifiers; everything exact, nothing floating-point in a verdict.</li>
+    <li>A few rented servers, strictly one shape per server, 12-hour budgets, code-only Docker images (no unpublished graph ever goes into a public image; images carry their own controls, which run at build time so that an image that cannot rebuild its control cannot be pushed).</li>
+    <li>Standard-library Python for everything that is deposited: a reader needs no packages to rebuild a graph and check all pairs.</li>
+    <li>The sandboxed interpreter (<span class="mono">python -I</span>) for every file that came from outside.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="les-h">
+  <div class="eyebrow">7 · Lessons</div>
+  <h2 id="les-h">What went wrong, and the rule it produced</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>incident</th><th>rule since</th></tr></thead>
+    <tbody>
+      <tr><td>An orbit-matrix generator reported “no orbit matrices” on parameter sets where graphs are known, three times, including on open targets; five distinct defects were found over the summer, one at the leaf of the search.</td><td>A known-graph harness (must-find of the same shape) runs with every prototype count; any binary built before the last fix is untrusted; a generator zero with fixed points is not evidence until the four control cases pass.</td></tr>
+      <tr><td>A lattice-feasibility engine reported nonexistence on graphs that exist (five independent soundness bugs).</td><td>All its verdicts retracted; every engine whose output would be quoted in a theorem gets a must-find suite before use; review agents are briefed on one bug class at a time with examples.</td></tr>
+      <tr><td>A frame search looked in one lattice only; the control graph's frame lived in another.</td><td>The full-pipeline must-find runs before any hunt verdict is reported.</td></tr>
+      <tr><td>Two must-find controls in briefs were themselves false (the control did not carry the symmetry the engine assumed); the agents correctly stopped at the gate.</td><td>A positive control must be pinned into the model or justified by its automorphism group before it is listed.</td></tr>
+      <tr><td>A ledger line said “complete” for a case where the source document said “fixed-point-free branches open”.</td><td>Curated lines quote the source's own open-items statement; a preflight check compares them.</td></tr>
+      <tr><td>A brief inferred per-block spectra from an aggregate constraint; two agents refuted it.</td><td>Only the quantity actually constrained is claimed; per-block statements need enumeration or a lemma.</td></tr>
+      <tr><td>A gauge that fixes one variable found 12 of 16 classes in a census.</td><td>A feasibility gauge is not a class-counting gauge; counts use full enumeration.</td></tr>
+      <tr><td>A graph builder applied a phase with the wrong sign for one orientation; the model was right, the “verification” wrong.</td><td>The verification builder follows the model's semantics literally and is itself controlled on a known graph in every configuration; a “verified: false” on a feasible model solution is a builder bug until shown otherwise.</td></tr>
+      <tr><td>A multiplier-symmetric sub-search reported “infeasible” instantly for groups containing −1, which force both orientations of an edge; this was an artifact, not a verdict.</td><td>The script refuses such groups; a zero at presolve is checked for a structural reason before it is recorded.</td></tr>
+      <tr><td>An unaudited candidate on an open row was pre-empted by another group's deposit.</td><td>Audit within a day, deposit the same day, weekly literature watch.</td></tr>
+      <tr><td>A placeholder self-citation (“report, in preparation”) was in a draft.</td><td>Every bibliography entry must resolve; drafts are grepped for “in preparation” before a deposit.</td></tr>
+      <tr><td>Long solver residues (hours of UNKNOWN) consumed weeks; the value came from mathematics that decided in minutes.</td><td>No longer limits on residues; the next attempt needs a new idea, usually a reduction that makes the object small.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="credit-h">
+  <div class="eyebrow">8 · Credit and publication</div>
+  <h2 id="credit-h">Who is named, and how</h2>
+  <ul class="prose">
+    <li>AI systems are not authors. Each paper has a paragraph “Use of AI systems” naming which system did what: who proposed the construction, who audited blind, who found the object, who wrote the proofs and programs, who refereed. The author is responsible for every claim.</li>
+    <li>Outside mathematicians are credited precisely: a construction idea is “due to” its originator; a data file is cited by repository and path; a pointer is thanked in the acknowledgements. Nothing received privately is reproduced, and the wording of the attribution is agreed with the person before deposit.</li>
+    <li>Priority is established by a Zenodo deposit with a DOI on the day the result is complete and audited; the maintainer of the table is informed the same day with the graph6 file attached.</li>
+    <li>Everything is CC‑BY 4.0: paper, source, data, programs, audit and referee reports, build logs, checksums. A reader can rebuild every object with a standard interpreter and check it.</li>
+    <li>Negative results are published with the same care as positive ones, with their exact scope, because a published exclusion is what stops the next person from searching the same family.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="ex-h">
+  <div class="eyebrow">9 · A worked example</div>
+  <h2 id="ex-h">One day: srg(833,416,207,208)</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>who</th><th>what happened</th></tr></thead>
+    <tbody>
+      <tr><td>template</td><td>Jose Yip (email)</td><td>conference graphs from Paley(9) fibres over Paley(17) joined by line-to-line incidences; graphs and notes kept private, template credited with his consent</td></tr>
+      <tr><td>analysis</td><td>coordinator</td><td>per-character reduction: every direction node carries exactly (q−1)/(p+1) incidences; three audited exclusions on other rows, a complete class count on a known shape</td></tr>
+      <tr><td>brainstorm</td><td>Junie</td><td>“Paley(49) over Paley(17) makes the direction graph 2-regular; strong regularity reduces to a signed four-cycle cover of K₁₇”; explicitly no claim that the cover exists</td></tr>
+      <tr><td>blind audit</td><td>Claude Fable, own code</td><td>re-derived all three claims without seeing them; added that the cover must consist of four-cycles; wrote a depth-first search that found a cover in under a minute, built the graph, verified it twice</td></tr>
+      <tr><td>verification</td><td>coordinator</td><td>standalone verifier (exact A², nauty), pynauty, live table still “?”, Mathon's family does not contain the order; a standard-library program written from the definition reproduces the file byte for byte</td></tr>
+      <tr><td>record</td><td>coordinator</td><td>ledger line, CHANGELOG, vault, memory; nothing published</td></tr>
+      <tr><td>extension</td><td>coordinator</td><td>translation-invariant covers = quadruple partitions of the difference classes; 8 partitions for q = 17, 17 classes; covers for every q ≡ 1 (mod 16) below 321 in seconds; the family theorem; net fibres (24 classes); a cyclic search gives a conference graph on 2009 vertices</td></tr>
+      <tr><td>theorem</td><td>Junie, then a blind audit</td><td>covers exist for every q ≡ 1 (mod 16): octic cosets and a Jacobi-sum bound above 321; audited PROVED with the character-sum table re-derived and the recipe run for every small q</td></tr>
+      <tr><td>paper</td><td>coordinator, then a referee</td><td>14 pages; referee MINOR with five corrections (one real: the orbit structure; one real: partitions are not covers); applied</td></tr>
+      <tr><td>consent</td><td>author ↔ Yip</td><td>attribution wording confirmed; his pointer to Mathon's construction checked: the d = 1 case has Mathon's shape but gives a different two-graph on 442 points (all descendants compared); added as a section in version 1.1</td></tr>
+      <tr><td>deposit</td><td>author</td><td>Zenodo DOI the same evening; email to the table's maintainer with the graph6 files; this site</td></tr>
+      <tr><td>what did not work</td><td>everyone</td><td>two constraint engines for the Paley(9) rows failed their gates and were parked; a cyclic family on 333 was excluded; 909 stays undecided; all recorded with exact scope</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="lim-h">
+  <div class="eyebrow">10 · Limits</div>
+  <h2 id="lim-h">What the method does not do</h2>
+  <ul class="prose">
+    <li>It does not make an open problem easier. Most lanes end in a recorded exclusion or an UNKNOWN; the yield on open rows is a few finds per hundred lanes, and the finds came from reductions, not from solver hours.</li>
+    <li>It does not replace the expert. The author decides what is worth doing, what is claimed, and what is sent; several wrong turns were stopped by a one-line remark from a human (a priority rule, a literature pointer, a question about a reference).</li>
+    <li>It does not make AI reasoning trustworthy by itself. It makes it <em>checkable</em>: every claim is reduced to a hand proof in the text or a named computation anyone can rerun, and the audit trail shows where independent review was incomplete.</li>
+  </ul>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div><a href="about.html">About this site</a> · <a href="papers.html">Papers</a> · <a href="index.html">Results</a></div>
+</footer>
+</div>
+</body>
+</html>
