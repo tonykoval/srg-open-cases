@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>An srg(833,416,207,208)</title>
+<meta name="description" content="A strongly regular graph with parameters (833,416,207,208), the first on this open row of Brouwer's table: 17 fibres Paley(49) over Paley(17), joined by line incidences along a signed four-cycle cover; a conference matrix of order 834; a family for every prime p ≡ 7 (mod 8) with 2p+3 a prime power, and a conference matrix of order 2010.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html" aria-current="page">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="srg833.html" aria-current="page">833</a><a href="srg833.html">833</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · new graph on an open parameter set</div>
+  <h1>A strongly regular graph with parameters (833, 416, 207, 208)</h1>
+  <p class="lead">On 29 October 2026 Brouwer's table marked srg(833,416,207,208) with “?”: no graph was known. The row's comment is “2-graph*?”: these are the parameters of a conference graph, so a graph is the same thing as a regular two-graph on 834 points, or a symmetric conference matrix of order 834, and none was known. We construct one, prove it by hand, and find that it is the first member of a family.</p>
+  <div class="chips">
+    <span class="chip ok">first graph on this row</span>
+    <span class="chip ok">a regular two-graph on 834 points and a conference matrix of order 834</span>
+    <span class="chip hand">strong regularity by hand, by Fourier analysis over 𝔽₄₉</span>
+    <span class="chip comp">|Aut| = 3 and the 24 isomorphism classes computer-assisted</span>
+    <span class="chip ok">family: conference graphs on p²(2p+3) vertices; conference matrices of orders 2010, 25922, 214274, 4145154, …</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23771335">preprint, doi:10.5281/zenodo.23771335</a>
+  </div>
+</header>
+
+<section aria-labelledby="row-h">
+  <div class="eyebrow">The row</div>
+  <h2 id="row-h">Brouwer's entry on 29 October 2026</h2>
+  <div class="formula">?   833   416   207   208    13.931^416   -14.931^416    2-graph*?</div>
+  <p>The parameters are self-complementary. 833 = 28² + 7² is a sum of two squares, so nothing excludes a conference matrix of order 834; but 834 = 17 · 7² + 1 is not of Mathon's form (q+2)q²+1, and we found no construction of this order in the literature.</p>
+</section>
+
+<section aria-labelledby="con-h">
+  <div class="eyebrow">Construction</div>
+  <h2 id="con-h">Seventeen fibres Paley(49) over Paley(17), joined by line incidences</h2>
+  <p>The vertex set is ℤ₁₇ × 𝔽₄₉. Each fibre {i} × 𝔽₄₉ induces the Paley graph Paley(49). The eight 𝔽₇-lines through 0 of 𝔽₄₉ = 𝔽₇[ω], ω² = 3, split into four square lines and four non-square lines; a <em>direction</em> is a linear form ℓ: 𝔽₄₉ → 𝔽₇ up to a scalar, and it is called positive if its kernel is a non-square line (x+y, x+3y, x+4y, x+6y) and negative otherwise (x, y, x+2y, x+5y).</p>
+  <p>The 136 edges of K₁₇ are partitioned into 34 four-cycles, each containing an odd number of edges of Paley(17), and in each cycle one bipartition class is marked positive so that every vertex is positive in four cycles and negative in four (a <em>signed four-cycle cover</em>; the table of 34 cycles is in the paper). For an edge {a, b} with a positive and b negative in its cycle, the vertices (a,u) and (b,v) are adjacent iff ℓ<sub>a</sub>(u) − ℓ<sub>b</sub>(v) ∈ T<sub>ab</sub>, where ℓ<sub>a</sub> is one of the four positive directions (each used once at a), ℓ<sub>b</sub> one of the four negative directions, and T<sub>ab</sub> = {1,2,4} if a ~ b in Paley(17) and {0,3,5,6} otherwise. Every vertex has 24 + 8·21 + 8·28 = 416 neighbours.</p>
+</section>
+
+<section aria-labelledby="pf-h">
+  <div class="eyebrow">Proof idea</div>
+  <h2 id="pf-h">One 4 × 4 block per four-cycle and per character</h2>
+  <p>Let S be the Seidel matrix. The additive characters of 𝔽₄₉ split ℂ⁸³³ into the fibre-constant space, on which S acts as 7 times the Seidel matrix of Paley(17), and six 136-dimensional spaces, one per non-trivial character τ of 𝔽₇, indexed by the pairs (vertex, direction). A line incidence maps the character of direction ℓ<sub>b</sub> at b to the character of direction ℓ<sub>a</sub> at a, with coefficient 7·η<sub>τ</sub>, where η<sub>τ</sub> is the Gauss period of the squares of 𝔽₇; since {1,2,4} is a (7,3,1) difference set, |η<sub>τ</sub>|² = 2. On each character space S/7 is therefore block diagonal, one 4 × 4 block per four-cycle,</p>
+  <div class="formula">H_Z = [ I₂  −2η W ; −2η̄ Wᵀ  −I₂ ],   W = the 2 × 2 matrix of Paley(17) signs on the cycle,</div>
+  <p>and H<sub>Z</sub>² = 17 I exactly when the sign product of the cycle is −1. Together with the fibre-constant part this gives S² = 833 I − J and S𝟙 = 0, i.e. a conference graph. A 60-line standard-library program rebuilds the graph from the table of cycles and checks all pairs in 1.4 seconds.</p>
+</section>
+
+<section aria-labelledby="pr-h">
+  <div class="eyebrow">Properties</div>
+  <h2 id="pr-h">Spectrum, group, classes</h2>
+  <div class="tbl-wrap"><table>
+    <tbody>
+      <tr><th>spectrum</th><td>416<sup>1</sup>, ((−1 ± √833)/2)<sup>416</sup>; the complement has the same parameters, and the graph is not self-complementary.</td></tr>
+      <tr><th>automorphism group</th><td>C₃: the scaling of every fibre by the squares {1,2,4} of 𝔽₇*; 17 fixed vertices (i, 0) and 272 orbits of size 3. Computed with dreadnaut and pynauty.</td></tr>
+      <tr><th>fibres</th><td>The partition into the 17 Paley(49) fibres is equitable (24 neighbours inside, 21 or 28 in each other fibre). Any union of 4 of the 8 parallel classes of AG(2,7) may replace Paley(49) in each fibre, independently.</td></tr>
+      <tr><th>isomorphism classes</th><td>At least 24 pairwise non-isomorphic srg(833,416,207,208): the first graph; 8 from covers invariant under ℤ₁₇ with the directions assigned by orbit (|Aut| = 51, 17 orbits) and 8 from the same covers with the generic assignment (|Aut| = 3); 3 from further covers and direction choices; 4 with non-Paley net fibres.</td></tr>
+      <tr><th>two-graph</th><td>The switching class of the graph plus an isolated vertex is a regular two-graph on 834 points with eigenvalues ±√833; irrational, so it has no regular members.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="fam-h">
+  <div class="eyebrow">The family</div>
+  <h2 id="fam-h">Paley(p²) over a conference graph on 2p + 3 vertices</h2>
+  <p>With p ≡ 3 (mod 4) prime, Paley(p²) fibres over any conference graph on q = 2p + 3 vertices and the same line incidences along a signed four-cycle cover, the proof goes through word for word: a conference graph on p²q vertices. Two parity counts force q ≡ 1 (mod 16). Translation-invariant covers of Paley(q) are the same as partitions of the (q−1)/2 difference classes of 𝔽<sub>q</sub> into quadruples with a zero signed sum and an odd number of square classes, and such partitions exist for <strong>every</strong> prime power q ≡ 1 (mod 16): by computer below 321, and above by an octic-coset recipe with a Jacobi-sum estimate (512 N ≥ q² − 304q − 168√q − 39). Hence for every prime p ≡ 7 (mod 8) with 2p + 3 a prime power there is a conference graph on p²(2p+3) vertices: p = 7, 23, 47, 127, 167, 199, … give symmetric conference matrices of orders 834, 25922, 214274, 4145154, 9398594, …</p>
+  <p>With five incidences per direction instead of two (Paley(49) over Paley(41)), a constraint search found a ℤ₄₁-invariant assignment: a conference graph on 2009 vertices, |Aut| = 123, hence a symmetric conference matrix of order 2010. In the range of Brouwer's table the family has only the member on 833 vertices.</p>
+</section>
+
+<section aria-labelledby="how-h">
+  <div class="eyebrow">How it was found</div>
+  <h2 id="how-h">A template, a reduction, and a one-minute search</h2>
+  <p>The template, Paley fibres over a conference two-graph joined by line-to-line incidences, is due to Jose Yip, who used Paley(9) fibres for conference graphs on 153 vertices (personal communication, October 2026). Analysed per character of the fibre, the template forces every direction to carry exactly (q−1)/(p+1) incidences; for Paley(49) over Paley(17) that is 2, which makes the direction graph a union of four-cycles. In a brainstorming task an AI system (JetBrains Junie) worked this out and reduced the existence of the graph to a signed four-cycle cover of Paley(17); a second AI session (Claude Fable), asked to audit the derivation blind, re-derived it, found a cover by a depth-first search in under a minute, built the graph and verified it. The graph was then verified by three further programs, and a referee session re-derived the proofs and reproduced the computations with its own code. The existence of covers for every q ≡ 1 (mod 16) was proposed by the same Junie session and audited blind as well.</p>
+</section>
+
+<section aria-labelledby="files-h">
+  <div class="eyebrow">Files</div>
+  <h2 id="files-h">Data</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>file</th><th>contents</th><th>SHA-256</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><a href="data/srg833_416_207_208.g6">srg833_416_207_208.g6</a></td><td>Γ, one graph6 line (57760 bytes), the file of the paper's data statement</td><td class="mono">4b6d5592…71823</td></tr>
+      <tr><td class="mono"><a href="data/construct_srg833.py">construct_srg833.py</a></td><td>plain Python 3: contains the 34 cycles, builds Γ and counts the common neighbours of all pairs; writes the identical graph6</td><td class="mono">see SHA256SUMS</td></tr>
+      <tr><td class="mono"><a href="data/srg2009_1004_501_502.g6">srg2009_1004_501_502.g6</a></td><td>the conference graph on 2009 vertices (Paley(49) over Paley(41)), one graph6 line</td><td class="mono">dc4293a7…aa6a9f9</td></tr>
+      <tr><td class="mono"><a href="data/SHA256SUMS">SHA256SUMS</a></td><td>full hashes; check with <span class="mono">sha256sum -c</span></td><td></td></tr>
+      <tr><td class="mono"><a href="data/verify_srg.py">verify_srg.py</a></td><td>plain Python 3 verifier of A² = kI + λA + μ(J − I − A)</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="formula">python3 data/verify_srg.py data/srg833_416_207_208.g6 833 416 207 208
+python3 data/construct_srg833.py</div>
+  <p>Paper: A. Kovaľ, “A strongly regular graph with parameters (833,416,207,208)”, version 1.0, 29 October 2026, CC-BY-4.0, <a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a>. The deposit holds the 25 graphs, the cover witnesses for all q &lt; 321, the search and verification programs, the blind-audit and referee reports.</p>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab801-850.html">A. E. Brouwer, v = 801–850</a></div>
+</footer>
+</div>
+</body>
+</html>

@@ -17,7 +17,12 @@ A small static website that explains results on parameter sets of strongly regul
   pseudo-GQ(5,10) on Q(4,5); marked "+" in Brouwer's table since 11 October 2026), and, in a third paper,
   (160,54,18,18), (232,63,14,18), (261,64,14,16), (280,63,14,14) (eight graphs from fusions of orbitals of PΓL(2,8)
   and 2^4:(S3×S3), described by cross ratios over PG(1,8) and a 4×4 grid with flags; none geometric; still "?" in
-  Brouwer's table as of 12 October 2026, update pending).
+  Brouwer's table as of 12 October 2026, update pending), and, on 29 October 2026, (833,416,207,208): a conference
+  graph (17 fibres Paley(49) over Paley(17) joined by line incidences along a signed four-cycle cover; strong
+  regularity by Fourier analysis over F_49; 24 classes), hence a regular two-graph on 834 points and a symmetric
+  conference matrix of order 834; the first member of a family of conference graphs on p^2(2p+3) vertices for every
+  prime p = 7 (mod 8) with 2p+3 a prime power (covers exist for every prime power q = 1 (mod 16)), with a further
+  conference matrix of order 2010 (doi:10.5281/zenodo.23771335).
 - **Uniqueness**: the regular two-graphs on 126 and 176 points are unique (equivalently, 126 equiangular lines in
   R^21 and 176 in R^22 at angle arccos 1/5 are unique; listed as unknown by Brouwer–Van Maldeghem 2022, §8.10.1).
   Hence srg(125,52,15,26), srg(125,72,45,36), srg(175,72,20,36) and srg(175,102,65,51) each have exactly one graph.
