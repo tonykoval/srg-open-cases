@@ -23,7 +23,7 @@
     <span class="chip comp">|Aut| = 3 and the 24 isomorphism classes computer-assisted</span>
     <span class="chip ok">family: conference graphs on p²(2p+3) vertices; conference matrices of orders 2010, 25922, 214274, 4145154, …</span>
     <span class="chip">Brouwer's table: “+” since 30 Oct 2026 (Kovaľ + AI, ref. Koval26p); comment “2-graph*” kept</span>
-    <a class="chip" href="https://doi.org/10.5281/zenodo.23771335">preprint, doi:10.5281/zenodo.23771335</a>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.23811118">preprint v1.2, doi:10.5281/zenodo.23811118</a>
   </div>
 </header>
 
@@ -68,7 +68,7 @@
   <h2 id="fam-h">Paley(p²) over a conference graph on 2p + 3 vertices</h2>
   <p>With p ≡ 3 (mod 4) prime, Paley(p²) fibres over any conference graph on q = 2p + 3 vertices and the same line incidences along a signed four-cycle cover, the proof goes through word for word: a conference graph on p²q vertices. Two parity counts force q ≡ 1 (mod 16). Translation-invariant covers of Paley(q) are the same as partitions of the (q−1)/2 difference classes of 𝔽<sub>q</sub> into quadruples with a zero signed sum and an odd number of square classes, and such partitions exist for <strong>every</strong> prime power q ≡ 1 (mod 16): by computer below 321, and above by an octic-coset recipe with a Jacobi-sum estimate (512 N ≥ q² − 304q − 168√q − 39). Hence for every prime p ≡ 7 (mod 8) with 2p + 3 a prime power there is a conference graph on p²(2p+3) vertices: p = 7, 23, 47, 127, 167, 199, … give symmetric conference matrices of orders 834, 25922, 214274, 4145154, 9398594, …</p>
   <p>With five incidences per direction instead of two (Paley(49) over Paley(41)), a constraint search found a ℤ₄₁-invariant assignment: a conference graph on 2009 vertices, |Aut| = 123, hence a symmetric conference matrix of order 2010. In the range of Brouwer's table the family has only the member on 833 vertices.</p>
-  <p><strong>Relation to Mathon's construction.</strong> With one incidence per direction (q = p + 2) the construction needs no cover: a regular tournament on the base does the job, and the orders p²(p+2)+1 are exactly those of Mathon's conference matrices, which have the same fibre structure but quadratic-residue rather than line incidences between fibres. The two are not equivalent: our d = 1 two-graph on 442 points and Mathon's each have 52 isomorphism classes of descendants and none in common, so there are at least two inequivalent symmetric conference matrices of order 442 (version 1.1 of the paper; the d = 1 graph is <a href="data/srg441_220_109_110_lines_z9.g6">in the data</a>).</p>
+  <p><strong>Relation to Mathon's construction.</strong> With one incidence per direction (q = p + 2) the construction needs no cover: a regular tournament on the base does the job, and the orders p²(p+2)+1 are exactly those of Mathon's conference matrices. In fact Mathon's Theorem 4.1 (1978) is this d = 1 case of the template: his blocks between fibres are line incidences too, but his fibre is not a Paley graph (it is the union of the lines of slope {0} ∪ Q). With Paley fibres the result is different: our d = 1 two-graph on 442 points and the one of Mathon's matrix each have 52 isomorphism classes of descendants and none in common, so there are at least two inequivalent symmetric conference matrices of order 442 (Mathon's theorem is a family; whether ours arises from another instance of it is not known). Version 1.1 of the paper wrongly described Mathon's fibres as Paley graphs and his blocks as quadratic-residue rather than line incidences; version 1.2 corrects this. The d = 1 graph is <a href="data/srg441_220_109_110_lines_z9.g6">in the data</a>.</p>
 </section>
 
 <section aria-labelledby="how-h">
@@ -92,12 +92,12 @@
   </table></div>
   <div class="formula">python3 data/verify_srg.py data/srg833_416_207_208.g6 833 416 207 208
 python3 data/construct_srg833.py</div>
-  <p>Paper: A. Kovaľ, “A strongly regular graph with parameters (833,416,207,208)”, version 1.0, 29 October 2026, CC-BY-4.0, <a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a>. The deposit holds the 25 graphs, the cover witnesses for all q &lt; 321, the search and verification programs, the blind-audit and referee reports.</p>
+  <p>Paper: A. Kovaľ, “A strongly regular graph with parameters (833,416,207,208)”, version 1.2, 30 October 2026 (version 1.0: 29 October 2026, <a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a>), CC-BY-4.0, <a href="https://doi.org/10.5281/zenodo.23811118">doi:10.5281/zenodo.23811118</a>. The deposit holds the 25 graphs, the cover witnesses for all q &lt; 321, the search and verification programs, the blind-audit and referee reports.</p>
 </section>
 
 <footer>
   <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava</div>
-  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab801-850.html">A. E. Brouwer, v = 801–850</a></div>
+  <div>Paper: <a href="https://doi.org/10.5281/zenodo.23811118">doi:10.5281/zenodo.23811118</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab801-850.html">A. E. Brouwer, v = 801–850</a></div>
 </footer>
 </div>
 </body>
