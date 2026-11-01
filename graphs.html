@@ -40,7 +40,7 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
 </head>
 <body>
 <div class="wrap">
-<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="srg833.html">833</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html" aria-current="page">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a><a href="method.html">Method</a></nav>
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288 (k = 105)</a><a href="srg288_112.html">288 (k = 112)</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="srg833.html">833</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html" aria-current="page">New graphs</a><a href="papers.html">Papers</a><a href="about.html">About</a><a href="method.html">Method</a></nav>
 <header>
   <div class="eyebrow">Strongly regular graphs · constructions</div>
   <h1>New graphs for eighteen open parameter sets</h1>
@@ -224,6 +224,21 @@ td .sub{display:block;color:var(--muted);font-size:12.5px}
     </tbody>
   </table></div>
   <p class="muted">Independent review was uneven, and the paper says exactly what it covered. The first drafts (graphs reported on 30 September) were refereed by separate Claude agents with their own code. Several later additions (from 1 and 2 October) were not refereed independently at the time. On 6 October a Codex referee re-verified strong regularity and pairwise non-isomorphism of all 256 graphs then listed, with its own program, without recomputing every invariant. The eight srg(324,114,36,42) nos. 15–22, added on 7 October 2026, have not been refereed independently. For the third paper every computer result was reproduced by a blind audit with separately written code (Claude Fable), and version 2 was refereed by a further session with its own code, which re-implemented the constructions from the text.</p>
+</section>
+
+<section aria-labelledby="later-h">
+  <div class="eyebrow">Later papers</div>
+  <h2 id="later-h">Further open rows, one paper and one page each</h2>
+  <p>After the three papers above, further open rows were realised in papers of their own. Each has its own page with the construction, the verification and the Brouwer status; the graph6 files of the papers are copied byte-identical into <span class="mono">data/</span>, with full hashes in <a href="data/SHA256SUMS">SHA256SUMS</a>.</p>
+  <div class="tbl-wrap"><table class="files">
+    <thead><tr><th>parameters</th><th>page</th><th>file</th><th>SHA-256 (prefix)</th><th>paper</th></tr></thead>
+    <tbody>
+      <tr><td class="num">(217,66,15,22)</td><td><a href="srg217.html">217</a></td><td><a href="data/srg217_66_15_22_8c81bbd8e812ace3.g6">srg217_66_15_22_8c81bbd8e812ace3.g6</a></td><td class="num">8cc5000a91f3b96f</td><td><a href="https://doi.org/10.5281/zenodo.23454170">doi:10.5281/zenodo.23454170</a></td></tr>
+      <tr><td class="num">(833,416,207,208)</td><td><a href="srg833.html">833</a></td><td><a href="data/srg833_416_207_208.g6">srg833_416_207_208.g6</a></td><td class="num">4b6d55929de8c6b3</td><td><a href="https://doi.org/10.5281/zenodo.23771335">doi:10.5281/zenodo.23771335</a></td></tr>
+      <tr><td class="num">(288,112,36,48)</td><td><a href="srg288_112.html">288 (k = 112)</a></td><td><a href="data/srg288_112_36_48_e576d4d44ade6646.g6">srg288_112_36_48_e576d4d44ade6646.g6</a></td><td class="num">ecc804b00c38ecde</td><td><a href="https://doi.org/10.5281/zenodo.23870797">doi:10.5281/zenodo.23870797</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="formula">python3 verify_srg.py srg288_112_36_48_e576d4d44ade6646.g6 288 112 36 48</div>
 </section>
 
 <footer>
