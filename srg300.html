@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>No srg(300,117,60,36)</title>
+<meta name="description" content="There is no strongly regular graph with parameters (300,117,60,36), hence none with (300,182,100,126): eight discriminant forms found by hand, gluing to even unimodular lattices of rank 32, harmonic theta-series equations and exact Farkas certificates, with the finite core checked by the Lean 4 kernel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* page-specific: srg300 */
+.genera{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--comp);border-radius:8px;padding:12px 14px;display:grid;gap:6px;align-content:start;min-width:0}
+.gcard.h{border-top-color:var(--kill)}
+.gcard .nm{font:600 18px/1.2 var(--mono)}
+.gcard .meta{font:12.5px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.gcard .verdict{font-weight:600;color:var(--kill)}
+.kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+.kv div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px;display:grid;gap:2px;min-width:0}
+.kv b{font:600 15px/1.2 var(--mono)}
+.refs{margin:0;padding-left:20px;display:grid;gap:6px}
+.refs li{overflow-wrap:anywhere}
+@media (max-width:640px){.genera{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site-nav" aria-label="Site"><a class="brand" href="index.html">Open cases of Brouwer's SRG table</a><a href="srg69.html">69</a><a href="srg85_42.html">85</a><a href="srg99_42.html">99</a><a href="srg105.html">105</a><a href="srg154.html">154</a><a href="srg162.html">162</a><a href="srg196.html">196</a><a href="srg217.html">217</a><a href="srg243_22.html">243 (k = 22)</a><a href="srg288.html">288 (k = 105)</a><a href="srg288_112.html">288 (k = 112)</a><a href="srg300.html" aria-current="page">300</a><a href="srg405.html">405</a><a href="srg476.html">476</a><a href="srg833.html">833</a><a href="bmv.html">70 pairs</a><a href="twographs.html">Two-graphs</a><a href="uniq243_253.html">243/253</a><a href="graphs.html">New graphs</a><a href="https://tonykoval.github.io/srg-database/">SRG Library</a><a href="papers.html">Papers</a><a href="about.html">About</a><a href="method.html">Method</a></nav>
+<header>
+  <div class="eyebrow">Strongly regular graphs · open case from Brouwer's table</div>
+  <h1>There is no strongly regular graph with parameters (300, 117, 60, 36)</h1>
+  <p class="lead">No graph on 300 vertices, each of degree 117, where adjacent vertices share 60 neighbours and non-adjacent vertices share 36; hence none with the complementary parameters (300,182,100,126) either. The vertices become vectors of an even lattice of rank 27. By hand, a maximal even overlattice has one of exactly eight discriminant forms. Gluing each to an explicit lattice of rank 5 gives an even unimodular lattice of rank 32, whose harmonic theta series give exact linear equations in the numbers of short dual vectors; with the vectors that the graph itself supplies, exact Farkas certificates show that none of the eight systems has a solution. No symmetry of the graph is assumed.</p>
+  <div class="chips">
+    <span class="chip">Preprint, version 1.0, 8 November 2026</span>
+    <a class="chip" href="https://doi.org/10.5281/zenodo.24056552">doi:10.5281/zenodo.24056552</a>
+    <span class="chip comp">Computer-assisted</span>
+    <span class="chip hand">Eight forms by hand</span>
+    <a class="chip ok" href="#lean-h">Finite core checked by the Lean 4 kernel</a>
+    <span class="chip">Brouwer's table: “?” (not yet updated)</span>
+    <span class="chip">Not yet refereed by an independent human reader</span>
+  </div>
+</header>
+
+<section aria-labelledby="row-h">
+  <div class="eyebrow">The row</div>
+  <h2 id="row-h">The parameter set in Brouwer's table</h2>
+  <p>The parameters (300,117,60,36) satisfy the integrality conditions, the absolute bound 300 ≤ f(f+3)/2 = 377 and both Krein conditions, so they are feasible in the usual sense. When the paper was deposited on 8 November 2026, the row of <a href="https://aeb.win.tue.nl/graphs/srg/srgtab251-300.html">Brouwer's table for v = 251–300</a> was marked “?” (existence unknown), with spectrum 27²⁶, (−3)²⁷³ and no comment. The table will show “?” until Brouwer updates it; this page and the paper are a preprint, not a change of the table.</p>
+  <div class="formula">?   300   117   60   36    27^26   -3^273
+       (complement)  182  100  126   2^273   -28^26</div>
+  <div class="spec">
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">117</span><span class="muted">multiplicity 1 &nbsp;<span class="arrow">→ G: 420</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">27</span><span class="muted">multiplicity 26 &nbsp;<span class="arrow">→ G: 30</span></span></div>
+    <div class="cell"><span class="eyebrow">eigenvalue of A</span><span class="big">−3</span><span class="muted">multiplicity 273 &nbsp;<span class="arrow">→ G: 0</span></span></div>
+  </div>
+  <p class="muted">The matrix G = A + 3I + J sends the eigenvalue −3 to 0, so it is positive semidefinite of rank 1 + 26 = 27, with diagonal 4 and off-diagonal entries 2 (adjacent) and 1 (non-adjacent). It is the Gram matrix of 300 vectors of norm 4 in ℝ²⁷. The complement srg(300,182,100,126) has spectrum 182¹, 2²⁷³, (−28)²⁶. Library entry for the row: <a href="https://tonykoval.github.io/srg-database/library.html#row=300-117-60-36">SRG Library, srg(300,117,60,36)</a>.</p>
+</section>
+
+<section aria-labelledby="ctx-h">
+  <div class="eyebrow">Context</div>
+  <h2 id="ctx-h">Smallest eigenvalue −3: Koolen and Gebremichel's Table 1</h2>
+  <p>By Neumaier's theorem (1979), apart from the Latin-square type (μ = 6) and the Steiner type (μ = 9), only finitely many parameter sets can be realised by primitive strongly regular graphs with smallest eigenvalue −3. Koolen and Gebremichel (Electron. J. Combin. 29(2), 2022, Conjecture 1.2) conjectured that such a graph has μ ∈ {6, 9} or v ≤ 276, and listed in their Table 1 twelve parameter sets with v &gt; 276 and μ ∉ {6, 9} that were open at the time. (300,117,60,36) is one of them. The paper records how, to the author's knowledge, the other eleven were excluded:</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>parameter sets</th><th>excluded in</th></tr></thead>
+    <tbody>
+      <tr><td class="num"><a href="srg288.html">(288,105,52,30)</a></td><td>A. Kovaľ, doi:10.5281/zenodo.23263506</td></tr>
+      <tr><td class="num"><a href="srg405.html">(405,132,63,33)</a>, <a href="srg476.html">(476,133,60,28)</a></td><td>A. Kovaľ, with the lattice method used here, and independently Liao, Wang, Yu and Cai, <a href="https://arxiv.org/abs/2610.20259">arXiv:2610.20259</a></td></tr>
+      <tr><td class="num">(351,140,73,44), (550,162,75,36), (703,182,81,35), (1344,221,88,26)</td><td>Liao and Yu, <a href="https://arxiv.org/abs/2609.37901">arXiv:2609.37901</a></td></tr>
+      <tr><td class="num">(375,102,45,21), (441,88,35,13), (540,147,66,30), (575,112,45,16)</td><td>Liao, Wang, Yu and Cai, <a href="https://arxiv.org/abs/2610.20259">arXiv:2610.20259</a> (multipoint semidefinite bounds, Gegenbauer positivity and subgraph counting, with exact certificates)</td></tr>
+      <tr><td class="num">(300,117,60,36)</td><td>this paper</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">The proofs of Liao and Yu and of Liao, Wang, Yu and Cai were not re-checked for the paper. With this result all twelve parameter sets of Koolen and Gebremichel's Table 1 are excluded. As the paper says, this is evidence for the conjecture, not a proof of it, and it says nothing about open parameter sets with v ≤ 276.</p>
+</section>
+
+<section aria-labelledby="chain-h">
+  <div class="eyebrow">The proof · click a step</div>
+  <h2 id="chain-h">The chain of the argument</h2>
+  <div class="legend"><span><i style="background:var(--hand)"></i>proved by hand</span><span><i style="background:var(--comp)"></i>exact computation</span><span><i style="background:var(--kill)"></i>contradiction</span></div>
+  <div class="chain" id="chain">
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">1</span><span class="t"><strong>The vertex lattice and the vector w</strong><span class="s">300 vectors of norm 4 span an even lattice of rank 27.</span><span class="d"><span>Write G = VᵀV; the columns v₁, …, v₃₀₀ span an even lattice N in ℝ²⁷ (norms 4, inner products 2 and 1). Let s = Σ vᵢ, w = s/420 and e = s/30 = 14w. Then ⟨w, vᵢ⟩ = 1, w² = 5/7, e² = 140, and for every x</span><span class="formula">Σ ⟨x, vᵢ⟩ vᵢ = 30x + 546 ⟨x, w⟩ w</span><span>Fix a maximal even lattice M with N + ℤe ⊆ M. Its discriminant form is anisotropic, w lies in M<sup>#</sup>, and the class w̄ has order exactly 14 with q(w̄) = 5/7.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">2</span><span class="t"><strong>The dual-vector lemma</strong><span class="s">Every dual vector meets the vertices in integers with fixed moments.</span><span class="d"><span>For x ∈ M<sup>#</sup> with a = x² and t = ⟨x, w⟩, the integers zᵢ = ⟨x, vᵢ⟩ satisfy</span><span class="formula">Σ zᵢ = 420t,   Σ zᵢ² = 30a + 546t²,   Σ zᵢ² ≡ Σ zᵢ (mod 2)
+Σ_{j ~ i} zⱼ = 27zᵢ + 126t   for every vertex i</span><span class="muted">with the Cauchy–Schwarz bounds on each zᵢ. The parity condition gives the parity congruence 30x² + 546⟨x, w⟩² − 420⟨x, w⟩ ∈ 2ℤ used in step 3.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">3</span><span class="t"><strong>Exactly eight discriminant forms</strong><span class="s">Milgram's formula and the parity congruence.</span><span class="d"><span>420·D(M) = 0, the 3- and 5-parts are elementary of rank at most 2, the 7-part is ⟨8w̄⟩ ≅ ⟨6/7⟩, and the 2-part contains a cyclic summand ⟨a/4⟩ with a odd. The parity congruence kills every further 2-part and forces a ≡ 1 (mod 4), and Milgram's formula, Br ≡ 27 (mod 8), then leaves exactly eight forms g₀, …, g₇ of determinants 28, 140, 140, 252, 700, 1260, 1260 and 6300 (listed below).</span><span class="muted">Without the parity congruence 16 forms would remain. The blind referee first arrived at the 16 and then verified the congruence by hand; an exhaustive enumeration reproduces both counts, 16 and 8. In each form the class of w is ±ȳ, fixed up to sign.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">4</span><span class="t"><strong>Glue into an even unimodular lattice of rank 32</strong><span class="s">One explicit lattice K of rank 5 per form.</span><span class="d"><span>For each form the paper prints the Gram matrix of an even lattice Kᵢ of rank 5 with the opposite discriminant form and an explicit anti-isometry φᵢ (checked by exact enumeration of Kᵢ<sup>#</sup>/Kᵢ). Gluing M to Kᵢ along φᵢ gives an even unimodular lattice U of rank 27 + 5 = 32. One complement per form suffices.</span><span>Every vector of U is X = x + p with x ∈ M<sup>#</sup> and p ∈ K<sup>#</sup>. The unknowns are the numbers n(C, a, t) of vectors x of M<sup>#</sup> with class C, norm a and inner product t with w.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">5</span><span class="t"><strong>Harmonic theta series give linear equations</strong><span class="s">Spaces of modular forms of dimension one or two.</span><span class="d"><span>The theta series of U lies in M₁₆, so N₄ = 146880 + 216·N₂. For a harmonic polynomial P of degree d = 2, 4, 6, 10 the weighted theta series is a cusp form in a one-dimensional space, so on the shells of norm 2 and 4</span><span class="formula">Θ₄(P) = κ_d · Θ₂(P),   (κ₂, κ₄, κ₆, κ₁₀) = (−528, 456, −288, −48)</span><span>On the shells 2, 4, 6 there are further relations, for example N₆ + 3348·N₂ = 64757760. Each relation becomes a linear equation in the n(C, a, t), with exact rational coefficients computed from the short vectors of the cosets of K.</span></span></span></button>
+    <button class="step" data-kind="hand" aria-expanded="false"><span class="n">6</span><span class="t"><strong>Lower bounds from the graph</strong><span class="s">Eleven families of vectors that every M<sup>#</sup> contains.</span><span class="d"><span>The vertex vectors, w, 2w, and differences and sums such as vᵢ − vⱼ, vᵢ − w, vᵢ − 2w are pairwise distinct vectors of M<sup>#</sup> with known norm, pairing and class. For example</span><span class="formula">vᵢ − vⱼ, i ~ j:      norm 4, t = 0,  35,100 vectors
+vᵢ − vⱼ, i ≁ j:      norm 6, t = 0,  54,600 vectors
+vᵢ + vⱼ − 2w, i ≁ j: norm 34/7,      27,300 vectors</span><span class="muted">Six families with norm at most 4 are used on the shells 2, 4; all eleven on the shells 2, 4, 6.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">7</span><span class="t"><strong>Pins: vector types that cannot occur</strong><span class="s">779 pairs (norm, |pairing|) forced to zero.</span><span class="d"><span>A pair (a, t) is <em>pinned</em> if no integer vector z ∈ ℤ³⁰⁰ satisfies the conditions of step 2; then n(C, a, t) = 0 for every class. Across the models, 779 distinct pairs are pinned: 12 have no admissible value at all, 582 fall to the moment bounds alone (a few lines of arithmetic each), and 185 need the neighbourhood equation.</span><span class="muted">Four exact deciders were written separately, three of them without any solver; the two solver-free ones confirm every pin of every model and release none. The pins carry the contradiction: with only integrality, parity and range pins, some systems are feasible in floating point.</span></span></span></button>
+    <button class="step" data-kind="comp" aria-expanded="false"><span class="n">8</span><span class="t"><strong>Exact Farkas certificates</strong><span class="s">For every form the system has no nonnegative solution.</span><span class="d"><span>After the shift n = ℓ + n′ by the lower bounds ℓ, each model reads An′ + c′ = 0, n′ ≥ 0. A Farkas certificate is a rational vector y with yᵀA ≥ 0 on every unknown and y·c′ &gt; 0, which makes 0 = (yᵀA)n′ + y·c′ &gt; 0 impossible.</span><span>Two independently written generators of the systems agree over ℚ, and each produced its own certificates for all eight forms: 13 from the proposer's engine and 12 from the independent generator. For g₀ and g₄ the equations alone force a negative number of roots (−54 and −34); for g₂ they are inconsistent over ℚ.</span></span></span></button>
+    <button class="step" data-kind="end" aria-expanded="false"><span class="n">9</span><span class="t"><strong>No lattice M exists, so no graph exists</strong><span class="s">All eight forms are excluded.</span><span class="d"><span>An srg(300,117,60,36) would give a maximal even lattice M with one of the eight forms, whose dual-vector counts satisfy every equation of its model, vanish on the pinned cells and respect the lower bounds. The certificates show that this is impossible. The complement srg(300,182,100,126) is excluded with it.</span></span></span></button>
+  </div>
+</section>
+
+<section aria-labelledby="gen-h">
+  <div class="eyebrow">Steps 3, 4 and 8 · Tables 2–4 of the paper</div>
+  <h2 id="gen-h">Eight forms, each excluded at least twice</h2>
+  <p>Each form is excluded by certificates from both generators. A level is the set of shells and the largest harmonic degree: “2,4/≤12” means the shells of norm 2 and 4 with degrees up to 12, “2,4,6/≤8” the shells 2, 4, 6 with degrees up to 8. The proof needs one level per form; a second level is a further re-check with different equations. The lattices K are named as in Table 3 of the paper.</p>
+  <div class="genera">
+    <div class="gcard h"><span class="nm">g₀ · det 140</span><span class="meta">D(M) = ⟨1/4⟩ ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩<br>K = A₄ ⊥ ⟨28⟩</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>265 × 39</b></div><div><span class="eyebrow">proposer</span><b>2 levels</b></div><div><span class="eyebrow">independent</span><b>18 rows</b></div></div><span class="verdict">the equations alone give −54 roots</span></div>
+    <div class="gcard"><span class="nm">g₁ · det 700</span><span class="meta">D(M) = ⟨1/4⟩ ⊥ ⟨2/5⟩ ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩<br>K = X ⊥ ⟨28⟩</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>1879 × 147</b></div><div><span class="eyebrow">proposer</span><b>2 levels</b></div><div><span class="eyebrow">independent</span><b>2 levels</b></div></div><span class="verdict">Farkas certificates</span></div>
+    <div class="gcard h"><span class="nm">g₂ · det 252</span><span class="meta">D(M) = ⟨1/4⟩ ⊥ ⟨2/3⟩² ⊥ ⟨6/7⟩<br>K = A₂ ⊥ T</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>811 × 55</b></div><div><span class="eyebrow">proposer</span><b>1 level</b></div><div><span class="eyebrow">independent</span><b>45 rows</b></div></div><span class="verdict">the equations are inconsistent over ℚ</span></div>
+    <div class="gcard"><span class="nm">g₃ · det 1260</span><span class="meta">D(M) = ⟨1/4⟩ ⊥ ⟨2/3⟩² ⊥ ⟨2/5⟩ ⊥ ⟨6/7⟩<br>K = A₂ ⊥ B ⊥ ⟨60⟩</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>756 × 179</b></div><div><span class="eyebrow">proposer</span><b>2 levels</b></div><div><span class="eyebrow">independent</span><b>2 levels</b></div></div><span class="verdict">Farkas certificates</span></div>
+    <div class="gcard h"><span class="nm">g₄ · det 28</span><span class="meta">D(M) = ⟨5/4⟩ ⊥ ⟨6/7⟩<br>K = A₃ ⊥ B</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>837 × 21</b></div><div><span class="eyebrow">proposer</span><b>2 levels</b></div><div><span class="eyebrow">independent</span><b>17 rows</b></div></div><span class="verdict">the equations alone give −34 roots</span></div>
+    <div class="gcard"><span class="nm">g₅ · det 140</span><span class="meta">D(M) = ⟨5/4⟩ ⊥ ⟨2/5⟩ ⊥ ⟨6/7⟩<br>K = A₃ ⊥ C</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>1198 × 55</b></div><div><span class="eyebrow">proposer</span><b>1 level</b></div><div><span class="eyebrow">independent</span><b>28 rows</b></div></div><span class="verdict">Farkas certificates</span></div>
+    <div class="gcard"><span class="nm">g₆ · det 1260</span><span class="meta">D(M) = ⟨5/4⟩ ⊥ ⟨2/3⟩² ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩<br>K = A₂ ⊥ T′</span><div class="kv"><div><span class="eyebrow">2,4/≤12</span><b>561 × 153</b></div><div><span class="eyebrow">proposer</span><b>2 levels</b></div><div><span class="eyebrow">independent</span><b>2 levels</b></div></div><span class="verdict">Farkas certificates</span></div>
+    <div class="gcard"><span class="nm">g₇ · det 6300</span><span class="meta">D(M) = ⟨5/4⟩ ⊥ ⟨2/3⟩² ⊥ ⟨2/5⟩ ⊥ ⟨4/5⟩ ⊥ ⟨6/7⟩<br>K = X′ ⊥ ⟨12⟩</span><div class="kv"><div><span class="eyebrow">2,4,6/≤8</span><b>1294 × 2918</b></div><div><span class="eyebrow">proposer</span><b>2,4,6 only</b></div><div><span class="eyebrow">independent</span><b>2 levels</b></div></div><span class="verdict">Farkas certificates</span></div>
+  </div>
+  <p class="muted">The size box gives the nonzero rows after normalisation × the unknown cells of the proposer's model at the level shown. For g₇ the proposer's run at shells 2, 4 was not finished; the independent generator's model there has 540 unknowns, and its certificate uses 513 rows. For g₀, g₂ and g₄ the contradiction needs no lower bound at all, only the pins (through the choice of unknowns); it was found by the blind referee and the independent generator on their own models and re-checked by exact Gaussian elimination on the proposer's.</p>
+</section>
+
+<section aria-labelledby="ctrl-h">
+  <div class="eyebrow">Controls</div>
+  <h2 id="ctrl-h">The same machinery lets real graphs through</h2>
+  <p>The method was run on graphs that exist and have the same kind of representation, through the generators used for the target, with the true counts of an exact census of their dual vectors planted into the equations. In every run all residuals are exact zeros, no true vector type is pinned and no lower bound is violated; where a mutation was planted, it was detected. A control cannot prove the theorem; it shows that the mechanism lets existing configurations through.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>graph</th><th>generator</th><th>result</th></tr></thead>
+    <tbody>
+      <tr><td>srg(117,36,15,9), lines of AG(3,3) (rank 27, det M = 4)</td><td>proposer, referee, independent, Codex</td><td class="yes">0 of 3,613 and 0 of 2,507 rows violated (independent generator, shells 2,4 and 2,4,6); a planted ±1 breaks 1,424 and 985 rows</td></tr>
+      <tr><td>Bose ℤ₉ and random STS(27) block graphs</td><td>proposer</td><td class="yes">0 of 2,095 rows each; feasible</td></tr>
+      <tr><td>cyclic Latin square graph L₃(10), srg(100,27,10,6) (det M = 1300)</td><td>proposer, referee, independent</td><td class="yes">0 rows violated (of 1,297 for the proposer's and the independent generator, of 601 for the referee's); 0 of 3,368 true types pinned; a planted ±1 breaks 769 rows</td></tr>
+      <tr><td>dihedral L₃(10), random Latin square of order 10</td><td>proposer</td><td class="yes">0 of 1,297 rows</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">What the controls cannot test: no graph with these parameters exists, so the classification of the forms cannot be tested on the object itself; planted truth at the shell of norm 6 exists only for AG(3,3); and the infeasible branch itself is reached by no existing graph. That is what the exact certificates and the hand proofs are for.</p>
+</section>
+
+<section aria-labelledby="ver-h">
+  <div class="eyebrow">Verification</div>
+  <h2 id="ver-h">How each step is established</h2>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>step</th><th>how it is established</th></tr></thead>
+    <tbody>
+      <tr><td>spectrum, vertex lattice, w, frame identity, dual-vector lemma</td><td>proof by hand</td></tr>
+      <tr><td>exactly eight discriminant forms; the class of w up to sign</td><td>proof by hand (Milgram's formula, parity congruence); exhaustive computer cross-checks</td></tr>
+      <tr><td>eight complements K and their anti-isometries</td><td>Gram matrices printed; anti-isometries by exact enumeration of K<sup>#</sup>/K, done by four separately written programs; one (K, φ) per form suffices, by hand</td></tr>
+      <tr><td>modular-form relations on the shells 2,4 and 2,4,6</td><td>literature (theta series with harmonic coefficients) and exact q-expansions, computed three times</td></tr>
+      <tr><td>lower bounds; pins</td><td>lower bounds by hand; pins by exhaustive exact programs (four implementations, three of them solver-free)</td></tr>
+      <tr><td>infeasibility of the eight systems</td><td>exact Farkas certificates from two independent generators, checked by a standalone program; for three forms also exact linear algebra without optimisation</td></tr>
+    </tbody>
+  </table></div>
+  <p>The verifiers were AI systems working under the author's direction, each with its own code. A blind referee from a different model family (Claude Fable) re-derived the set-up before opening the proposer's files, wrote its own generator and found identical unknowns, lower bounds and row spaces; with its own generator it obtained certificates for five of the forms and the three solver-free contradictions. Codex (OpenAI) verified the classification step by hand and checked the form g₄ and an AG(3,3) control with its own code. JetBrains Junie, a third system, wrote the independent generator, its certificates for all eight forms, its own pin decider, its controls and its check of the class of w. The independence achieved is independence of session, of code and, for Codex and Junie, of vendor.</p>
+  <p class="muted">The grade is <strong>computer-assisted</strong>: the proof depends on computers for the admissibility of vector types (the pins) and for the infeasibility of the eight systems. The paper is a preprint and has not yet been refereed by an independent human reader. The steps that were not written out by hand for any model, and the inputs taken from the literature (Milgram's formula, gluing, the modularity of harmonic theta series), are listed in Section 7 of the paper.</p>
+</section>
+
+<section aria-labelledby="chk-h">
+  <div class="eyebrow">Rerun it</div>
+  <h2 id="chk-h">How to check the result</h2>
+  <p>The Zenodo record holds the paper, its LaTeX source and the data archive: the models and certificates of both generators, the pin decisions, the controls, the code, a SHA-256 manifest of every file and the Lean 4 project. One script with no dependencies beyond the Python standard library (Python 3.8 or later) re-checks the certificates, the pins and the controls. From the top directory of the archive:</p>
+  <div class="formula">python3 -I verify_all.py            # full run, about 9 minutes on one core, about 1.3 GB
+python3 -I verify_all.py --quick    # about 4 minutes; skips the paper-number checks and the two g7 certificates</div>
+  <p>The last line must read <span class="mono">ALL 51 CHECKS PASSED (full run, … s)</span>. The script checks every SHA-256 of the manifest; runs the 125 exact paper-side checks (parameters, the identities, the exhaustive classification 16 → 8 forms, the class of w, the eight complements and anti-isometries, q-expansions and relation counts, harmonicity, elementary pins); re-checks the 13 + 12 Farkas certificates of the two generators and rejects their sign-reversed multipliers; re-decides every pin of the independent models (779 pairs) with its own solver-free decider, after checking that the decider admits the eleven families of forced vectors and agrees with the proposer's decider on all 2,876 cached pairs; re-checks the controls on existing graphs; and checks that the Codex rows for g₄ span the same space over ℚ as the proposer's. It does not regenerate the linear systems from scratch, which takes hours; the generators are in the archive for provenance. Integrity alone: <span class="mono">sha256sum -c MANIFEST_SHA256.txt</span>.</p>
+</section>
+
+<section aria-labelledby="lean-h">
+  <div class="eyebrow">Formal verification</div>
+  <h2 id="lean-h">The finite core is checked by the Lean 4 kernel</h2>
+  <p>The archive contains a Lean 4 project (Lean v4.35.0-rc4, Mathlib pinned at commit 021ce68b) in the directory <span class="mono">lean/</span>. Every finite computation is a <span class="mono">decide +kernel</span> proof evaluated by the Lean kernel, so the compiler is not trusted; the sources contain no <span class="mono">sorry</span>, <span class="mono">admit</span>, <span class="mono">native_decide</span> or <span class="mono">axiom</span> declaration, and the only axioms reported are propext, Classical.choice and Quot.sound.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>part of the proof</th><th>in Lean</th></tr></thead>
+    <tbody>
+      <tr><td>the eight systems of the independent generator used in the proof (g₀ … g₆ at 2,4/≤12, g₇ at 2,4,6/≤8), restricted to the rows with a nonzero multiplier, have no real solution with the lower bounds; the deposited multipliers are Farkas certificates</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>further certificates: the independent generator's g₁, g₃, g₆ at 2,4,6/≤8 and the proposer's g₀, g₄ at 2,4/≤12</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>the finite classification count: 512 candidate forms, 16 without the parity congruence, exactly g₀ … g₇ with it; the class of w is ±w̄</td><td class="yes">kernel-checked (Brown invariants and Milgram's formula as inputs)</td></tr>
+      <tr><td>all 779 vanishing conditions (pins), the 185 that need the neighbourhood equation included; the soundness of the histogram search is itself a Lean theorem</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>the eight complements K and anti-isometries φ</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>the q-expansions of E₄, E₆, Δ and every modular-form relation used, on a basis in every degree</td><td class="yes">kernel-checked (modularity itself external)</td></tr>
+      <tr><td>the lower bounds of all eight systems; all equations of degree 0 and the coverage of the cells, for all eight forms</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>every equation used by the certificate of the form g₄, of every degree</td><td class="yes">kernel-checked</td></tr>
+      <tr><td>the equations of positive degree of the other seven forms</td><td class="muted">not formalised: data in Lean, trusted to the two generators and their agreement over ℚ</td></tr>
+      <tr><td>that the data modules transcribe the archive's files faithfully</td><td class="muted">not proved: checked by SHA-256 against the manifest and re-run in Python</td></tr>
+      <tr><td>the mathematics from the graph to the linear systems: vertex lattice, gluing, modularity of theta series, the lower-bound and dual-vector lemmas as lemmas</td><td class="muted">not formalised</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">“There is no srg(300,117,60,36)” is not a Lean theorem: Lean confirms the finite statements into which the proof reduces it. Mutation tests (wrong signs, constants, coefficients, bounds, complements, slices) are rejected by the kernel. Section 7.9 of the paper and <span class="mono">lean/GAPS.md</span> in the archive list the trust base item by item; <span class="mono">lean/HOW_TO_CHECK.md</span> gives the build steps. The recorded builds took about an hour for the core layer on two cores (up to about 11 GB of memory) and about two and a half hours more for the extension layers, one module at a time; the Lean build is separate from <span class="mono">verify_all.py</span>.</p>
+</section>
+
+<section aria-labelledby="ref-h">
+  <div class="eyebrow">References</div>
+  <h2 id="ref-h">The paper and the works it cites here</h2>
+  <ol class="refs">
+    <li>A. Kovaľ, There is no strongly regular graph with parameters (300,117,60,36), preprint, version 1.0, Zenodo, 8 November 2026, CC BY 4.0, <a href="https://doi.org/10.5281/zenodo.24056552">doi:10.5281/zenodo.24056552</a>.</li>
+    <li>A. E. Brouwer, Parameters of strongly regular graphs, <a href="https://aeb.win.tue.nl/graphs/srg/srgtab251-300.html">v = 251–300</a>.</li>
+    <li>J. H. Koolen and B. Gebremichel, There does not exist a strongly regular graph with parameters (1911,270,105,27), Electron. J. Combin. 29(2) (2022), #P2.3, <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v29i2p3">combinatorics.org</a>; arXiv:2109.04000.</li>
+    <li>A. Neumaier, Strongly regular graphs with smallest eigenvalue −m, Arch. Math. (Basel) 33 (1979), 392–400.</li>
+    <li>E. Bannai, A. Munemasa and B. Venkov, The nonexistence of certain tight spherical designs, St. Petersburg Math. J. 16 (2005), 609–625; B. B. Venkov, Réseaux et designs sphériques (2001); G. Nebe and B. Venkov, On tight spherical designs, St. Petersburg Math. J. 24 (2013), 485–491: the lattice method, applied here to the vertex lattice of a strongly regular graph.</li>
+    <li>Z.-Q. Liao and W.-H. Yu, Nonexistence of strongly regular graphs via multipoint spherical semidefinite bounds, preprint, 2026, <a href="https://arxiv.org/abs/2609.37901">arXiv:2609.37901</a>.</li>
+    <li>Z.-Q. Liao, J. Wang, W.-H. Yu and J. Cai, Nonexistence of strongly regular graphs via Gegenbauer positivity and SRG counting, preprint, 2026, <a href="https://arxiv.org/abs/2610.20259">arXiv:2610.20259</a>.</li>
+    <li>A. Kovaľ, There is no strongly regular graph with parameters (288,105,52,30), (405,132,63,33), (476,133,60,28): see <a href="srg288.html">288</a>, <a href="srg405.html">405</a>, <a href="srg476.html">476</a> and <a href="papers.html">Papers</a>.</li>
+  </ol>
+</section>
+
+<footer>
+  <div>Anton Kovaľ · AI Lead, VÚB banka, Bratislava · page added 8 November 2026</div>
+  <div>Paper, certificates, code and Lean project: <a href="https://doi.org/10.5281/zenodo.24056552">doi:10.5281/zenodo.24056552</a> · Parameter table: <a href="https://aeb.win.tue.nl/graphs/srg/srgtab251-300.html">A. E. Brouwer, strongly regular graphs v = 251–300</a> · <a href="https://tonykoval.github.io/srg-database/library.html#row=300-117-60-36">SRG Library row</a></div>
+</footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.step').forEach(function(b){
+    b.addEventListener('click',function(){b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true');});
+  });
+})();
+</script>
+</body>
+</html>
